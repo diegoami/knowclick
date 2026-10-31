@@ -2,7 +2,9 @@
 
 Each release's entry is its release notes (`docs/RELEASES.md`).
 
-## Unreleased
+## v0.1.0 — 2026-11-01 — Kubernetes recall boards and hands-on tasks
+
+**The first release: a Kubernetes pack for the CKAD, with boards you fill in and tasks you do by hand, to find out whether recall and scheduled practice work together.**
 
 For learners:
 
@@ -23,4 +25,12 @@ For authors:
 - Packs are validated in the gates, every item needs two independent content checks, and
   every runnable answer is run against a disposable kind cluster by `scripts/verify.mjs`,
   whose record the gates require to be current.
-- `node scripts/coverage.mjs kubernetes` shows which CKAD competencies are covered.
+- `node scripts/coverage.mjs kubernetes` shows which CKAD competencies are covered: 12 of 24.
+
+Not in this release: typed answers, a second subject (Azure comes in v0.2.0), CKA,
+installers and any web deployment.
+
+Content has been checked by two AI models (Claude Opus 5.5 and Sonnet 5.5) against the
+Kubernetes documentation and the CNCF curriculum, and every runnable answer has run on
+Kubernetes 1.37.0. The owner has passed the CKAD, and the hands-on tasks come from the
+owner's own ckad-prep scenarios.
