@@ -1,0 +1,124 @@
+{
+	"id": "deployment-manifest",
+	"dealAll": true,
+	"layout": {
+		"type": "code",
+		"code": [
+			"apiVersion: {{gap:apiVersion}}",
+			"kind: Deployment",
+			"metadata:",
+			"  name: web",
+			"spec:",
+			"  replicas: 3",
+			"  {{gap:selector}}:",
+			"    matchLabels:",
+			"      app: web",
+			"  template:",
+			"    metadata:",
+			"      labels:",
+			"        app: web",
+			"    spec:",
+			"      containers:",
+			"      - name: web",
+			"        image: nginx:1.27",
+			"        ports:",
+			"        - {{gap:containerPort}}: 80",
+			"        {{gap:envFrom}}:",
+			"        - configMapRef:",
+			"            name: web-config",
+			"        {{gap:readinessProbe}}:",
+			"          httpGet:",
+			"            path: /",
+			"            port: 80",
+			"          {{gap:initialDelaySeconds}}: 5",
+			"          periodSeconds: 10",
+			"        resources:",
+			"          {{gap:requests}}:",
+			"            cpu: 100m",
+			"            memory: 128Mi",
+			"          limits:",
+			"            memory: 256Mi",
+			"        {{gap:volumeMounts}}:",
+			"        - name: cache",
+			"          {{gap:mountPath}}: /var/cache/nginx",
+			"      {{gap:volumes}}:",
+			"      - name: cache",
+			"        {{gap:emptyDir}}: {}"
+		]
+	},
+	"sources": [
+		{
+			"title": "Deployment v1 apps (API reference)",
+			"url": "https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/"
+		},
+		{
+			"title": "Configure a Pod to Use a ConfigMap",
+			"url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/"
+		},
+		{
+			"title": "Configure Liveness, Readiness and Startup Probes",
+			"url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+		}
+	],
+	"verify": {
+		"run": "kubectl -n knowclick-verify apply --dry-run=server --validate=strict -f -",
+		"stdin": "{code}"
+	},
+	"cells": [
+		{
+			"id": "apiVersion",
+			"item": "resource:deployments:apiVersion",
+			"text": "apps/v1"
+		},
+		{
+			"id": "selector",
+			"item": "field:deployment:selector",
+			"text": "selector"
+		},
+		{
+			"id": "containerPort",
+			"item": "field:deployment:containerPort",
+			"text": "containerPort"
+		},
+		{
+			"id": "envFrom",
+			"item": "field:deployment:envFrom",
+			"text": "envFrom"
+		},
+		{
+			"id": "readinessProbe",
+			"item": "field:deployment:readinessProbe",
+			"text": "readinessProbe"
+		},
+		{
+			"id": "initialDelaySeconds",
+			"item": "field:deployment:initialDelaySeconds",
+			"text": "initialDelaySeconds"
+		},
+		{
+			"id": "requests",
+			"item": "field:deployment:requests",
+			"text": "requests"
+		},
+		{
+			"id": "volumeMounts",
+			"item": "field:deployment:volumeMounts",
+			"text": "volumeMounts"
+		},
+		{
+			"id": "mountPath",
+			"item": "field:deployment:mountPath",
+			"text": "mountPath"
+		},
+		{
+			"id": "volumes",
+			"item": "field:deployment:volumes",
+			"text": "volumes"
+		},
+		{
+			"id": "emptyDir",
+			"item": "field:deployment:emptyDir",
+			"text": "emptyDir"
+		}
+	]
+}

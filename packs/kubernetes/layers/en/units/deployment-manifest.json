@@ -1,0 +1,39 @@
+{
+	"title": "A Deployment, field by field",
+	"summary": "A Deployment with a readiness probe, resource requests, settings from a ConfigMap and a scratch volume. Fill in the field names: the place of each one in the manifest is what you are learning.",
+	"cells": {
+		"apiVersion": {
+			"note": "The API group and version of a Deployment."
+		},
+		"selector": {
+			"note": "Which Pods the Deployment owns. It must match the template's labels, and can't be changed later."
+		},
+		"containerPort": {
+			"note": "The port the container listens on. Informational: leaving it out doesn't stop traffic."
+		},
+		"envFrom": {
+			"note": "Turns every key of a ConfigMap into an environment variable at once."
+		},
+		"readinessProbe": {
+			"note": "Decides whether the Pod receives Service traffic. Failing it never restarts the container."
+		},
+		"initialDelaySeconds": {
+			"note": "How long after the container starts before the first probe."
+		},
+		"requests": {
+			"note": "What the scheduler reserves for the container on a node."
+		},
+		"volumeMounts": {
+			"note": "Which of the Pod's volumes the container uses, and where."
+		},
+		"mountPath": {
+			"note": "The path inside the container where the volume appears."
+		},
+		"volumes": {
+			"note": "The Pod's volumes, declared once at Pod level, beside containers."
+		},
+		"emptyDir": {
+			"note": "A scratch volume that starts empty and lives as long as the Pod."
+		}
+	}
+}

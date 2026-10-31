@@ -1,0 +1,515 @@
+{
+	"checker": "claude-opus-5-5",
+	"entries": [
+		{
+			"key": "core/holdsFor",
+			"seen": "[{\"name\":\"Kubernetes\",\"version\":\"1.37\"},{\"name\":\"CKAD curriculum\",\"version\":\"v1.37\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/resources",
+			"seen": "[{\"kind\":\"docs\",\"title\":\"Objects In Kubernetes\",\"url\":\"https://kubernetes.io/docs/concepts/overview/working-with-objects/\"},{\"kind\":\"docs\",\"title\":\"The Kubernetes API\",\"url\":\"https://kubernetes.io/docs/concepts/overview/kubernetes-api/\"},{\"kind\":\"reference\",\"title\":\"kubectl api-resources\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/\"},{\"kind\":\"reading\",\"title\":\"ckad-prep: learn kubectl -h and kubectl explain\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/guide/kubectl-help.md\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/deployment",
+			"seen": "[{\"kind\":\"docs\",\"title\":\"Deployments\",\"url\":\"https://kubernetes.io/docs/concepts/workloads/controllers/deployment/\"},{\"kind\":\"docs\",\"title\":\"Configure Liveness, Readiness and Startup Probes\",\"url\":\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\"},{\"kind\":\"docs\",\"title\":\"Resource Management for Pods and Containers\",\"url\":\"https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/\"},{\"kind\":\"docs\",\"title\":\"Volumes\",\"url\":\"https://kubernetes.io/docs/concepts/storage/volumes/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/imperative",
+			"seen": "[{\"kind\":\"reference\",\"title\":\"kubectl Quick Reference\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/quick-reference/\"},{\"kind\":\"reference\",\"title\":\"kubectl create\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/\"},{\"kind\":\"reading\",\"title\":\"ckad-prep: the kubectl drill sheet\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/drills/drill.md\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest",
+			"seen": "[\"apiVersion: {{gap:apiVersion}}\",\"kind: Deployment\",\"metadata:\",\"  name: web\",\"spec:\",\"  replicas: 3\",\"  {{gap:selector}}:\",\"    matchLabels:\",\"      app: web\",\"  template:\",\"    metadata:\",\"      labels:\",\"        app: web\",\"    spec:\",\"      containers:\",\"      - name: web\",\"        image: nginx:1.27\",\"        ports:\",\"        - {{gap:containerPort}}: 80\",\"        {{gap:envFrom}}:\",\"        - configMapRef:\",\"            name: web-config\",\"        {{gap:readinessProbe}}:\",\"          httpGet:\",\"            path: /\",\"            port: 80\",\"          {{gap:initialDelaySeconds}}: 5\",\"          periodSeconds: 10\",\"        resources:\",\"          {{gap:requests}}:\",\"            cpu: 100m\",\"            memory: 128Mi\",\"          limits:\",\"            memory: 256Mi\",\"        {{gap:volumeMounts}}:\",\"        - name: cache\",\"          {{gap:mountPath}}: /var/cache/nginx\",\"      {{gap:volumes}}:\",\"      - name: cache\",\"        {{gap:emptyDir}}: {}\"]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/apiVersion",
+			"seen": "{\"item\":\"resource:deployments:apiVersion\",\"text\":\"apps/v1\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/selector",
+			"seen": "{\"item\":\"field:deployment:selector\",\"text\":\"selector\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/containerPort",
+			"seen": "{\"item\":\"field:deployment:containerPort\",\"text\":\"containerPort\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/envFrom",
+			"seen": "{\"item\":\"field:deployment:envFrom\",\"text\":\"envFrom\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/readinessProbe",
+			"seen": "{\"item\":\"field:deployment:readinessProbe\",\"text\":\"readinessProbe\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/initialDelaySeconds",
+			"seen": "{\"item\":\"field:deployment:initialDelaySeconds\",\"text\":\"initialDelaySeconds\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/requests",
+			"seen": "{\"item\":\"field:deployment:requests\",\"text\":\"requests\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/volumeMounts",
+			"seen": "{\"item\":\"field:deployment:volumeMounts\",\"text\":\"volumeMounts\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/mountPath",
+			"seen": "{\"item\":\"field:deployment:mountPath\",\"text\":\"mountPath\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/volumes",
+			"seen": "{\"item\":\"field:deployment:volumes\",\"text\":\"volumes\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/deployment-manifest/emptyDir",
+			"seen": "{\"item\":\"field:deployment:emptyDir\",\"text\":\"emptyDir\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/image",
+			"seen": "{\"item\":\"kubectl:image\",\"text\":\"--image\",\"line\":\"kubectl create deployment shop ___=nginx:1.27 --replicas=3\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/command",
+			"seen": "{\"item\":\"kubectl:command\",\"text\":\"--command\",\"line\":\"kubectl run warmer --image=busybox:1.36 ___ -- sh -c 'sleep 1d'\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/from",
+			"seen": "{\"item\":\"kubectl:from\",\"text\":\"--from\",\"line\":\"kubectl create job pi-once ___=cronjob/pi\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/target-port",
+			"seen": "{\"item\":\"kubectl:target-port\",\"text\":\"--target-port\",\"line\":\"kubectl expose deployment web --port=80 ___=8080\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/from-literal",
+			"seen": "{\"item\":\"kubectl:from-literal\",\"text\":\"--from-literal\",\"line\":\"kubectl create configmap web-config ___=MODE=prod\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/generic",
+			"seen": "{\"item\":\"kubectl:generic\",\"text\":\"generic\",\"line\":\"kubectl create secret ___ db-pass --from-literal=password=s3cret\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/history",
+			"seen": "{\"item\":\"kubectl:history\",\"text\":\"history\",\"line\":\"kubectl rollout ___ deployment/web\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/replicas",
+			"seen": "{\"item\":\"kubectl:replicas\",\"text\":\"--replicas\",\"line\":\"kubectl scale deployment web ___=5\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/resource",
+			"seen": "{\"item\":\"kubectl:resource\",\"text\":\"--resource\",\"line\":\"kubectl create role pod-reader --verb=get,list,watch ___=pods\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/rule",
+			"seen": "{\"item\":\"kubectl:rule\",\"text\":\"--rule\",\"line\":\"kubectl create ingress web ___='shop.example.com/*=web:80'\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/recursive",
+			"seen": "{\"item\":\"kubectl:recursive\",\"text\":\"--recursive\",\"line\":\"kubectl explain deployment.spec.strategy ___\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/selector",
+			"seen": "{\"item\":\"kubectl:selector\",\"text\":\"-l\",\"line\":\"kubectl get pods ___ app=web\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/pods.short",
+			"seen": "{\"item\":\"resource:pods:short\",\"text\":\"po\",\"row\":\"pods\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/pods.api",
+			"seen": "{\"item\":\"resource:pods:apiVersion\",\"text\":\"v1\",\"concepts\":[\"core-group\"],\"row\":\"pods\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/services.short",
+			"seen": "{\"item\":\"resource:services:short\",\"text\":\"svc\",\"row\":\"services\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/services.api",
+			"seen": "{\"item\":\"resource:services:apiVersion\",\"text\":\"v1\",\"concepts\":[\"core-group\"],\"row\":\"services\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/deployments.short",
+			"seen": "{\"item\":\"resource:deployments:short\",\"text\":\"deploy\",\"row\":\"deployments\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/deployments.api",
+			"seen": "{\"item\":\"resource:deployments:apiVersion\",\"text\":\"apps/v1\",\"row\":\"deployments\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/statefulsets.short",
+			"seen": "{\"item\":\"resource:statefulsets:short\",\"text\":\"sts\",\"row\":\"statefulsets\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/statefulsets.api",
+			"seen": "{\"item\":\"resource:statefulsets:apiVersion\",\"text\":\"apps/v1\",\"row\":\"statefulsets\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/daemonsets.short",
+			"seen": "{\"item\":\"resource:daemonsets:short\",\"text\":\"ds\",\"row\":\"daemonsets\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/daemonsets.api",
+			"seen": "{\"item\":\"resource:daemonsets:apiVersion\",\"text\":\"apps/v1\",\"row\":\"daemonsets\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/jobs.api",
+			"seen": "{\"item\":\"resource:jobs:apiVersion\",\"text\":\"batch/v1\",\"row\":\"jobs\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/cronjobs.short",
+			"seen": "{\"item\":\"resource:cronjobs:short\",\"text\":\"cj\",\"row\":\"cronjobs\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/cronjobs.api",
+			"seen": "{\"item\":\"resource:cronjobs:apiVersion\",\"text\":\"batch/v1\",\"row\":\"cronjobs\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/configmaps.short",
+			"seen": "{\"item\":\"resource:configmaps:short\",\"text\":\"cm\",\"row\":\"configmaps\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/configmaps.api",
+			"seen": "{\"item\":\"resource:configmaps:apiVersion\",\"text\":\"v1\",\"concepts\":[\"core-group\"],\"row\":\"configmaps\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/secrets.api",
+			"seen": "{\"item\":\"resource:secrets:apiVersion\",\"text\":\"v1\",\"concepts\":[\"core-group\"],\"row\":\"secrets\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/serviceaccounts.short",
+			"seen": "{\"item\":\"resource:serviceaccounts:short\",\"text\":\"sa\",\"row\":\"serviceaccounts\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/serviceaccounts.api",
+			"seen": "{\"item\":\"resource:serviceaccounts:apiVersion\",\"text\":\"v1\",\"concepts\":[\"core-group\"],\"row\":\"serviceaccounts\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/persistentvolumeclaims.short",
+			"seen": "{\"item\":\"resource:persistentvolumeclaims:short\",\"text\":\"pvc\",\"row\":\"persistentvolumeclaims\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/persistentvolumeclaims.api",
+			"seen": "{\"item\":\"resource:persistentvolumeclaims:apiVersion\",\"text\":\"v1\",\"concepts\":[\"core-group\"],\"row\":\"persistentvolumeclaims\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/networkpolicies.short",
+			"seen": "{\"item\":\"resource:networkpolicies:short\",\"text\":\"netpol\",\"row\":\"networkpolicies\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/networkpolicies.api",
+			"seen": "{\"item\":\"resource:networkpolicies:apiVersion\",\"text\":\"networking.k8s.io/v1\",\"row\":\"networkpolicies\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/ingresses.short",
+			"seen": "{\"item\":\"resource:ingresses:short\",\"text\":\"ing\",\"row\":\"ingresses\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/ingresses.api",
+			"seen": "{\"item\":\"resource:ingresses:apiVersion\",\"text\":\"networking.k8s.io/v1\",\"row\":\"ingresses\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/horizontalpodautoscalers.short",
+			"seen": "{\"item\":\"resource:horizontalpodautoscalers:short\",\"text\":\"hpa\",\"row\":\"horizontalpodautoscalers\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/horizontalpodautoscalers.api",
+			"seen": "{\"item\":\"resource:horizontalpodautoscalers:apiVersion\",\"text\":\"autoscaling/v2\",\"row\":\"horizontalpodautoscalers\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/roles.api",
+			"seen": "{\"item\":\"resource:roles:apiVersion\",\"text\":\"rbac.authorization.k8s.io/v1\",\"row\":\"roles\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/resourcequotas.short",
+			"seen": "{\"item\":\"resource:resourcequotas:short\",\"text\":\"quota\",\"row\":\"resourcequotas\",\"col\":\"short\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/resourcequotas.api",
+			"seen": "{\"item\":\"resource:resourcequotas:apiVersion\",\"text\":\"v1\",\"concepts\":[\"core-group\"],\"row\":\"resourcequotas\",\"col\":\"api\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/init-container-seeds-volume",
+			"seen": "{\"id\":\"init-container-seeds-volume\",\"item\":\"task:init-container-seeds-volume\",\"minutes\":8,\"where\":\"cluster\",\"source\":{\"title\":\"ckad-prep 017: init container that populates a shared volume\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/scenarios/017-init-container-shared-volume.md\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/readiness-probe-exec",
+			"seen": "{\"id\":\"readiness-probe-exec\",\"item\":\"task:readiness-probe-exec\",\"minutes\":5,\"where\":\"cluster\",\"source\":{\"title\":\"ckad-prep 007: Pod with an exec readiness probe\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/scenarios/007-readiness-probe.md\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/rollout-surge-and-undo",
+			"seen": "{\"id\":\"rollout-surge-and-undo\",\"item\":\"task:rollout-surge-and-undo\",\"minutes\":10,\"where\":\"cluster\",\"source\":{\"title\":\"ckad-prep 077: maxSurge, maxUnavailable, a bad release and a rollback\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/scenarios/077-rolling-update-surge-and-rollback.md\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/password-env-to-secret",
+			"seen": "{\"id\":\"password-env-to-secret\",\"item\":\"task:password-env-to-secret\",\"minutes\":7,\"where\":\"cluster\",\"source\":{\"title\":\"ckad-prep 053: convert a hardcoded env var to a Secret\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/scenarios/053-convert-hardcoded-env-to-secret.md\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/read-only-pod-role",
+			"seen": "{\"id\":\"read-only-pod-role\",\"item\":\"task:read-only-pod-role\",\"minutes\":8,\"where\":\"cluster\",\"source\":{\"title\":\"ckad-prep 023: a Role and RoleBinding for read-only Pod access\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/scenarios/023-rbac-role-rolebinding.md\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/ingress-host-rule",
+			"seen": "{\"id\":\"ingress-host-rule\",\"item\":\"task:ingress-host-rule\",\"minutes\":6,\"where\":\"cluster\",\"source\":{\"title\":\"ckad-prep 030: Ingress routing a host to a Service\",\"url\":\"https://github.com/diegoami/ckad-prep/blob/master/scenarios/030-ingress-host-routing.md\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "coverage/ckad",
+			"seen": "{\"id\":\"ckad\",\"title\":\"Certified Kubernetes Application Developer (CKAD)\",\"version\":\"v1.37\",\"source\":{\"title\":\"CKAD curriculum v1.37 (CNCF)\",\"url\":\"https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.37.pdf\"},\"domains\":[{\"id\":\"design-build\",\"title\":\"Application Design and Build\",\"weight\":20,\"competencies\":[{\"id\":\"images\",\"title\":\"Define, build and modify container images\",\"units\":[],\"tasks\":[]},{\"id\":\"workloads\",\"title\":\"Choose and use the right workload resource (Deployment, DaemonSet, CronJob, etc.)\",\"units\":[],\"tasks\":[]},{\"id\":\"multi-container\",\"title\":\"Understand multi-container Pod design patterns (e.g. sidecar, init and others)\",\"units\":[],\"tasks\":[\"init-container-seeds-volume\"]},{\"id\":\"volumes\",\"title\":\"Utilize persistent and ephemeral volumes\",\"units\":[\"deployment-manifest\"],\"tasks\":[\"init-container-seeds-volume\"]}]},{\"id\":\"deployment\",\"title\":\"Application Deployment\",\"weight\":20,\"competencies\":[{\"id\":\"strategies\",\"title\":\"Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)\",\"units\":[],\"tasks\":[]},{\"id\":\"rolling-updates\",\"title\":\"Understand Deployments and how to perform rolling updates\",\"units\":[\"deployment-manifest\",\"imperative\"],\"tasks\":[\"rollout-surge-and-undo\"]},{\"id\":\"helm\",\"title\":\"Use the Helm package manager to deploy existing packages\",\"units\":[],\"tasks\":[]},{\"id\":\"kustomize\",\"title\":\"Kustomize\",\"units\":[],\"tasks\":[]}]},{\"id\":\"observability\",\"title\":\"Application Observability and Maintenance\",\"weight\":15,\"competencies\":[{\"id\":\"deprecations\",\"title\":\"Understand API depreciations\",\"units\":[],\"tasks\":[]},{\"id\":\"probes\",\"title\":\"Implement probes and health checks\",\"units\":[\"deployment-manifest\"],\"tasks\":[\"readiness-probe-exec\"]},{\"id\":\"cli-monitoring\",\"title\":\"Use built-in CLI tools to monitor Kubernetes applications\",\"units\":[],\"tasks\":[]},{\"id\":\"logs\",\"title\":\"Utilize container logs\",\"units\":[],\"tasks\":[]},{\"id\":\"debugging\",\"title\":\"Debugging in Kubernetes\",\"units\":[],\"tasks\":[]}]},{\"id\":\"environment\",\"title\":\"Application Environment, Configuration and Security\",\"weight\":25,\"competencies\":[{\"id\":\"extend\",\"title\":\"Discover and use resources that extend Kubernetes (CRD, Operators)\",\"units\":[],\"tasks\":[]},{\"id\":\"access\",\"title\":\"Understand authentication, authorization and admission control\",\"units\":[\"imperative\"],\"tasks\":[\"read-only-pod-role\"]},{\"id\":\"quotas\",\"title\":\"Understand requests, limits, quotas\",\"units\":[\"deployment-manifest\"],\"tasks\":[]},{\"id\":\"requirements\",\"title\":\"Define resource requirements\",\"units\":[\"deployment-manifest\"],\"tasks\":[]},{\"id\":\"configmaps\",\"title\":\"Understand ConfigMaps\",\"units\":[\"deployment-manifest\",\"imperative\"],\"tasks\":[]},{\"id\":\"secrets\",\"title\":\"Create & consume Secrets\",\"units\":[\"imperative\"],\"tasks\":[\"password-env-to-secret\"]},{\"id\":\"serviceaccounts\",\"title\":\"Understand ServiceAccounts\",\"units\":[],\"tasks\":[\"read-only-pod-role\"]},{\"id\":\"security\",\"title\":\"Understand Application Security (SecurityContexts, Capabilities, etc.)\",\"units\":[],\"tasks\":[]}]},{\"id\":\"networking\",\"title\":\"Services and Networking\",\"weight\":20,\"competencies\":[{\"id\":\"networkpolicies\",\"title\":\"Demonstrate basic understanding of NetworkPolicies\",\"units\":[],\"tasks\":[]},{\"id\":\"services\",\"title\":\"Provide and troubleshoot access to applications via services\",\"units\":[\"imperative\"],\"tasks\":[]},{\"id\":\"ingress\",\"title\":\"Use Ingress rules to expose applications\",\"units\":[\"imperative\"],\"tasks\":[\"ingress-host-rule\"]}]}]}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/pack",
+			"seen": "{\"title\":\"Kubernetes\",\"summary\":\"For the CKAD first, and the CKA later. The exam is done in a terminal, so recall on the boards comes with tasks to do on a cluster of your own.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/section/essentials",
+			"seen": "\"Essentials\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/resources",
+			"seen": "\"Resources and API versions\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/deployment",
+			"seen": "\"Writing a Deployment\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/imperative",
+			"seen": "\"Imperative kubectl\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/concept/core-group",
+			"seen": "{\"title\":\"The core group\",\"body\":\"Pods, Services, ConfigMaps and the other original resources belong to the core API group, which has no name. Their apiVersion is therefore just v1, where every other group's is group/version, as in apps/v1.\",\"sources\":[{\"title\":\"API Overview: API groups\",\"url\":\"https://kubernetes.io/docs/reference/using-api/#api-groups\"}]}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/init-container-seeds-volume",
+			"seen": "{\"title\":\"An init container that seeds a shared volume\",\"brief\":\"Add an init container to an existing Deployment so that nginx starts with content already in its volume.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/readiness-probe-exec",
+			"seen": "{\"title\":\"A readiness probe that runs a command\",\"brief\":\"Create a Pod that reports Ready only while a marker file exists, with the probe's timing set exactly.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/rollout-surge-and-undo",
+			"seen": "{\"title\":\"Size a rollout, release a bad image, roll back\",\"brief\":\"Set a Deployment's surge and unavailability limits, push an image that never becomes ready, read the history and undo it.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/password-env-to-secret",
+			"seen": "{\"title\":\"Move a password into a Secret\",\"brief\":\"Replace a plain-text environment variable with one read from a Secret, leaving the other variables as they are.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/read-only-pod-role",
+			"seen": "{\"title\":\"A ServiceAccount that can only read Pods\",\"brief\":\"Write a Role for reading Pods and their logs, bind it to a ServiceAccount, and prove with kubectl auth can-i that it can't do more.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/ingress-host-rule",
+			"seen": "{\"title\":\"Route a host name to a Service\",\"brief\":\"Create an Ingress that sends one host to an existing Service, and check it with curl.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest",
+			"seen": "{\"title\":\"A Deployment, field by field\",\"summary\":\"A Deployment with a readiness probe, resource requests, settings from a ConfigMap and a scratch volume. Fill in the field names: the place of each one in the manifest is what you are learning.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/apiVersion",
+			"seen": "{\"note\":\"The API group and version of a Deployment.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/selector",
+			"seen": "{\"note\":\"Which Pods the Deployment owns. It must match the template's labels, and can't be changed later.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/containerPort",
+			"seen": "{\"note\":\"The port the container listens on. Informational: leaving it out doesn't stop traffic.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/envFrom",
+			"seen": "{\"note\":\"Turns every key of a ConfigMap into an environment variable at once.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/readinessProbe",
+			"seen": "{\"note\":\"Decides whether the Pod receives Service traffic. Failing it never restarts the container.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/initialDelaySeconds",
+			"seen": "{\"note\":\"How long after the container starts before the first probe.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/requests",
+			"seen": "{\"note\":\"What the scheduler reserves for the container on a node.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/volumeMounts",
+			"seen": "{\"note\":\"Which of the Pod's volumes the container uses, and where.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/mountPath",
+			"seen": "{\"note\":\"The path inside the container where the volume appears.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/volumes",
+			"seen": "{\"note\":\"The Pod's volumes, declared once at Pod level, beside containers.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/deployment-manifest/emptyDir",
+			"seen": "{\"note\":\"A scratch volume that starts empty and lives as long as the Pod.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative",
+			"seen": "{\"title\":\"Imperative kubectl\",\"summary\":\"One command per line, each missing the flag or word that makes it do the job. In the exam these are faster than writing YAML, and with --dry-run=client -o yaml they write the YAML for you.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/image",
+			"seen": "{\"clue\":\"A Deployment of nginx with three replicas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/command",
+			"seen": "{\"clue\":\"A Pod whose words after -- replace the image's entrypoint, not just its arguments\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/from",
+			"seen": "{\"clue\":\"Start a Job now from the CronJob pi's template\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/target-port",
+			"seen": "{\"clue\":\"A Service on port 80 that forwards to the containers' port 8080\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/from-literal",
+			"seen": "{\"clue\":\"A ConfigMap with one key given on the command line\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/generic",
+			"seen": "{\"clue\":\"An opaque Secret of key-value pairs, not a TLS or registry Secret\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/history",
+			"seen": "{\"clue\":\"List the Deployment's revisions\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/replicas",
+			"seen": "{\"clue\":\"Run five Pods of the Deployment\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/resource",
+			"seen": "{\"clue\":\"A Role that may read Pods\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/rule",
+			"seen": "{\"clue\":\"Send everything for one host to the Service web\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/recursive",
+			"seen": "{\"clue\":\"Show every field below this one, not just the next level\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/imperative/selector",
+			"seen": "{\"clue\":\"Only the Pods labelled app=web\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/resources",
+			"seen": "{\"title\":\"Resources: short names and API versions\",\"summary\":\"The short name kubectl accepts for each resource, and the apiVersion its manifests start with. Jobs, Secrets and Roles have no short name.\",\"headers\":{\"pods\":\"Pod\",\"services\":\"Service\",\"deployments\":\"Deployment\",\"statefulsets\":\"StatefulSet\",\"daemonsets\":\"DaemonSet\",\"jobs\":\"Job\",\"cronjobs\":\"CronJob\",\"configmaps\":\"ConfigMap\",\"secrets\":\"Secret\",\"serviceaccounts\":\"ServiceAccount\",\"persistentvolumeclaims\":\"PersistentVolumeClaim\",\"networkpolicies\":\"NetworkPolicy\",\"ingresses\":\"Ingress\",\"horizontalpodautoscalers\":\"HorizontalPodAutoscaler\",\"roles\":\"Role\",\"resourcequotas\":\"ResourceQuota\",\"short\":\"Short name\",\"api\":\"apiVersion\"}}",
+			"verdict": "ok"
+		}
+	]
+}

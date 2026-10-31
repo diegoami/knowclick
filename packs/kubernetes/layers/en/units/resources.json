@@ -1,0 +1,24 @@
+{
+	"title": "Resources: short names and API versions",
+	"summary": "The short name kubectl accepts for each resource, and the apiVersion its manifests start with. Jobs, Secrets and Roles have no short name.",
+	"headers": {
+		"pods": "Pod",
+		"services": "Service",
+		"deployments": "Deployment",
+		"statefulsets": "StatefulSet",
+		"daemonsets": "DaemonSet",
+		"jobs": "Job",
+		"cronjobs": "CronJob",
+		"configmaps": "ConfigMap",
+		"secrets": "Secret",
+		"serviceaccounts": "ServiceAccount",
+		"persistentvolumeclaims": "PersistentVolumeClaim",
+		"networkpolicies": "NetworkPolicy",
+		"ingresses": "Ingress",
+		"horizontalpodautoscalers": "HorizontalPodAutoscaler",
+		"roles": "Role",
+		"resourcequotas": "ResourceQuota",
+		"short": "Short name",
+		"api": "apiVersion"
+	}
+}

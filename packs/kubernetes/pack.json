@@ -1,0 +1,106 @@
+{
+	"id": "kubernetes",
+	"category": "certification",
+	"licence": "CC-BY-SA-4.0",
+	"formatVersion": 1,
+	"version": "0.1.0",
+	"holdsFor": [
+		{ "name": "Kubernetes", "version": "1.37" },
+		{ "name": "CKAD curriculum", "version": "v1.37" }
+	],
+	"checkedOn": "2026-10-31",
+	"explanations": ["en"],
+	"keywords": ["kubernetes", "kubectl", "k8s", "ckad", "cka", "kubeconfig"],
+	"sections": ["essentials"],
+	"lessons": [
+		{
+			"id": "resources",
+			"section": "essentials",
+			"units": ["resources"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Objects In Kubernetes",
+					"url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/"
+				},
+				{
+					"kind": "docs",
+					"title": "The Kubernetes API",
+					"url": "https://kubernetes.io/docs/concepts/overview/kubernetes-api/"
+				},
+				{
+					"kind": "reference",
+					"title": "kubectl api-resources",
+					"url": "https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/"
+				},
+				{
+					"kind": "reading",
+					"title": "ckad-prep: learn kubectl -h and kubectl explain",
+					"url": "https://github.com/diegoami/ckad-prep/blob/master/guide/kubectl-help.md"
+				}
+			]
+		},
+		{
+			"id": "deployment",
+			"section": "essentials",
+			"units": ["deployment-manifest"],
+			"tasks": ["init-container-seeds-volume", "readiness-probe-exec", "rollout-surge-and-undo"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Deployments",
+					"url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+				},
+				{
+					"kind": "docs",
+					"title": "Configure Liveness, Readiness and Startup Probes",
+					"url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+				},
+				{
+					"kind": "docs",
+					"title": "Resource Management for Pods and Containers",
+					"url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+				},
+				{
+					"kind": "docs",
+					"title": "Volumes",
+					"url": "https://kubernetes.io/docs/concepts/storage/volumes/"
+				}
+			]
+		},
+		{
+			"id": "imperative",
+			"section": "essentials",
+			"units": ["imperative"],
+			"tasks": ["password-env-to-secret", "read-only-pod-role", "ingress-host-rule"],
+			"study": [
+				{
+					"kind": "reference",
+					"title": "kubectl Quick Reference",
+					"url": "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
+				},
+				{
+					"kind": "reference",
+					"title": "kubectl create",
+					"url": "https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/"
+				},
+				{
+					"kind": "reading",
+					"title": "ckad-prep: the kubectl drill sheet",
+					"url": "https://github.com/diegoami/ckad-prep/blob/master/drills/drill.md"
+				}
+			]
+		}
+	],
+	"verify": {
+		"guard": { "run": "kubectl config current-context", "expect": "^kind-knowclick$" },
+		"version": "kubectl version | tr '\\n' ' '",
+		"setup": [
+			"kubectl delete namespace knowclick-verify --ignore-not-found --wait",
+			"kubectl create namespace knowclick-verify",
+			"kubectl -n knowclick-verify create deployment web --image=nginx:1.27",
+			"kubectl -n knowclick-verify create cronjob pi --image=perl:5.40 --schedule='*/5 * * * *' -- perl -e 'print 1'"
+		],
+		"teardown": ["kubectl delete namespace knowclick-verify --wait=false"]
+	}
+}

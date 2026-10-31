@@ -1,0 +1,260 @@
+{
+	"id": "resources",
+	"layout": {
+		"type": "table",
+		"rows": [
+			"pods",
+			"services",
+			"deployments",
+			"statefulsets",
+			"daemonsets",
+			"jobs",
+			"cronjobs",
+			"configmaps",
+			"secrets",
+			"serviceaccounts",
+			"persistentvolumeclaims",
+			"networkpolicies",
+			"ingresses",
+			"horizontalpodautoscalers",
+			"roles",
+			"resourcequotas"
+		],
+		"columns": ["short", "api"],
+		"gaps": ["jobs/short", "secrets/short", "roles/short"]
+	},
+	"sources": [
+		{
+			"title": "kubectl api-resources",
+			"url": "https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/"
+		},
+		{
+			"title": "Kubernetes API reference",
+			"url": "https://kubernetes.io/docs/reference/kubernetes-api/"
+		}
+	],
+	"verify": {
+		"columns": {
+			"short": {
+				"run": "kubectl api-resources --no-headers",
+				"expect": "^{row}\\s+(\\S+,)?{text}(,\\S+)?\\s"
+			},
+			"api": {
+				"run": "kubectl api-resources --no-headers",
+				"expect": "^{row}\\s.*\\s{text}\\s+(true|false)\\s"
+			}
+		}
+	},
+	"cells": [
+		{
+			"id": "pods.short",
+			"item": "resource:pods:short",
+			"text": "po",
+			"row": "pods",
+			"col": "short"
+		},
+		{
+			"id": "pods.api",
+			"item": "resource:pods:apiVersion",
+			"text": "v1",
+			"row": "pods",
+			"col": "api",
+			"concepts": ["core-group"]
+		},
+		{
+			"id": "services.short",
+			"item": "resource:services:short",
+			"text": "svc",
+			"row": "services",
+			"col": "short"
+		},
+		{
+			"id": "services.api",
+			"item": "resource:services:apiVersion",
+			"text": "v1",
+			"row": "services",
+			"col": "api",
+			"concepts": ["core-group"]
+		},
+		{
+			"id": "deployments.short",
+			"item": "resource:deployments:short",
+			"text": "deploy",
+			"row": "deployments",
+			"col": "short"
+		},
+		{
+			"id": "deployments.api",
+			"item": "resource:deployments:apiVersion",
+			"text": "apps/v1",
+			"row": "deployments",
+			"col": "api"
+		},
+		{
+			"id": "statefulsets.short",
+			"item": "resource:statefulsets:short",
+			"text": "sts",
+			"row": "statefulsets",
+			"col": "short"
+		},
+		{
+			"id": "statefulsets.api",
+			"item": "resource:statefulsets:apiVersion",
+			"text": "apps/v1",
+			"row": "statefulsets",
+			"col": "api"
+		},
+		{
+			"id": "daemonsets.short",
+			"item": "resource:daemonsets:short",
+			"text": "ds",
+			"row": "daemonsets",
+			"col": "short"
+		},
+		{
+			"id": "daemonsets.api",
+			"item": "resource:daemonsets:apiVersion",
+			"text": "apps/v1",
+			"row": "daemonsets",
+			"col": "api"
+		},
+		{
+			"id": "jobs.api",
+			"item": "resource:jobs:apiVersion",
+			"text": "batch/v1",
+			"row": "jobs",
+			"col": "api"
+		},
+		{
+			"id": "cronjobs.short",
+			"item": "resource:cronjobs:short",
+			"text": "cj",
+			"row": "cronjobs",
+			"col": "short"
+		},
+		{
+			"id": "cronjobs.api",
+			"item": "resource:cronjobs:apiVersion",
+			"text": "batch/v1",
+			"row": "cronjobs",
+			"col": "api"
+		},
+		{
+			"id": "configmaps.short",
+			"item": "resource:configmaps:short",
+			"text": "cm",
+			"row": "configmaps",
+			"col": "short"
+		},
+		{
+			"id": "configmaps.api",
+			"item": "resource:configmaps:apiVersion",
+			"text": "v1",
+			"row": "configmaps",
+			"col": "api",
+			"concepts": ["core-group"]
+		},
+		{
+			"id": "secrets.api",
+			"item": "resource:secrets:apiVersion",
+			"text": "v1",
+			"row": "secrets",
+			"col": "api",
+			"concepts": ["core-group"]
+		},
+		{
+			"id": "serviceaccounts.short",
+			"item": "resource:serviceaccounts:short",
+			"text": "sa",
+			"row": "serviceaccounts",
+			"col": "short"
+		},
+		{
+			"id": "serviceaccounts.api",
+			"item": "resource:serviceaccounts:apiVersion",
+			"text": "v1",
+			"row": "serviceaccounts",
+			"col": "api",
+			"concepts": ["core-group"]
+		},
+		{
+			"id": "persistentvolumeclaims.short",
+			"item": "resource:persistentvolumeclaims:short",
+			"text": "pvc",
+			"row": "persistentvolumeclaims",
+			"col": "short"
+		},
+		{
+			"id": "persistentvolumeclaims.api",
+			"item": "resource:persistentvolumeclaims:apiVersion",
+			"text": "v1",
+			"row": "persistentvolumeclaims",
+			"col": "api",
+			"concepts": ["core-group"]
+		},
+		{
+			"id": "networkpolicies.short",
+			"item": "resource:networkpolicies:short",
+			"text": "netpol",
+			"row": "networkpolicies",
+			"col": "short"
+		},
+		{
+			"id": "networkpolicies.api",
+			"item": "resource:networkpolicies:apiVersion",
+			"text": "networking.k8s.io/v1",
+			"row": "networkpolicies",
+			"col": "api"
+		},
+		{
+			"id": "ingresses.short",
+			"item": "resource:ingresses:short",
+			"text": "ing",
+			"row": "ingresses",
+			"col": "short"
+		},
+		{
+			"id": "ingresses.api",
+			"item": "resource:ingresses:apiVersion",
+			"text": "networking.k8s.io/v1",
+			"row": "ingresses",
+			"col": "api"
+		},
+		{
+			"id": "horizontalpodautoscalers.short",
+			"item": "resource:horizontalpodautoscalers:short",
+			"text": "hpa",
+			"row": "horizontalpodautoscalers",
+			"col": "short"
+		},
+		{
+			"id": "horizontalpodautoscalers.api",
+			"item": "resource:horizontalpodautoscalers:apiVersion",
+			"text": "autoscaling/v2",
+			"row": "horizontalpodautoscalers",
+			"col": "api"
+		},
+		{
+			"id": "roles.api",
+			"item": "resource:roles:apiVersion",
+			"text": "rbac.authorization.k8s.io/v1",
+			"row": "roles",
+			"col": "api"
+		},
+		{
+			"id": "resourcequotas.short",
+			"item": "resource:resourcequotas:short",
+			"text": "quota",
+			"row": "resourcequotas",
+			"col": "short"
+		},
+		{
+			"id": "resourcequotas.api",
+			"item": "resource:resourcequotas:apiVersion",
+			"text": "v1",
+			"row": "resourcequotas",
+			"col": "api",
+			"concepts": ["core-group"]
+		}
+	]
+}

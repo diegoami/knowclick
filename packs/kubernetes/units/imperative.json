@@ -1,0 +1,108 @@
+{
+	"id": "imperative",
+	"layout": {
+		"type": "lines",
+		"size": 12
+	},
+	"sources": [
+		{
+			"title": "kubectl Quick Reference",
+			"url": "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
+		},
+		{
+			"title": "kubectl reference",
+			"url": "https://kubernetes.io/docs/reference/kubectl/generated/"
+		}
+	],
+	"verify": {
+		"run": "{line} -n knowclick-verify --dry-run=server -o name"
+	},
+	"cells": [
+		{
+			"id": "image",
+			"item": "kubectl:image",
+			"text": "--image",
+			"line": "kubectl create deployment shop ___=nginx:1.27 --replicas=3"
+		},
+		{
+			"id": "command",
+			"item": "kubectl:command",
+			"text": "--command",
+			"line": "kubectl run warmer --image=busybox:1.36 ___ -- sh -c 'sleep 1d'",
+			"verify": {
+				"run": "kubectl run warmer --image=busybox:1.36 -n knowclick-verify --dry-run=server -o name {text} -- sh -c 'sleep 1d'"
+			}
+		},
+		{
+			"id": "from",
+			"item": "kubectl:from",
+			"text": "--from",
+			"line": "kubectl create job pi-once ___=cronjob/pi"
+		},
+		{
+			"id": "target-port",
+			"item": "kubectl:target-port",
+			"text": "--target-port",
+			"line": "kubectl expose deployment web --port=80 ___=8080"
+		},
+		{
+			"id": "from-literal",
+			"item": "kubectl:from-literal",
+			"text": "--from-literal",
+			"line": "kubectl create configmap web-config ___=MODE=prod"
+		},
+		{
+			"id": "generic",
+			"item": "kubectl:generic",
+			"text": "generic",
+			"line": "kubectl create secret ___ db-pass --from-literal=password=s3cret"
+		},
+		{
+			"id": "history",
+			"item": "kubectl:history",
+			"text": "history",
+			"line": "kubectl rollout ___ deployment/web",
+			"verify": {
+				"run": "{line} -n knowclick-verify",
+				"expect": "REVISION"
+			}
+		},
+		{
+			"id": "replicas",
+			"item": "kubectl:replicas",
+			"text": "--replicas",
+			"line": "kubectl scale deployment web ___=5"
+		},
+		{
+			"id": "resource",
+			"item": "kubectl:resource",
+			"text": "--resource",
+			"line": "kubectl create role pod-reader --verb=get,list,watch ___=pods"
+		},
+		{
+			"id": "rule",
+			"item": "kubectl:rule",
+			"text": "--rule",
+			"line": "kubectl create ingress web ___='shop.example.com/*=web:80'"
+		},
+		{
+			"id": "recursive",
+			"item": "kubectl:recursive",
+			"text": "--recursive",
+			"line": "kubectl explain deployment.spec.strategy ___",
+			"verify": {
+				"run": "{line}",
+				"expect": "maxSurge"
+			}
+		},
+		{
+			"id": "selector",
+			"item": "kubectl:selector",
+			"text": "-l",
+			"line": "kubectl get pods ___ app=web",
+			"verify": {
+				"run": "{line} -n knowclick-verify"
+			}
+		}
+	]
+}

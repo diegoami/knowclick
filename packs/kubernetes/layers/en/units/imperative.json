@@ -1,0 +1,42 @@
+{
+	"title": "Imperative kubectl",
+	"summary": "One command per line, each missing the flag or word that makes it do the job. In the exam these are faster than writing YAML, and with --dry-run=client -o yaml they write the YAML for you.",
+	"cells": {
+		"image": {
+			"clue": "A Deployment of nginx with three replicas"
+		},
+		"command": {
+			"clue": "A Pod whose words after -- replace the image's entrypoint, not just its arguments"
+		},
+		"from": {
+			"clue": "Start a Job now from the CronJob pi's template"
+		},
+		"target-port": {
+			"clue": "A Service on port 80 that forwards to the containers' port 8080"
+		},
+		"from-literal": {
+			"clue": "A ConfigMap with one key given on the command line"
+		},
+		"generic": {
+			"clue": "An opaque Secret of key-value pairs, not a TLS or registry Secret"
+		},
+		"history": {
+			"clue": "List the Deployment's revisions"
+		},
+		"replicas": {
+			"clue": "Run five Pods of the Deployment"
+		},
+		"resource": {
+			"clue": "A Role that may read Pods"
+		},
+		"rule": {
+			"clue": "Send everything for one host to the Service web"
+		},
+		"recursive": {
+			"clue": "Show every field below this one, not just the next level"
+		},
+		"selector": {
+			"clue": "Only the Pods labelled app=web"
+		}
+	}
+}
