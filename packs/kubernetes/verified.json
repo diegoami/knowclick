@@ -1,0 +1,216 @@
+{
+	"ranAgainst": "kind-knowclick, Client Version: v1.36.2 Kustomize Version: v5.8.1 Server Version: v1.37.0",
+	"ranOn": "2026-10-31",
+	"entries": [
+		{
+			"key": "verify/deployment-manifest",
+			"seen": "{\"run\":\"kubectl -n knowclick-verify apply --dry-run=server --validate=strict -f -\",\"stdin\":\"apiVersion: apps/v1\\nkind: Deployment\\nmetadata:\\n  name: web\\nspec:\\n  replicas: 3\\n  selector:\\n    matchLabels:\\n      app: web\\n  template:\\n    metadata:\\n      labels:\\n        app: web\\n    spec:\\n      containers:\\n      - name: web\\n        image: nginx:1.27\\n        ports:\\n        - containerPort: 80\\n        envFrom:\\n        - configMapRef:\\n            name: web-config\\n        readinessProbe:\\n          httpGet:\\n            path: /\\n            port: 80\\n          initialDelaySeconds: 5\\n          periodSeconds: 10\\n        resources:\\n          requests:\\n            cpu: 100m\\n            memory: 128Mi\\n          limits:\\n            memory: 256Mi\\n        volumeMounts:\\n        - name: cache\\n          mountPath: /var/cache/nginx\\n      volumes:\\n      - name: cache\\n        emptyDir: {}\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/image",
+			"seen": "{\"run\":\"kubectl create deployment shop --image=nginx:1.27 --replicas=3 -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/command",
+			"seen": "{\"run\":\"kubectl run warmer --image=busybox:1.36 -n knowclick-verify --dry-run=server -o name --command -- sh -c 'sleep 1d'\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/from",
+			"seen": "{\"run\":\"kubectl create job pi-once --from=cronjob/pi -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/target-port",
+			"seen": "{\"run\":\"kubectl expose deployment web --port=80 --target-port=8080 -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/from-literal",
+			"seen": "{\"run\":\"kubectl create configmap web-config --from-literal=MODE=prod -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/generic",
+			"seen": "{\"run\":\"kubectl create secret generic db-pass --from-literal=password=s3cret -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/history",
+			"seen": "{\"run\":\"kubectl rollout history deployment/web -n knowclick-verify\",\"expect\":\"REVISION\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/replicas",
+			"seen": "{\"run\":\"kubectl scale deployment web --replicas=5 -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/resource",
+			"seen": "{\"run\":\"kubectl create role pod-reader --verb=get,list,watch --resource=pods -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/rule",
+			"seen": "{\"run\":\"kubectl create ingress web --rule='shop.example.com/*=web:80' -n knowclick-verify --dry-run=server -o name\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/recursive",
+			"seen": "{\"run\":\"kubectl explain deployment.spec.strategy --recursive\",\"expect\":\"maxSurge\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imperative/selector",
+			"seen": "{\"run\":\"kubectl get pods -l app=web -n knowclick-verify\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/pods.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^pods\\\\s+(\\\\S+,)?po(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/pods.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^pods\\\\s.*\\\\sv1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/services.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^services\\\\s+(\\\\S+,)?svc(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/services.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^services\\\\s.*\\\\sv1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/deployments.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^deployments\\\\s+(\\\\S+,)?deploy(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/deployments.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^deployments\\\\s.*\\\\sapps/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/statefulsets.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^statefulsets\\\\s+(\\\\S+,)?sts(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/statefulsets.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^statefulsets\\\\s.*\\\\sapps/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/daemonsets.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^daemonsets\\\\s+(\\\\S+,)?ds(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/daemonsets.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^daemonsets\\\\s.*\\\\sapps/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/jobs.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^jobs\\\\s.*\\\\sbatch/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/cronjobs.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^cronjobs\\\\s+(\\\\S+,)?cj(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/cronjobs.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^cronjobs\\\\s.*\\\\sbatch/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/configmaps.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^configmaps\\\\s+(\\\\S+,)?cm(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/configmaps.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^configmaps\\\\s.*\\\\sv1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/secrets.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^secrets\\\\s.*\\\\sv1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/serviceaccounts.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^serviceaccounts\\\\s+(\\\\S+,)?sa(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/serviceaccounts.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^serviceaccounts\\\\s.*\\\\sv1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/persistentvolumeclaims.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^persistentvolumeclaims\\\\s+(\\\\S+,)?pvc(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/persistentvolumeclaims.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^persistentvolumeclaims\\\\s.*\\\\sv1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/networkpolicies.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^networkpolicies\\\\s+(\\\\S+,)?netpol(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/networkpolicies.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^networkpolicies\\\\s.*\\\\snetworking\\\\.k8s\\\\.io/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/ingresses.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^ingresses\\\\s+(\\\\S+,)?ing(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/ingresses.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^ingresses\\\\s.*\\\\snetworking\\\\.k8s\\\\.io/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/horizontalpodautoscalers.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^horizontalpodautoscalers\\\\s+(\\\\S+,)?hpa(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/horizontalpodautoscalers.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^horizontalpodautoscalers\\\\s.*\\\\sautoscaling/v2\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/roles.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^roles\\\\s.*\\\\srbac\\\\.authorization\\\\.k8s\\\\.io/v1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/resourcequotas.short",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^resourcequotas\\\\s+(\\\\S+,)?quota(,\\\\S+)?\\\\s\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/resources/resourcequotas.api",
+			"seen": "{\"run\":\"kubectl api-resources --no-headers\",\"expect\":\"^resourcequotas\\\\s.*\\\\sv1\\\\s+(true|false)\\\\s\"}",
+			"ok": true
+		}
+	]
+}
