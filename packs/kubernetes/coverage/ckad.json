@@ -1,0 +1,190 @@
+{
+	"id": "ckad",
+	"title": "Certified Kubernetes Application Developer (CKAD)",
+	"version": "v1.37",
+	"source": {
+		"title": "CKAD curriculum v1.37 (CNCF)",
+		"url": "https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.37.pdf"
+	},
+	"domains": [
+		{
+			"id": "design-build",
+			"title": "Application Design and Build",
+			"weight": 20,
+			"competencies": [
+				{
+					"id": "images",
+					"title": "Define, build and modify container images",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "workloads",
+					"title": "Choose and use the right workload resource (Deployment, DaemonSet, CronJob, etc.)",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "multi-container",
+					"title": "Understand multi-container Pod design patterns (e.g. sidecar, init and others)",
+					"units": [],
+					"tasks": ["init-container-seeds-volume"]
+				},
+				{
+					"id": "volumes",
+					"title": "Utilize persistent and ephemeral volumes",
+					"units": ["deployment-manifest"],
+					"tasks": ["init-container-seeds-volume"]
+				}
+			]
+		},
+		{
+			"id": "deployment",
+			"title": "Application Deployment",
+			"weight": 20,
+			"competencies": [
+				{
+					"id": "strategies",
+					"title": "Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "rolling-updates",
+					"title": "Understand Deployments and how to perform rolling updates",
+					"units": ["deployment-manifest", "imperative"],
+					"tasks": ["rollout-surge-and-undo"]
+				},
+				{
+					"id": "helm",
+					"title": "Use the Helm package manager to deploy existing packages",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "kustomize",
+					"title": "Kustomize",
+					"units": [],
+					"tasks": []
+				}
+			]
+		},
+		{
+			"id": "observability",
+			"title": "Application Observability and Maintenance",
+			"weight": 15,
+			"competencies": [
+				{
+					"id": "deprecations",
+					"title": "Understand API depreciations",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "probes",
+					"title": "Implement probes and health checks",
+					"units": ["deployment-manifest"],
+					"tasks": ["readiness-probe-exec"]
+				},
+				{
+					"id": "cli-monitoring",
+					"title": "Use built-in CLI tools to monitor Kubernetes applications",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "logs",
+					"title": "Utilize container logs",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "debugging",
+					"title": "Debugging in Kubernetes",
+					"units": [],
+					"tasks": []
+				}
+			]
+		},
+		{
+			"id": "environment",
+			"title": "Application Environment, Configuration and Security",
+			"weight": 25,
+			"competencies": [
+				{
+					"id": "extend",
+					"title": "Discover and use resources that extend Kubernetes (CRD, Operators)",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "access",
+					"title": "Understand authentication, authorization and admission control",
+					"units": ["imperative"],
+					"tasks": ["read-only-pod-role"]
+				},
+				{
+					"id": "quotas",
+					"title": "Understand requests, limits, quotas",
+					"units": ["deployment-manifest"],
+					"tasks": []
+				},
+				{
+					"id": "requirements",
+					"title": "Define resource requirements",
+					"units": ["deployment-manifest"],
+					"tasks": []
+				},
+				{
+					"id": "configmaps",
+					"title": "Understand ConfigMaps",
+					"units": ["deployment-manifest", "imperative"],
+					"tasks": []
+				},
+				{
+					"id": "secrets",
+					"title": "Create & consume Secrets",
+					"units": ["imperative"],
+					"tasks": ["password-env-to-secret"]
+				},
+				{
+					"id": "serviceaccounts",
+					"title": "Understand ServiceAccounts",
+					"units": [],
+					"tasks": ["read-only-pod-role"]
+				},
+				{
+					"id": "security",
+					"title": "Understand Application Security (SecurityContexts, Capabilities, etc.)",
+					"units": [],
+					"tasks": []
+				}
+			]
+		},
+		{
+			"id": "networking",
+			"title": "Services and Networking",
+			"weight": 20,
+			"competencies": [
+				{
+					"id": "networkpolicies",
+					"title": "Demonstrate basic understanding of NetworkPolicies",
+					"units": [],
+					"tasks": []
+				},
+				{
+					"id": "services",
+					"title": "Provide and troubleshoot access to applications via services",
+					"units": ["imperative"],
+					"tasks": []
+				},
+				{
+					"id": "ingress",
+					"title": "Use Ingress rules to expose applications",
+					"units": ["imperative"],
+					"tasks": ["ingress-host-rule"]
+				}
+			]
+		}
+	]
+}

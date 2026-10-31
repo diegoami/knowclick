@@ -1,0 +1,62 @@
+[
+	{
+		"id": "init-container-seeds-volume",
+		"item": "task:init-container-seeds-volume",
+		"minutes": 8,
+		"where": "cluster",
+		"source": {
+			"title": "ckad-prep 017: init container that populates a shared volume",
+			"url": "https://github.com/diegoami/ckad-prep/blob/master/scenarios/017-init-container-shared-volume.md"
+		}
+	},
+	{
+		"id": "readiness-probe-exec",
+		"item": "task:readiness-probe-exec",
+		"minutes": 5,
+		"where": "cluster",
+		"source": {
+			"title": "ckad-prep 007: Pod with an exec readiness probe",
+			"url": "https://github.com/diegoami/ckad-prep/blob/master/scenarios/007-readiness-probe.md"
+		}
+	},
+	{
+		"id": "rollout-surge-and-undo",
+		"item": "task:rollout-surge-and-undo",
+		"minutes": 10,
+		"where": "cluster",
+		"source": {
+			"title": "ckad-prep 077: maxSurge, maxUnavailable, a bad release and a rollback",
+			"url": "https://github.com/diegoami/ckad-prep/blob/master/scenarios/077-rolling-update-surge-and-rollback.md"
+		}
+	},
+	{
+		"id": "password-env-to-secret",
+		"item": "task:password-env-to-secret",
+		"minutes": 7,
+		"where": "cluster",
+		"source": {
+			"title": "ckad-prep 053: convert a hardcoded env var to a Secret",
+			"url": "https://github.com/diegoami/ckad-prep/blob/master/scenarios/053-convert-hardcoded-env-to-secret.md"
+		}
+	},
+	{
+		"id": "read-only-pod-role",
+		"item": "task:read-only-pod-role",
+		"minutes": 8,
+		"where": "cluster",
+		"source": {
+			"title": "ckad-prep 023: a Role and RoleBinding for read-only Pod access",
+			"url": "https://github.com/diegoami/ckad-prep/blob/master/scenarios/023-rbac-role-rolebinding.md"
+		}
+	},
+	{
+		"id": "ingress-host-rule",
+		"item": "task:ingress-host-rule",
+		"minutes": 6,
+		"where": "cluster",
+		"source": {
+			"title": "ckad-prep 030: Ingress routing a host to a Service",
+			"url": "https://github.com/diegoami/ckad-prep/blob/master/scenarios/030-ingress-host-routing.md"
+		}
+	}
+]

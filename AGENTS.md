@@ -17,7 +17,7 @@ process is LangClick2027's, which is Geoclick2027's adapted:
     packages/*/src/             pure logic: scheduler, quiz engine, pack format
     packs/<id>/                 AUTHORED subject content: manifest, units, tasks, layers
     locales/*.json              interface text, one file per language
-    scripts/*.mjs               gates, version sync, content-check records
+    scripts/*.mjs               gates, version sync, content checks, verify, coverage
 
 **The engine stays subject-neutral.** A rule about one subject (Kubernetes,
 Azure, Rust, …) belongs in that pack's data, never in `app/` or `packages/`. A

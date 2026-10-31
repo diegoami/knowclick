@@ -1,0 +1,32 @@
+{
+	"title": "Kubernetes",
+	"summary": "For the CKAD first, and the CKA later. The exam is done in a terminal, so recall on the boards comes with tasks to do on a cluster of your own.",
+	"sections": {
+		"essentials": {
+			"title": "Essentials"
+		}
+	},
+	"lessons": {
+		"resources": {
+			"title": "Resources and API versions"
+		},
+		"deployment": {
+			"title": "Writing a Deployment"
+		},
+		"imperative": {
+			"title": "Imperative kubectl"
+		}
+	},
+	"concepts": {
+		"core-group": {
+			"title": "The core group",
+			"body": "Pods, Services, ConfigMaps and the other original resources belong to the core API group, which has no name. Their apiVersion is therefore just v1, where every other group's is group/version, as in apps/v1.",
+			"sources": [
+				{
+					"title": "API Overview: API groups",
+					"url": "https://kubernetes.io/docs/reference/using-api/#api-groups"
+				}
+			]
+		}
+	}
+}

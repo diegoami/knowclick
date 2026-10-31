@@ -1,0 +1,26 @@
+{
+	"init-container-seeds-volume": {
+		"title": "An init container that seeds a shared volume",
+		"brief": "Add an init container to an existing Deployment so that nginx starts with content already in its volume."
+	},
+	"readiness-probe-exec": {
+		"title": "A readiness probe that runs a command",
+		"brief": "Create a Pod that reports Ready only while a marker file exists, with the probe's timing set exactly."
+	},
+	"rollout-surge-and-undo": {
+		"title": "Size a rollout, release a bad image, roll back",
+		"brief": "Set a Deployment's surge and unavailability limits, push an image that never becomes ready, read the history and undo it."
+	},
+	"password-env-to-secret": {
+		"title": "Move a password into a Secret",
+		"brief": "Replace a plain-text environment variable with one read from a Secret, leaving the other variables as they are."
+	},
+	"read-only-pod-role": {
+		"title": "A ServiceAccount that can only read Pods",
+		"brief": "Write a Role for reading Pods and their logs, bind it to a ServiceAccount, and prove with kubectl auth can-i that it can't do more."
+	},
+	"ingress-host-rule": {
+		"title": "Route a host name to a Service",
+		"brief": "Create an Ingress that sends one host to an existing Service, and check it with curl."
+	}
+}
