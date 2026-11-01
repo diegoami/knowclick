@@ -3,7 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { t } from '$lib/locale.svelte';
 	import type { LocalLesson } from '$lib/packs';
-	import { dueCells, dueTasks, isStudied, tasksKnown, unitKnown } from '$lib/progress.svelte';
+	import { dueCount, dueTasks, isStudied, tasksKnown, unitKnown } from '$lib/progress.svelte';
 
 	let { data } = $props();
 
@@ -17,7 +17,7 @@
 	}
 
 	function due(packId: string, lesson: LocalLesson) {
-		const cells = lesson.units.reduce((sum, unit) => sum + dueCells(packId, unit).length, 0);
+		const cells = lesson.units.reduce((sum, unit) => sum + dueCount(packId, unit), 0);
 		return cells + dueTasks(packId, lesson.tasks).length;
 	}
 

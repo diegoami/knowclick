@@ -136,6 +136,9 @@ export interface Unit {
 	/** The answers only mean something against each other: the tray always offers all
 	 * of them, however well the unit is known. */
 	dealAll?: boolean;
+	/** The answers are names, where case is not the answer: a typed answer is compared
+	 * without case. Never for flags, fields or code, where case is the answer. */
+	caseInsensitive?: boolean;
 	verify?: UnitVerify;
 }
 
@@ -201,8 +204,8 @@ export interface Coverage {
 	domains: {
 		id: string;
 		title: string;
-		/** Percent of the exam. */
-		weight: number;
+		/** Percent of the exam, or the range an exam publishes, as [min, max]. */
+		weight: number | [number, number];
 		competencies: { id: string; title: string; units: string[]; tasks: string[] }[];
 	}[];
 }
@@ -234,6 +237,7 @@ export interface LocalUnit {
 	cells: LocalCell[];
 	sources: Source[];
 	dealAll?: boolean;
+	caseInsensitive?: boolean;
 }
 
 export interface LocalTask extends Task, TaskText {}
@@ -306,6 +310,7 @@ export function localizeUnit(
 		layout,
 		sources: unit.sources,
 		dealAll: unit.dealAll,
+		caseInsensitive: unit.caseInsensitive,
 		cells: unit.cells.map((cell) => ({
 			...cell,
 			...text?.cells?.[cell.id],
@@ -315,6 +320,26 @@ export function localizeUnit(
 			})
 		}))
 	};
+}
+
+/** A unit's cells in the order the board shows them: a table row by row, a code
+ * board gap by gap, anything else as listed. */
+export function boardOrder(unit: LocalUnit): LocalCell[] {
+	const layout = unit.layout;
+	if (layout.type === 'table') {
+		return layout.rows.flatMap((row) =>
+			layout.columns.flatMap(
+				(column) => unit.cells.find((cell) => cell.row === row.id && cell.col === column.id) ?? []
+			)
+		);
+	}
+	if (layout.type === 'code') {
+		const byId = new Map(unit.cells.map((cell) => [cell.id, cell]));
+		return layout.code.flatMap((line) =>
+			line.flatMap((part) => ('gap' in part ? (byId.get(part.gap) ?? []) : []))
+		);
+	}
+	return unit.cells;
 }
 
 export function localizeTask(task: Task, text: TaskText | undefined): LocalTask {
@@ -738,8 +763,20 @@ export function validateCoverage(
 	}
 	validateSources(coverage.source ? [coverage.source] : [], where, issues);
 	if (!coverage.source) report('has no source');
-	const total = coverage.domains.reduce((sum, domain) => sum + domain.weight, 0);
-	if (total !== 100) report(`domain weights add up to ${total}, not 100`);
+	const ranges = coverage.domains.map((domain) =>
+		typeof domain.weight === 'number' ? [domain.weight, domain.weight] : domain.weight
+	);
+	for (const [i, [min, max]] of ranges.entries()) {
+		if (!(min >= 0 && min <= max && max <= 100)) {
+			report(`domain ${coverage.domains[i].id} has an impossible weight`);
+		}
+	}
+	const low = ranges.reduce((sum, [min]) => sum + min, 0);
+	const high = ranges.reduce((sum, [, max]) => sum + max, 0);
+	if (low === high && low !== 100) report(`domain weights add up to ${low}, not 100`);
+	if (low !== high && (low > 100 || high < 100)) {
+		report(`domain weights span ${low} to ${high}, which can't make 100`);
+	}
 
 	const unitIds = new Set(units.map((unit) => unit.id));
 	const taskIds = new Set(tasks.map((task) => task.id));

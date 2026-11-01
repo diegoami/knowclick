@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+	boardOrder,
 	checkTargets,
 	codeGaps,
 	codeParts,
@@ -299,6 +300,19 @@ describe('code boards', () => {
 	});
 });
 
+describe('boardOrder', () => {
+	it('reads a table by rows and a code board by its gaps', () => {
+		const shuffled = { ...table(), cells: [...table().cells].reverse() };
+		expect(boardOrder(localizeUnit(shuffled, undefined, {})).map((c) => c.id)).toEqual([
+			'a',
+			'b',
+			'c'
+		]);
+		const swapped = { ...code(), cells: [...code().cells].reverse() };
+		expect(boardOrder(localizeUnit(swapped, undefined, {})).map((c) => c.id)).toEqual(['x', 'y']);
+	});
+});
+
 describe('lines', () => {
 	it('splits a line at its gap and fills it', () => {
 		expect(lineParts('a ___=b')).toEqual(['a ', '=b']);
@@ -342,6 +356,21 @@ describe('validateCoverage', () => {
 		const problems = validateCoverage(c, units, t).map((issue) => issue.problem);
 		expect(problems).toContain('domain weights add up to 90, not 100');
 		expect(problems).toContain('d1/c1 names unknown unit nope');
+	});
+
+	it('takes published ranges, which must be able to make 100', () => {
+		const c = coverage();
+		c.domains[0].weight = [55, 65];
+		c.domains[1].weight = [35, 40];
+		expect(validateCoverage(c, units, t)).toEqual([]);
+		c.domains[1].weight = [50, 60];
+		expect(validateCoverage(c, units, t).map((issue) => issue.problem)).toContain(
+			"domain weights span 105 to 125, which can't make 100"
+		);
+		c.domains[1].weight = [40, 30];
+		expect(validateCoverage(c, units, t).map((issue) => issue.problem)).toContain(
+			'domain d2 has an impossible weight'
+		);
 	});
 
 	it('finds a task mapped to nothing', () => {

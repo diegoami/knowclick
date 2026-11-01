@@ -2,26 +2,33 @@
 	// Repetition: what is due across every started unit, one board at a time, and then
 	// the tasks that are due again. Both queues are fixed when the review starts, so an
 	// answer that comes straight back as due doesn't keep a board open forever: it
-	// waits for the next review. Adapted from LangClick2027 (591043e).
+	// waits for the next review. Boards are asked by drag or by typing, and each
+	// reviews the cards of its own skill. Adapted from LangClick2027 (591043e).
 	import type { LocalTask, LocalUnit, PackManifest } from '@knowclick/pack-format';
 	import { untrack } from 'svelte';
 	import { resolve } from '$app/paths';
+	import { skillOf, type AnswerMode } from './answerMode.svelte';
 	import { t } from './locale.svelte';
 	import { dueCells, dueTasks } from './progress.svelte';
 	import QuizView from './QuizView.svelte';
 	import TaskCard from './TaskCard.svelte';
+	import TypeQuizView from './TypeQuizView.svelte';
 
 	interface Props {
 		pack: PackManifest;
 		units: LocalUnit[];
 		tasks: LocalTask[];
+		mode?: AnswerMode;
 	}
 
-	let { pack, units, tasks }: Props = $props();
+	let { pack, units, tasks, mode = 'drag' }: Props = $props();
 
 	const queue = untrack(() =>
 		units
-			.map((unit) => ({ unit, due: new Set(dueCells(pack.id, unit).map((cell) => cell.item)) }))
+			.map((unit) => ({
+				unit,
+				due: new Set(dueCells(pack.id, unit, undefined, skillOf(mode)).map((cell) => cell.item))
+			}))
 			.filter(({ due }) => due.size > 0)
 	);
 	const taskQueue = untrack(() => dueTasks(pack.id, tasks));
@@ -40,15 +47,15 @@
 	<h2>{current.unit.title}</h2>
 	<p class="remaining">{t('review.remaining', { count: remaining })}</p>
 	{#key index}
-		<QuizView
-			{pack}
-			unit={current.unit}
-			only={current.due}
-			next={{
-				label: remaining > 1 || taskQueue.length ? t('review.next') : t('review.finish'),
-				action: () => (index += 1)
-			}}
-		/>
+		{@const next = {
+			label: remaining > 1 || taskQueue.length ? t('review.next') : t('review.finish'),
+			action: () => (index += 1)
+		}}
+		{#if mode === 'type'}
+			<TypeQuizView {pack} unit={current.unit} only={current.due} {next} />
+		{:else}
+			<QuizView {pack} unit={current.unit} only={current.due} {next} />
+		{/if}
 	{/key}
 {:else if tasksLeft.length}
 	<h2>{t('review.tasks')}</h2>
