@@ -7,8 +7,8 @@ whatever else needs exercising. Audience size is not a goal.
 
 ## Status
 
-**v0.1.0 is being released** ([proposal #1](https://github.com/diegoami/knowclick/issues/1)):
-the Kubernetes pack with three boards and six tasks. **v0.2.0, Azure (AZ-900) and typed
+**[v0.1.0](https://github.com/diegoami/knowclick/releases/tag/v0.1.0) is released**: the
+Kubernetes pack with three boards and six tasks. **v0.2.0, Azure (AZ-900) and typed
 answers, is agreed** ([proposal #3](https://github.com/diegoami/knowclick/issues/3)).
 
 ## Milestones

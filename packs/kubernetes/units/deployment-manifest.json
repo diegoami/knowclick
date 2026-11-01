@@ -49,7 +49,7 @@
 	"sources": [
 		{
 			"title": "Deployment v1 apps (API reference)",
-			"url": "https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/"
+			"url": "https://kubernetes.io/docs/reference/kubernetes-api/apps/deployment-v1/"
 		},
 		{
 			"title": "Configure a Pod to Use a ConfigMap",

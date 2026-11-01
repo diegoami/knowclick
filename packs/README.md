@@ -88,7 +88,8 @@ tasks that practise it. Weights add up to 100, every task is mapped somewhere, a
    cells matching one to one, lines with one gap that don't give the answer away, tasks
    listed once and described, versions stated, links only to `http` and `https`.
 2. **Two independent checks** (`validateChecks`): every piece of content, including the
-   code around the gaps, the versions claimed, the study links and the coverage, must be
+   code around the gaps, the versions claimed, the study links, each unit's sources and
+   the coverage, must be
    passed by two different checkers. `node scripts/pack-check.mjs <pack> <checker>` writes
    a checker's record with the exact content in `seen`, so a checker fills in verdicts and
    copies nothing. Editing anything voids its checks.

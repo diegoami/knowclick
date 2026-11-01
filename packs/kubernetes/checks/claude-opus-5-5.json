@@ -22,6 +22,12 @@
 			"verdict": "ok"
 		},
 		{
+			"key": "core/deployment-manifest/sources",
+			"seen": "[{\"title\":\"Deployment v1 apps (API reference)\",\"url\":\"https://kubernetes.io/docs/reference/kubernetes-api/apps/deployment-v1/\"},{\"title\":\"Configure a Pod to Use a ConfigMap\",\"url\":\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/\"},{\"title\":\"Configure Liveness, Readiness and Startup Probes\",\"url\":\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\"}]",
+			"verdict": "ok",
+			"comment": "Re-checked: the Deployment URL now answers 200 directly at /docs/reference/kubernetes-api/apps/deployment-v1/ (no redirect), page 'Deployment', apps/v1. The other two sources are unchanged and still fine."
+		},
+		{
 			"key": "core/deployment-manifest",
 			"seen": "[\"apiVersion: {{gap:apiVersion}}\",\"kind: Deployment\",\"metadata:\",\"  name: web\",\"spec:\",\"  replicas: 3\",\"  {{gap:selector}}:\",\"    matchLabels:\",\"      app: web\",\"  template:\",\"    metadata:\",\"      labels:\",\"        app: web\",\"    spec:\",\"      containers:\",\"      - name: web\",\"        image: nginx:1.27\",\"        ports:\",\"        - {{gap:containerPort}}: 80\",\"        {{gap:envFrom}}:\",\"        - configMapRef:\",\"            name: web-config\",\"        {{gap:readinessProbe}}:\",\"          httpGet:\",\"            path: /\",\"            port: 80\",\"          {{gap:initialDelaySeconds}}: 5\",\"          periodSeconds: 10\",\"        resources:\",\"          {{gap:requests}}:\",\"            cpu: 100m\",\"            memory: 128Mi\",\"          limits:\",\"            memory: 256Mi\",\"        {{gap:volumeMounts}}:\",\"        - name: cache\",\"          {{gap:mountPath}}: /var/cache/nginx\",\"      {{gap:volumes}}:\",\"      - name: cache\",\"        {{gap:emptyDir}}: {}\"]",
 			"verdict": "ok"
@@ -79,6 +85,11 @@
 		{
 			"key": "core/deployment-manifest/emptyDir",
 			"seen": "{\"item\":\"field:deployment:emptyDir\",\"text\":\"emptyDir\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/imperative/sources",
+			"seen": "[{\"title\":\"kubectl Quick Reference\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/quick-reference/\"},{\"title\":\"kubectl reference\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/generated/\"}]",
 			"verdict": "ok"
 		},
 		{
@@ -140,6 +151,12 @@
 			"key": "core/imperative/selector",
 			"seen": "{\"item\":\"kubectl:selector\",\"text\":\"-l\",\"line\":\"kubectl get pods ___ app=web\"}",
 			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/sources",
+			"seen": "[{\"title\":\"Command line tool (kubectl): resource types\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/#resource-types\"},{\"title\":\"Kubernetes API reference\",\"url\":\"https://kubernetes.io/docs/reference/kubernetes-api/\"}]",
+			"verdict": "ok",
+			"comment": "Re-checked: 'Command line tool (kubectl): resource types' now matches the page title 'Command line tool (kubectl)' and its h2 'Resource types' at https://kubernetes.io/docs/reference/kubectl/#resource-types (200). Its table gives the short names and apiVersions the unit asks. The Kubernetes API reference index is fine for apiVersions."
 		},
 		{
 			"key": "core/resources/pods.short",

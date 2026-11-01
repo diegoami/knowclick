@@ -11,6 +11,9 @@
 // themselves (see progressRepository.ts's todayLocalDate) and pass it in,
 // so this stays pure/testable rather than reaching for `new Date()`
 // internally.
+//
+// Copied from Geoclick2027 by way of LangClick2027 (591043e). Issue numbers
+// such as #256, and docs/PLAN_V0.6.md, are Geoclick2027's, in its repository.
 
 export type Grade = 'again' | 'hard' | 'good';
 
@@ -18,15 +21,12 @@ export interface CardState {
 	easeFactor: number;
 	interval: number; // days
 	repetitions: number;
-	/** The earned level, 0 to KNOWN_CLEAN_STREAK (#256, v1.1.0): a clean
-	 * review ('good') raises it by one, up to Known; a mistake ('hard') or a
-	 * fail ('again') lowers it by one, never below 0. Time never lowers it.
-	 * Until v1.1.0 it was a true streak - any mistake put it back to 0 and it
-	 * could count past 3 - and the field keeps that name so saved progress
-	 * needs no migration: an old streak above 3 reads as Known. Drives how
-	 * prominently a name is drawn on the Known map and how many names a quiz
-	 * offers at once (docs/PLAN_V0.6.md). Cards saved before v0.6.0 have no
-	 * streak; they read as 0. */
+	/** The earned level, 0 to KNOWN_CLEAN_STREAK: a clean review ('good')
+	 * raises it by one, up to Known; a mistake ('hard') or a fail ('again')
+	 * lowers it by one, never below 0. Time never lowers it. It drives how
+	 * strongly an answer is drawn on the Known board. The name comes from
+	 * Geoclick2027, where it was once a true streak, and is kept so saved
+	 * cards keep their shape. A card with no level reads as 0. */
 	cleanStreak: number;
 	dueDate: string; // local calendar date, YYYY-MM-DD
 	lastReviewedAt: string; // local calendar date, YYYY-MM-DD
@@ -52,8 +52,8 @@ export const MIN_EASE_FACTOR = 1.3;
 export const MAX_EASE_FACTOR = 2.5;
 // Uncapped, `interval * easeFactor` reached 1488 days by the 8th clean review
 // and overflowed Date into a "NaN-NaN-NaN" dueDate by the 20th, retiring the
-// card forever. A year means even a fully mastered region comes back once a
-// year - see DECISIONS.md.
+// card forever. A year means even a fully known answer comes back once a
+// year - see Geoclick2027's DECISIONS.md.
 export const MAX_INTERVAL_DAYS = 365;
 
 function addDaysLocal(date: string, days: number): string {
@@ -102,11 +102,10 @@ export function daysUntil(dueDate: string, today: string): number {
  * sooner than a clean win rather than literally the same day. 'again'
  * (revealed - never got it) is the one grade that forces a same-day
  * repeat: repetitions resets to 0, ease factor drops, and `dueDate` is
- * set to `today` itself so it's still due if the map is reopened later
+ * set to `today` itself so it's still due if the board is reopened later
  * today - not pushed to tomorrow by whatever the interval schedule would
- * otherwise say. See ROADMAP.md's Iteration 6 "Consistency review" for
- * why this distinction matters (it's the one place a naive port of SM-2
- * would silently regress already-shipped same-day behavior). */
+ * otherwise say. This is the one place where a naive port of SM-2 would
+ * lose the same-day repeat. */
 export function rate(previous: CardState | undefined, grade: Grade, today: string): CardState {
 	const prevEase = previous?.easeFactor ?? DEFAULT_EASE_FACTOR;
 

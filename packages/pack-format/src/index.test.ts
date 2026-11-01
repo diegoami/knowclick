@@ -177,6 +177,23 @@ describe('validatePack', () => {
 		expect(problems).toContain('cell q needs a line with one gap');
 	});
 
+	it.each(['(--from)', 'x: --from.', '[--from]', 'cron/--from'])(
+		'finds an answer glued to punctuation in %s (#8)',
+		(around) => {
+			const bad = lines();
+			bad.cells[0].line = `tool create job a ${around} ___=cron/b`;
+			expect(issuesOf(pack(), [table(), code(), bad])).toContain(
+				`line "${bad.cells[0].line}" gives away the answer`
+			);
+		}
+	);
+
+	it('does not take a longer word for the answer', () => {
+		const ok = lines();
+		ok.cells[0].line = 'tool create job a ___=cron/b --from-file=x';
+		expect(issuesOf(pack(), [table(), code(), ok])).toEqual([]);
+	});
+
 	it('requires a clue on every line, which must not contain the answer', () => {
 		const l = layers();
 		l.en.units.lines.cells = { p: { clue: 'Use --from here' } };
@@ -230,6 +247,18 @@ describe('validatePack', () => {
 		const t = table();
 		t.verify = { columns: { c1: { run: 'tool list' } } };
 		expect(issuesOf(pack(), [t, code(), lines()])).toContain('cell b has no way to be verified');
+	});
+
+	it('reports a code board whose verify has nothing to run (#10)', () => {
+		const c = code();
+		c.verify = { expect: 'configured' };
+		expect(issuesOf(pack(), [table(), c, lines()])).toContain('verify step has nothing to run');
+	});
+
+	it('lets a code board opt out of verify by having none', () => {
+		const c = code();
+		delete c.verify;
+		expect(issuesOf(pack(), [table(), c, lines()])).toEqual([]);
 	});
 
 	it('requires the base layer to name the pack, its lessons and its headers', () => {
@@ -360,6 +389,16 @@ describe('checks', () => {
 		(edited.layout as { code: string[] }).code[0] = 'kind: Other';
 		const after = checkTargets(p, [table(), edited, lines()], t, layers());
 		expect(validateChecks(after, checks).map((issue) => issue.where)).toEqual(['core/code']);
+	});
+
+	it('voids a check when a unit’s sources change (#9)', () => {
+		const checks = [passed('one'), passed('two')];
+		const moved = table();
+		moved.sources = [{ title: 'A source', url: 'https://example.org/moved' }];
+		const after = checkTargets(p, [moved, code(), lines()], t, layers());
+		expect(validateChecks(after, checks).map((issue) => issue.where)).toEqual([
+			'core/table/sources'
+		]);
 	});
 
 	it('voids a check when a version claim changes', () => {
