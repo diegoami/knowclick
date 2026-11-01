@@ -132,7 +132,7 @@ describe('QuizView', () => {
 
 	it('ignores a drop on a cell already filled', async () => {
 		start();
-		await dealUntil('po');
+		await dealUntil('po', ['services.short']);
 		await place('po', 'pods.short');
 		await dealUntil('svc', ['pods.short']);
 		await place('svc', 'pods.short');
