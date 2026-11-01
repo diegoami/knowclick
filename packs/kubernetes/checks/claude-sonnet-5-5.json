@@ -22,6 +22,11 @@
 			"verdict": "ok"
 		},
 		{
+			"key": "core/deployment-manifest/sources",
+			"seen": "[{\"title\":\"Deployment v1 apps (API reference)\",\"url\":\"https://kubernetes.io/docs/reference/kubernetes-api/apps/deployment-v1/\"},{\"title\":\"Configure a Pod to Use a ConfigMap\",\"url\":\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/\"},{\"title\":\"Configure Liveness, Readiness and Startup Probes\",\"url\":\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\"}]",
+			"verdict": "ok"
+		},
+		{
 			"key": "core/deployment-manifest",
 			"seen": "[\"apiVersion: {{gap:apiVersion}}\",\"kind: Deployment\",\"metadata:\",\"  name: web\",\"spec:\",\"  replicas: 3\",\"  {{gap:selector}}:\",\"    matchLabels:\",\"      app: web\",\"  template:\",\"    metadata:\",\"      labels:\",\"        app: web\",\"    spec:\",\"      containers:\",\"      - name: web\",\"        image: nginx:1.27\",\"        ports:\",\"        - {{gap:containerPort}}: 80\",\"        {{gap:envFrom}}:\",\"        - configMapRef:\",\"            name: web-config\",\"        {{gap:readinessProbe}}:\",\"          httpGet:\",\"            path: /\",\"            port: 80\",\"          {{gap:initialDelaySeconds}}: 5\",\"          periodSeconds: 10\",\"        resources:\",\"          {{gap:requests}}:\",\"            cpu: 100m\",\"            memory: 128Mi\",\"          limits:\",\"            memory: 256Mi\",\"        {{gap:volumeMounts}}:\",\"        - name: cache\",\"          {{gap:mountPath}}: /var/cache/nginx\",\"      {{gap:volumes}}:\",\"      - name: cache\",\"        {{gap:emptyDir}}: {}\"]",
 			"verdict": "ok"
@@ -82,6 +87,11 @@
 			"verdict": "ok"
 		},
 		{
+			"key": "core/imperative/sources",
+			"seen": "[{\"title\":\"kubectl Quick Reference\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/quick-reference/\"},{\"title\":\"kubectl reference\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/generated/\"}]",
+			"verdict": "ok"
+		},
+		{
 			"key": "core/imperative/image",
 			"seen": "{\"item\":\"kubectl:image\",\"text\":\"--image\",\"line\":\"kubectl create deployment shop ___=nginx:1.27 --replicas=3\"}",
 			"verdict": "ok"
@@ -139,6 +149,11 @@
 		{
 			"key": "core/imperative/selector",
 			"seen": "{\"item\":\"kubectl:selector\",\"text\":\"-l\",\"line\":\"kubectl get pods ___ app=web\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/resources/sources",
+			"seen": "[{\"title\":\"Command line tool (kubectl): resource types\",\"url\":\"https://kubernetes.io/docs/reference/kubectl/#resource-types\"},{\"title\":\"Kubernetes API reference\",\"url\":\"https://kubernetes.io/docs/reference/kubernetes-api/\"}]",
 			"verdict": "ok"
 		},
 		{

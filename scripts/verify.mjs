@@ -53,6 +53,13 @@ const jobs = verifyJobs(units);
 const todo =
 	flag === '--stale' ? jobs.filter((job) => old.get(job.key)?.seen !== verifySeen(job)) : jobs;
 
+// Nothing changed since the record: leave it as it is, so its date stays the date of a
+// real run.
+if (todo.length === 0) {
+	console.log(`${packId}: nothing changed since the run of ${previous.ranOn}`);
+	process.exit(0);
+}
+
 for (const command of manifest.verify.setup ?? []) {
 	const result = run(command);
 	if (!result.ok) {

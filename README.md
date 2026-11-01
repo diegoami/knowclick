@@ -9,8 +9,8 @@ get right shows as known. Content comes as pluggable subject packs. A sibling of
 [Geoclick2027](https://github.com/diegoami/Geoclick2027). Created by Diego
 Amicabile.
 
-Early development; nothing is released yet. The first milestone is planned in the
-[v0.1.0 proposal](https://github.com/diegoami/knowclick/issues/1).
+Early development. [v0.1.0](https://github.com/diegoami/knowclick/releases/tag/v0.1.0),
+a Kubernetes pack for the CKAD, runs from source; there are no installers yet.
 
 ## Quick start
 
@@ -37,7 +37,7 @@ Code: [MIT](LICENSE). Subject packs: [CC BY-SA 4.0](packs/LICENSE).
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) — how it is built
 - [ROADMAP.md](ROADMAP.md) — what's built, what's next
-- [DECISIONS.md](DECISIONS.md) — the *why*
+- [DECISIONS.md](DECISIONS.md) — the _why_
 - [packs/README.md](packs/README.md) — how to write a subject pack
 - [AGENTS.md](AGENTS.md) and [docs/RELEASES.md](docs/RELEASES.md) — how the
   project is run

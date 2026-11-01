@@ -334,9 +334,12 @@ const webAddress = (value: unknown) => typeof value === 'string' && /^https?:\/\
 const SEMVER = /^\d+\.\d+\.\d+$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
-/** Whether `answer` stands as a whole token in `code`, which would give it away. */
+/** Whether `answer` stands in `code` as a whole word, which would give it away. Only
+ * letters, digits, `_` and `-` continue a word, so an answer glued to punctuation,
+ * as in `(rollingUpdate)`, is found, while `--from` is not found in `--from-file`. */
 function givesAway(code: string, answer: string): boolean {
-	return code.split(/[\s"'=,]+/).includes(answer);
+	const escaped = answer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	return new RegExp(`(?<![\\w-])${escaped}(?![\\w-])`).test(code);
 }
 
 function validateCell(cell: Cell, unit: Unit, pack: PackManifest, issues: PackIssue[]): void {
@@ -634,7 +637,14 @@ function validateUnitVerify(unit: Unit, pack: PackManifest, issues: PackIssue[])
 		}
 		validateStep(step, where, issues);
 	}
-	if (unit.layout.type === 'code') return;
+	// A code board is verified as a whole, so a verify block that runs nothing would
+	// retire its verification without a word. Having no verify at all is the opt-out.
+	if (unit.layout.type === 'code') {
+		if (unit.verify && !present(unit.verify.run)) {
+			issues.push({ where, problem: 'verify step has nothing to run' });
+		}
+		return;
+	}
 	for (const cell of unit.cells) {
 		validateStep(cell.verify, `${where}/${cell.id}`, issues);
 		const covered = cell.verify ?? columns[cell.col ?? ''] ?? unit.verify?.run;
@@ -794,6 +804,8 @@ export function checkTargets(
 		targets.push({ key: `core/lesson/${lesson.id}`, seen: seenOf(lesson.study) });
 	}
 	for (const unit of units) {
+		// The Overview shows a unit's sources, so moving or replacing one is checked too.
+		targets.push({ key: `core/${unit.id}/sources`, seen: seenOf(unit.sources) });
 		// A code board's gaps mean what their surroundings say, so the code is checked too.
 		if (unit.layout.type === 'code') {
 			targets.push({ key: `core/${unit.id}`, seen: seenOf(unit.layout.code) });

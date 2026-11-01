@@ -12,7 +12,7 @@
 		scoreSession,
 		type QuizSession
 	} from '@knowclick/quiz-engine';
-	import { untrack } from 'svelte';
+	import { onDestroy, untrack } from 'svelte';
 	import { resolve } from '$app/paths';
 	import Board from './Board.svelte';
 	import CellFace from './CellFace.svelte';
@@ -117,6 +117,8 @@
 		clearTimeout(wrongTimer);
 		wrongTimer = setTimeout(() => (wrongCell = undefined), WRONG_FLASH_MS);
 	}
+
+	onDestroy(() => clearTimeout(wrongTimer));
 
 	function playAgain() {
 		const round = newRound();

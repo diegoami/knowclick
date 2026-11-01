@@ -25,8 +25,8 @@
 	},
 	"sources": [
 		{
-			"title": "kubectl api-resources",
-			"url": "https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/"
+			"title": "Command line tool (kubectl): resource types",
+			"url": "https://kubernetes.io/docs/reference/kubectl/#resource-types"
 		},
 		{
 			"title": "Kubernetes API reference",

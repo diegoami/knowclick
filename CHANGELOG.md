@@ -2,6 +2,20 @@
 
 Each release's entry is its release notes (`docs/RELEASES.md`).
 
+## Unreleased
+
+For authors:
+
+- The giveaway check now finds an answer glued to punctuation in a line or clue, such
+  as `(rollingUpdate)` (#8).
+- Editing a unit's sources voids its checks, like every other content edit (#9).
+- A code board whose `verify` has nothing to run is reported, instead of going
+  unverified without a word (#10).
+- `verify.mjs --stale` with nothing to run leaves the record alone, so its date stays the
+  date of a real run.
+- Unit sources corrected after their first check: the resources table cites the kubectl
+  overview's resource-types table, and the Deployment reference uses its current address.
+
 ## v0.1.0 — 2026-11-01 — Kubernetes recall boards and hands-on tasks
 
 **The first release: a Kubernetes pack for the CKAD, with boards you fill in and tasks you do by hand, to find out whether recall and scheduled practice work together.**
