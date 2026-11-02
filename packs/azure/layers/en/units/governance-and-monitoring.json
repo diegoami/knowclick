@@ -1,0 +1,48 @@
+{
+	"title": "Governance, management and monitoring",
+	"summary": "Keeping costs, rules and resources under control, and seeing what is happening.",
+	"cells": {
+		"policy": {
+			"clue": "Enforces rules on resources, such as allowed regions, and reports what doesn't comply"
+		},
+		"lock": {
+			"clue": "Stops a resource from being deleted or changed by mistake"
+		},
+		"tags": {
+			"clue": "Name and value pairs on resources, used to organize them and group their costs"
+		},
+		"purview": {
+			"clue": "Discovers, classifies and governs data across your whole estate"
+		},
+		"arc": {
+			"clue": "Manages servers and Kubernetes clusters outside Azure from Azure"
+		},
+		"arm-templates": {
+			"clue": "JSON files that declare the resources to deploy, so a deployment can be repeated"
+		},
+		"cloud-shell": {
+			"clue": "A shell in the browser with the Azure CLI and Azure PowerShell already set up"
+		},
+		"advisor": {
+			"clue": "Personalized recommendations for reliability, security, performance and cost"
+		},
+		"service-health": {
+			"clue": "Tells you about Azure incidents and planned maintenance that affect your resources"
+		},
+		"monitor": {
+			"clue": "Collects metrics and logs from your resources and alerts on them"
+		},
+		"log-analytics": {
+			"clue": "Where you write queries over the log data that monitoring collects"
+		},
+		"app-insights": {
+			"clue": "Monitors the performance and usage of a web application"
+		},
+		"pricing-calculator": {
+			"clue": "Estimates what services will cost before you deploy them"
+		},
+		"cost-management": {
+			"clue": "Reports on what you have spent, and sets budgets with alerts"
+		}
+	}
+}

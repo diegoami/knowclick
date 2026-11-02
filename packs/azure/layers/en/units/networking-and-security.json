@@ -1,0 +1,48 @@
+{
+	"title": "Networking, identity and security",
+	"summary": "Connecting to Azure, and deciding who gets in and how they are protected.",
+	"cells": {
+		"expressroute": {
+			"clue": "A private connection from your network to Azure that doesn't cross the public internet"
+		},
+		"vpn-gateway": {
+			"clue": "Sends encrypted traffic between your network and Azure over the public internet"
+		},
+		"dns": {
+			"clue": "Hosts the name records of your domains on Azure's infrastructure"
+		},
+		"peering": {
+			"clue": "Connects two virtual networks so traffic between them stays on Microsoft's backbone"
+		},
+		"private-endpoint": {
+			"clue": "Gives a service a private IP address inside your virtual network"
+		},
+		"entra-id": {
+			"clue": "Microsoft's cloud identity service: users, groups and sign-in"
+		},
+		"sso": {
+			"clue": "One sign-in gives access to many applications"
+		},
+		"mfa": {
+			"clue": "Sign-in asks for a second proof, such as a code on your phone"
+		},
+		"passwordless": {
+			"clue": "Signing in with Windows Hello, an authenticator app or a security key, with no password"
+		},
+		"conditional-access": {
+			"clue": "Allows, blocks or challenges a sign-in based on signals such as location or device"
+		},
+		"rbac": {
+			"clue": "Gives a user or group a role, such as Reader, at a scope such as a resource group"
+		},
+		"zero-trust": {
+			"clue": "Assume breach, and verify every request explicitly, whatever network it comes from"
+		},
+		"defense-in-depth": {
+			"clue": "Layers of protection, so that no single failure exposes the data"
+		},
+		"defender": {
+			"clue": "Assesses security posture and protects workloads in Azure, on-premises and other clouds"
+		}
+	}
+}

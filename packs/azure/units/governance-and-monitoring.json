@@ -1,0 +1,98 @@
+{
+	"id": "governance-and-monitoring",
+	"caseInsensitive": true,
+	"layout": {
+		"type": "grid",
+		"size": 14
+	},
+	"sources": [
+		{
+			"title": "Describe features and tools in Azure for governance and compliance (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/"
+		},
+		{
+			"title": "Describe features and tools for managing and deploying Azure resources (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/"
+		},
+		{
+			"title": "Describe monitoring tools in Azure (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-monitoring-tools-azure/"
+		},
+		{
+			"title": "Describe cost management in Azure (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cost-management-azure/"
+		}
+	],
+	"cells": [
+		{
+			"id": "policy",
+			"item": "azure:policy",
+			"text": "Azure Policy"
+		},
+		{
+			"id": "lock",
+			"item": "azure:lock",
+			"text": "resource lock"
+		},
+		{
+			"id": "tags",
+			"item": "azure:tags",
+			"text": "tags"
+		},
+		{
+			"id": "purview",
+			"item": "azure:purview",
+			"text": "Microsoft Purview"
+		},
+		{
+			"id": "arc",
+			"item": "azure:arc",
+			"text": "Azure Arc"
+		},
+		{
+			"id": "arm-templates",
+			"item": "azure:arm-templates",
+			"text": "ARM templates"
+		},
+		{
+			"id": "cloud-shell",
+			"item": "azure:cloud-shell",
+			"text": "Azure Cloud Shell"
+		},
+		{
+			"id": "advisor",
+			"item": "azure:advisor",
+			"text": "Azure Advisor"
+		},
+		{
+			"id": "service-health",
+			"item": "azure:service-health",
+			"text": "Azure Service Health"
+		},
+		{
+			"id": "monitor",
+			"item": "azure:monitor",
+			"text": "Azure Monitor"
+		},
+		{
+			"id": "log-analytics",
+			"item": "azure:log-analytics",
+			"text": "Log Analytics"
+		},
+		{
+			"id": "app-insights",
+			"item": "azure:app-insights",
+			"text": "Application Insights"
+		},
+		{
+			"id": "pricing-calculator",
+			"item": "azure:pricing-calculator",
+			"text": "pricing calculator"
+		},
+		{
+			"id": "cost-management",
+			"item": "azure:cost-management",
+			"text": "Microsoft Cost Management"
+		}
+	]
+}

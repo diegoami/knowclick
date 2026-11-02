@@ -1,0 +1,14 @@
+{
+	"title": "Storage redundancy",
+	"summary": "How each redundancy option keeps copies of a storage account's data, and which outages the data survives.",
+	"headers": {
+		"lrs": "LRS",
+		"zrs": "ZRS",
+		"grs": "GRS",
+		"gzrs": "GZRS",
+		"zones": "Across availability zones in the primary region",
+		"secondary": "Copied to a secondary region",
+		"datacenter": "Durable if a whole datacenter is lost",
+		"region": "Durable if the primary region is lost"
+	}
+}

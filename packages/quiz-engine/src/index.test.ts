@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
 	attemptMatch,
+	attemptTyped,
+	normalizeTyped,
 	createQuizSession,
 	isSessionComplete,
 	pendingIds,
@@ -109,5 +111,40 @@ describe('a whole round', () => {
 		({ session } = attemptMatch(session, 'loc', 'loc'));
 		expect(isSessionComplete(session)).toBe(true);
 		expect(scoreSession(session)).toEqual({ total: 3, perfect: 2, totalErrors: 1 });
+	});
+});
+
+describe('attemptTyped', () => {
+	const session = () =>
+		createQuizSession([
+			{ id: 'a', text: '--from' },
+			{ id: 'b', text: 'ExpressRoute' }
+		]);
+
+	it('fills the cell when the typed text matches, spaces trimmed', () => {
+		const { session: next, outcome } = attemptTyped(session(), 'a', '  --from ');
+		expect(outcome).toEqual({ kind: 'correct', cellId: 'a' });
+		expect(next.items[0].status).toBe('correct');
+	});
+
+	it('reveals the cell on a wrong answer, which is its one attempt', () => {
+		const { session: next, outcome } = attemptTyped(session(), 'a', '--form');
+		expect(outcome).toEqual({ kind: 'revealed', cellId: 'a', droppedOnId: 'a' });
+		expect(next.items[0]).toMatchObject({ status: 'revealed', errors: 1 });
+	});
+
+	it('keeps case unless the unit says it is not the answer', () => {
+		expect(attemptTyped(session(), 'b', 'expressroute').outcome.kind).toBe('revealed');
+		expect(attemptTyped(session(), 'b', 'expressroute', true).outcome.kind).toBe('correct');
+	});
+
+	it('ignores an empty answer and a cell already answered', () => {
+		expect(attemptTyped(session(), 'a', '   ').outcome.kind).toBe('ignored');
+		const done = attemptTyped(session(), 'a', '--from').session;
+		expect(attemptTyped(done, 'a', '--from').outcome.kind).toBe('ignored');
+	});
+
+	it('collapses inner spaces', () => {
+		expect(normalizeTyped(' a   b ')).toBe('a b');
 	});
 });

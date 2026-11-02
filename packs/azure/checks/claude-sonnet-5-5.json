@@ -1,0 +1,1285 @@
+{
+	"checker": "claude-sonnet-5-5",
+	"entries": [
+		{
+			"key": "core/holdsFor",
+			"seen": "[{\"name\":\"AZ-900 skills measured\",\"version\":\"2026-07-20\"},{\"name\":\"Azure CLI\",\"version\":\"2.91.0\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/cloud",
+			"seen": "[{\"kind\":\"course\",\"title\":\"Introduction to Cloud Infrastructure: Describe cloud concepts\",\"url\":\"https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/\"},{\"kind\":\"reference\",\"title\":\"Study guide for Exam AZ-900\",\"url\":\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/architecture",
+			"seen": "[{\"kind\":\"course\",\"title\":\"Introduction to Cloud Infrastructure: Describe Azure architecture and services\",\"url\":\"https://learn.microsoft.com/en-us/training/paths/azure-fundamentals-describe-azure-architecture-services/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/storage",
+			"seen": "[{\"kind\":\"docs\",\"title\":\"Data redundancy, Azure Storage\",\"url\":\"https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy\"},{\"kind\":\"docs\",\"title\":\"Access tiers for blob data\",\"url\":\"https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/management",
+			"seen": "[{\"kind\":\"course\",\"title\":\"Introduction to Cloud Infrastructure: Describe Azure management and governance\",\"url\":\"https://learn.microsoft.com/en-us/training/paths/describe-azure-management-governance/\"},{\"kind\":\"course\",\"title\":\"Introduction to Cloud Infrastructure: Apply Azure skills in guided projects\",\"url\":\"https://learn.microsoft.com/en-us/training/paths/introduction-cloud-infrastructure-apply-azure-skills-guided-projects/\"},{\"kind\":\"reference\",\"title\":\"AZ-900 practice assessment\",\"url\":\"https://learn.microsoft.com/en-us/credentials/certifications/exams/az-900/practice/assessment?assessment-type=practice&assessmentId=23\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/lesson/cli",
+			"seen": "[{\"kind\":\"reference\",\"title\":\"Azure CLI reference\",\"url\":\"https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/sources",
+			"seen": "[{\"title\":\"Azure CLI reference (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest\"},{\"title\":\"Guided project: Manage Azure resources with Cloud Shell and the Azure CLI (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/guided-project-manage-resources-cloud-shell-cli/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/location",
+			"seen": "{\"item\":\"azure-cli:location\",\"text\":\"--location\",\"line\":\"az group create --name rg-demo ___ westeurope\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/tags",
+			"seen": "{\"item\":\"azure-cli:tags\",\"text\":\"--tags\",\"line\":\"az group create --name rg-demo --location westeurope ___ env=dev\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/output",
+			"seen": "{\"item\":\"azure-cli:output\",\"text\":\"--output\",\"line\":\"az group list ___ table\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/query",
+			"seen": "{\"item\":\"azure-cli:query\",\"text\":\"--query\",\"line\":\"az account list-locations ___ \\\"[].name\\\"\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/lock-type",
+			"seen": "{\"item\":\"azure-cli:lock-type\",\"text\":\"--lock-type\",\"line\":\"az lock create --name keep --resource-group rg-demo ___ CanNotDelete\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/image",
+			"seen": "{\"item\":\"azure-cli:image\",\"text\":\"--image\",\"line\":\"az vm create --resource-group rg-demo --name vm1 ___ Ubuntu2204 --generate-ssh-keys\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/sku",
+			"seen": "{\"item\":\"azure-cli:sku\",\"text\":\"--sku\",\"line\":\"az storage account create --name stdemo4711 --resource-group rg-demo ___ Standard_ZRS\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/access-tier",
+			"seen": "{\"item\":\"azure-cli:access-tier\",\"text\":\"--access-tier\",\"line\":\"az storage account update --name stdemo4711 --resource-group rg-demo ___ Cool\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/offset",
+			"seen": "{\"item\":\"azure-cli:offset\",\"text\":\"--offset\",\"line\":\"az monitor activity-log list --resource-group rg-demo ___ 7d\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/azure-cli/yes",
+			"seen": "{\"item\":\"azure-cli:yes\",\"text\":\"--yes\",\"line\":\"az group delete --name rg-demo ___\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/sources",
+			"seen": "[{\"title\":\"Introduction to Cloud Infrastructure: Describe cloud concepts (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/iaas",
+			"seen": "{\"item\":\"azure:iaas\",\"text\":\"IaaS\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/paas",
+			"seen": "{\"item\":\"azure:paas\",\"text\":\"PaaS\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/saas",
+			"seen": "{\"item\":\"azure:saas\",\"text\":\"SaaS\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/public-cloud",
+			"seen": "{\"item\":\"azure:public-cloud\",\"text\":\"public cloud\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/private-cloud",
+			"seen": "{\"item\":\"azure:private-cloud\",\"text\":\"private cloud\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/hybrid-cloud",
+			"seen": "{\"item\":\"azure:hybrid-cloud\",\"text\":\"hybrid cloud\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/consumption-based",
+			"seen": "{\"item\":\"azure:consumption-based\",\"text\":\"consumption-based model\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/serverless",
+			"seen": "{\"item\":\"azure:serverless\",\"text\":\"serverless\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/capex",
+			"seen": "{\"item\":\"azure:capex\",\"text\":\"capital expenditure\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/opex",
+			"seen": "{\"item\":\"azure:opex\",\"text\":\"operational expenditure\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/high-availability",
+			"seen": "{\"item\":\"azure:high-availability\",\"text\":\"high availability\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/reliability",
+			"seen": "{\"item\":\"azure:reliability\",\"text\":\"reliability\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/predictability",
+			"seen": "{\"item\":\"azure:predictability\",\"text\":\"predictability\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/horizontal-scaling",
+			"seen": "{\"item\":\"azure:horizontal-scaling\",\"text\":\"horizontal scaling\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/cloud-concepts/vertical-scaling",
+			"seen": "{\"item\":\"azure:vertical-scaling\",\"text\":\"vertical scaling\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/sources",
+			"seen": "[{\"title\":\"Describe Azure compute services (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/\"},{\"title\":\"Describe Azure storage services (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/vmss",
+			"seen": "{\"item\":\"azure:vmss\",\"text\":\"Virtual Machine Scale Sets\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/availability-set",
+			"seen": "{\"item\":\"azure:availability-set\",\"text\":\"availability set\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/avd",
+			"seen": "{\"item\":\"azure:avd\",\"text\":\"Azure Virtual Desktop\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/app-service",
+			"seen": "{\"item\":\"azure:app-service\",\"text\":\"Azure App Service\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/functions",
+			"seen": "{\"item\":\"azure:functions\",\"text\":\"Azure Functions\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/aci",
+			"seen": "{\"item\":\"azure:aci\",\"text\":\"Azure Container Instances\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/azcopy",
+			"seen": "{\"item\":\"azure:azcopy\",\"text\":\"AzCopy\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/storage-explorer",
+			"seen": "{\"item\":\"azure:storage-explorer\",\"text\":\"Azure Storage Explorer\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/file-sync",
+			"seen": "{\"item\":\"azure:file-sync\",\"text\":\"Azure File Sync\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/migrate",
+			"seen": "{\"item\":\"azure:migrate\",\"text\":\"Azure Migrate\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/compute-and-storage-tools/data-box",
+			"seen": "{\"item\":\"azure:data-box\",\"text\":\"Azure Data Box\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/sources",
+			"seen": "[{\"title\":\"Describe the core architectural components of Azure (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/resource",
+			"seen": "{\"item\":\"azure:resource\",\"text\":\"resource\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/resource-group",
+			"seen": "{\"item\":\"azure:resource-group\",\"text\":\"resource group\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/subscription",
+			"seen": "{\"item\":\"azure:subscription\",\"text\":\"subscription\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/management-group",
+			"seen": "{\"item\":\"azure:management-group\",\"text\":\"management group\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/region",
+			"seen": "{\"item\":\"azure:region\",\"text\":\"region\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/region-pair",
+			"seen": "{\"item\":\"azure:region-pair\",\"text\":\"region pair\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/sovereign-region",
+			"seen": "{\"item\":\"azure:sovereign-region\",\"text\":\"sovereign region\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/core-architecture/availability-zone",
+			"seen": "{\"item\":\"azure:availability-zone\",\"text\":\"availability zone\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/sources",
+			"seen": "[{\"title\":\"Describe features and tools in Azure for governance and compliance (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/\"},{\"title\":\"Describe features and tools for managing and deploying Azure resources (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/\"},{\"title\":\"Describe monitoring tools in Azure (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-monitoring-tools-azure/\"},{\"title\":\"Describe cost management in Azure (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-cost-management-azure/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/policy",
+			"seen": "{\"item\":\"azure:policy\",\"text\":\"Azure Policy\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/lock",
+			"seen": "{\"item\":\"azure:lock\",\"text\":\"resource lock\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/tags",
+			"seen": "{\"item\":\"azure:tags\",\"text\":\"tags\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/purview",
+			"seen": "{\"item\":\"azure:purview\",\"text\":\"Microsoft Purview\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/arc",
+			"seen": "{\"item\":\"azure:arc\",\"text\":\"Azure Arc\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/arm-templates",
+			"seen": "{\"item\":\"azure:arm-templates\",\"text\":\"ARM templates\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/cloud-shell",
+			"seen": "{\"item\":\"azure:cloud-shell\",\"text\":\"Azure Cloud Shell\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/advisor",
+			"seen": "{\"item\":\"azure:advisor\",\"text\":\"Azure Advisor\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/service-health",
+			"seen": "{\"item\":\"azure:service-health\",\"text\":\"Azure Service Health\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/monitor",
+			"seen": "{\"item\":\"azure:monitor\",\"text\":\"Azure Monitor\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/log-analytics",
+			"seen": "{\"item\":\"azure:log-analytics\",\"text\":\"Log Analytics\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/app-insights",
+			"seen": "{\"item\":\"azure:app-insights\",\"text\":\"Application Insights\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/pricing-calculator",
+			"seen": "{\"item\":\"azure:pricing-calculator\",\"text\":\"pricing calculator\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/governance-and-monitoring/cost-management",
+			"seen": "{\"item\":\"azure:cost-management\",\"text\":\"Microsoft Cost Management\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/sources",
+			"seen": "[{\"title\":\"Describe Azure networking services (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-azure-networking-services/\"},{\"title\":\"Describe Azure identity, access, and security (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/expressroute",
+			"seen": "{\"item\":\"azure:expressroute\",\"text\":\"ExpressRoute\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/vpn-gateway",
+			"seen": "{\"item\":\"azure:vpn-gateway\",\"text\":\"Azure VPN Gateway\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/dns",
+			"seen": "{\"item\":\"azure:dns\",\"text\":\"Azure DNS\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/peering",
+			"seen": "{\"item\":\"azure:peering\",\"text\":\"virtual network peering\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/private-endpoint",
+			"seen": "{\"item\":\"azure:private-endpoint\",\"text\":\"private endpoint\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/entra-id",
+			"seen": "{\"item\":\"azure:entra-id\",\"text\":\"Microsoft Entra ID\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/sso",
+			"seen": "{\"item\":\"azure:sso\",\"text\":\"single sign-on\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/mfa",
+			"seen": "{\"item\":\"azure:mfa\",\"text\":\"multifactor authentication\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/passwordless",
+			"seen": "{\"item\":\"azure:passwordless\",\"text\":\"passwordless authentication\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/conditional-access",
+			"seen": "{\"item\":\"azure:conditional-access\",\"text\":\"Conditional Access\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/rbac",
+			"seen": "{\"item\":\"azure:rbac\",\"text\":\"Azure role-based access control\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/zero-trust",
+			"seen": "{\"item\":\"azure:zero-trust\",\"text\":\"Zero Trust\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/defense-in-depth",
+			"seen": "{\"item\":\"azure:defense-in-depth\",\"text\":\"defense in depth\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/networking-and-security/defender",
+			"seen": "{\"item\":\"azure:defender\",\"text\":\"Microsoft Defender for Cloud\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/sources",
+			"seen": "[{\"title\":\"Shared responsibility in the cloud (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/data.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:data:onprem\",\"text\":\"Customer\",\"row\":\"data\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/data.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:data:iaas\",\"text\":\"Customer\",\"row\":\"data\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/data.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:data:paas\",\"text\":\"Customer\",\"row\":\"data\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/data.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:data:saas\",\"text\":\"Customer\",\"row\":\"data\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/configurations.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:configurations:onprem\",\"text\":\"Customer\",\"row\":\"configurations\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/configurations.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:configurations:iaas\",\"text\":\"Customer\",\"row\":\"configurations\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/configurations.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:configurations:paas\",\"text\":\"Customer\",\"row\":\"configurations\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/configurations.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:configurations:saas\",\"text\":\"Customer\",\"row\":\"configurations\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/identities.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:identities:onprem\",\"text\":\"Customer\",\"row\":\"identities\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/identities.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:identities:iaas\",\"text\":\"Customer\",\"row\":\"identities\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/identities.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:identities:paas\",\"text\":\"Customer\",\"row\":\"identities\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/identities.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:identities:saas\",\"text\":\"Customer\",\"row\":\"identities\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/devices.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:devices:onprem\",\"text\":\"Customer\",\"row\":\"devices\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/devices.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:devices:iaas\",\"text\":\"Customer\",\"row\":\"devices\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/devices.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:devices:paas\",\"text\":\"Customer\",\"row\":\"devices\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/devices.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:devices:saas\",\"text\":\"Shared\",\"row\":\"devices\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/applications.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:applications:onprem\",\"text\":\"Customer\",\"row\":\"applications\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/applications.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:applications:iaas\",\"text\":\"Customer\",\"row\":\"applications\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/applications.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:applications:paas\",\"text\":\"Shared\",\"row\":\"applications\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/applications.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:applications:saas\",\"text\":\"Shared\",\"row\":\"applications\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network-controls.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:network-controls:onprem\",\"text\":\"Customer\",\"row\":\"network-controls\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network-controls.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:network-controls:iaas\",\"text\":\"Customer\",\"row\":\"network-controls\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network-controls.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:network-controls:paas\",\"text\":\"Shared\",\"row\":\"network-controls\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network-controls.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:network-controls:saas\",\"text\":\"Microsoft\",\"row\":\"network-controls\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/os.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:os:onprem\",\"text\":\"Customer\",\"row\":\"os\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/os.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:os:iaas\",\"text\":\"Customer\",\"row\":\"os\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/os.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:os:paas\",\"text\":\"Microsoft\",\"row\":\"os\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/os.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:os:saas\",\"text\":\"Microsoft\",\"row\":\"os\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/hosts.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:hosts:onprem\",\"text\":\"Customer\",\"row\":\"hosts\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/hosts.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:hosts:iaas\",\"text\":\"Microsoft\",\"row\":\"hosts\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/hosts.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:hosts:paas\",\"text\":\"Microsoft\",\"row\":\"hosts\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/hosts.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:hosts:saas\",\"text\":\"Microsoft\",\"row\":\"hosts\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:network:onprem\",\"text\":\"Customer\",\"row\":\"network\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:network:iaas\",\"text\":\"Microsoft\",\"row\":\"network\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:network:paas\",\"text\":\"Microsoft\",\"row\":\"network\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/network.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:network:saas\",\"text\":\"Microsoft\",\"row\":\"network\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/datacenter.onprem",
+			"seen": "{\"item\":\"azure:shared-responsibility:datacenter:onprem\",\"text\":\"Customer\",\"row\":\"datacenter\",\"col\":\"onprem\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/datacenter.iaas",
+			"seen": "{\"item\":\"azure:shared-responsibility:datacenter:iaas\",\"text\":\"Microsoft\",\"row\":\"datacenter\",\"col\":\"iaas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/datacenter.paas",
+			"seen": "{\"item\":\"azure:shared-responsibility:datacenter:paas\",\"text\":\"Microsoft\",\"row\":\"datacenter\",\"col\":\"paas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/shared-responsibility/datacenter.saas",
+			"seen": "{\"item\":\"azure:shared-responsibility:datacenter:saas\",\"text\":\"Microsoft\",\"row\":\"datacenter\",\"col\":\"saas\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/sources",
+			"seen": "[{\"title\":\"Data redundancy, Azure Storage (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/lrs.zones",
+			"seen": "{\"item\":\"azure:storage-redundancy:lrs:zones\",\"text\":\"No\",\"row\":\"lrs\",\"col\":\"zones\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/lrs.secondary",
+			"seen": "{\"item\":\"azure:storage-redundancy:lrs:secondary\",\"text\":\"No\",\"row\":\"lrs\",\"col\":\"secondary\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/lrs.datacenter",
+			"seen": "{\"item\":\"azure:storage-redundancy:lrs:datacenter\",\"text\":\"No\",\"row\":\"lrs\",\"col\":\"datacenter\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/lrs.region",
+			"seen": "{\"item\":\"azure:storage-redundancy:lrs:region\",\"text\":\"No\",\"row\":\"lrs\",\"col\":\"region\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/zrs.zones",
+			"seen": "{\"item\":\"azure:storage-redundancy:zrs:zones\",\"text\":\"Yes\",\"row\":\"zrs\",\"col\":\"zones\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/zrs.secondary",
+			"seen": "{\"item\":\"azure:storage-redundancy:zrs:secondary\",\"text\":\"No\",\"row\":\"zrs\",\"col\":\"secondary\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/zrs.datacenter",
+			"seen": "{\"item\":\"azure:storage-redundancy:zrs:datacenter\",\"text\":\"Yes\",\"row\":\"zrs\",\"col\":\"datacenter\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/zrs.region",
+			"seen": "{\"item\":\"azure:storage-redundancy:zrs:region\",\"text\":\"No\",\"row\":\"zrs\",\"col\":\"region\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/grs.zones",
+			"seen": "{\"item\":\"azure:storage-redundancy:grs:zones\",\"text\":\"No\",\"row\":\"grs\",\"col\":\"zones\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/grs.secondary",
+			"seen": "{\"item\":\"azure:storage-redundancy:grs:secondary\",\"text\":\"Yes\",\"row\":\"grs\",\"col\":\"secondary\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/grs.datacenter",
+			"seen": "{\"item\":\"azure:storage-redundancy:grs:datacenter\",\"text\":\"Yes\",\"concepts\":[\"failover\"],\"row\":\"grs\",\"col\":\"datacenter\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/grs.region",
+			"seen": "{\"item\":\"azure:storage-redundancy:grs:region\",\"text\":\"Yes\",\"concepts\":[\"failover\"],\"row\":\"grs\",\"col\":\"region\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/gzrs.zones",
+			"seen": "{\"item\":\"azure:storage-redundancy:gzrs:zones\",\"text\":\"Yes\",\"row\":\"gzrs\",\"col\":\"zones\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/gzrs.secondary",
+			"seen": "{\"item\":\"azure:storage-redundancy:gzrs:secondary\",\"text\":\"Yes\",\"row\":\"gzrs\",\"col\":\"secondary\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/gzrs.datacenter",
+			"seen": "{\"item\":\"azure:storage-redundancy:gzrs:datacenter\",\"text\":\"Yes\",\"row\":\"gzrs\",\"col\":\"datacenter\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-redundancy/gzrs.region",
+			"seen": "{\"item\":\"azure:storage-redundancy:gzrs:region\",\"text\":\"Yes\",\"concepts\":[\"failover\"],\"row\":\"gzrs\",\"col\":\"region\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/sources",
+			"seen": "[{\"title\":\"Access tiers for blob data (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview\"}]",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/hot.online",
+			"seen": "{\"item\":\"azure:storage-tiers:hot:online\",\"text\":\"Yes\",\"row\":\"hot\",\"col\":\"online\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/hot.minimum",
+			"seen": "{\"item\":\"azure:storage-tiers:hot:minimum\",\"text\":\"None\",\"row\":\"hot\",\"col\":\"minimum\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/cool.online",
+			"seen": "{\"item\":\"azure:storage-tiers:cool:online\",\"text\":\"Yes\",\"row\":\"cool\",\"col\":\"online\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/cool.minimum",
+			"seen": "{\"item\":\"azure:storage-tiers:cool:minimum\",\"text\":\"30 days\",\"row\":\"cool\",\"col\":\"minimum\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/cold.online",
+			"seen": "{\"item\":\"azure:storage-tiers:cold:online\",\"text\":\"Yes\",\"row\":\"cold\",\"col\":\"online\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/cold.minimum",
+			"seen": "{\"item\":\"azure:storage-tiers:cold:minimum\",\"text\":\"90 days\",\"row\":\"cold\",\"col\":\"minimum\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/archive.online",
+			"seen": "{\"item\":\"azure:storage-tiers:archive:online\",\"text\":\"No\",\"concepts\":[\"rehydration\"],\"row\":\"archive\",\"col\":\"online\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/storage-tiers/archive.minimum",
+			"seen": "{\"item\":\"azure:storage-tiers:archive:minimum\",\"text\":\"180 days\",\"row\":\"archive\",\"col\":\"minimum\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/static-website",
+			"seen": "{\"id\":\"static-website\",\"item\":\"task:static-website\",\"minutes\":25,\"where\":\"cloud\",\"source\":{\"title\":\"Guided project: Deploy a static website with Azure Blob Storage\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/guided-project-deploy-static-website-blob-storage/\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/new-employee-access",
+			"seen": "{\"id\":\"new-employee-access\",\"item\":\"task:new-employee-access\",\"minutes\":25,\"where\":\"cloud\",\"source\":{\"title\":\"Guided Project: Set up new employee access (Entra ID and RBAC)\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/guided-project-new-employee-access/\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/functions-endpoint",
+			"seen": "{\"id\":\"functions-endpoint\",\"item\":\"task:functions-endpoint\",\"minutes\":25,\"where\":\"cloud\",\"source\":{\"title\":\"Guided project: Build a simple website endpoint with Azure Functions\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/guided-project-build-basic-website-endpoint-with-functions/\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/tags-and-locks",
+			"seen": "{\"id\":\"tags-and-locks\",\"item\":\"task:tags-and-locks\",\"minutes\":25,\"where\":\"cloud\",\"source\":{\"title\":\"Guided project: Organize and protect resources with tags and locks\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/guided-project-organize-resources-tags-locks/\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/cost-guardrails",
+			"seen": "{\"id\":\"cost-guardrails\",\"item\":\"task:cost-guardrails\",\"minutes\":25,\"where\":\"cloud\",\"source\":{\"title\":\"Guided project: Set up cost guardrails in Azure\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/guided-project-cost-guardrails/\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "core/task/cloud-shell-cli",
+			"seen": "{\"id\":\"cloud-shell-cli\",\"item\":\"task:cloud-shell-cli\",\"minutes\":30,\"where\":\"cloud\",\"source\":{\"title\":\"Guided project: Manage Azure resources with Cloud Shell and the Azure CLI\",\"url\":\"https://learn.microsoft.com/en-us/training/modules/guided-project-manage-resources-cloud-shell-cli/\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "coverage/az-900",
+			"seen": "{\"id\":\"az-900\",\"title\":\"Microsoft Azure Fundamentals (AZ-900)\",\"version\":\"skills measured as of 2026-07-20\",\"source\":{\"title\":\"Study guide for Exam AZ-900 (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900\"},\"domains\":[{\"id\":\"concepts\",\"title\":\"Describe cloud concepts\",\"weight\":[25,30],\"competencies\":[{\"id\":\"cloud-computing\",\"title\":\"Describe cloud computing\",\"units\":[\"cloud-concepts\",\"shared-responsibility\"],\"tasks\":[]},{\"id\":\"benefits\",\"title\":\"Describe the benefits of using cloud services\",\"units\":[\"cloud-concepts\"],\"tasks\":[]},{\"id\":\"service-types\",\"title\":\"Describe cloud service types\",\"units\":[\"cloud-concepts\",\"shared-responsibility\"],\"tasks\":[]}]},{\"id\":\"architecture\",\"title\":\"Describe Azure architecture and services\",\"weight\":[35,40],\"competencies\":[{\"id\":\"core\",\"title\":\"Describe the core architectural components of Azure\",\"units\":[\"core-architecture\"],\"tasks\":[]},{\"id\":\"compute-networking\",\"title\":\"Describe Azure compute and networking services\",\"units\":[\"compute-and-storage-tools\",\"networking-and-security\"],\"tasks\":[\"functions-endpoint\"]},{\"id\":\"storage\",\"title\":\"Describe Azure storage services\",\"units\":[\"storage-redundancy\",\"storage-tiers\",\"compute-and-storage-tools\"],\"tasks\":[\"static-website\"]},{\"id\":\"identity\",\"title\":\"Describe Azure identity, access, and security\",\"units\":[\"networking-and-security\"],\"tasks\":[\"new-employee-access\"]}]},{\"id\":\"management\",\"title\":\"Describe Azure management and governance\",\"weight\":[30,35],\"competencies\":[{\"id\":\"cost\",\"title\":\"Describe cost management in Azure\",\"units\":[\"governance-and-monitoring\"],\"tasks\":[\"cost-guardrails\"]},{\"id\":\"governance\",\"title\":\"Describe features and tools in Azure for governance and compliance\",\"units\":[\"governance-and-monitoring\"],\"tasks\":[\"tags-and-locks\"]},{\"id\":\"managing\",\"title\":\"Describe features and tools for managing and deploying Azure resources\",\"units\":[\"governance-and-monitoring\",\"azure-cli\"],\"tasks\":[\"cloud-shell-cli\"]},{\"id\":\"monitoring\",\"title\":\"Describe monitoring tools in Azure\",\"units\":[\"governance-and-monitoring\"],\"tasks\":[]}]}]}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/pack",
+			"seen": "{\"title\":\"Microsoft Azure\",\"summary\":\"For AZ-900 first: the concepts, services and tools of Azure. Six guided projects are done in your own Azure account, which you clean up afterwards so they cost nothing or close to it.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/section/concepts",
+			"seen": "\"Describe cloud concepts\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/section/architecture",
+			"seen": "\"Describe Azure architecture and services\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/section/management",
+			"seen": "\"Describe Azure management and governance\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/cloud",
+			"seen": "\"Cloud computing and service types\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/architecture",
+			"seen": "\"Architecture, compute and networking\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/storage",
+			"seen": "\"Storage\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/management",
+			"seen": "\"Cost, governance and monitoring\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/lesson/cli",
+			"seen": "\"The Azure CLI\"",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/concept/failover",
+			"seen": "{\"title\":\"Account failover\",\"body\":\"GRS and GZRS keep a copy in a secondary region, so the data is durable if the primary is lost. Writing to it again needs an account failover, and reading from it without one needs RA-GRS or RA-GZRS.\",\"sources\":[{\"title\":\"Data redundancy, Azure Storage (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy\"}]}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/concept/rehydration",
+			"seen": "{\"title\":\"Rehydration\",\"body\":\"A blob in the archive tier can't be read or changed. It has to be rehydrated to the hot, cool or cold tier first, which can take up to 15 hours.\",\"sources\":[{\"title\":\"Access tiers for blob data (Microsoft Learn)\",\"url\":\"https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview\"}]}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/static-website",
+			"seen": "{\"title\":\"Host a static website from Blob Storage\",\"brief\":\"Turn on static website hosting in a storage account, publish a page, change it, and clean up.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/new-employee-access",
+			"seen": "{\"title\":\"Give a new employee least-privilege access\",\"brief\":\"Create a user and a group in Microsoft Entra ID, grant the group a role on one resource group, and check it can do no more.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/functions-endpoint",
+			"seen": "{\"title\":\"Serve an endpoint with Azure Functions\",\"brief\":\"Create a function app on a consumption plan with an HTTP-triggered function, call it, and read its logs.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/tags-and-locks",
+			"seen": "{\"title\":\"Tag resources and lock them\",\"brief\":\"Tag resources for cost tracking, put a delete lock on them, prove the lock stops a deletion, then remove it.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/cost-guardrails",
+			"seen": "{\"title\":\"Set up cost guardrails\",\"brief\":\"Tag for cost tracking, create a budget with alerts, and assign a policy that rejects resources breaking a rule.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/task/cloud-shell-cli",
+			"seen": "{\"title\":\"Manage resources from Cloud Shell\",\"brief\":\"Create, list, tag and query resources with az commands in Cloud Shell, formatting and filtering the output.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli",
+			"seen": "{\"title\":\"The Azure CLI\",\"summary\":\"Ten az commands, each missing the flag that makes it do the job. Run them in Cloud Shell or a terminal you're signed in to; the guided project for the CLI walks through most of them.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/location",
+			"seen": "{\"clue\":\"A resource group in West Europe\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/tags",
+			"seen": "{\"clue\":\"A resource group tagged as a development one\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/output",
+			"seen": "{\"clue\":\"Your resource groups, as a table\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/query",
+			"seen": "{\"clue\":\"Only the names of the regions\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/lock-type",
+			"seen": "{\"clue\":\"A lock that stops the resource group being deleted\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/image",
+			"seen": "{\"clue\":\"A Linux virtual machine from a marketplace image\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/sku",
+			"seen": "{\"clue\":\"A storage account whose data is spread across availability zones\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/access-tier",
+			"seen": "{\"clue\":\"Make cool the account's default tier, for new blobs and for existing ones with no tier set\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/offset",
+			"seen": "{\"clue\":\"What happened to the resource group in the past week\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/azure-cli/yes",
+			"seen": "{\"clue\":\"Delete the resource group without being asked to confirm\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts",
+			"seen": "{\"title\":\"Cloud concepts\",\"summary\":\"The models, service types and benefits the cloud is described with. Each tile gives a definition; the slip is the term.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/iaas",
+			"seen": "{\"clue\":\"You rent servers, storage and networks, and manage the operating system yourself\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/paas",
+			"seen": "{\"clue\":\"You deploy your application; the provider manages the operating system and runtime\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/saas",
+			"seen": "{\"clue\":\"You use finished software over the internet, such as email or office apps\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/public-cloud",
+			"seen": "{\"clue\":\"A provider's resources, shared by many customers over the internet\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/private-cloud",
+			"seen": "{\"clue\":\"Cloud resources used by a single organization only\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/hybrid-cloud",
+			"seen": "{\"clue\":\"Public cloud and your own datacenter, working together as one environment\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/consumption-based",
+			"seen": "{\"clue\":\"A pricing model: you're charged only for what you use, and stop paying when you stop using it\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/serverless",
+			"seen": "{\"clue\":\"You run code without managing any servers, and are billed when it runs\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/capex",
+			"seen": "{\"clue\":\"Spending up front on physical infrastructure you then own\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/opex",
+			"seen": "{\"clue\":\"Ongoing spending with nothing paid up front, accounted for in the period it's spent\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/high-availability",
+			"seen": "{\"clue\":\"A service stays up despite failures, measured as uptime in an SLA\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/reliability",
+			"seen": "{\"clue\":\"A system recovers from failures and keeps functioning\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/predictability",
+			"seen": "{\"clue\":\"You can know in advance what performance and costs will be\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/horizontal-scaling",
+			"seen": "{\"clue\":\"Adding more instances, such as virtual machines, to share the load\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/cloud-concepts/vertical-scaling",
+			"seen": "{\"clue\":\"Giving an existing virtual machine more CPU or memory\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools",
+			"seen": "{\"title\":\"Compute, hosting and moving data\",\"summary\":\"Where an application can run in Azure, and the tools for moving files and servers into it.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/vmss",
+			"seen": "{\"clue\":\"A group of identical virtual machines that scales out and in automatically\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/availability-set",
+			"seen": "{\"clue\":\"Spreads virtual machines across fault and update domains, so not all go down at once\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/avd",
+			"seen": "{\"clue\":\"Windows desktops and apps that run in Azure and are used from anywhere\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/app-service",
+			"seen": "{\"clue\":\"Hosts web apps and APIs without you managing the servers underneath\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/functions",
+			"seen": "{\"clue\":\"Runs small pieces of code in response to events, such as an HTTP request or a timer\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/aci",
+			"seen": "{\"clue\":\"Runs a container on demand, without managing virtual machines\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/azcopy",
+			"seen": "{\"clue\":\"A command-line tool that copies blobs and files to or from a storage account\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/storage-explorer",
+			"seen": "{\"clue\":\"A desktop app for browsing and managing the data in storage accounts\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/file-sync",
+			"seen": "{\"clue\":\"Keeps Azure Files and Windows file servers in sync, with a cache kept on-premises\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/migrate",
+			"seen": "{\"clue\":\"Discovers, assesses and moves on-premises servers, databases and apps to Azure\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/compute-and-storage-tools/data-box",
+			"seen": "{\"clue\":\"A physical device shipped to you, for moving large amounts of data offline\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture",
+			"seen": "{\"title\":\"Core architecture\",\"summary\":\"How Azure is laid out physically and how resources are organized.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/resource",
+			"seen": "{\"clue\":\"Anything you create in Azure: a virtual machine, a database, a virtual network\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/resource-group",
+			"seen": "{\"clue\":\"A container for resources that share a lifecycle; each resource is in exactly one\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/subscription",
+			"seen": "{\"clue\":\"A unit of billing and access control that holds resource groups\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/management-group",
+			"seen": "{\"clue\":\"Groups subscriptions so that policies and access apply to all of them\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/region",
+			"seen": "{\"clue\":\"A set of datacenters in one geographic area, connected by a low-latency network\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/region-pair",
+			"seen": "{\"clue\":\"Two regions in the same geography, at least 300 miles apart, updated one at a time\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/sovereign-region",
+			"seen": "{\"clue\":\"An instance of Azure isolated from the main one, for government or compliance needs\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/core-architecture/availability-zone",
+			"seen": "{\"clue\":\"A physically separate location within a region, with its own power, cooling and networking\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring",
+			"seen": "{\"title\":\"Governance, management and monitoring\",\"summary\":\"Keeping costs, rules and resources under control, and seeing what is happening.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/policy",
+			"seen": "{\"clue\":\"Enforces rules on resources, such as allowed regions, and reports what doesn't comply\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/lock",
+			"seen": "{\"clue\":\"Stops a resource from being deleted or changed by mistake\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/tags",
+			"seen": "{\"clue\":\"Name and value pairs on resources, used to organize them and group their costs\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/purview",
+			"seen": "{\"clue\":\"Discovers, classifies and governs data across your whole estate\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/arc",
+			"seen": "{\"clue\":\"Manages servers and Kubernetes clusters outside Azure from Azure\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/arm-templates",
+			"seen": "{\"clue\":\"JSON files that declare the resources to deploy, so a deployment can be repeated\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/cloud-shell",
+			"seen": "{\"clue\":\"A shell in the browser with the Azure CLI and Azure PowerShell already set up\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/advisor",
+			"seen": "{\"clue\":\"Personalized recommendations for reliability, security, performance and cost\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/service-health",
+			"seen": "{\"clue\":\"Tells you about Azure incidents and planned maintenance that affect your resources\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/monitor",
+			"seen": "{\"clue\":\"Collects metrics and logs from your resources and alerts on them\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/log-analytics",
+			"seen": "{\"clue\":\"Where you write queries over the log data that monitoring collects\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/app-insights",
+			"seen": "{\"clue\":\"Monitors the performance and usage of a web application\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/pricing-calculator",
+			"seen": "{\"clue\":\"Estimates what services will cost before you deploy them\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/governance-and-monitoring/cost-management",
+			"seen": "{\"clue\":\"Reports on what you have spent, and sets budgets with alerts\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security",
+			"seen": "{\"title\":\"Networking, identity and security\",\"summary\":\"Connecting to Azure, and deciding who gets in and how they are protected.\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/expressroute",
+			"seen": "{\"clue\":\"A private connection from your network to Azure that doesn't cross the public internet\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/vpn-gateway",
+			"seen": "{\"clue\":\"Sends encrypted traffic between your network and Azure over the public internet\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/dns",
+			"seen": "{\"clue\":\"Hosts the name records of your domains on Azure's infrastructure\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/peering",
+			"seen": "{\"clue\":\"Connects two virtual networks so traffic between them stays on Microsoft's backbone\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/private-endpoint",
+			"seen": "{\"clue\":\"Gives a service a private IP address inside your virtual network\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/entra-id",
+			"seen": "{\"clue\":\"Microsoft's cloud identity service: users, groups and sign-in\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/sso",
+			"seen": "{\"clue\":\"One sign-in gives access to many applications\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/mfa",
+			"seen": "{\"clue\":\"Sign-in asks for a second proof, such as a code on your phone\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/passwordless",
+			"seen": "{\"clue\":\"Signing in with Windows Hello, an authenticator app or a security key, with no password\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/conditional-access",
+			"seen": "{\"clue\":\"Allows, blocks or challenges a sign-in based on signals such as location or device\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/rbac",
+			"seen": "{\"clue\":\"Gives a user or group a role, such as Reader, at a scope such as a resource group\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/zero-trust",
+			"seen": "{\"clue\":\"Assume breach, and verify every request explicitly, whatever network it comes from\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/defense-in-depth",
+			"seen": "{\"clue\":\"Layers of protection, so that no single failure exposes the data\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/networking-and-security/defender",
+			"seen": "{\"clue\":\"Assesses security posture and protects workloads in Azure, on-premises and other clouds\"}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/shared-responsibility",
+			"seen": "{\"title\":\"Shared responsibility\",\"summary\":\"Who is responsible for each part of the stack, from your own datacenter to SaaS, as Microsoft's responsibility matrix gives it.\",\"headers\":{\"data\":\"Customer data\",\"configurations\":\"Configurations and settings\",\"identities\":\"Identities and users\",\"devices\":\"Client devices\",\"applications\":\"Applications\",\"network-controls\":\"Network controls\",\"os\":\"Operating system\",\"hosts\":\"Physical hosts\",\"network\":\"Physical network\",\"datacenter\":\"Physical datacenter\",\"onprem\":\"On-premises\",\"iaas\":\"IaaS\",\"paas\":\"PaaS\",\"saas\":\"SaaS\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/storage-redundancy",
+			"seen": "{\"title\":\"Storage redundancy\",\"summary\":\"How each redundancy option keeps copies of a storage account's data, and which outages the data survives.\",\"headers\":{\"lrs\":\"LRS\",\"zrs\":\"ZRS\",\"grs\":\"GRS\",\"gzrs\":\"GZRS\",\"zones\":\"Across availability zones in the primary region\",\"secondary\":\"Copied to a secondary region\",\"datacenter\":\"Durable if a whole datacenter is lost\",\"region\":\"Durable if the primary region is lost\"}}",
+			"verdict": "ok"
+		},
+		{
+			"key": "en/storage-tiers",
+			"seen": "{\"title\":\"Blob access tiers\",\"summary\":\"The access tiers for blob data, whether each can be read right away, and how long data should stay in it to avoid an early deletion charge.\",\"headers\":{\"hot\":\"Hot\",\"cool\":\"Cool\",\"cold\":\"Cold\",\"archive\":\"Archive\",\"online\":\"Online\",\"minimum\":\"Minimum retention\"}}",
+			"verdict": "ok"
+		}
+	]
+}

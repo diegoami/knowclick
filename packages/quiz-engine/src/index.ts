@@ -78,6 +78,45 @@ function replaceItem(session: QuizSession, id: string, next: QuizItemState): Qui
 	return { items: session.items.map((item) => (item.cell.id === id ? next : item)) };
 }
 
+/** How a typed answer is compared: spaces trimmed and collapsed, and case ignored
+ * only when the unit says case is not the answer (names, not flags or fields). */
+export function normalizeTyped(text: string, caseInsensitive = false): string {
+	const spaced = text.trim().replace(/\s+/g, ' ');
+	return caseInsensitive ? spaced.toLowerCase() : spaced;
+}
+
+/**
+ * One typed answer for the cell `cellId`. A match fills the cell. Anything else is
+ * the cell's one attempt: it resolves as 'revealed', as a wrong drop does. An empty
+ * answer, or one for a cell that isn't open, is ignored.
+ */
+export function attemptTyped(
+	session: QuizSession,
+	cellId: string,
+	typed: string,
+	caseInsensitive = false
+): { session: QuizSession; outcome: DropOutcome } {
+	const target = session.items.find((item) => item.cell.id === cellId);
+	const answer = normalizeTyped(typed, caseInsensitive);
+	if (!target || target.status !== 'pending' || answer === '') {
+		return { session, outcome: { kind: 'ignored' } };
+	}
+	if (answer === normalizeTyped(target.cell.text, caseInsensitive)) {
+		return {
+			session: replaceItem(session, cellId, { ...target, status: 'correct' }),
+			outcome: { kind: 'correct', cellId }
+		};
+	}
+	return {
+		session: replaceItem(session, cellId, {
+			...target,
+			status: 'revealed',
+			errors: target.errors + 1
+		}),
+		outcome: { kind: 'revealed', cellId, droppedOnId: cellId }
+	};
+}
+
 export function pendingIds(session: QuizSession): string[] {
 	return session.items.filter((item) => item.status === 'pending').map((item) => item.cell.id);
 }

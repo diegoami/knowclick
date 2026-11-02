@@ -1,0 +1,56 @@
+{
+	"id": "core-architecture",
+	"caseInsensitive": true,
+	"layout": {
+		"type": "grid",
+		"size": 8
+	},
+	"sources": [
+		{
+			"title": "Describe the core architectural components of Azure (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/"
+		}
+	],
+	"cells": [
+		{
+			"id": "resource",
+			"item": "azure:resource",
+			"text": "resource"
+		},
+		{
+			"id": "resource-group",
+			"item": "azure:resource-group",
+			"text": "resource group"
+		},
+		{
+			"id": "subscription",
+			"item": "azure:subscription",
+			"text": "subscription"
+		},
+		{
+			"id": "management-group",
+			"item": "azure:management-group",
+			"text": "management group"
+		},
+		{
+			"id": "region",
+			"item": "azure:region",
+			"text": "region"
+		},
+		{
+			"id": "region-pair",
+			"item": "azure:region-pair",
+			"text": "region pair"
+		},
+		{
+			"id": "sovereign-region",
+			"item": "azure:sovereign-region",
+			"text": "sovereign region"
+		},
+		{
+			"id": "availability-zone",
+			"item": "azure:availability-zone",
+			"text": "availability zone"
+		}
+	]
+}

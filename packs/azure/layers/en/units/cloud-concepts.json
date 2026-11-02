@@ -1,0 +1,51 @@
+{
+	"title": "Cloud concepts",
+	"summary": "The models, service types and benefits the cloud is described with. Each tile gives a definition; the slip is the term.",
+	"cells": {
+		"iaas": {
+			"clue": "You rent servers, storage and networks, and manage the operating system yourself"
+		},
+		"paas": {
+			"clue": "You deploy your application; the provider manages the operating system and runtime"
+		},
+		"saas": {
+			"clue": "You use finished software over the internet, such as email or office apps"
+		},
+		"public-cloud": {
+			"clue": "A provider's resources, shared by many customers over the internet"
+		},
+		"private-cloud": {
+			"clue": "Cloud resources used by a single organization only"
+		},
+		"hybrid-cloud": {
+			"clue": "Public cloud and your own datacenter, working together as one environment"
+		},
+		"consumption-based": {
+			"clue": "A pricing model: you're charged only for what you use, and stop paying when you stop using it"
+		},
+		"serverless": {
+			"clue": "You run code without managing any servers, and are billed when it runs"
+		},
+		"capex": {
+			"clue": "Spending up front on physical infrastructure you then own"
+		},
+		"opex": {
+			"clue": "Ongoing spending with nothing paid up front, accounted for in the period it's spent"
+		},
+		"high-availability": {
+			"clue": "A service stays up despite failures, measured as uptime in an SLA"
+		},
+		"reliability": {
+			"clue": "A system recovers from failures and keeps functioning"
+		},
+		"predictability": {
+			"clue": "You can know in advance what performance and costs will be"
+		},
+		"horizontal-scaling": {
+			"clue": "Adding more instances, such as virtual machines, to share the load"
+		},
+		"vertical-scaling": {
+			"clue": "Giving an existing virtual machine more CPU or memory"
+		}
+	}
+}

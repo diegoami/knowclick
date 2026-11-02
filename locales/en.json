@@ -44,7 +44,7 @@
 	"task.level": "Level {level} of {top}",
 	"task.where.terminal": "Needs a terminal",
 	"task.where.cluster": "Needs a practice cluster",
-	"task.where.cloud": "Needs a cloud sandbox",
+	"task.where.cloud": "Needs your own cloud account",
 	"task.minutes": "aim for {minutes} min",
 	"task.due": "next due {date}",
 	"task.open": "Open the task",
@@ -62,5 +62,13 @@
 	"review.done": "All done for today.",
 	"review.remaining": "Boards left: {count}",
 	"review.tasks": "Tasks due again",
-	"review.tasksIntro": "Do each one again by hand, then say how it went."
+	"review.tasksIntro": "Do each one again by hand, then say how it went.",
+	"mode.label": "Answer by",
+	"mode.drag": "Drag",
+	"mode.type": "Type",
+	"type.label": "Type the answer for",
+	"type.gap": "gap {n} of {total}",
+	"type.check": "Check",
+	"type.notIt": "Not “{typed}”. The answer is:",
+	"type.hint": "Press Enter to check. Press another open place to answer it instead. Left: {count}."
 }

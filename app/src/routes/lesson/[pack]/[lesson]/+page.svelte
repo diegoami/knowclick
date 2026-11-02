@@ -7,7 +7,7 @@
 	import { t } from '$lib/locale.svelte';
 	import { unitHref } from '$lib/opening';
 	import TaskCard from '$lib/TaskCard.svelte';
-	import { dueCells, isStudied, setStudied, unitKnown, unitStarted } from '$lib/progress.svelte';
+	import { dueCount, isStudied, setStudied, unitKnown, unitStarted } from '$lib/progress.svelte';
 
 	let { data } = $props();
 
@@ -63,7 +63,7 @@
 		<h2>{t('lesson.exercises')}</h2>
 		<ul class="units">
 			{#each lesson.units as unit (unit.id)}
-				{@const due = dueCells(pack.id, unit).length}
+				{@const due = dueCount(pack.id, unit)}
 				<li>
 					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- unitHref resolves it -->
 					<a href={unitHref(pack.id, unit.id, unitStarted(pack.id, unit))}>

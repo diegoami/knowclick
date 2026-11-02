@@ -1,7 +1,8 @@
 // The learner's earned levels and studied lessons, kept reactive so every screen
 // follows an answer without reloading. The repository is the durable copy; this is
-// its mirror. Copied from LangClick2027 (591043e), with tasks added: a board's cells
-// are `recognise` cards and a task is a `practise` card, so each keeps its own level.
+// its mirror. Copied from LangClick2027 (591043e), with tasks added: a cell is a
+// `recognise` card when its slip is dragged and a `produce` card when its answer is
+// typed, and a task is a `practise` card, so each keeps its own level.
 
 import { isDue, rate, type Grade } from '@knowclick/srs';
 import type { Cell, LocalUnit, Task } from '@knowclick/pack-format';
@@ -40,9 +41,16 @@ export async function loadProgress(packId: string): Promise<void> {
 	studiedByPack[packId] = studied;
 }
 
-/** The earned level of one cell, 0 if it has never been answered. */
+/** The skills a board answer can be given in: dragging a slip, or typing. */
+export type AnswerSkill = Extract<Skill, 'recognise' | 'produce'>;
+
+/** The earned level of one cell: the stronger of dragging and typing, since typing
+ * is optional and a cell you recognise is learned. 0 if never answered. */
 export function levelOf(packId: string, cell: ItemRef): number {
-	return cardOf(packId, 'recognise', cell.item)?.cleanStreak ?? 0;
+	return Math.max(
+		cardOf(packId, 'recognise', cell.item)?.cleanStreak ?? 0,
+		cardOf(packId, 'produce', cell.item)?.cleanStreak ?? 0
+	);
 }
 
 export function unitLevels(packId: string, unit: LocalUnit): number[] {
@@ -55,16 +63,36 @@ export function unitKnown(packId: string, unit: LocalUnit): number {
 
 /** Whether the learner has answered anything in this unit yet. */
 export function unitStarted(packId: string, unit: LocalUnit): boolean {
-	return unit.cells.some((cell) => cardOf(packId, 'recognise', cell.item) !== undefined);
+	return unit.cells.some(
+		(cell) =>
+			cardOf(packId, 'recognise', cell.item) !== undefined ||
+			cardOf(packId, 'produce', cell.item) !== undefined
+	);
 }
 
-/** What is due for review in this unit. An item never answered isn't due: it's new,
- * and belongs to the quiz. */
-export function dueCells(packId: string, unit: LocalUnit, today = todayLocalDate()) {
+/** What is due for review in this unit, in one skill. An item never answered in that
+ * skill isn't due: it's new, and belongs to the quiz. */
+export function dueCells(
+	packId: string,
+	unit: LocalUnit,
+	today = todayLocalDate(),
+	skill: AnswerSkill = 'recognise'
+) {
 	return unit.cells.filter((cell) => {
-		const card = cardOf(packId, 'recognise', cell.item);
+		const card = cardOf(packId, skill, cell.item);
 		return card !== undefined && isDue(card, today);
 	});
+}
+
+/** How many cells of this unit are due in either skill, for counts on Home and a
+ * lesson. */
+export function dueCount(packId: string, unit: LocalUnit, today = todayLocalDate()): number {
+	return unit.cells.filter((cell) =>
+		(['recognise', 'produce'] as const).some((skill) => {
+			const card = cardOf(packId, skill, cell.item);
+			return card !== undefined && isDue(card, today);
+		})
+	).length;
 }
 
 async function record(packId: string, skill: Skill, item: string, grade: Grade): Promise<void> {
@@ -78,8 +106,13 @@ async function record(packId: string, skill: Skill, item: string, grade: Grade):
 }
 
 /** Records one answer on a board, in memory at once and then on disk. */
-export function recordAnswer(packId: string, cell: ItemRef, grade: Grade): Promise<void> {
-	return record(packId, 'recognise', cell.item, grade);
+export function recordAnswer(
+	packId: string,
+	cell: ItemRef,
+	grade: Grade,
+	skill: AnswerSkill = 'recognise'
+): Promise<void> {
+	return record(packId, skill, cell.item, grade);
 }
 
 /** Records how a task done by hand went, as the learner judged it. */

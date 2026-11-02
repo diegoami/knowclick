@@ -1,0 +1,75 @@
+{
+	"id": "compute-and-storage-tools",
+	"caseInsensitive": true,
+	"layout": {
+		"type": "grid",
+		"size": 11
+	},
+	"sources": [
+		{
+			"title": "Describe Azure compute services (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/"
+		},
+		{
+			"title": "Describe Azure storage services (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/"
+		}
+	],
+	"cells": [
+		{
+			"id": "vmss",
+			"item": "azure:vmss",
+			"text": "Virtual Machine Scale Sets"
+		},
+		{
+			"id": "availability-set",
+			"item": "azure:availability-set",
+			"text": "availability set"
+		},
+		{
+			"id": "avd",
+			"item": "azure:avd",
+			"text": "Azure Virtual Desktop"
+		},
+		{
+			"id": "app-service",
+			"item": "azure:app-service",
+			"text": "Azure App Service"
+		},
+		{
+			"id": "functions",
+			"item": "azure:functions",
+			"text": "Azure Functions"
+		},
+		{
+			"id": "aci",
+			"item": "azure:aci",
+			"text": "Azure Container Instances"
+		},
+		{
+			"id": "azcopy",
+			"item": "azure:azcopy",
+			"text": "AzCopy"
+		},
+		{
+			"id": "storage-explorer",
+			"item": "azure:storage-explorer",
+			"text": "Azure Storage Explorer"
+		},
+		{
+			"id": "file-sync",
+			"item": "azure:file-sync",
+			"text": "Azure File Sync"
+		},
+		{
+			"id": "migrate",
+			"item": "azure:migrate",
+			"text": "Azure Migrate"
+		},
+		{
+			"id": "data-box",
+			"item": "azure:data-box",
+			"text": "Azure Data Box"
+		}
+	]
+}

@@ -1,0 +1,114 @@
+{
+	"id": "azure",
+	"category": "certification",
+	"licence": "CC-BY-SA-4.0",
+	"formatVersion": 1,
+	"version": "0.1.0",
+	"holdsFor": [
+		{
+			"name": "AZ-900 skills measured",
+			"version": "2026-07-20"
+		},
+		{
+			"name": "Azure CLI",
+			"version": "2.91.0"
+		}
+	],
+	"checkedOn": "2026-11-02",
+	"explanations": ["en"],
+	"keywords": ["azure", "az-900", "ai-200", "entra"],
+	"sections": ["concepts", "architecture", "management"],
+	"lessons": [
+		{
+			"id": "cloud",
+			"section": "concepts",
+			"units": ["cloud-concepts", "shared-responsibility"],
+			"study": [
+				{
+					"kind": "course",
+					"title": "Introduction to Cloud Infrastructure: Describe cloud concepts",
+					"url": "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/"
+				},
+				{
+					"kind": "reference",
+					"title": "Study guide for Exam AZ-900",
+					"url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+				}
+			]
+		},
+		{
+			"id": "architecture",
+			"section": "architecture",
+			"units": ["core-architecture", "compute-and-storage-tools", "networking-and-security"],
+			"tasks": ["functions-endpoint", "new-employee-access"],
+			"study": [
+				{
+					"kind": "course",
+					"title": "Introduction to Cloud Infrastructure: Describe Azure architecture and services",
+					"url": "https://learn.microsoft.com/en-us/training/paths/azure-fundamentals-describe-azure-architecture-services/"
+				}
+			]
+		},
+		{
+			"id": "storage",
+			"section": "architecture",
+			"units": ["storage-redundancy", "storage-tiers"],
+			"tasks": ["static-website"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Data redundancy, Azure Storage",
+					"url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+				},
+				{
+					"kind": "docs",
+					"title": "Access tiers for blob data",
+					"url": "https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview"
+				}
+			]
+		},
+		{
+			"id": "management",
+			"section": "management",
+			"units": ["governance-and-monitoring"],
+			"tasks": ["tags-and-locks", "cost-guardrails"],
+			"study": [
+				{
+					"kind": "course",
+					"title": "Introduction to Cloud Infrastructure: Describe Azure management and governance",
+					"url": "https://learn.microsoft.com/en-us/training/paths/describe-azure-management-governance/"
+				},
+				{
+					"kind": "course",
+					"title": "Introduction to Cloud Infrastructure: Apply Azure skills in guided projects",
+					"url": "https://learn.microsoft.com/en-us/training/paths/introduction-cloud-infrastructure-apply-azure-skills-guided-projects/"
+				},
+				{
+					"kind": "reference",
+					"title": "AZ-900 practice assessment",
+					"url": "https://learn.microsoft.com/en-us/credentials/certifications/exams/az-900/practice/assessment?assessment-type=practice&assessmentId=23"
+				}
+			]
+		},
+		{
+			"id": "cli",
+			"section": "management",
+			"units": ["azure-cli"],
+			"tasks": ["cloud-shell-cli"],
+			"study": [
+				{
+					"kind": "reference",
+					"title": "Azure CLI reference",
+					"url": "https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest"
+				}
+			]
+		}
+	],
+	"verify": {
+		"guard": {
+			"run": "az account show >/dev/null 2>&1 && echo logged-in || echo logged-out",
+			"expect": "^logged-out$"
+		},
+		"version": "az version --query '\"azure-cli\"' -o tsv"
+	}
+}

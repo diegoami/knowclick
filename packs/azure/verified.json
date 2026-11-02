@@ -1,0 +1,56 @@
+{
+	"ranAgainst": "logged-out, 2.91.0",
+	"ranOn": "2026-11-01",
+	"entries": [
+		{
+			"key": "verify/azure-cli/location",
+			"seen": "{\"run\":\"az group create --help\",\"expect\":\"^\\\\s+--location(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/tags",
+			"seen": "{\"run\":\"az group create --help\",\"expect\":\"^\\\\s+--tags(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/output",
+			"seen": "{\"run\":\"az group list --help\",\"expect\":\"^\\\\s+--output(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/query",
+			"seen": "{\"run\":\"az account list-locations --help\",\"expect\":\"^\\\\s+--query(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/lock-type",
+			"seen": "{\"run\":\"az lock create --help\",\"expect\":\"^\\\\s+--lock-type(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/image",
+			"seen": "{\"run\":\"az vm create --help\",\"expect\":\"^\\\\s+--image(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/sku",
+			"seen": "{\"run\":\"az storage account create --help\",\"expect\":\"^\\\\s+--sku(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/access-tier",
+			"seen": "{\"run\":\"az storage account update --help\",\"expect\":\"^\\\\s+--access-tier(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/offset",
+			"seen": "{\"run\":\"az monitor activity-log list --help\",\"expect\":\"^\\\\s+--offset(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/azure-cli/yes",
+			"seen": "{\"run\":\"az group delete --help\",\"expect\":\"^\\\\s+--yes(\\\\s|$)\"}",
+			"ok": true
+		}
+	]
+}

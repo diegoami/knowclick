@@ -1,0 +1,119 @@
+{
+	"id": "azure-cli",
+	"layout": {
+		"type": "lines",
+		"size": 10
+	},
+	"sources": [
+		{
+			"title": "Azure CLI reference (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest"
+		},
+		{
+			"title": "Guided project: Manage Azure resources with Cloud Shell and the Azure CLI (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-manage-resources-cloud-shell-cli/"
+		}
+	],
+	"cells": [
+		{
+			"id": "location",
+			"item": "azure-cli:location",
+			"text": "--location",
+			"line": "az group create --name rg-demo ___ westeurope",
+			"verify": {
+				"run": "az group create --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "tags",
+			"item": "azure-cli:tags",
+			"text": "--tags",
+			"line": "az group create --name rg-demo --location westeurope ___ env=dev",
+			"verify": {
+				"run": "az group create --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "output",
+			"item": "azure-cli:output",
+			"text": "--output",
+			"line": "az group list ___ table",
+			"verify": {
+				"run": "az group list --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "query",
+			"item": "azure-cli:query",
+			"text": "--query",
+			"line": "az account list-locations ___ \"[].name\"",
+			"verify": {
+				"run": "az account list-locations --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "lock-type",
+			"item": "azure-cli:lock-type",
+			"text": "--lock-type",
+			"line": "az lock create --name keep --resource-group rg-demo ___ CanNotDelete",
+			"verify": {
+				"run": "az lock create --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "image",
+			"item": "azure-cli:image",
+			"text": "--image",
+			"line": "az vm create --resource-group rg-demo --name vm1 ___ Ubuntu2204 --generate-ssh-keys",
+			"verify": {
+				"run": "az vm create --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "sku",
+			"item": "azure-cli:sku",
+			"text": "--sku",
+			"line": "az storage account create --name stdemo4711 --resource-group rg-demo ___ Standard_ZRS",
+			"verify": {
+				"run": "az storage account create --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "access-tier",
+			"item": "azure-cli:access-tier",
+			"text": "--access-tier",
+			"line": "az storage account update --name stdemo4711 --resource-group rg-demo ___ Cool",
+			"verify": {
+				"run": "az storage account update --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "offset",
+			"item": "azure-cli:offset",
+			"text": "--offset",
+			"line": "az monitor activity-log list --resource-group rg-demo ___ 7d",
+			"verify": {
+				"run": "az monitor activity-log list --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		},
+		{
+			"id": "yes",
+			"item": "azure-cli:yes",
+			"text": "--yes",
+			"line": "az group delete --name rg-demo ___",
+			"verify": {
+				"run": "az group delete --help",
+				"expect": "^\\s+{text}(\\s|$)"
+			}
+		}
+	]
+}

@@ -38,6 +38,7 @@ import { todayLocalDate } from './progressRepository';
 import QuizView from './QuizView.svelte';
 import ReviewView from './ReviewView.svelte';
 import TaskCard from './TaskCard.svelte';
+import TypeQuizView from './TypeQuizView.svelte';
 
 const packManifest = pack as unknown as PackManifest;
 const course = courseText as CourseText;
@@ -340,5 +341,95 @@ describe('review', () => {
 		expect(document.querySelector('p')?.textContent).toContain('Nothing is due');
 		expect(document.querySelector('[data-cell-id]')).toBeNull();
 		expect(document.querySelector('[data-task-id]')).toBeNull();
+	});
+});
+
+describe('typing', () => {
+	const typeIn = async (text: string) => {
+		const input = document.querySelector<HTMLInputElement>('#typed-answer')!;
+		await userEvent.clear(input);
+		if (text) await userEvent.type(input, text);
+		await userEvent.keyboard('{Enter}');
+	};
+	const asked = () => document.querySelector<HTMLElement>('.target')?.dataset.cellId;
+
+	function startTyping(board = unit) {
+		forgetRound(packManifest.id, `${board.id}#type`);
+		return render(TypeQuizView, { pack: packManifest, unit: board });
+	}
+
+	it('asks the first open place in board order, and fills it when typed right', async () => {
+		startTyping();
+		expect(asked()).toBe('pods.short');
+		await typeIn('po');
+		expect(cellEl('pods.short').classList.contains('correct')).toBe(true);
+		expect(asked()).toBe('pods.api');
+	});
+
+	it('saves a typed answer as its own card, apart from dragging, and Known shows it', async () => {
+		startTyping();
+		await typeIn('po');
+		const cell = unit.cells.find((c) => c.id === 'pods.short')!;
+		expect(levelOf(packManifest.id, cell)).toBe(1);
+		expect(dueCells(packManifest.id, unit, undefined, 'recognise')).toEqual([]);
+
+		resetProgressMirror();
+		await loadProgress(packManifest.id);
+		expect(levelOf(packManifest.id, cell)).toBe(1);
+	});
+
+	it('reveals the answer on a wrong one, says what was typed, and moves on', async () => {
+		startTyping();
+		await typeIn('pod');
+		expect(cellEl('pods.short').classList.contains('revealed')).toBe(true);
+		expect(document.querySelector('aside')?.textContent).toContain('Not \u201cpod\u201d');
+		expect(asked()).toBe('pods.api');
+		expect(dueCells(packManifest.id, unit, undefined, 'produce').map((c) => c.id)).toEqual([
+			'pods.short'
+		]);
+	});
+
+	it('ignores an empty answer', async () => {
+		startTyping();
+		await typeIn('');
+		expect(asked()).toBe('pods.short');
+		expect(document.querySelector('.revealed')).toBeNull();
+	});
+
+	it('asks another open place when it is pressed', async () => {
+		startTyping();
+		await userEvent.click(cellEl('ingresses.short'));
+		expect(asked()).toBe('ingresses.short');
+		await typeIn('ing');
+		expect(cellEl('ingresses.short').classList.contains('correct')).toBe(true);
+	});
+
+	it('keeps case for flags and fields', async () => {
+		startTyping(lines);
+		await userEvent.click(cellEl('image'));
+		await typeIn('--IMAGE');
+		expect(cellEl('image').classList.contains('revealed')).toBe(true);
+	});
+
+	it('ignores case only where the unit says its answers are names', async () => {
+		const names = { ...unit, id: 'names', caseInsensitive: true };
+		startTyping(names);
+		await typeIn('PO');
+		expect(cellEl('pods.short').classList.contains('correct')).toBe(true);
+	});
+
+	it('asks a code board gap by gap, in the order of the code', async () => {
+		startTyping(code);
+		expect(asked()).toBe('apiVersion');
+		await typeIn('apps/v1');
+		expect(asked()).toBe('selector');
+	});
+
+	it('reviews by typing only what is due for typing', async () => {
+		await recordAnswer(packManifest.id, { item: 'resource:pods:short' }, 'again', 'produce');
+		await recordAnswer(packManifest.id, { item: 'resource:services:short' }, 'again');
+		render(ReviewView, { pack: packManifest, units: [unit], tasks, mode: 'type' });
+		expect(asked()).toBe('pods.short');
+		expect(cellEl('services.short').classList.contains('given')).toBe(true);
 	});
 });

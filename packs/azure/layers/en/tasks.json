@@ -1,0 +1,26 @@
+{
+	"static-website": {
+		"title": "Host a static website from Blob Storage",
+		"brief": "Turn on static website hosting in a storage account, publish a page, change it, and clean up."
+	},
+	"new-employee-access": {
+		"title": "Give a new employee least-privilege access",
+		"brief": "Create a user and a group in Microsoft Entra ID, grant the group a role on one resource group, and check it can do no more."
+	},
+	"functions-endpoint": {
+		"title": "Serve an endpoint with Azure Functions",
+		"brief": "Create a function app on a consumption plan with an HTTP-triggered function, call it, and read its logs."
+	},
+	"tags-and-locks": {
+		"title": "Tag resources and lock them",
+		"brief": "Tag resources for cost tracking, put a delete lock on them, prove the lock stops a deletion, then remove it."
+	},
+	"cost-guardrails": {
+		"title": "Set up cost guardrails",
+		"brief": "Tag for cost tracking, create a budget with alerts, and assign a policy that rejects resources breaking a rule."
+	},
+	"cloud-shell-cli": {
+		"title": "Manage resources from Cloud Shell",
+		"brief": "Create, list, tag and query resources with az commands in Cloud Shell, formatting and filtering the output."
+	}
+}
