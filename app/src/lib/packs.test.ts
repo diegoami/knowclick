@@ -108,7 +108,10 @@ describe.each(packIds)('pack %s', (packId) => {
 	});
 
 	it('fails the validator when a task goes missing', () => {
-		if (tasks.length === 0) return;
+		if (tasks.length === 0) {
+			expect(manifest.lessons.flatMap((lesson) => lesson.tasks ?? [])).toEqual([]);
+			return;
+		}
 		expect(validatePack(manifest, units, tasks.slice(1), layers)).not.toEqual([]);
 	});
 
@@ -126,7 +129,11 @@ describe.each(packIds)('pack %s', (packId) => {
 		'unit %s fails verification once an answer changes',
 		(_id, unit) => {
 			const jobs = verifyJobs(units);
-			if (!jobs.some((job) => job.key.startsWith(`verify/${unit.id}`))) return;
+			// A unit with nothing to run has nothing to void; it must really have no verify.
+			if (!jobs.some((job) => job.key.startsWith(`verify/${unit.id}`))) {
+				expect(unit.verify?.run ?? unit.cells.find((cell) => cell.verify)).toBeUndefined();
+				return;
+			}
 			const changed = {
 				...unit,
 				cells: unit.cells.map((cell, i) => (i === 0 ? { ...cell, text: `${cell.text}x` } : cell))

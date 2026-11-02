@@ -1,0 +1,133 @@
+{
+	"id": "storage-redundancy",
+	"caseInsensitive": true,
+	"dealAll": true,
+	"layout": {
+		"type": "table",
+		"rows": ["lrs", "zrs", "grs", "gzrs"],
+		"columns": ["zones", "secondary", "datacenter", "region"]
+	},
+	"sources": [
+		{
+			"title": "Data redundancy, Azure Storage (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+		}
+	],
+	"cells": [
+		{
+			"id": "lrs.zones",
+			"item": "azure:storage-redundancy:lrs:zones",
+			"text": "No",
+			"row": "lrs",
+			"col": "zones"
+		},
+		{
+			"id": "lrs.secondary",
+			"item": "azure:storage-redundancy:lrs:secondary",
+			"text": "No",
+			"row": "lrs",
+			"col": "secondary"
+		},
+		{
+			"id": "lrs.datacenter",
+			"item": "azure:storage-redundancy:lrs:datacenter",
+			"text": "No",
+			"row": "lrs",
+			"col": "datacenter"
+		},
+		{
+			"id": "lrs.region",
+			"item": "azure:storage-redundancy:lrs:region",
+			"text": "No",
+			"row": "lrs",
+			"col": "region"
+		},
+		{
+			"id": "zrs.zones",
+			"item": "azure:storage-redundancy:zrs:zones",
+			"text": "Yes",
+			"row": "zrs",
+			"col": "zones"
+		},
+		{
+			"id": "zrs.secondary",
+			"item": "azure:storage-redundancy:zrs:secondary",
+			"text": "No",
+			"row": "zrs",
+			"col": "secondary"
+		},
+		{
+			"id": "zrs.datacenter",
+			"item": "azure:storage-redundancy:zrs:datacenter",
+			"text": "Yes",
+			"row": "zrs",
+			"col": "datacenter"
+		},
+		{
+			"id": "zrs.region",
+			"item": "azure:storage-redundancy:zrs:region",
+			"text": "No",
+			"row": "zrs",
+			"col": "region"
+		},
+		{
+			"id": "grs.zones",
+			"item": "azure:storage-redundancy:grs:zones",
+			"text": "No",
+			"row": "grs",
+			"col": "zones"
+		},
+		{
+			"id": "grs.secondary",
+			"item": "azure:storage-redundancy:grs:secondary",
+			"text": "Yes",
+			"row": "grs",
+			"col": "secondary"
+		},
+		{
+			"id": "grs.datacenter",
+			"item": "azure:storage-redundancy:grs:datacenter",
+			"text": "Yes",
+			"row": "grs",
+			"col": "datacenter",
+			"concepts": ["failover"]
+		},
+		{
+			"id": "grs.region",
+			"item": "azure:storage-redundancy:grs:region",
+			"text": "Yes",
+			"row": "grs",
+			"col": "region",
+			"concepts": ["failover"]
+		},
+		{
+			"id": "gzrs.zones",
+			"item": "azure:storage-redundancy:gzrs:zones",
+			"text": "Yes",
+			"row": "gzrs",
+			"col": "zones"
+		},
+		{
+			"id": "gzrs.secondary",
+			"item": "azure:storage-redundancy:gzrs:secondary",
+			"text": "Yes",
+			"row": "gzrs",
+			"col": "secondary"
+		},
+		{
+			"id": "gzrs.datacenter",
+			"item": "azure:storage-redundancy:gzrs:datacenter",
+			"text": "Yes",
+			"row": "gzrs",
+			"col": "datacenter"
+		},
+		{
+			"id": "gzrs.region",
+			"item": "azure:storage-redundancy:gzrs:region",
+			"text": "Yes",
+			"row": "gzrs",
+			"col": "region",
+			"concepts": ["failover"]
+		}
+	]
+}

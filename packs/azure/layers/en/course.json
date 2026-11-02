@@ -1,0 +1,54 @@
+{
+	"title": "Microsoft Azure",
+	"summary": "For AZ-900 first: the concepts, services and tools of Azure. Six guided projects are done in your own Azure account, which you clean up afterwards so they cost nothing or close to it.",
+	"sections": {
+		"concepts": {
+			"title": "Describe cloud concepts"
+		},
+		"architecture": {
+			"title": "Describe Azure architecture and services"
+		},
+		"management": {
+			"title": "Describe Azure management and governance"
+		}
+	},
+	"lessons": {
+		"cloud": {
+			"title": "Cloud computing and service types"
+		},
+		"architecture": {
+			"title": "Architecture, compute and networking"
+		},
+		"storage": {
+			"title": "Storage"
+		},
+		"management": {
+			"title": "Cost, governance and monitoring"
+		},
+		"cli": {
+			"title": "The Azure CLI"
+		}
+	},
+	"concepts": {
+		"failover": {
+			"title": "Account failover",
+			"body": "GRS and GZRS keep a copy in a secondary region, so the data is durable if the primary is lost. Writing to it again needs an account failover, and reading from it without one needs RA-GRS or RA-GZRS.",
+			"sources": [
+				{
+					"title": "Data redundancy, Azure Storage (Microsoft Learn)",
+					"url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+				}
+			]
+		},
+		"rehydration": {
+			"title": "Rehydration",
+			"body": "A blob in the archive tier can't be read or changed. It has to be rehydrated to the hot, cool or cold tier first, which can take up to 15 hours.",
+			"sources": [
+				{
+					"title": "Access tiers for blob data (Microsoft Learn)",
+					"url": "https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"title": "Shared responsibility",
+	"summary": "Who is responsible for each part of the stack, from your own datacenter to SaaS, as Microsoft's responsibility matrix gives it.",
+	"headers": {
+		"data": "Customer data",
+		"configurations": "Configurations and settings",
+		"identities": "Identities and users",
+		"devices": "Client devices",
+		"applications": "Applications",
+		"network-controls": "Network controls",
+		"os": "Operating system",
+		"hosts": "Physical hosts",
+		"network": "Physical network",
+		"datacenter": "Physical datacenter",
+		"onprem": "On-premises",
+		"iaas": "IaaS",
+		"paas": "PaaS",
+		"saas": "SaaS"
+	}
+}

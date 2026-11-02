@@ -55,6 +55,10 @@ curriculum.
 `text` is the answer, as compared and shown. A cell accepts a slip when their `text` is
 equal, so an answer that fills several cells (`v1`) needs nothing special.
 
+A unit with `caseInsensitive` compares typed answers without case. Set it on units whose
+answers are names (ExpressRoute, availability zone), never where case is the answer, as in
+flags, fields and code. Slips are dragged, so it changes nothing there.
+
 A unit with `dealAll` always offers every slip. Use it when the answers only mean
 something against each other, as the fields of one manifest do. Other units deal ten at
 a time.
@@ -71,13 +75,15 @@ cloud sandbox (`where`). The pack holds its `id`, `item`, the `minutes` to aim f
 its `source`; the prompt, setup and solution stay at the source. The layer gives it a
 `title` and a `brief`: one sentence, in our own words, of what it practises. The learner
 grades each run _again_, _hard_ or _good_, and the same scheduler as the boards brings it
-back. A `cloud` task is never run against a real account by the app or by an agent.
+back. A `cloud` task runs in the learner's own account and is never run against a real
+account by the app or by an agent. Prefer tasks that end by deleting what they create.
 
 ## Coverage
 
 `coverage/<exam>.json` holds an exam's published domains, their weights and
 competencies, in the curriculum's own words, and maps each competency to the units and
-tasks that practise it. Weights add up to 100, every task is mapped somewhere, and
+tasks that practise it. A weight is a number or, where the exam publishes a range, `[min,
+max]`. Weights must be able to add up to 100, every task is mapped somewhere, and
 `node scripts/coverage.mjs <pack>` prints what is covered and what isn't.
 
 ## Checks before anything ships
@@ -120,6 +126,14 @@ For the Kubernetes pack:
 kind create cluster --name knowclick --image kindest/node:v1.37.0   # once; needs kind v0.33+
 kubectl config use-context kind-knowclick
 node scripts/verify.mjs kubernetes
+```
+
+For the Azure pack, the Azure CLI must be installed and **logged out**: the guard runs
+`az account show` and refuses unless it fails. Each `az` line is checked with
+`az <command> --help`, which needs no account.
+
+```bash
+node scripts/verify.mjs azure
 ```
 
 ## Licence

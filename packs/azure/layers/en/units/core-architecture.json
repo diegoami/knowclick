@@ -1,0 +1,30 @@
+{
+	"title": "Core architecture",
+	"summary": "How Azure is laid out physically and how resources are organized.",
+	"cells": {
+		"resource": {
+			"clue": "Anything you create in Azure: a virtual machine, a database, a virtual network"
+		},
+		"resource-group": {
+			"clue": "A container for resources that share a lifecycle; each resource is in exactly one"
+		},
+		"subscription": {
+			"clue": "A unit of billing and access control that holds resource groups"
+		},
+		"management-group": {
+			"clue": "Groups subscriptions so that policies and access apply to all of them"
+		},
+		"region": {
+			"clue": "A set of datacenters in one geographic area, connected by a low-latency network"
+		},
+		"region-pair": {
+			"clue": "Two regions in the same geography, at least 300 miles apart, updated one at a time"
+		},
+		"sovereign-region": {
+			"clue": "An instance of Azure isolated from the main one, for government or compliance needs"
+		},
+		"availability-zone": {
+			"clue": "A physically separate location within a region, with its own power, cooling and networking"
+		}
+	}
+}

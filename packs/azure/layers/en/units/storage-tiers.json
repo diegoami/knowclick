@@ -1,0 +1,12 @@
+{
+	"title": "Blob access tiers",
+	"summary": "The access tiers for blob data, whether each can be read right away, and how long data should stay in it to avoid an early deletion charge.",
+	"headers": {
+		"hot": "Hot",
+		"cool": "Cool",
+		"cold": "Cold",
+		"archive": "Archive",
+		"online": "Online",
+		"minimum": "Minimum retention"
+	}
+}

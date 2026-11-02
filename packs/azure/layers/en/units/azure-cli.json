@@ -1,0 +1,36 @@
+{
+	"title": "The Azure CLI",
+	"summary": "Ten az commands, each missing the flag that makes it do the job. Run them in Cloud Shell or a terminal you're signed in to; the guided project for the CLI walks through most of them.",
+	"cells": {
+		"location": {
+			"clue": "A resource group in West Europe"
+		},
+		"tags": {
+			"clue": "A resource group tagged as a development one"
+		},
+		"output": {
+			"clue": "Your resource groups, as a table"
+		},
+		"query": {
+			"clue": "Only the names of the regions"
+		},
+		"lock-type": {
+			"clue": "A lock that stops the resource group being deleted"
+		},
+		"image": {
+			"clue": "A Linux virtual machine from a marketplace image"
+		},
+		"sku": {
+			"clue": "A storage account whose data is spread across availability zones"
+		},
+		"access-tier": {
+			"clue": "Make cool the account's default tier, for new blobs and for existing ones with no tier set"
+		},
+		"offset": {
+			"clue": "What happened to the resource group in the past week"
+		},
+		"yes": {
+			"clue": "Delete the resource group without being asked to confirm"
+		}
+	}
+}

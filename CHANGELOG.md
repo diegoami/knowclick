@@ -4,6 +4,17 @@ Each release's entry is its release notes (`docs/RELEASES.md`).
 
 ## Unreleased
 
+For learners:
+
+- A second pack, Microsoft Azure, for AZ-900 (skills measured as of July 20, 2026): nine
+  boards across cloud concepts, architecture and services, and management and governance,
+  among them the shared-responsibility matrix, storage redundancy and access tiers, and
+  ten Azure CLI commands.
+- Six guided projects from Microsoft Learn as tasks, done in your own Azure account.
+- Every board can be answered by typing as well as by dragging. Typing asks one place at
+  a time, in board order, and keeps its own level; Known shows the stronger of the two,
+  and Review asks in the mode you choose.
+
 For authors:
 
 - The giveaway check now finds an answer glued to punctuation in a line or clue, such
@@ -13,6 +24,10 @@ For authors:
   unverified without a word (#10).
 - `verify.mjs --stale` with nothing to run leaves the record alone, so its date stays the
   date of a real run.
+- Coverage weights can be the ranges an exam publishes, `[min, max]`.
+- A unit can set `caseInsensitive`, for typed answers that are names.
+- The Azure CLI lines are verified offline with `az <command> --help`, and only while `az`
+  is logged out.
 - Unit sources corrected after their first check: the resources table cites the kubectl
   overview's resource-types table, and the Deployment reference uses its current address.
 

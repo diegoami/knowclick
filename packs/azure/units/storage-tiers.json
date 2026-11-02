@@ -1,0 +1,75 @@
+{
+	"id": "storage-tiers",
+	"caseInsensitive": true,
+	"dealAll": true,
+	"layout": {
+		"type": "table",
+		"rows": ["hot", "cool", "cold", "archive"],
+		"columns": ["online", "minimum"]
+	},
+	"sources": [
+		{
+			"title": "Access tiers for blob data (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview"
+		}
+	],
+	"cells": [
+		{
+			"id": "hot.online",
+			"item": "azure:storage-tiers:hot:online",
+			"text": "Yes",
+			"row": "hot",
+			"col": "online"
+		},
+		{
+			"id": "hot.minimum",
+			"item": "azure:storage-tiers:hot:minimum",
+			"text": "None",
+			"row": "hot",
+			"col": "minimum"
+		},
+		{
+			"id": "cool.online",
+			"item": "azure:storage-tiers:cool:online",
+			"text": "Yes",
+			"row": "cool",
+			"col": "online"
+		},
+		{
+			"id": "cool.minimum",
+			"item": "azure:storage-tiers:cool:minimum",
+			"text": "30 days",
+			"row": "cool",
+			"col": "minimum"
+		},
+		{
+			"id": "cold.online",
+			"item": "azure:storage-tiers:cold:online",
+			"text": "Yes",
+			"row": "cold",
+			"col": "online"
+		},
+		{
+			"id": "cold.minimum",
+			"item": "azure:storage-tiers:cold:minimum",
+			"text": "90 days",
+			"row": "cold",
+			"col": "minimum"
+		},
+		{
+			"id": "archive.online",
+			"item": "azure:storage-tiers:archive:online",
+			"text": "No",
+			"row": "archive",
+			"col": "online",
+			"concepts": ["rehydration"]
+		},
+		{
+			"id": "archive.minimum",
+			"item": "azure:storage-tiers:archive:minimum",
+			"text": "180 days",
+			"row": "archive",
+			"col": "minimum"
+		}
+	]
+}

@@ -1,0 +1,62 @@
+[
+	{
+		"id": "static-website",
+		"item": "task:static-website",
+		"minutes": 25,
+		"where": "cloud",
+		"source": {
+			"title": "Guided project: Deploy a static website with Azure Blob Storage",
+			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-deploy-static-website-blob-storage/"
+		}
+	},
+	{
+		"id": "new-employee-access",
+		"item": "task:new-employee-access",
+		"minutes": 25,
+		"where": "cloud",
+		"source": {
+			"title": "Guided Project: Set up new employee access (Entra ID and RBAC)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-new-employee-access/"
+		}
+	},
+	{
+		"id": "functions-endpoint",
+		"item": "task:functions-endpoint",
+		"minutes": 25,
+		"where": "cloud",
+		"source": {
+			"title": "Guided project: Build a simple website endpoint with Azure Functions",
+			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-build-basic-website-endpoint-with-functions/"
+		}
+	},
+	{
+		"id": "tags-and-locks",
+		"item": "task:tags-and-locks",
+		"minutes": 25,
+		"where": "cloud",
+		"source": {
+			"title": "Guided project: Organize and protect resources with tags and locks",
+			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-organize-resources-tags-locks/"
+		}
+	},
+	{
+		"id": "cost-guardrails",
+		"item": "task:cost-guardrails",
+		"minutes": 25,
+		"where": "cloud",
+		"source": {
+			"title": "Guided project: Set up cost guardrails in Azure",
+			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-cost-guardrails/"
+		}
+	},
+	{
+		"id": "cloud-shell-cli",
+		"item": "task:cloud-shell-cli",
+		"minutes": 30,
+		"where": "cloud",
+		"source": {
+			"title": "Guided project: Manage Azure resources with Cloud Shell and the Azure CLI",
+			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-manage-resources-cloud-shell-cli/"
+		}
+	}
+]

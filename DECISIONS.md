@@ -12,7 +12,7 @@ are not repeated here.
 The CKAD is done in a terminal, under time pressure. A board tests whether you remember
 a flag or a field, which is necessary but not enough. So a lesson ends with tasks done by
 hand on a practice cluster, and the learner says how each went. The same scheduler as the
-boards brings them back: *again* the same day, *hard* sooner, *good* later. Self-grading
+boards brings them back: _again_ the same day, _hard_ sooner, _good_ later. Self-grading
 is honest enough because the learner is the only one who gains by it.
 
 ## The app holds a task's place, not its text (2026-10-31, #1)
@@ -76,3 +76,51 @@ server is on 5195 and Knowclick's browser tests on 5196, so all of them can run 
 
 As in Langclick. The Kubernetes and Microsoft Learn documentation are CC BY 4.0, which a
 share-alike pack can build on.
+
+## Typing is a second skill, not a harder drag (2026-11-02, #3)
+
+The CKAD is typed under time pressure, and producing an answer is different knowledge
+from recognising it on a slip. So a typed answer is saved as a `produce` card, apart from
+the `recognise` card dragging earns. Known shows the stronger of the two, because typing
+is optional and a cell you can recognise is learned. Each mode reviews only its own
+cards, so a miss in one doesn't bring the cell back in the other.
+
+Typing asks one open place at a time, in board order, so the board stays the map: you see
+where each answer goes. Case is ignored only on units that set `caseInsensitive`, for
+names such as ExpressRoute; in a flag or a field, case is the answer.
+
+## Published weight ranges are kept as ranges (2026-11-02, #3)
+
+Microsoft publishes AZ-900's weights as 25–30%, 35–40% and 30–35%. Picking a number
+inside each range would be inventing data, so a coverage weight can be `[min, max]`, and
+the validator only asks that the ranges can make 100.
+
+## AI-200 in place of AZ-204 (2026-11-02, #3)
+
+Microsoft retired AZ-204 on 2026-07-31. AI-200, Developing AI Cloud Solutions on Azure, is
+the developer exam now. It also overlaps the Kubernetes pack (AKS, containers) and the
+planned LangChain pack (vector search, RAG). It comes in its own milestone, in the same
+`azure` pack.
+
+## Azure content follows Microsoft's current pages, not memory (2026-11-02, #3)
+
+Two tables changed on the way. Microsoft revised its shared-responsibility matrix on
+2026-08-24, so its rows are now customer data, configurations, identities, client devices
+and so on, and client devices are shared under SaaS. The redundancy page no longer states
+how many copies each option keeps, so the redundancy board asks what the page does state:
+whether the data is spread across zones, copied to a secondary region, and durable when a
+datacenter or the primary region is lost.
+
+## Azure tasks are Microsoft's guided projects, in the learner's own account (2026-11-02, #3)
+
+Proposal #3 expected Learn exercises with a free sandbox. The AZ-900 series now ends with
+eight guided projects, written for it, that run in the learner's own Azure account and end
+by deleting what they created. Six are linked as tasks. The task label says what they
+need, "your own cloud account", and an agent never runs them.
+
+## The Azure CLI is verified logged out (2026-11-02, #3)
+
+`az <command> --help` proves a command and its flag exist in the installed CLI without
+reaching Azure. The flag must start a line of the help, so a flag that is only mentioned,
+or is a prefix of another, doesn't pass. The pack's guard refuses to run while `az` is
+logged in, so a verify run can't touch a subscription.

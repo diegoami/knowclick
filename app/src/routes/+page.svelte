@@ -115,6 +115,13 @@
 		font-size: 1.3rem;
 	}
 
+	/* Each pack is its own block, so a second one doesn't read as part of the first. */
+	section + section {
+		margin-top: 1.5rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--line);
+	}
+
 	.summary {
 		margin: 0.25rem 0;
 	}

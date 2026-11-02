@@ -1,0 +1,98 @@
+{
+	"id": "az-900",
+	"title": "Microsoft Azure Fundamentals (AZ-900)",
+	"version": "skills measured as of 2026-07-20",
+	"source": {
+		"title": "Study guide for Exam AZ-900 (Microsoft Learn)",
+		"url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+	},
+	"domains": [
+		{
+			"id": "concepts",
+			"title": "Describe cloud concepts",
+			"weight": [25, 30],
+			"competencies": [
+				{
+					"id": "cloud-computing",
+					"title": "Describe cloud computing",
+					"units": ["cloud-concepts", "shared-responsibility"],
+					"tasks": []
+				},
+				{
+					"id": "benefits",
+					"title": "Describe the benefits of using cloud services",
+					"units": ["cloud-concepts"],
+					"tasks": []
+				},
+				{
+					"id": "service-types",
+					"title": "Describe cloud service types",
+					"units": ["cloud-concepts", "shared-responsibility"],
+					"tasks": []
+				}
+			]
+		},
+		{
+			"id": "architecture",
+			"title": "Describe Azure architecture and services",
+			"weight": [35, 40],
+			"competencies": [
+				{
+					"id": "core",
+					"title": "Describe the core architectural components of Azure",
+					"units": ["core-architecture"],
+					"tasks": []
+				},
+				{
+					"id": "compute-networking",
+					"title": "Describe Azure compute and networking services",
+					"units": ["compute-and-storage-tools", "networking-and-security"],
+					"tasks": ["functions-endpoint"]
+				},
+				{
+					"id": "storage",
+					"title": "Describe Azure storage services",
+					"units": ["storage-redundancy", "storage-tiers", "compute-and-storage-tools"],
+					"tasks": ["static-website"]
+				},
+				{
+					"id": "identity",
+					"title": "Describe Azure identity, access, and security",
+					"units": ["networking-and-security"],
+					"tasks": ["new-employee-access"]
+				}
+			]
+		},
+		{
+			"id": "management",
+			"title": "Describe Azure management and governance",
+			"weight": [30, 35],
+			"competencies": [
+				{
+					"id": "cost",
+					"title": "Describe cost management in Azure",
+					"units": ["governance-and-monitoring"],
+					"tasks": ["cost-guardrails"]
+				},
+				{
+					"id": "governance",
+					"title": "Describe features and tools in Azure for governance and compliance",
+					"units": ["governance-and-monitoring"],
+					"tasks": ["tags-and-locks"]
+				},
+				{
+					"id": "managing",
+					"title": "Describe features and tools for managing and deploying Azure resources",
+					"units": ["governance-and-monitoring", "azure-cli"],
+					"tasks": ["cloud-shell-cli"]
+				},
+				{
+					"id": "monitoring",
+					"title": "Describe monitoring tools in Azure",
+					"units": ["governance-and-monitoring"],
+					"tasks": []
+				}
+			]
+		}
+	]
+}

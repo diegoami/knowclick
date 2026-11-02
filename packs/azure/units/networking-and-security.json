@@ -1,0 +1,90 @@
+{
+	"id": "networking-and-security",
+	"caseInsensitive": true,
+	"layout": {
+		"type": "grid",
+		"size": 14
+	},
+	"sources": [
+		{
+			"title": "Describe Azure networking services (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-azure-networking-services/"
+		},
+		{
+			"title": "Describe Azure identity, access, and security (Microsoft Learn)",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/"
+		}
+	],
+	"cells": [
+		{
+			"id": "expressroute",
+			"item": "azure:expressroute",
+			"text": "ExpressRoute"
+		},
+		{
+			"id": "vpn-gateway",
+			"item": "azure:vpn-gateway",
+			"text": "Azure VPN Gateway"
+		},
+		{
+			"id": "dns",
+			"item": "azure:dns",
+			"text": "Azure DNS"
+		},
+		{
+			"id": "peering",
+			"item": "azure:peering",
+			"text": "virtual network peering"
+		},
+		{
+			"id": "private-endpoint",
+			"item": "azure:private-endpoint",
+			"text": "private endpoint"
+		},
+		{
+			"id": "entra-id",
+			"item": "azure:entra-id",
+			"text": "Microsoft Entra ID"
+		},
+		{
+			"id": "sso",
+			"item": "azure:sso",
+			"text": "single sign-on"
+		},
+		{
+			"id": "mfa",
+			"item": "azure:mfa",
+			"text": "multifactor authentication"
+		},
+		{
+			"id": "passwordless",
+			"item": "azure:passwordless",
+			"text": "passwordless authentication"
+		},
+		{
+			"id": "conditional-access",
+			"item": "azure:conditional-access",
+			"text": "Conditional Access"
+		},
+		{
+			"id": "rbac",
+			"item": "azure:rbac",
+			"text": "Azure role-based access control"
+		},
+		{
+			"id": "zero-trust",
+			"item": "azure:zero-trust",
+			"text": "Zero Trust"
+		},
+		{
+			"id": "defense-in-depth",
+			"item": "azure:defense-in-depth",
+			"text": "defense in depth"
+		},
+		{
+			"id": "defender",
+			"item": "azure:defender",
+			"text": "Microsoft Defender for Cloud"
+		}
+	]
+}

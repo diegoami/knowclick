@@ -44,7 +44,7 @@
 	"task.level": "Level {level} of {top}",
 	"task.where.terminal": "Needs a terminal",
 	"task.where.cluster": "Needs a practice cluster",
-	"task.where.cloud": "Needs a cloud sandbox",
+	"task.where.cloud": "Needs your own cloud account",
 	"task.minutes": "aim for {minutes} min",
 	"task.due": "next due {date}",
 	"task.open": "Open the task",

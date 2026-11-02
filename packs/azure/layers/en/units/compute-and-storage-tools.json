@@ -1,0 +1,39 @@
+{
+	"title": "Compute, hosting and moving data",
+	"summary": "Where an application can run in Azure, and the tools for moving files and servers into it.",
+	"cells": {
+		"vmss": {
+			"clue": "A group of identical virtual machines that scales out and in automatically"
+		},
+		"availability-set": {
+			"clue": "Spreads virtual machines across fault and update domains, so not all go down at once"
+		},
+		"avd": {
+			"clue": "Windows desktops and apps that run in Azure and are used from anywhere"
+		},
+		"app-service": {
+			"clue": "Hosts web apps and APIs without you managing the servers underneath"
+		},
+		"functions": {
+			"clue": "Runs small pieces of code in response to events, such as an HTTP request or a timer"
+		},
+		"aci": {
+			"clue": "Runs a container on demand, without managing virtual machines"
+		},
+		"azcopy": {
+			"clue": "A command-line tool that copies blobs and files to or from a storage account"
+		},
+		"storage-explorer": {
+			"clue": "A desktop app for browsing and managing the data in storage accounts"
+		},
+		"file-sync": {
+			"clue": "Keeps Azure Files and Windows file servers in sync, with a cache kept on-premises"
+		},
+		"migrate": {
+			"clue": "Discovers, assesses and moves on-premises servers, databases and apps to Azure"
+		},
+		"data-box": {
+			"clue": "A physical device shipped to you, for moving large amounts of data offline"
+		}
+	}
+}

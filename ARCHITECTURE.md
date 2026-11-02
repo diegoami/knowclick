@@ -12,9 +12,9 @@ origin commit (591043e).
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `packs/<id>/`          | Authored content: manifest, units, tasks, layers, coverage, checks and the verify record. See `packs/README.md`            |
 | `locales/`             | Interface text, one file per language, outside the engine                                                                  |
-| `packages/pack-format` | The pack types, the validator, localizing a unit, code-board parsing, content checks, coverage and verify jobs. Pure      |
-| `packages/quiz-engine` | What a drop means: a round's cells, their status, the score. Pure, unchanged from Langclick                               |
-| `packages/srs`         | The scheduler, unchanged from Langclick and Geoclick: an earned level and a due date per card. Pure                       |
+| `packages/pack-format` | The pack types, the validator, localizing a unit, code-board parsing, content checks, coverage and verify jobs. Pure       |
+| `packages/quiz-engine` | What a drop means: a round's cells, their status, the score. Pure, unchanged from Langclick                                |
+| `packages/srs`         | The scheduler, unchanged from Langclick and Geoclick: an earned level and a due date per card. Pure                        |
 | `app/src/lib`          | The screens and their state                                                                                                |
 | `app/src/routes`       | Home, `/lesson/[pack]/[lesson]`, `/review/[pack]`, and `/unit/[pack]/[unit]` with `overview` and `quiz`                    |
 | `scripts/`             | Gates, version sync, `pack-check.mjs` (checker records), `verify.mjs` (runs answers in a sandbox), `coverage.mjs` (report) |
@@ -23,7 +23,7 @@ origin commit (591043e).
 
 Study, recall, practise, then repetition. A lesson page links to what to study and lets
 you mark it studied, which locks nothing. Its boards come next, then its tasks, done by
-hand on your own practice cluster and graded *again*, *hard* or *good* in a `TaskCard`.
+hand on your own practice cluster and graded _again_, _hard_ or _good_ in a `TaskCard`.
 `ReviewView` then deals what is due across every started board, one board at a time
 using `QuizView`'s `only`, followed by the tasks that are due again.
 
@@ -38,6 +38,10 @@ a cell shows; three screens fill that in through a snippet:
   each level.
 - `QuizView` shows answers as they resolve, and owns the tray and the pointer. The tray
   groups identical slips with a count, and a `dealAll` unit always offers every slip.
+- `TypeQuizView` is the other way to answer: one open place is asked at a time, in
+  `boardOrder`, and `attemptTyped` compares what was typed. `AnswerModeSwitch` chooses
+  between the two on the Quiz and Review pages, and `answerMode.svelte.ts` remembers the
+  choice per browser.
 
 **A round.** `createQuizSession` makes one item per cell, and the hand holds slips named by
 the id of the cell they were dealt for. Every drop goes through `attemptMatch`, which
@@ -46,8 +50,10 @@ slip's own cell and lowers its level; there is one attempt per slip per round. A
 progress lives in `quizRound.ts`, in memory only.
 
 **Progress.** Board answers and task grades both go through `rate` from `packages/srs` and
-are saved at once by `progressRepository.ts`, keyed by pack, item and skill: a cell is a
-`recognise` card, a task a `practise` card. `produce` is reserved for typed answers.
+are saved at once by `progressRepository.ts`, keyed by pack, item and skill: a dragged
+answer is a `recognise` card, a typed one a `produce` card, and a task a `practise` card.
+A cell's level is the stronger of its two answer cards, and Review asks the cards of the
+chosen mode.
 
 ## Languages
 
