@@ -3,6 +3,8 @@ import { playwright } from '@vitest/browser-playwright';
 import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 
+const pages = process.env.VITE_GITHUB_PAGES === '1';
+
 export default defineConfig({
 	// Other local apps hold 5173, 5187, 5193 and 5194 (Langclick's dev server and its browser tests).
 	server: { port: 5195, strictPort: true },
@@ -17,7 +19,10 @@ export default defineConfig({
 			// Fully static: no backend, and pages render in the browser only because
 			// everything they show is read from local progress. 200.html is the
 			// fallback a static host serves for any nested URL.
-			adapter: adapter({ fallback: '200.html' })
+			adapter: adapter({ fallback: pages ? 'index.html' : '200.html' }),
+			files: { routes: pages ? '.pages-routes/routes' : 'src/routes' },
+			router: { type: pages ? 'hash' : 'pathname' },
+			paths: { base: pages ? '/knowclick' : '' }
 		})
 	],
 	test: {
