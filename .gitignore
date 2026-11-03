@@ -23,3 +23,6 @@ vite.config.ts.timestamp-*
 
 # Test and gate output, recordings
 rendered/
+
+# Disposable route overlay for the Pages build
+.pages-routes/

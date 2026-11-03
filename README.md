@@ -41,3 +41,15 @@ Code: [MIT](LICENSE). Subject packs: [CC BY-SA 4.0](packs/LICENSE).
 - [packs/README.md](packs/README.md) — how to write a subject pack
 - [AGENTS.md](AGENTS.md) and [docs/RELEASES.md](docs/RELEASES.md) — how the
   project is run
+
+## Web interface on GitHub Pages
+
+[Open knowclick](https://diegoami.github.io/knowclick/). This is a work in progress.
+The Pages build uses hash navigation, so lessons, boards, quizzes and reloads
+work beneath `/knowclick/` without a server-side fallback. Progress stays in
+this browser; no account backend is required.
+
+Run `npm run build:pages` to build the static interface in `app/build/`.
+The workflow builds and publishes it on pushes to `main`; select **GitHub
+Actions** in Settings → Pages before the first deployment. The normal
+`npm run build` keeps its existing pathname routing. No release tag is created.

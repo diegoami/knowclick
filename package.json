@@ -19,7 +19,8 @@
 		"gates": "node scripts/gates.mjs",
 		"setup-hooks": "git config core.hooksPath .githooks",
 		"verify": "node scripts/verify.mjs",
-		"coverage": "node scripts/coverage.mjs"
+		"coverage": "node scripts/coverage.mjs",
+		"build:pages": "node scripts/build-pages.mjs"
 	},
 	"devDependencies": {
 		"@types/node": "^24",

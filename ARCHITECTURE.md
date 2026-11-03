@@ -81,3 +81,11 @@ stay out of what the app bundles.
 - `locales.test.ts` keeps interface languages in step.
 - `QuizView.svelte.test.ts` plays rounds, tasks and reviews in real Chromium against real
   pack data.
+
+## GitHub Pages
+
+`npm run build:pages` creates a disposable route overlay, retaining authored
+loaders and imports while removing server-rendering options incompatible with
+hash routing. The Pages-only Vite configuration uses the repository base path
+and `index.html` entry. Authored routes and the normal build remain unchanged.
+The workflow publishes only `app/build/`; content and progress remain local-first.
