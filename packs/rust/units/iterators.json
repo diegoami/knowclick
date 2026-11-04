@@ -3,14 +3,14 @@
 	"layout": {
 		"type": "code",
 		"code": [
-			"fn main() {",
+			"{{gap:function}} main() {",
 			"    let values = {{gap:vector}}[1_{{gap:number}}, 2, 3, 4];",
 			"    let doubled: {{gap:collection}}<i32> = values.{{gap:borrow}}()",
 			"        .{{gap:retain}}(|value| **value % 2 == 0)",
 			"        .{{gap:convert}}(|value| *value * 2)",
 			"        .{{gap:finish}}();",
 			"    {{gap:assertion}}(doubled, vec![4, 8]);",
-			"    assert_eq!(values.len(), 4);",
+			"    assert_eq!(values.{{gap:length}}(), 4);",
 			"}"
 		]
 	},
@@ -54,6 +54,16 @@
 			"id": "assertion",
 			"item": "rust:iterators:assertion",
 			"text": "assert_eq!"
+		},
+		{
+			"id": "function",
+			"item": "rust:iterators:function",
+			"text": "fn"
+		},
+		{
+			"id": "length",
+			"item": "rust:iterators:length",
+			"text": "len"
 		}
 	],
 	"sources": [

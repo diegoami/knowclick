@@ -25,6 +25,12 @@
 		},
 		"assertion": {
 			"clue": "Macro checking equality of the transformed and expected sequences"
+		},
+		"function": {
+			"clue": "Keyword introducing the program’s named entry function"
+		},
+		"length": {
+			"clue": "Method checking the original vector’s element count after borrowed iteration"
 		}
 	}
 }

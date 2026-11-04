@@ -3,16 +3,20 @@
 	"layout": {
 		"type": "code",
 		"code": [
-			"enum Job { Waiting, Ready }",
+			"enum Job { Waiting, Running, Ready, Failed }",
 			"fn label(job: Job) -> &'static str {",
 			"    match job {",
 			"        {{gap:waiting}},",
+			"        {{gap:running}},",
 			"        {{gap:ready}},",
+			"        {{gap:failed}},",
 			"    }",
 			"}",
 			"fn main() {",
 			"    assert_eq!(label(Job::Waiting), \"waiting\");",
+			"    assert_eq!(label(Job::Running), \"running\");",
 			"    assert_eq!(label(Job::Ready), \"ready\");",
+			"    assert_eq!(label(Job::Failed), \"failed\");",
 			"}"
 		]
 	},
@@ -26,6 +30,16 @@
 			"id": "ready",
 			"item": "rust:enums-match:ready",
 			"text": "Job::Ready => \"ready\""
+		},
+		{
+			"id": "running",
+			"item": "rust:enums-match:running",
+			"text": "Job::Running => \"running\""
+		},
+		{
+			"id": "failed",
+			"item": "rust:enums-match:failed",
+			"text": "Job::Failed => \"failed\""
 		}
 	],
 	"sources": [
@@ -39,5 +53,14 @@
 		"stdin": "{code}",
 		"expect": "^verified$"
 	},
-	"answerFormat": "code"
+	"answerFormat": "code",
+	"dealAll": true,
+	"distractors": [
+		"Job::Waiting => \"ready\"",
+		"Job::Ready => \"waiting\"",
+		"Job::Running => \"waiting\"",
+		"Job::Failed => \"ready\"",
+		"Job::Running -> \"running\"",
+		"Job::Failed -> \"failed\""
+	]
 }

@@ -121,3 +121,8 @@ existing tray and shuffles once per round. They do not enter the quiz session or
 progress store as items. A wrong extra choice is evaluated against its selected
 gap via the existing typed-answer logic. Real answer slips retain their existing
 matching, grouped counts and refill policy. Extra options remain to the end.
+
+Direct links to an authored recall variant resolve their parent lesson from the
+loaded course, preserving the lesson breadcrumb and practical tasks. A pack may
+contain only code boards; standalone-clue regression checks therefore include
+code layouts as well as grid and line layouts.

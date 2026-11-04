@@ -1,15 +1,36 @@
 {
 	"title": "Borrow a value without consuming it",
-	"summary": "Pass an owned string by shared reference, then prove its owner remains usable.",
+	"summary": "Borrow owned text without consuming it, inspect a shared slice, then grow it through an exclusive reference after the shared reference’s last use.",
 	"cells": {
 		"owned": {
 			"clue": "Owned, growable UTF-8 text type constructed from a string literal"
 		},
 		"borrow": {
-			"clue": "Operator that borrows the owned value for the function call"
+			"clue": "Operator creating a shared borrow for the byte-counting call"
 		},
 		"slice": {
 			"clue": "Unsized UTF-8 slice type behind the function parameter reference"
+		},
+		"lengthType": {
+			"clue": "Unsigned pointer-sized integer type returned by a string slice’s byte length"
+		},
+		"length": {
+			"clue": "Method reporting the number of bytes in a string slice"
+		},
+		"mutable": {
+			"clue": "Binding modifier needed before changing the owned string later"
+		},
+		"assertion": {
+			"clue": "Macro checking equality between the observed and expected byte counts"
+		},
+		"sharedType": {
+			"clue": "Shared reference type for a UTF-8 string slice"
+		},
+		"mutableType": {
+			"clue": "Exclusive reference type allowing a function to grow the owned UTF-8 buffer"
+		},
+		"append": {
+			"clue": "String method appending a single character"
 		}
 	}
 }
