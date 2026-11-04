@@ -3,7 +3,7 @@
 	"category": "certification",
 	"licence": "CC-BY-SA-4.0",
 	"formatVersion": 1,
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"holdsFor": [
 		{
 			"name": "AZ-900 skills measured",
@@ -12,12 +12,16 @@
 		{
 			"name": "Azure CLI",
 			"version": "2.91.0"
+		},
+		{
+			"name": "Bicep",
+			"version": "0.48.1"
 		}
 	],
-	"checkedOn": "2026-11-02",
+	"checkedOn": "2026-11-04",
 	"explanations": ["en"],
 	"keywords": ["azure", "az-900", "ai-200", "entra"],
-	"sections": ["concepts", "architecture", "management"],
+	"sections": ["concepts", "architecture", "management", "developer"],
 	"lessons": [
 		{
 			"id": "cloud",
@@ -100,6 +104,75 @@
 					"kind": "reference",
 					"title": "Azure CLI reference",
 					"url": "https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest"
+				}
+			]
+		},
+		{
+			"id": "developer-identity",
+			"section": "developer",
+			"units": ["developer-identity"],
+			"tasks": ["identity-design"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Managed identities overview",
+					"url": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
+				},
+				{
+					"kind": "docs",
+					"title": "Azure RBAC overview",
+					"url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
+				},
+				{
+					"kind": "docs",
+					"title": "Key Vault overview",
+					"url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview"
+				}
+			]
+		},
+		{
+			"id": "developer-bicep",
+			"section": "developer",
+			"units": ["developer-bicep"],
+			"tasks": ["compile-bicep"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Bicep overview",
+					"url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview"
+				},
+				{
+					"kind": "docs",
+					"title": "Bicep parameters",
+					"url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/parameters"
+				},
+				{
+					"kind": "docs",
+					"title": "Bicep outputs",
+					"url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/outputs"
+				}
+			]
+		},
+		{
+			"id": "developer-integration",
+			"section": "developer",
+			"units": ["developer-integration"],
+			"tasks": ["repeat-safe-handler"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Compare messaging services",
+					"url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/compare-messaging-services"
+				},
+				{
+					"kind": "docs",
+					"title": "Design for identical input",
+					"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent"
+				},
+				{
+					"kind": "docs",
+					"title": "HTTP trigger",
+					"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger"
 				}
 			]
 		}

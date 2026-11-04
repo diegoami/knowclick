@@ -136,6 +136,28 @@ For the Azure pack, the Azure CLI must be installed and **logged out**: the guar
 node scripts/verify.mjs azure
 ```
 
+## Local developer and language verification
+
+Rust boards use rustc 1.99.1 with edition 2024; the Azure developer code board
+uses Bicep 0.48.1. Put `rustc` and `bicep` on PATH, then run from the repository root:
+
+```bash
+node scripts/verify.mjs rust
+node --test scripts/verify-local-code.test.mjs
+```
+
+The helper compiles in fresh temporary directories, executes Rust assertions,
+checks the emitted Bicep template, and removes its temporary files. No login or
+deployment is performed. `node scripts/verify.mjs azure --stale` still requires
+the Azure CLI and its logged-out guard; it also requires Bicep for the new board.
+Original local task prompts and solutions are in `docs/courses/`.
+
+The new Azure and Rust content still needs two independent content checks.
+Runnable verification does not replace them; stale or missing checks must keep
+the content gate failing. To prepare a check record, an independent checker uses
+`node scripts/pack-check.mjs <pack> <checker>` and evaluates every pending target
+against the cited sources, without the author's rationale.
+
 ## Licence
 
 Each pack names its licence in its manifest. Packs here are [CC BY-SA 4.0](LICENSE).

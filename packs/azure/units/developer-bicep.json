@@ -1,0 +1,46 @@
+{
+	"id": "developer-bicep",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:input}} location string = resourceGroup().location",
+			"{{gap:result}} selectedLocation string = {{gap:value}}"
+		]
+	},
+	"cells": [
+		{
+			"id": "input",
+			"item": "azure:developer-bicep:input",
+			"text": "param"
+		},
+		{
+			"id": "value",
+			"item": "azure:developer-bicep:value",
+			"text": "location"
+		},
+		{
+			"id": "result",
+			"item": "azure:developer-bicep:result",
+			"text": "output"
+		}
+	],
+	"sources": [
+		{
+			"title": "Bicep overview",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview"
+		},
+		{
+			"title": "Bicep parameters",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/parameters"
+		},
+		{
+			"title": "Bicep outputs",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/outputs"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs bicep",
+		"stdin": "{code}",
+		"expect": "^compiled$"
+	}
+}

@@ -47,7 +47,7 @@
 					"id": "compute-networking",
 					"title": "Describe Azure compute and networking services",
 					"units": ["compute-and-storage-tools", "networking-and-security"],
-					"tasks": ["functions-endpoint"]
+					"tasks": ["functions-endpoint", "repeat-safe-handler"]
 				},
 				{
 					"id": "storage",
@@ -59,7 +59,7 @@
 					"id": "identity",
 					"title": "Describe Azure identity, access, and security",
 					"units": ["networking-and-security"],
-					"tasks": ["new-employee-access"]
+					"tasks": ["new-employee-access", "identity-design"]
 				}
 			]
 		},
@@ -84,7 +84,7 @@
 					"id": "managing",
 					"title": "Describe features and tools for managing and deploying Azure resources",
 					"units": ["governance-and-monitoring", "azure-cli"],
-					"tasks": ["cloud-shell-cli"]
+					"tasks": ["cloud-shell-cli", "compile-bicep"]
 				},
 				{
 					"id": "monitoring",

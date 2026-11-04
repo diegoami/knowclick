@@ -1,0 +1,48 @@
+{
+	"id": "developer-identity",
+	"layout": {
+		"type": "grid",
+		"size": 5
+	},
+	"cells": [
+		{
+			"id": "identity",
+			"item": "azure:developer-identity:identity",
+			"text": "managed identity"
+		},
+		{
+			"id": "role",
+			"item": "azure:developer-identity:role",
+			"text": "role assignment"
+		},
+		{
+			"id": "scope",
+			"item": "azure:developer-identity:scope",
+			"text": "scope"
+		},
+		{
+			"id": "vault",
+			"item": "azure:developer-identity:vault",
+			"text": "Key Vault"
+		},
+		{
+			"id": "least",
+			"item": "azure:developer-identity:least",
+			"text": "least privilege"
+		}
+	],
+	"sources": [
+		{
+			"title": "Managed identities overview",
+			"url": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
+		},
+		{
+			"title": "Azure RBAC overview",
+			"url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
+		},
+		{
+			"title": "Key Vault overview",
+			"url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview"
+		}
+	]
+}

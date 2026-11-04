@@ -1,0 +1,21 @@
+{
+	"title": "Identity without stored credentials",
+	"summary": "Separate application identity, authorization and secret storage; choose a narrow role and scope.",
+	"cells": {
+		"identity": {
+			"clue": "An application hosted on a supported resource needs an automatically managed Entra credential instead of a stored password"
+		},
+		"role": {
+			"clue": "The association of a principal, permission definition and scope that grants access through RBAC"
+		},
+		"scope": {
+			"clue": "The boundary, such as one storage account, at which an access grant applies"
+		},
+		"vault": {
+			"clue": "The service for storing secrets, keys and certificates rather than embedding them in source code"
+		},
+		"least": {
+			"clue": "The security principle of granting only the permissions required for a task"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"title": "Borrow a value without consuming it",
+	"summary": "Pass an owned string by shared reference, then prove its owner remains usable.",
+	"cells": {
+		"owned": {
+			"clue": "Owned, growable UTF-8 text type constructed from a string literal"
+		},
+		"borrow": {
+			"clue": "Operator that borrows the owned value for the function call"
+		},
+		"slice": {
+			"clue": "Unsized UTF-8 slice type behind the function parameter reference"
+		}
+	}
+}

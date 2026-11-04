@@ -1,0 +1,18 @@
+{
+	"title": "Transform a borrowed collection",
+	"summary": "Borrow a vector, retain even values, double them and collect a new vector while keeping the original.",
+	"cells": {
+		"borrow": {
+			"clue": "Method producing an iterator of shared references over the vector"
+		},
+		"retain": {
+			"clue": "Adapter retaining only elements for which the predicate is true"
+		},
+		"convert": {
+			"clue": "Adapter applying a transformation to each retained element"
+		},
+		"finish": {
+			"clue": "Consuming method building the destination vector from iterator items"
+		}
+	}
+}

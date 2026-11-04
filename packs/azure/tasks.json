@@ -58,5 +58,35 @@
 			"title": "Guided project: Manage Azure resources with Cloud Shell and the Azure CLI",
 			"url": "https://learn.microsoft.com/en-us/training/modules/guided-project-manage-resources-cloud-shell-cli/"
 		}
+	},
+	{
+		"id": "identity-design",
+		"item": "task:identity-design",
+		"minutes": 25,
+		"where": "terminal",
+		"source": {
+			"title": "Identity and least privilege lab",
+			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/azure-labs.md#identity-design"
+		}
+	},
+	{
+		"id": "compile-bicep",
+		"item": "task:compile-bicep",
+		"minutes": 25,
+		"where": "terminal",
+		"source": {
+			"title": "Infrastructure as code lab",
+			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/azure-labs.md#compile-bicep"
+		}
+	},
+	{
+		"id": "repeat-safe-handler",
+		"item": "task:repeat-safe-handler",
+		"minutes": 25,
+		"where": "terminal",
+		"source": {
+			"title": "Resilient application integration lab",
+			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/azure-labs.md#repeat-safe-handler"
+		}
 	}
 ]

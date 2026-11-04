@@ -1,0 +1,42 @@
+[
+	{
+		"id": "move-or-borrow",
+		"item": "task:move-or-borrow",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Values and ownership lab",
+			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#move-or-borrow"
+		}
+	},
+	{
+		"id": "job-transition",
+		"item": "task:job-transition",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Structs, enums and matching lab",
+			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#job-transition"
+		}
+	},
+	{
+		"id": "parse-count",
+		"item": "task:parse-count",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Option, Result and recoverable errors lab",
+			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#parse-count"
+		}
+	},
+	{
+		"id": "text-summary",
+		"item": "task:text-summary",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Collections and iterators lab",
+			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#text-summary"
+		}
+	}
+]
