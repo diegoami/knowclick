@@ -18,16 +18,20 @@
 		pack: PackManifest;
 		units: LocalUnit[];
 		tasks: LocalTask[];
-		mode?: AnswerMode;
+		mode?: AnswerMode | 'apply';
 	}
 
 	let { pack, units, tasks, mode = 'drag' }: Props = $props();
 
 	const queue = untrack(() =>
-		units
+		(mode === 'apply' ? [] : units.map((unit) => (mode === 'type' ? (unit.recall ?? unit) : unit)))
 			.map((unit) => ({
 				unit,
-				due: new Set(dueCells(pack.id, unit, undefined, skillOf(mode)).map((cell) => cell.item))
+				due: new Set(
+					dueCells(pack.id, unit, undefined, skillOf(mode === 'apply' ? 'drag' : mode)).map(
+						(cell) => cell.item
+					)
+				)
 			}))
 			.filter(({ due }) => due.size > 0)
 	);
@@ -41,7 +45,7 @@
 	const anything = queue.length + taskQueue.length > 0;
 </script>
 
-<p>{anything ? t('review.intro') : t('review.none')}</p>
+<p>{anything ? t('practice.review.intro') : t('review.none')}</p>
 
 {#if current}
 	<h2>{current.unit.title}</h2>

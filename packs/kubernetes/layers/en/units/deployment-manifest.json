@@ -3,37 +3,48 @@
 	"summary": "A Deployment with a readiness probe, resource requests, settings from a ConfigMap and a scratch volume. Fill in the field names: the place of each one in the manifest is what you are learning.",
 	"cells": {
 		"apiVersion": {
-			"note": "The API group and version of a Deployment."
+			"note": "The API group and version of a Deployment.",
+			"clue": "The API group and version string used by a Deployment"
 		},
 		"selector": {
-			"note": "Which Pods the Deployment owns. It must match the template's labels, and can't be changed later."
+			"note": "Which Pods the Deployment owns. It must match the template's labels, and can't be changed later.",
+			"clue": "Field at Deployment spec level whose matchLabels determine which Pods it manages"
 		},
 		"containerPort": {
-			"note": "The port the container listens on. Informational: leaving it out doesn't stop traffic."
+			"note": "The port the container listens on. Informational: leaving it out doesn't stop traffic.",
+			"clue": "Field inside a container’s ports list that declares its listening port number"
 		},
 		"envFrom": {
-			"note": "Turns every key of a ConfigMap into an environment variable at once."
+			"note": "Turns every key of a ConfigMap into an environment variable at once.",
+			"clue": "Container field that imports keys from a referenced ConfigMap as environment variables"
 		},
 		"readinessProbe": {
-			"note": "Decides whether the Pod receives Service traffic. Failing it never restarts the container."
+			"note": "Decides whether the Pod receives Service traffic. Failing it never restarts the container.",
+			"clue": "Container health-check field whose failure stops Service traffic without restarting the container"
 		},
 		"initialDelaySeconds": {
-			"note": "How long after the container starts before the first probe."
+			"note": "How long after the container starts before the first probe.",
+			"clue": "Probe field specifying how long to wait after the container starts before checks begin"
 		},
 		"requests": {
-			"note": "What the scheduler reserves for the container on a node."
+			"note": "What the scheduler reserves for the container on a node.",
+			"clue": "Child of resources containing the CPU and memory amounts used for scheduling"
 		},
 		"volumeMounts": {
-			"note": "Which of the Pod's volumes the container uses, and where."
+			"note": "Which of the Pod's volumes the container uses, and where.",
+			"clue": "Container field listing which named storage sources to attach and where"
 		},
 		"mountPath": {
-			"note": "The path inside the container where the volume appears."
+			"note": "The path inside the container where the volume appears.",
+			"clue": "Field on one storage attachment giving its absolute location inside the container"
 		},
 		"volumes": {
-			"note": "The Pod's volumes, declared once at Pod level, beside containers."
+			"note": "The Pod's volumes, declared once at Pod level, beside containers.",
+			"clue": "Pod-spec field listing storage sources available to its containers"
 		},
 		"emptyDir": {
-			"note": "A scratch volume that starts empty and lives as long as the Pod."
+			"note": "A scratch volume that starts empty and lives as long as the Pod.",
+			"clue": "Volume source type for initially empty temporary storage deleted when the Pod is removed"
 		}
 	}
 }

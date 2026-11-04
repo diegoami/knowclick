@@ -42,7 +42,7 @@ export async function loadProgress(packId: string): Promise<void> {
 }
 
 /** The skills a board answer can be given in: dragging a slip, or typing. */
-export type AnswerSkill = Extract<Skill, 'recognise' | 'produce'>;
+export type AnswerSkill = Extract<Skill, 'recognise' | 'produce' | 'assisted'>;
 
 /** The earned level of one cell: the stronger of dragging and typing, since typing
  * is optional and a cell you recognise is learned. 0 if never answered. */
@@ -51,6 +51,11 @@ export function levelOf(packId: string, cell: ItemRef): number {
 		cardOf(packId, 'recognise', cell.item)?.cleanStreak ?? 0,
 		cardOf(packId, 'produce', cell.item)?.cleanStreak ?? 0
 	);
+}
+
+/** Levels within one skill; assistance never contributes to unassisted mastery. */
+export function skillLevels(packId: string, unit: LocalUnit, skill: AnswerSkill): number[] {
+	return unit.cells.map((cell) => cardOf(packId, skill, cell.item)?.cleanStreak ?? 0);
 }
 
 export function unitLevels(packId: string, unit: LocalUnit): number[] {
@@ -87,7 +92,8 @@ export function dueCells(
 /** How many cells of this unit are due in either skill, for counts on Home and a
  * lesson. */
 export function dueCount(packId: string, unit: LocalUnit, today = todayLocalDate()): number {
-	return unit.cells.filter((cell) =>
+	const recall = unit.recall ?? unit;
+	return [...unit.cells, ...(unit.recall ? recall.cells : [])].filter((cell) =>
 		(['recognise', 'produce'] as const).some((skill) => {
 			const card = cardOf(packId, skill, cell.item);
 			return card !== undefined && isDue(card, today);

@@ -143,3 +143,23 @@ app's own language, but it is not part of this increment.
 Author execution and content review are separate evidence. No independent check
 is invented or signed by the author under a second name. Missing independent
 checks intentionally keep the content gate red and the work unmergeable.
+
+## Support decreases across all courses (2026-11-04, #17)
+
+The owner approved Guided, Recall and Apply as the general approach. Learning
+objectives determine the gaps: recognize small syntax choices, reconstruct
+larger expressions, then solve a practical problem. The existing static app
+supports local compiler-tested tasks and self-assessment, not browser-side
+execution of arbitrary submitted programs.
+
+Existing recognise/produce/practise cards keep their identities. Hints, revealed
+solutions and resumed rounds use a new assisted skill that cannot earn clean
+recall. Correct answers are hidden until the round ends to avoid revealing
+other answers. A wrong unassisted answer still resets its own recall progress.
+Recommendations are optional and require repeated clean success.
+
+A unit may reference a separate larger recall unit with new item IDs. This keeps
+recognizing a keyword distinct from reconstructing a full expression, without
+hard-coding a subject in the engine. Code reference answers compare tokens so
+formatting changes do not create false mistakes. Apply accepts the learner's
+implementation through its documented tests and honest self-assessment.

@@ -85,6 +85,16 @@ export function normalizeTyped(text: string, caseInsensitive = false): string {
 	return caseInsensitive ? spaced.toLowerCase() : spaced;
 }
 
+/** Preserve literal contents and token boundaries while ignoring code formatting.
+ * This checks reference-form recall, not arbitrary program equivalence. */
+export function normalizeCodeAnswer(text: string): string {
+	const tokens =
+		text.match(
+			/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])'|[A-Za-z_$][\w$]*|\d+(?:\.\d+)?|::|=>|->|&&|\|\||==|!=|<=|>=|[^\s]/g
+		) ?? [];
+	return tokens.join(' ');
+}
+
 /**
  * One typed answer for the cell `cellId`. A match fills the cell. Anything else is
  * the cell's one attempt: it resolves as 'revealed', as a wrong drop does. An empty
@@ -94,14 +104,18 @@ export function attemptTyped(
 	session: QuizSession,
 	cellId: string,
 	typed: string,
-	caseInsensitive = false
+	caseInsensitive = false,
+	code = false
 ): { session: QuizSession; outcome: DropOutcome } {
 	const target = session.items.find((item) => item.cell.id === cellId);
-	const answer = normalizeTyped(typed, caseInsensitive);
+	const normalize = code
+		? normalizeCodeAnswer
+		: (value: string) => normalizeTyped(value, caseInsensitive);
+	const answer = normalize(typed);
 	if (!target || target.status !== 'pending' || answer === '') {
 		return { session, outcome: { kind: 'ignored' } };
 	}
-	if (answer === normalizeTyped(target.cell.text, caseInsensitive)) {
+	if (answer === normalize(target.cell.text)) {
 		return {
 			session: replaceItem(session, cellId, { ...target, status: 'correct' }),
 			outcome: { kind: 'correct', cellId }

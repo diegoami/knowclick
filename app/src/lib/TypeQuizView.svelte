@@ -52,7 +52,19 @@
 		untrack(() => (only ? undefined : roundInProgress(pack.id, roundId)?.session) ?? newSession())
 	);
 	let askedId = $state<string | undefined>(untrack(() => pendingIds(session)[0]));
+	let assisted = $state(
+		untrack(() => (only ? false : (roundInProgress(pack.id, roundId)?.assisted ?? false)))
+	);
 	let typed = $state('');
+	const displayUnit = $derived<LocalUnit>(
+		unit.layout.type === 'code' || unit.layout.type === 'lines'
+			? {
+					...unit,
+					layout: { type: 'grid', size: unit.cells.length },
+					cells: unit.cells.map((cell) => ({ ...cell, line: undefined }))
+				}
+			: unit
+	);
 	let lastMiss = $state<{ cell: LocalCell; lead: string }>();
 	let wrongCell = $state<string>();
 	let wrongTimer: ReturnType<typeof setTimeout> | undefined;
@@ -79,7 +91,7 @@
 			return `${row}, ${column}`;
 		}
 		if (layout.type === 'code') {
-			return t('type.gap', { n: order.indexOf(cell) + 1, total: order.length });
+			return cell.clue ?? t('type.gap', { n: order.indexOf(cell) + 1, total: order.length });
 		}
 		return cell.clue ?? cell.line ?? '';
 	}
@@ -87,23 +99,30 @@
 	async function submit(event: SubmitEvent) {
 		event.preventDefault();
 		if (!askedId) return;
-		const result = attemptTyped(session, askedId, typed, unit.caseInsensitive);
+		const result = attemptTyped(
+			session,
+			askedId,
+			typed,
+			unit.caseInsensitive,
+			unit.answerFormat === 'code'
+		);
 		if (result.outcome.kind === 'ignored') return;
 		session = result.session;
 		const answered = unit.cells.find((cell) => cell.id === askedId);
 		if (result.outcome.kind === 'correct') {
 			lastMiss = undefined;
-			if (answered) void recordAnswer(pack.id, answered, 'good', 'produce');
+			if (answered) void recordAnswer(pack.id, answered, 'good', assisted ? 'assisted' : 'produce');
 		} else if (answered) {
-			void recordAnswer(pack.id, answered, 'again', 'produce');
+			void recordAnswer(pack.id, answered, 'again', assisted ? 'assisted' : 'produce');
 			lastMiss = { cell: answered, lead: t('type.notIt', { typed: typed.trim() }) };
 			flashWrong(answered.id);
+			assisted = true;
 		}
 		typed = '';
 		askedId = nextOpen(askedId);
 		if (!only) {
 			if (isSessionComplete(session)) forgetRound(pack.id, roundId);
-			else rememberRound(pack.id, roundId, { session, hand: [], size: 0 });
+			else rememberRound(pack.id, roundId, { session, hand: [], size: 0, assisted });
 		}
 		await tick();
 		input?.focus();
@@ -117,12 +136,24 @@
 
 	// The input is the whole point of this view, so it starts with the focus.
 	onMount(() => input?.focus());
-	onDestroy(() => clearTimeout(wrongTimer));
+	onDestroy(() => {
+		clearTimeout(wrongTimer);
+		if (!only && !isSessionComplete(session))
+			rememberRound(pack.id, roundId, { session, hand: [], size: 0, assisted: true });
+	});
+
+	function reveal() {
+		if (!asked) return;
+		assisted = true;
+		lastMiss = { cell: asked, lead: t('practice.revealed') };
+		if (!only) rememberRound(pack.id, roundId, { session, hand: [], size: 0, assisted });
+	}
 
 	function playAgain() {
 		session = newSession();
 		askedId = pendingIds(session)[0];
 		typed = '';
+		assisted = false;
 		lastMiss = undefined;
 		wrongCell = undefined;
 	}
@@ -135,12 +166,12 @@
 		return cell.id === askedId ? 'empty target' : 'empty pickable';
 	}
 
-	const isShown = (cell: LocalCell) => statusById.get(cell.id) !== 'pending';
+	const isShown = () => complete;
 </script>
 
 <Board
-	{unit}
-	spoken={(cell) => (isShown(cell) ? cell.text : t('cell.open'))}
+	unit={displayUnit}
+	spoken={(cell) => (isShown() ? cell.text : t('cell.open'))}
 	classOf={cellClass}
 	onpick={(cell) => {
 		if (statusById.get(cell.id) === 'pending') {
@@ -150,10 +181,11 @@
 	}}
 >
 	{#snippet face(cell)}
-		<CellFace {cell} showAnswer={isShown(cell)} inline={unit.layout.type === 'code'} />
+		<CellFace {cell} showAnswer={isShown()} inline={false} />
 	{/snippet}
 </Board>
 
+{#if assisted}<p class="assisted" role="status">{t('practice.assisted')}</p>{/if}
 {#if lastMiss}
 	<CellNote cell={lastMiss.cell} lead={lastMiss.lead} />
 {/if}
@@ -162,7 +194,9 @@
 	<section class="score" aria-live="polite">
 		<h2>{t('quiz.complete')}</h2>
 		<p>
-			{t('quiz.rightFirst', { right: score.perfect, total: score.total })}
+			{assisted
+				? t('practice.assisted.complete', { right: score.perfect, total: score.total })
+				: t('quiz.rightFirst', { right: score.perfect, total: score.total })}
 			{t('quiz.knownNow', { known: unitKnown(pack.id, unit), total: unit.cells.length })}
 		</p>
 		<div class="actions">
@@ -195,6 +229,8 @@
 			/>
 			<button type="submit" class="action">{t('type.check')}</button>
 		</div>
+		<button type="button" class="action quiet" onclick={reveal}>{t('practice.reveal')}</button>
+		<button type="button" class="action quiet" onclick={playAgain}>{t('practice.restart')}</button>
 		<p class="hint">{t('type.hint', { count: pendingIds(session).length })}</p>
 	</form>
 {/if}

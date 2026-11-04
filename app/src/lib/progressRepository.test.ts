@@ -25,6 +25,13 @@ describe('LocalStorageProgressRepository', () => {
 		vi.stubGlobal('localStorage', fakeStorage());
 	});
 
+	it('preserves assisted practice separately from existing recall cards', async () => {
+		await repository.saveCard('test', card('a', 'produce'));
+		await repository.saveCard('test', card('a', 'assisted'));
+		const saved = await new LocalStorageProgressRepository().getCards('test');
+		expect(saved.map((c) => c.skill).sort()).toEqual(['assisted', 'produce']);
+	});
+
 	it('reads nothing when nothing is saved', async () => {
 		expect(await repository.getCards('test')).toEqual([]);
 	});

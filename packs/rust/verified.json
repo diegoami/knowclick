@@ -3,6 +3,11 @@
 	"ranOn": "2026-11-04",
 	"entries": [
 		{
+			"key": "verify/enums-match",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"enum Job { Waiting, Ready }\\nfn label(job: Job) -> &'static str {\\n    match job {\\n        Job::Waiting => \\\"waiting\\\",\\n        Job::Ready => \\\"ready\\\",\\n    }\\n}\\nfn main() {\\n    assert_eq!(label(Job::Waiting), \\\"waiting\\\");\\n    assert_eq!(label(Job::Ready), \\\"ready\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
 			"key": "verify/enums",
 			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"enum Job { Waiting, Ready }\\nfn label(job: Job) -> &'static str {\\n    match job {\\n        Job::Waiting => \\\"waiting\\\",\\n        Job::Ready => \\\"ready\\\",\\n    }\\n}\\nfn main() {\\n    assert_eq!(label(Job::Waiting), \\\"waiting\\\");\\n    assert_eq!(label(Job::Ready), \\\"ready\\\");\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true

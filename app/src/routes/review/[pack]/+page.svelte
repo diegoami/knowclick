@@ -1,22 +1,11 @@
 <script lang="ts">
-	import { answerMode, skillOf, type AnswerMode } from '$lib/answerMode.svelte';
-	import AnswerModeSwitch from '$lib/AnswerModeSwitch.svelte';
+	import { practiceLevel } from '$lib/practiceLevel.svelte';
+	import PracticeLevelSwitch from '$lib/PracticeLevelSwitch.svelte';
 	import { t } from '$lib/locale.svelte';
-	import { dueCells } from '$lib/progress.svelte';
 	import ReviewView from '$lib/ReviewView.svelte';
-
 	let { data } = $props();
-
-	const counts = $derived(
-		Object.fromEntries(
-			(['drag', 'type'] as AnswerMode[]).map((mode) => [
-				mode,
-				data.units.reduce(
-					(sum, unit) => sum + dueCells(data.pack.id, unit, undefined, skillOf(mode)).length,
-					0
-				)
-			])
-		) as Record<AnswerMode, number>
+	const mode = $derived(
+		practiceLevel() === 'apply' ? 'apply' : practiceLevel() === 'recall' ? 'type' : 'drag'
 	);
 </script>
 
@@ -26,10 +15,10 @@
 
 <main>
 	<h1>{t('review.title')}</h1>
-	<AnswerModeSwitch {counts} />
+	<PracticeLevelSwitch hasTasks={data.tasks.length > 0} />
 	<!-- The review fixes its queue when it starts, so a change of mode starts another. -->
-	{#key answerMode()}
-		<ReviewView pack={data.pack} units={data.units} tasks={data.tasks} mode={answerMode()} />
+	{#key mode}
+		<ReviewView pack={data.pack} units={data.units} tasks={data.tasks} {mode} />
 	{/key}
 </main>
 
