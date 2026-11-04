@@ -29,6 +29,41 @@ any of them.
 
 ## Lessons
 
+### Guided, Recall and Apply
+
+Use the same progression in every course. Choose gaps from one learning
+objective rather than removing random tokens or merely adding more holes.
+
+- **Guided:** small authored gaps with choices. The surrounding structure is
+  support; answers earn recognition progress only.
+- **Recall:** no choices. Surrounding code and line scaffolds are hidden, and
+  completed answers stay hidden until the round ends, so another cell cannot
+  simply be copied. Every code cell should have a localized clue naming the
+  objective. State enough requirements to determine the reference answer.
+- **Apply:** the lesson's authored practical tasks. Include requirements, local
+  checks and a solution the learner opens after trying. Results are explicitly
+  self-assessed; the app does not compile submitted programs in the browser.
+  Lessons without practical tasks show an unavailable-content explanation.
+
+For larger recall gaps, a lesson unit may name a second unit with `recallUnit`.
+This is a normal unit file with permanent item IDs, sources, localized text,
+verification and independent checks, but is not repeated in the lesson's
+`units`. The reference must exist in the same pack; self-references and nested
+variants are rejected. Recall, including review and recommendations, uses it.
+For example, keyword gaps can become complete match arms. Use a new item ID for
+an entire expression: it measures a different skill from remembering a keyword.
+
+`answerFormat: "code"` compares reference code as tokens, accepting formatting
+changes while preserving literals, case and token boundaries. This checks
+reference-form recall, not arbitrary program equivalence. Open-ended
+implementations belong in Apply and are checked with the stated compiler/tests.
+
+Hints, revealed answers and resumed rounds earn assisted-practice cards, separate
+from unassisted recall. An unassisted mistake still resets the recall item;
+subsequent answers in that round are assisted. Restart begins a fresh attempt.
+Recommendations require three clean successes on every item at a level and never
+lock choices. Existing recognition, recall and practice cards keep their IDs.
+
 `pack.json` lists the lessons in teaching order, under `sections`. A lesson has, in this
 order: `study` (links to official docs, courses or books, to read first), `units` (boards
 here) and `tasks` (practice by hand). Knowclick supplements its sources: link to them,

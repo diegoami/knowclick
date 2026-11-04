@@ -29,6 +29,19 @@ using `QuizView`'s `only`, followed by the tasks that are due again.
 
 ## How a unit plays
 
+Quiz and review routes share Guided/Recall/Apply through `PracticeLevelSwitch`
+and `practiceLevel.svelte.ts`. Guided uses `QuizView`; Recall uses `TypeQuizView`
+without answer-bearing code context; Apply presents the lesson's tasks with
+explicit self-assessment. Independent progress counts and recommendation logic
+use skill-specific cards, not a merged mastery score.
+
+An optional `recallUnit` references a larger authored challenge in the same pack.
+The loader attaches its localized representation to the primary unit. Missing,
+self-referencing or nested variants are rejected. The variant receives normal
+content checks and executable verification. Its own item IDs are used by Recall
+and review. Assisted cards persist alongside existing skills and are excluded
+from mastery and recommendations.
+
 `Board.svelte` draws a unit's layout: a table, a grid, a list of lines, or one block of
 code with its gaps inline. Each cell carries `data-cell-id`. It knows nothing about what
 a cell shows; three screens fill that in through a snippet:

@@ -389,6 +389,46 @@ describe('typing', () => {
 		]);
 	});
 
+	it('does not award clean recall after revealing an answer', async () => {
+		startTyping();
+		await userEvent.click(document.querySelector<HTMLElement>('button.action.quiet')!);
+		await typeIn('po');
+		expect(
+			levelOf(
+				packManifest.id,
+				unit.cells.find((c) => c.id === 'pods.short')!
+			)
+		).toBe(0);
+		const cards = JSON.parse(
+			localStorage.getItem(`knowclick:progress:v1:${packManifest.id}:cards`)!
+		);
+		expect(cards.some((c: { skill: string }) => c.skill === 'assisted')).toBe(true);
+		expect(cards.some((c: { skill: string }) => c.skill === 'produce')).toBe(false);
+	});
+
+	it('keeps restored rounds assisted after navigating away', async () => {
+		const view = await startTyping();
+		await typeIn('po');
+		await view.unmount();
+		render(TypeQuizView, { pack: packManifest, unit });
+		await typeIn('v1');
+		expect(document.querySelector('.assisted')?.textContent).toContain('Assisted');
+		expect(
+			levelOf(
+				packManifest.id,
+				unit.cells.find((c) => c.id === 'pods.api')!
+			)
+		).toBe(0);
+	});
+
+	it('hides surrounding code and line scaffolds in Recall', async () => {
+		startTyping(code);
+		expect(document.querySelector('.board-code')).toBeNull();
+		expect(document.querySelector('[data-slip-id]')).toBeNull();
+		expect(document.querySelector('.board-grid')).not.toBeNull();
+		expect(document.querySelector('.board-grid')?.textContent).not.toContain('kind:');
+	});
+
 	it('ignores an empty answer', async () => {
 		startTyping();
 		await typeIn('');
@@ -423,6 +463,25 @@ describe('typing', () => {
 		expect(asked()).toBe('apiVersion');
 		await typeIn('apps/v1');
 		expect(asked()).toBe('selector');
+	});
+
+	it('reviews authored larger recall items rather than the guided keywords', async () => {
+		const larger = {
+			...unit,
+			id: 'larger-recall',
+			cells: unit.cells.map((cell) => ({ ...cell, item: `larger:${cell.item}` }))
+		};
+		await recordAnswer(packManifest.id, larger.cells[0], 'again', 'produce');
+		render(ReviewView, {
+			pack: packManifest,
+			units: [{ ...unit, recall: larger }],
+			tasks: [],
+			mode: 'type'
+		});
+		expect(asked()).toBe(larger.cells[0].id);
+		await typeIn(larger.cells[0].text);
+		expect(levelOf(packManifest.id, larger.cells[0])).toBe(1);
+		expect(levelOf(packManifest.id, unit.cells[0])).toBe(0);
 	});
 
 	it('reviews by typing only what is due for typing', async () => {

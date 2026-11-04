@@ -112,7 +112,14 @@ const layer = (): Layer => ({
 			summary: 'Sum',
 			headers: { r1: 'One', r2: 'Two', c1: 'A', c2: 'B' }
 		},
-		code: { title: 'Code', summary: 'Sum', cells: { x: { note: 'How many.' } } },
+		code: {
+			title: 'Code',
+			summary: 'Sum',
+			cells: {
+				x: { note: 'How many.', clue: 'How many.' },
+				y: { clue: 'Temporary scratch storage type' }
+			}
+		},
 		lines: {
 			title: 'Lines',
 			summary: 'Sum',
@@ -484,5 +491,58 @@ describe('verification', () => {
 		expect(validateVerified(after, record)).toEqual([
 			{ where: 'verify/lines/p', problem: 'not verified as it now stands' }
 		]);
+	});
+});
+
+describe('authored recall variants', () => {
+	function variantPack() {
+		const p = pack();
+		const units = [table(), code(), lines()];
+		units[1].recallUnit = 'larger';
+		const variant: Unit = {
+			...code(),
+			id: 'larger',
+			cells: code().cells.map((c) => ({ ...c, item: 'larger:' + c.item }))
+		};
+		const text = layers();
+		text.en.units.larger = text.en.units.code;
+		return { p, units: [...units, variant], text };
+	}
+	it('loads a referenced variant without duplicating it in the lesson', () => {
+		const { p, units, text } = variantPack();
+		expect(validatePack(p, units, tasks(), text)).toEqual([]);
+	});
+	it('rejects missing, self-referencing and nested variants', () => {
+		for (const id of ['missing', 'code']) {
+			const { p, units, text } = variantPack();
+			units[1].recallUnit = id;
+			expect(validatePack(p, units, tasks(), text).length).toBeGreaterThan(0);
+		}
+		const { p, units, text } = variantPack();
+		units[3].recallUnit = 'code';
+		expect(validatePack(p, units, tasks(), text).length).toBeGreaterThan(0);
+	});
+	it('requires a new independent check when a recall mapping changes', () => {
+		const { p, units, text } = variantPack();
+		const before = checkTargets(p, units, tasks(), text).find(
+			(t) => t.key === 'core/code/recallUnit'
+		);
+		units[1].recallUnit = 'different';
+		const after = checkTargets(p, units, tasks(), text).find(
+			(t) => t.key === 'core/code/recallUnit'
+		);
+		expect(before?.seen).not.toBe(after?.seen);
+	});
+});
+
+describe('code recall clues', () => {
+	it('rejects a code gap that has no standalone question', () => {
+		const text = layers();
+		delete text.en.units.code.cells!.y;
+		expect(
+			validatePack(pack(), [table(), code(), lines()], tasks(), text).some(
+				(issue) => issue.problem === 'cell y has no clue'
+			)
+		).toBe(true);
 	});
 });

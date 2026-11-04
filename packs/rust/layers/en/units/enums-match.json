@@ -1,0 +1,12 @@
+{
+	"title": "Recall complete match arms",
+	"summary": "Reconstruct each complete arm from memory, using the qualified variant, the arrow and the specified string literal. Surrounding code and tests remain hidden until the round ends. Apply accepts a complete implementation checked in your local environment.",
+	"cells": {
+		"waiting": {
+			"clue": "Write the full match arm for Job\u2019s Waiting variant returning the string \"waiting\"; omit the separating comma."
+		},
+		"ready": {
+			"clue": "Write the full match arm for Job\u2019s Ready variant returning the string \"ready\"; omit the separating comma."
+		}
+	}
+}

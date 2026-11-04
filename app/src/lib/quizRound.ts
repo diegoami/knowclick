@@ -11,6 +11,8 @@ export interface RoundInProgress {
 	hand: string[];
 	/** Hand size for the whole round, from how well the unit was known at its start. */
 	size: number;
+	/** Assistance follows a resumed round; it cannot become clean recall. */
+	assisted?: boolean;
 }
 
 const rounds = new Map<string, RoundInProgress>();

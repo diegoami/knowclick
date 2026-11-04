@@ -52,3 +52,12 @@ credentials by July (Associate, Developer, Architect Foundations, Architect Prof
 taken through Pearson VUE. Some sources say registration needs an organization in the
 Claude Partner Network. None of this is confirmed against Anthropic's own pages yet; the
 proposal does that first, with the exam guides, before any content is written.
+
+## Cross-course practice levels (owner approved 2026-11-04)
+
+[Proposal #17](https://github.com/diegoami/knowclick/issues/17): Guided choices,
+unassisted Recall, and practical Apply across every existing course. Rust's enum
+lesson demonstrates complete-arm recall beyond its guided keyword gaps. Assisted
+practice is tracked separately; existing progress is preserved. Apply uses
+lesson tasks with explicit self-assessment and local checks. Lessons without
+authored tasks explain that limitation instead of claiming a harder exercise.

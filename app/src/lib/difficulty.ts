@@ -1,7 +1,7 @@
 // The tray holds a *hand*: a few slips at a time, refilled as they are placed. Copied
 // from LangClick2027 (591043e), itself from Geoclick2027: the hand stays the
-// same size, since a unit doesn't need to get harder: new material is what moves a learner
-// forward. It is there so that a long unit doesn't crowd the tray.
+// same size to keep long units from crowding the tray. Practice levels increase
+// difficulty by removing support in Recall and using practical tasks in Apply.
 //
 // Pure: no DOM, no storage, no Svelte. QuizView owns when to draw.
 

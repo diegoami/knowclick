@@ -3,12 +3,18 @@
 	"category": "certification",
 	"licence": "CC-BY-SA-4.0",
 	"formatVersion": 1,
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"holdsFor": [
-		{ "name": "Kubernetes", "version": "1.37" },
-		{ "name": "CKAD curriculum", "version": "v1.37" }
+		{
+			"name": "Kubernetes",
+			"version": "1.37"
+		},
+		{
+			"name": "CKAD curriculum",
+			"version": "v1.37"
+		}
 	],
-	"checkedOn": "2026-10-31",
+	"checkedOn": "2026-11-04",
 	"explanations": ["en"],
 	"keywords": ["kubernetes", "kubectl", "k8s", "ckad", "cka", "kubeconfig"],
 	"sections": ["essentials"],
@@ -93,7 +99,10 @@
 		}
 	],
 	"verify": {
-		"guard": { "run": "kubectl config current-context", "expect": "^kind-knowclick$" },
+		"guard": {
+			"run": "kubectl config current-context",
+			"expect": "^kind-knowclick$"
+		},
 		"version": "kubectl version | tr '\\n' ' '",
 		"setup": [
 			"kubectl delete namespace knowclick-verify --ignore-not-found --wait",

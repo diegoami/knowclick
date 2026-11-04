@@ -9,7 +9,7 @@ import type { CardState as SchedulerState } from '@knowclick/srs';
 /** What a card measures. Recognising an answer, producing it, and doing a task by
  * hand are different knowledge, so an item has one card per skill. `produce` waits
  * for typed answers; having it in the key now needs no migration then. */
-export const SKILLS = ['recognise', 'produce', 'practise'] as const;
+export const SKILLS = ['recognise', 'produce', 'practise', 'assisted'] as const;
 export type Skill = (typeof SKILLS)[number];
 
 export interface Card extends SchedulerState {

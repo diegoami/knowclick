@@ -148,3 +148,21 @@ describe('attemptTyped', () => {
 		expect(normalizeTyped(' a   b ')).toBe('a b');
 	});
 });
+
+describe('code reference recall', () => {
+	it('accepts different token spacing but preserves literals and token boundaries', () => {
+		const session = createQuizSession([{ id: 'arm', text: 'State::Ready => "ready now"' }]);
+		expect(
+			attemptTyped(session, 'arm', 'State :: Ready=>"ready now"', false, true).outcome.kind
+		).toBe('correct');
+		expect(
+			attemptTyped(session, 'arm', 'State::Ready => "readynow"', false, true).outcome.kind
+		).toBe('revealed');
+		expect(
+			attemptTyped(session, 'arm', 'State::Re ady => "ready now"', false, true).outcome.kind
+		).toBe('revealed');
+		expect(
+			attemptTyped(session, 'arm', 'State::Ready = > "ready now"', false, true).outcome.kind
+		).toBe('revealed');
+	});
+});

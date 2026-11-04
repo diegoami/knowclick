@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { locale } from '$lib/locale.svelte';
-import { findPack, loadUnit } from '$lib/packs';
+import { findPack, loadUnit, loadCourse } from '$lib/packs';
 import { loadProgress } from '$lib/progress.svelte';
 import type { LayoutLoad } from './$types';
 
@@ -10,5 +10,7 @@ export const load: LayoutLoad = async ({ params }) => {
 	if (!pack || !unit) error(404, 'No such unit');
 	await loadProgress(pack.id);
 	const lessonId = pack.lessons.find((lesson) => lesson.units.includes(unit.id))?.id ?? '';
-	return { pack, unit, lessonId };
+	const course = await loadCourse(pack, locale());
+	const tasks = course.lessons.find((lesson) => lesson.id === lessonId)?.tasks ?? [];
+	return { pack, unit, lessonId, tasks };
 };

@@ -130,6 +130,8 @@ export interface UnitVerify extends Partial<VerifyStep> {
 
 export interface Unit {
 	id: string;
+	/** Optional larger recall board in the same pack, not a new lesson. */
+	recallUnit?: string;
 	layout: BoardLayout;
 	cells: Cell[];
 	sources: Source[];
@@ -139,6 +141,8 @@ export interface Unit {
 	/** The answers are names, where case is not the answer: a typed answer is compared
 	 * without case. Never for flags, fields or code, where case is the answer. */
 	caseInsensitive?: boolean;
+	/** Compare code as tokens so whitespace between tokens is not significant. */
+	answerFormat?: 'code';
 	verify?: UnitVerify;
 }
 
@@ -231,6 +235,8 @@ export interface LocalCell extends Cell, CellText {
 
 export interface LocalUnit {
 	id: string;
+	/** Authored larger recall challenge, loaded by the pack source. */
+	recall?: LocalUnit;
 	title: string;
 	summary: string;
 	layout: LocalLayout;
@@ -238,6 +244,8 @@ export interface LocalUnit {
 	sources: Source[];
 	dealAll?: boolean;
 	caseInsensitive?: boolean;
+	/** Compare code as tokens so whitespace between tokens is not significant. */
+	answerFormat?: 'code';
 }
 
 export interface LocalTask extends Task, TaskText {}
@@ -311,6 +319,7 @@ export function localizeUnit(
 		sources: unit.sources,
 		dealAll: unit.dealAll,
 		caseInsensitive: unit.caseInsensitive,
+		answerFormat: unit.answerFormat,
 		cells: unit.cells.map((cell) => ({
 			...cell,
 			...text?.cells?.[cell.id],
@@ -599,7 +608,10 @@ function validateLayer(
 				}
 			}
 			const clue = text?.cells?.[cell.id]?.clue ?? cell.clue;
-			const needsClue = unit.layout?.type === 'grid' || unit.layout?.type === 'lines';
+			const needsClue =
+				unit.layout?.type === 'grid' ||
+				unit.layout?.type === 'lines' ||
+				unit.layout?.type === 'code';
 			if (!needsClue) continue;
 			if (!present(clue)) {
 				report(where, `cell ${cell.id} has no clue`);
@@ -696,8 +708,19 @@ export function validatePack(
 	if (new Set(listed).size !== listed.length) {
 		issues.push({ where: pack.id, problem: 'a unit is listed in more than one lesson' });
 	}
+	const variants = new Set(units.flatMap((unit) => (unit.recallUnit ? [unit.recallUnit] : [])));
+	for (const unit of units) {
+		if (!unit.recallUnit) continue;
+		const variant = units.find((other) => other.id === unit.recallUnit);
+		if (!variant || variant.id === unit.id || variant.recallUnit || !listed.includes(unit.id)) {
+			issues.push({
+				where: `${pack.id}/${unit.id}`,
+				problem: 'recallUnit must reference an existing non-nested variant from a lesson unit'
+			});
+		}
+	}
 	for (const id of found) {
-		if (!listed.includes(id)) {
+		if (!listed.includes(id) && !variants.has(id)) {
 			issues.push({ where: pack.id, problem: `unit ${id} is not in any lesson` });
 		}
 	}
@@ -707,6 +730,10 @@ export function validatePack(
 		const where = `${pack.id}/${unit.id}`;
 		if (!unit.sources?.length) issues.push({ where, problem: 'has no source' });
 		validateSources(unit.sources, where, issues);
+		if (unit.answerFormat !== undefined && unit.answerFormat !== 'code')
+			issues.push({ where, problem: 'unknown answerFormat' });
+		if (unit.answerFormat === 'code' && unit.caseInsensitive)
+			issues.push({ where, problem: 'code answers must preserve case' });
 		validateLayout(unit, pack, issues);
 		validateUnitVerify(unit, pack, issues);
 
@@ -841,6 +868,10 @@ export function checkTargets(
 		targets.push({ key: `core/lesson/${lesson.id}`, seen: seenOf(lesson.study) });
 	}
 	for (const unit of units) {
+		if (unit.answerFormat)
+			targets.push({ key: `core/${unit.id}/answerFormat`, seen: seenOf(unit.answerFormat) });
+		if (unit.recallUnit)
+			targets.push({ key: `core/${unit.id}/recallUnit`, seen: seenOf(unit.recallUnit) });
 		// The Overview shows a unit's sources, so moving or replacing one is checked too.
 		targets.push({ key: `core/${unit.id}/sources`, seen: seenOf(unit.sources) });
 		// A code board's gaps mean what their surroundings say, so the code is checked too.

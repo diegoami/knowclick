@@ -43,5 +43,6 @@
 		"run": "node scripts/verify-local-code.mjs rust",
 		"stdin": "{code}",
 		"expect": "^verified$"
-	}
+	},
+	"recallUnit": "enums-match"
 }

@@ -74,14 +74,19 @@ async function localUnit(
 	pack: PackManifest,
 	unitId: string,
 	language: string,
-	course: CourseText
+	course: CourseText,
+	withRecall = true
 ): Promise<LocalUnit | undefined> {
 	const layer = layerFor(pack, language);
 	const [unit, text] = await Promise.all([
 		source.read<Unit>(pack.id, `units/${unitId}.json`),
 		source.read<UnitText>(pack.id, `layers/${layer}/units/${unitId}.json`)
 	]);
-	return unit && localizeUnit(unit, text, course);
+	if (!unit) return undefined;
+	const localized = localizeUnit(unit, text, course);
+	if (withRecall && unit.recallUnit)
+		localized.recall = await localUnit(pack, unit.recallUnit, language, course, false);
+	return localized;
 }
 
 /** One unit as this learner sees it. */

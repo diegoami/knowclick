@@ -3,7 +3,7 @@
 	"category": "language",
 	"licence": "CC-BY-SA-4.0",
 	"formatVersion": 1,
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"holdsFor": [
 		{
 			"name": "rustc",
