@@ -546,3 +546,41 @@ describe('code recall clues', () => {
 		).toBe(true);
 	});
 });
+
+describe('authored extra choices', () => {
+	it('retains extra choices in localized content and independent checks', () => {
+		const unit = table();
+		unit.distractors = ['wrong'];
+		expect(localizeUnit(unit, layers().en.units.table, layers().en.course).distractors).toEqual([
+			'wrong'
+		]);
+		const before = checkTargets(pack(), [unit], tasks(), layers()).find(
+			(t) => t.key === 'core/table/distractors'
+		);
+		unit.distractors = ['different'];
+		expect(
+			checkTargets(pack(), [unit], tasks(), layers()).find(
+				(t) => t.key === 'core/table/distractors'
+			)?.seen
+		).not.toBe(before?.seen);
+	});
+	it('rejects empty, duplicate and actually correct distractors', () => {
+		for (const choices of [[''], [' wrong '], ['wrong', 'wrong'], [table().cells[0].text]]) {
+			const unit = table();
+			unit.distractors = choices;
+			expect(
+				validatePack(pack(), [unit, code(), lines()], tasks(), layers()).length
+			).toBeGreaterThan(0);
+		}
+	});
+	it('compares names without case when validating extra choices', () => {
+		const unit = table();
+		unit.caseInsensitive = true;
+		unit.distractors = [unit.cells[0].text.toUpperCase()];
+		expect(
+			validatePack(pack(), [unit, code(), lines()], tasks(), layers()).some(
+				(i) => i.problem === 'distractor duplicates a correct answer'
+			)
+		).toBe(true);
+	});
+});

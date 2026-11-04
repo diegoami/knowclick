@@ -29,6 +29,27 @@ any of them.
 
 ## Lessons
 
+### More gaps and more choices
+
+The owner clarified the intended difficulty: expand the same exercise with more
+meaningful gaps and offer more candidate answers than gaps. The Rust enum board
+now has ten gaps and sixteen distinct choices. Repeated correct answers are
+shown once with the required count; extra wrong choices remain until completion.
+
+A unit may set `distractors` to an array of plausible, wrong answer texts. Choose
+alternatives from the same topic and syntactic category. They must be nonempty,
+unique, and different from every correct answer (including case-insensitive
+comparisons where enabled). Do not force extra options into inherently binary
+questions, invent nonsensical categories, or hide arbitrary names that have no
+determinable answer. Existing item IDs remain stable when adding new gaps.
+
+All real options stay available under the unit's existing dealing policy;
+`dealAll` offers every real answer together. Extra choices are shuffled among
+real choices without different styling. A wrong extra choice reveals and
+penalizes the selected gap, never a fake progress item. It is not removed from
+the tray after a mistake. Authored choices are included in independent content
+checks; executable verification still checks the filled program, not decoys.
+
 ### Guided, Recall and Apply
 
 Use the same progression in every course. Choose gaps from one learning

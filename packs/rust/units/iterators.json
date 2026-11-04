@@ -4,12 +4,12 @@
 		"type": "code",
 		"code": [
 			"fn main() {",
-			"    let values = vec![1_i32, 2, 3, 4];",
-			"    let doubled: Vec<i32> = values.{{gap:borrow}}()",
+			"    let values = {{gap:vector}}[1_{{gap:number}}, 2, 3, 4];",
+			"    let doubled: {{gap:collection}}<i32> = values.{{gap:borrow}}()",
 			"        .{{gap:retain}}(|value| **value % 2 == 0)",
 			"        .{{gap:convert}}(|value| *value * 2)",
 			"        .{{gap:finish}}();",
-			"    assert_eq!(doubled, vec![4, 8]);",
+			"    {{gap:assertion}}(doubled, vec![4, 8]);",
 			"    assert_eq!(values.len(), 4);",
 			"}"
 		]
@@ -34,6 +34,26 @@
 			"id": "finish",
 			"item": "rust:iterators:finish",
 			"text": "collect"
+		},
+		{
+			"id": "vector",
+			"item": "rust:iterators:vector",
+			"text": "vec!"
+		},
+		{
+			"id": "number",
+			"item": "rust:iterators:number",
+			"text": "i32"
+		},
+		{
+			"id": "collection",
+			"item": "rust:iterators:collection",
+			"text": "Vec"
+		},
+		{
+			"id": "assertion",
+			"item": "rust:iterators:assertion",
+			"text": "assert_eq!"
 		}
 	],
 	"sources": [
@@ -50,5 +70,16 @@
 		"run": "node scripts/verify-local-code.mjs rust",
 		"stdin": "{code}",
 		"expect": "^verified$"
-	}
+	},
+	"dealAll": true,
+	"distractors": [
+		"into_iter",
+		"iter_mut",
+		"for_each",
+		"find",
+		"fold",
+		"String",
+		"HashMap",
+		"assert!"
+	]
 }

@@ -10,6 +10,18 @@
 		},
 		"success": {
 			"clue": "Variant wrapping the successful value"
+		},
+		"number": {
+			"clue": "Unsigned integer type with a width of 32 bits"
+		},
+		"error": {
+			"clue": "Standard-library error type returned by failed integer parsing"
+		},
+		"parse": {
+			"clue": "String method that attempts conversion to the specified target type"
+		},
+		"failed": {
+			"clue": "Method that reports whether the result contains a failure"
 		}
 	}
 }

@@ -163,3 +163,18 @@ recognizing a keyword distinct from reconstructing a full expression, without
 hard-coding a subject in the engine. Code reference answers compare tokens so
 formatting changes do not create false mistakes. Apply accepts the learner's
 implementation through its documented tests and honest self-assessment.
+
+## Exercise difficulty means more gaps and plausible choices (2026-11-04, #19)
+
+The owner clarified that both more gaps and more answer choices were intended
+for the original code exercise. The earlier Guided/Recall/Apply implementation
+was broader than that request. This correction changes the code boards
+themselves: the enum example has ten meaningful gaps, eight distinct real
+answers and eight additional choices. Other small code boards are expanded and
+all courses can author extra choices without subject rules in the engine.
+
+Wrong choices are explicit pack data, never guessed from unrelated subjects.
+They stay visible until the round ends and are indistinguishable in appearance
+from real choices. Choosing one penalizes the target gap and cannot create a
+fake progress card. Filled-program checks remain separate from independent
+review of newly authored gaps, clues and distractors.

@@ -115,5 +115,6 @@
 				"expect": "^\\s+{text}(\\s|$)"
 			}
 		}
-	]
+	],
+	"distractors": ["--region", "--label", "--format", "--limit", "--dry-run"]
 }

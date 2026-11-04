@@ -6,6 +6,7 @@
 	import type { LocalCell, LocalUnit, PackManifest } from '@knowclick/pack-format';
 	import {
 		attemptMatch,
+		attemptTyped,
 		createQuizSession,
 		isSessionComplete,
 		pendingIds,
@@ -17,7 +18,7 @@
 	import Board from './Board.svelte';
 	import CellFace from './CellFace.svelte';
 	import CellNote from './CellNote.svelte';
-	import { HAND_SIZE, handAfterUse, refillHand } from './difficulty';
+	import { HAND_SIZE, handAfterUse, refillHand, shuffleChoices } from './difficulty';
 	import { t } from './locale.svelte';
 	import { recordAnswer, unitKnown } from './progress.svelte';
 	import { forgetRound, rememberRound, roundInProgress, type RoundInProgress } from './quizRound';
@@ -80,15 +81,34 @@
 	const score = $derived(scoreSession(session));
 	const cellById = $derived(new Map(unit.cells.map((cell) => [cell.id, cell])));
 	const statusById = $derived(new Map(session.items.map((item) => [item.cell.id, item.status])));
+	const distractorById = $derived.by(() => {
+		const entries: [string, string][] = [];
+		for (const [index, text] of (unit.distractors ?? []).entries()) {
+			let id = `$distractor:${index}`;
+			while (cellById.has(id)) id = `$${id}`;
+			entries.push([id, text]);
+		}
+		return new Map(entries);
+	});
+	let choiceOrder = $state.raw<string[]>(
+		untrack(() =>
+			shuffleChoices([
+				...new Set([...unit.cells.map((cell) => cell.text), ...(unit.distractors ?? [])])
+			])
+		)
+	);
+	const choiceRank = $derived(new Map(choiceOrder.map((text, index) => [text, index])));
 
 	function textOf(id: string): string {
 		const cell = cellById.get(id);
-		return cell?.text ?? '';
+		return cell?.text ?? distractorById.get(id) ?? '';
 	}
 
 	/** One drop. Everything a slip does, by pointer or keyboard, comes through here. */
 	function drop(slipId: string, cellId: string | undefined) {
-		const result = attemptMatch(session, slipId, cellId);
+		const result = distractorById.has(slipId)
+			? attemptTyped(session, cellId ?? '', textOf(slipId), unit.caseInsensitive)
+			: attemptMatch(session, slipId, cellId);
 		if (result.outcome.kind === 'ignored') return;
 
 		session = result.session;
@@ -121,6 +141,9 @@
 	onDestroy(() => clearTimeout(wrongTimer));
 
 	function playAgain() {
+		choiceOrder = shuffleChoices([
+			...new Set([...unit.cells.map((cell) => cell.text), ...(unit.distractors ?? [])])
+		]);
 		const round = newRound();
 		session = round.session;
 		hand = round.hand;
@@ -193,7 +216,7 @@
 	function cellClass(cell: LocalCell): string {
 		const status = statusById.get(cell.id);
 		if (status === undefined) return 'given';
-		if (cell.id === wrongCell) return 'wrong empty';
+		if (cell.id === wrongCell) return status === 'revealed' ? 'wrong revealed' : 'wrong empty';
 		if (status === 'correct') return 'correct';
 		if (status === 'revealed') return 'revealed';
 		if (cell.id === hoverCell) return 'target';
@@ -208,13 +231,13 @@
 	// count: ten copies of the same letter would only be noise.
 	const tray = $derived.by(() => {
 		const entries: { text: string; slipId: string; count: number }[] = [];
-		for (const slipId of hand) {
+		for (const slipId of [...hand, ...distractorById.keys()]) {
 			const text = textOf(slipId);
 			const entry = entries.find((candidate) => candidate.text === text);
 			if (entry) entry.count += 1;
 			else entries.push({ text, slipId, count: 1 });
 		}
-		return entries;
+		return entries.sort((a, b) => (choiceRank.get(a.text) ?? 0) - (choiceRank.get(b.text) ?? 0));
 	});
 
 	const ghost = $derived.by(() => {
@@ -287,6 +310,8 @@
 	</div>
 	<p class="hint">
 		{t('quiz.hint', { count: pendingIds(session).length })}
+		{#if unit.distractors?.length}
+			{t('quiz.extraChoices')}{/if}
 	</p>
 {/if}
 

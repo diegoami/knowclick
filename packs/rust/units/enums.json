@@ -3,15 +3,15 @@
 	"layout": {
 		"type": "code",
 		"code": [
-			"{{gap:declare}} Job { Waiting, Ready }",
-			"fn label(job: Job) -> &'static str {",
+			"{{gap:declare}} Job { {{gap:waitingVariant}}, {{gap:readyVariant}} }",
+			"{{gap:function}} label(job: {{gap:parameterType}}) -> &'static {{gap:returnType}} {",
 			"    {{gap:select}} job {",
-			"        Job::Waiting => \"waiting\",",
+			"        Job::{{gap:waitingArm}} => \"waiting\",",
 			"        Job::{{gap:finished}} => \"ready\",",
 			"    }",
 			"}",
 			"fn main() {",
-			"    assert_eq!(label(Job::Waiting), \"waiting\");",
+			"    {{gap:assertion}}(label(Job::Waiting), \"waiting\");",
 			"    assert_eq!(label(Job::Ready), \"ready\");",
 			"}"
 		]
@@ -31,12 +31,59 @@
 			"id": "finished",
 			"item": "rust:enums:finished",
 			"text": "Ready"
+		},
+		{
+			"id": "waitingVariant",
+			"item": "rust:enums:waitingVariant",
+			"text": "Waiting"
+		},
+		{
+			"id": "readyVariant",
+			"item": "rust:enums:readyVariant",
+			"text": "Ready"
+		},
+		{
+			"id": "function",
+			"item": "rust:enums:function",
+			"text": "fn"
+		},
+		{
+			"id": "parameterType",
+			"item": "rust:enums:parameterType",
+			"text": "Job"
+		},
+		{
+			"id": "returnType",
+			"item": "rust:enums:returnType",
+			"text": "str"
+		},
+		{
+			"id": "waitingArm",
+			"item": "rust:enums:waitingArm",
+			"text": "Waiting"
+		},
+		{
+			"id": "assertion",
+			"item": "rust:enums:assertion",
+			"text": "assert_eq!"
 		}
 	],
 	"sources": [
 		{
 			"title": "Enums and pattern matching",
 			"url": "https://doc.rust-lang.org/book/ch06-00-enums.html"
+		},
+		{
+			"title": "Functions",
+			"url": "https://doc.rust-lang.org/book/ch03-03-how-functions-work.html"
+		},
+		{
+			"title": "String slices",
+			"url": "https://doc.rust-lang.org/book/ch04-03-slices.html"
+		},
+		{
+			"title": "assert_eq! macro",
+			"url": "https://doc.rust-lang.org/std/macro.assert_eq.html"
 		}
 	],
 	"verify": {
@@ -44,5 +91,7 @@
 		"stdin": "{code}",
 		"expect": "^verified$"
 	},
-	"recallUnit": "enums-match"
+	"recallUnit": "enums-match",
+	"dealAll": true,
+	"distractors": ["struct", "trait", "impl", "if", "loop", "while", "String", "assert!"]
 }

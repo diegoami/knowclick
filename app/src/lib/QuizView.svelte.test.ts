@@ -198,13 +198,13 @@ describe('QuizView', () => {
 });
 
 describe('a code board', () => {
-	it('shows the code around its gaps and deals every field', async () => {
+	it('shows the code around its gaps and deals every field plus authored extra choices', async () => {
 		start(code);
 		const block = document.querySelector('pre')!;
 		expect(block.textContent).toContain('kind: Deployment');
 		expect(block.textContent).toContain('httpGet:');
 		expect(block.textContent).not.toContain('readinessProbe');
-		expect(dealt()).toBe(code.cells.length);
+		expect(dealt()).toBe(code.cells.length + (code.distractors?.length ?? 0));
 	});
 
 	it('fills a gap in place, inside the code', async () => {
@@ -490,5 +490,69 @@ describe('typing', () => {
 		render(ReviewView, { pack: packManifest, units: [unit], tasks, mode: 'type' });
 		expect(asked()).toBe('pods.short');
 		expect(cellEl('services.short').classList.contains('given')).toBe(true);
+	});
+});
+
+describe('extra answer choices', () => {
+	const small = () => ({
+		...unit,
+		id: 'small-extra-choices',
+		layout: { type: 'grid' as const, size: 3 },
+		cells: unit.cells.slice(0, 3),
+		dealAll: true,
+		distractors: ['wrong-one', 'wrong-two']
+	});
+	it('offers more choices than gaps and counts a wrong extra choice against the target', async () => {
+		const board = small();
+		forgetRound(packManifest.id, board.id);
+		await recordAnswer(packManifest.id, board.cells[0], 'good');
+		render(QuizView, { pack: packManifest, unit: board });
+		expect(slips().length).toBe(5);
+		for (const cell of board.cells) expect(slipWith(cell.text)).toBeDefined();
+		await place('wrong-one', board.cells[0].id);
+		expect(cellEl(board.cells[0].id).classList.contains('revealed')).toBe(true);
+		expect(levelOf(packManifest.id, board.cells[0])).toBe(0);
+		expect(slipWith('wrong-one')).toBeDefined();
+		for (const cell of board.cells.slice(1)) await place(cell.text, cell.id);
+		expect(document.querySelector('.score')?.textContent).toContain('2');
+		expect(slips()).toHaveLength(0);
+		const cards = JSON.parse(
+			localStorage.getItem(`knowclick:progress:v1:${packManifest.id}:cards`)!
+		);
+		expect(
+			cards.every((card: { itemId: string }) => board.cells.some((c) => c.item === card.itemId))
+		).toBe(true);
+	});
+	it('supports choosing an extra option entirely by keyboard', async () => {
+		const board = small();
+		board.id = 'keyboard-extra-choice';
+		forgetRound(packManifest.id, board.id);
+		render(QuizView, { pack: packManifest, unit: board });
+		slipWith('wrong-two')!.focus();
+		await userEvent.keyboard('{Enter}');
+		cellEl(board.cells[0].id).focus();
+		await userEvent.keyboard('{Enter}');
+		expect(cellEl(board.cells[0].id).classList.contains('revealed')).toBe(true);
+		expect(slipWith('wrong-two')).toBeDefined();
+	});
+
+	it('keeps repeated real answers available until both gaps are filled', async () => {
+		const board = {
+			...small(),
+			id: 'repeated-extra-choices',
+			layout: { type: 'grid' as const, size: 2 },
+			cells: [
+				{ ...unit.cells[0], id: 'one', item: 'one', text: 'same' },
+				{ ...unit.cells[1], id: 'two', item: 'two', text: 'same' }
+			]
+		};
+		forgetRound(packManifest.id, board.id);
+		render(QuizView, { pack: packManifest, unit: board });
+		expect(slipWith('same')?.dataset.count).toBe('2');
+		await place('same', 'one');
+		expect(slipWith('same')).toBeDefined();
+		expect(slipWith('wrong-two')).toBeDefined();
+		await place('same', 'two');
+		expect(document.querySelector('.score')).not.toBeNull();
 	});
 });

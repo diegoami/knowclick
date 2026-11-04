@@ -10,6 +10,27 @@
 		},
 		"finished": {
 			"clue": "Variant returned after the job has finished"
+		},
+		"waitingVariant": {
+			"clue": "Variant representing a job that has not finished"
+		},
+		"readyVariant": {
+			"clue": "Variant representing a job that has finished"
+		},
+		"function": {
+			"clue": "Keyword declaring a named function"
+		},
+		"parameterType": {
+			"clue": "The enum type declared above, used as the parameter type"
+		},
+		"returnType": {
+			"clue": "UTF-8 string slice type behind the returned shared reference"
+		},
+		"waitingArm": {
+			"clue": "Pattern variant whose arm returns the string \"waiting\""
+		},
+		"assertion": {
+			"clue": "Macro that checks whether two expressions compare equal"
 		}
 	}
 }

@@ -61,3 +61,12 @@ lesson demonstrates complete-arm recall beyond its guided keyword gaps. Assisted
 practice is tracked separately; existing progress is preserved. Apply uses
 lesson tasks with explicit self-assessment and local checks. Lessons without
 authored tasks explain that limitation instead of claiming a harder exercise.
+
+## Corrected exercise difficulty (owner clarified 2026-11-04)
+
+[Proposal #19](https://github.com/diegoami/knowclick/issues/19) implements both
+more meaningful gaps and more candidate answers within the same exercise. Rust's
+enum board has 10 gaps and 16 distinct choices. Small Rust/Bicep code boards are
+expanded, and authored wrong options also support the existing command/manifest
+boards. This corrects the broader interpretation in #17. Content checks for
+new or changed choices and clues still require genuine independent reviewers.

@@ -3,7 +3,7 @@
 	"category": "certification",
 	"licence": "CC-BY-SA-4.0",
 	"formatVersion": 1,
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"holdsFor": [
 		{
 			"name": "Kubernetes",
