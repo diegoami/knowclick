@@ -81,7 +81,7 @@
 	"practice.recommended": "Recommended next: {level}. You can choose any level.",
 	"practice.noTasks": "This lesson has no authored practical task yet. You can continue with Guided or Recall.",
 	"practice.apply.instructions": "Read the task requirements, attempt it before opening the solution, and run the task checks in the stated environment. Results here are self-assessed, not automatically compiler-graded. Use “with help” if you used a hint or solution.",
-	"practice.assisted": "Assisted practice: hints, revealed answers or a resumed round do not earn unassisted recall progress. Restart for a clean attempt.",
+	"practice.assisted": "Assisted practice: hints and revealed answers do not earn unassisted recall progress. Restart for a clean attempt.",
 	"practice.reveal": "Reveal answer (assisted)",
 	"practice.revealed": "Reference answer — this attempt is assisted:",
 	"practice.restart": "Restart unassisted",

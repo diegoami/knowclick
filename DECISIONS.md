@@ -152,10 +152,9 @@ larger expressions, then solve a practical problem. The existing static app
 supports local compiler-tested tasks and self-assessment, not browser-side
 execution of arbitrary submitted programs.
 
-Existing recognise/produce/practise cards keep their identities. Hints, revealed
-solutions and resumed rounds use a new assisted skill that cannot earn clean
-recall. Correct answers are hidden until the round ends to avoid revealing
-other answers. A wrong unassisted answer still resets its own recall progress.
+Existing recognise/produce/practise cards keep their identities. Hints and revealed solutions use a separate assisted skill. The original
+policy also classified resumed rounds as assisted and hid solved answers until
+completion; **superseded by #23** below to restore the expected learning flow. A wrong unassisted answer still resets its own recall progress.
 Recommendations are optional and require repeated clean success.
 
 A unit may reference a separate larger recall unit with new item IDs. This keeps
@@ -194,3 +193,21 @@ All Rust boards can now be code boards, so the pack regression checks standalone
 clues on code as well as grid/line cells. This also avoids a vacuous assertion
 when a pack has no grid/line board. Independent content checks remain separate
 and outstanding; no automated execution is presented as independent review.
+
+## A quiz stays filled until an explicit restart (2026-11-04, #23)
+
+The owner reported that going to Known and back erased placed answers. This was
+reproduced on the published hash-routed app: an in-memory round did not survive
+navigation. The original Geoclick flow retains a sitting across lookups; here
+snapshots must survive browser navigation/reloads as well.
+
+Quiz snapshots are validated and stored separately per pack, unit and mode.
+They retain completed rounds, the tray order, selected recall question and
+unfinished typed text. Only an explicit restart replaces a round, except when
+exercise content changes and the saved signature no longer matches. Earned
+learning cards are not reset. Malformed snapshots are ignored and unavailable
+storage falls back to memory. Review queues do not overwrite ordinary quizzes.
+
+Placed recall answers remain visible. Navigation alone no longer turns a round
+into assisted practice; explicit hints/reveals retain their existing assistance
+tracking. This supersedes the corresponding visibility/resumption policy in #17.

@@ -13,7 +13,7 @@
 		scoreSession,
 		type QuizSession
 	} from '@knowclick/quiz-engine';
-	import { onDestroy, untrack } from 'svelte';
+	import { onDestroy, onMount, untrack } from 'svelte';
 	import { resolve } from '$app/paths';
 	import Board from './Board.svelte';
 	import CellFace from './CellFace.svelte';
@@ -21,7 +21,13 @@
 	import { HAND_SIZE, handAfterUse, refillHand, shuffleChoices } from './difficulty';
 	import { t } from './locale.svelte';
 	import { recordAnswer, unitKnown } from './progress.svelte';
-	import { forgetRound, rememberRound, roundInProgress, type RoundInProgress } from './quizRound';
+	import {
+		forgetRound,
+		rememberRound,
+		roundInProgress,
+		roundSignature,
+		type RoundInProgress
+	} from './quizRound';
 	import { aimPoint, movedPastSlop } from './touchDrag';
 
 	interface Props {
@@ -36,6 +42,9 @@
 	let { pack, unit, only, next }: Props = $props();
 
 	const WRONG_FLASH_MS = 900;
+	const signature = untrack(() => roundSignature(unit));
+	const savedPackId = untrack(() => pack.id);
+	const savedUnitId = untrack(() => unit.id);
 
 	function newRound(): RoundInProgress {
 		const asked = only ? unit.cells.filter((cell) => only.has(cell.item)) : unit.cells;
@@ -53,7 +62,7 @@
 
 	// A review is one sitting, and isn't a round to come back to.
 	const start = untrack(() => {
-		const saved = only ? undefined : roundInProgress(pack.id, unit.id);
+		const saved = only ? undefined : roundInProgress(pack.id, unit.id, signature);
 		return saved ? resumed(saved) : newRound();
 	});
 
@@ -91,10 +100,12 @@
 		return new Map(entries);
 	});
 	let choiceOrder = $state.raw<string[]>(
-		untrack(() =>
-			shuffleChoices([
-				...new Set([...unit.cells.map((cell) => cell.text), ...(unit.distractors ?? [])])
-			])
+		untrack(
+			() =>
+				start.choiceOrder ??
+				shuffleChoices([
+					...new Set([...unit.cells.map((cell) => cell.text), ...(unit.distractors ?? [])])
+				])
 		)
 	);
 	const choiceRank = $derived(new Map(choiceOrder.map((text, index) => [text, index])));
@@ -128,8 +139,7 @@
 		}
 
 		if (only) return;
-		if (isSessionComplete(session)) forgetRound(pack.id, unit.id);
-		else rememberRound(pack.id, unit.id, { session, hand, size });
+		saveRound();
 	}
 
 	function flashWrong(cellId: string) {
@@ -138,9 +148,18 @@
 		wrongTimer = setTimeout(() => (wrongCell = undefined), WRONG_FLASH_MS);
 	}
 
-	onDestroy(() => clearTimeout(wrongTimer));
+	function saveRound() {
+		if (!only)
+			rememberRound(savedPackId, savedUnitId, { session, hand, size, signature, choiceOrder });
+	}
+	onMount(saveRound);
+	onDestroy(() => {
+		clearTimeout(wrongTimer);
+		saveRound();
+	});
 
 	function playAgain() {
+		if (!only) forgetRound(savedPackId, savedUnitId);
 		choiceOrder = shuffleChoices([
 			...new Set([...unit.cells.map((cell) => cell.text), ...(unit.distractors ?? [])])
 		]);
@@ -151,6 +170,7 @@
 		selected = undefined;
 		lastMiss = undefined;
 		wrongCell = undefined;
+		saveRound();
 	}
 
 	function cellAt(x: number, y: number): string | undefined {

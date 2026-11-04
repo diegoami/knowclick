@@ -81,3 +81,10 @@ wrong-arm choices. Ownership practises shared borrowing followed by exclusive
 mutation, errors distinguish absent input from invalid input, and iteration
 checks that the borrowed collection remains usable. This updates all existing
 Rust exercises; it does not claim an exhaustive language curriculum.
+
+## Preserve the original quiz learning flow (2026-11-04)
+
+[Fix #23](https://github.com/diegoami/knowclick/issues/23): keep placed answers,
+choice order and completed rounds when leaving/returning, including reloads.
+Typed drafts persist, navigation is not assistance, and only an explicit restart
+replaces the current round. Earned progress remains separate and intact.
