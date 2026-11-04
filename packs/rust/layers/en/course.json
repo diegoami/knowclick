@@ -1,6 +1,6 @@
 {
 	"title": "Rust foundations",
-	"summary": "For programmers new to Rust: study the official Book, recall the syntax, then practise locally with the standard library. Four lessons lead to a tested text-summary CLI.",
+	"summary": "For programmers new to Rust: study the official Book, fill substantial code gaps from a larger pool of candidate answers, then practise locally. Four lessons lead from ownership to a tested text-summary CLI.",
 	"sections": {
 		"foundations": {
 			"title": "From ownership to a tested CLI"

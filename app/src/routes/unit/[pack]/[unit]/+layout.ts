@@ -9,8 +9,11 @@ export const load: LayoutLoad = async ({ params }) => {
 	const unit = pack && (await loadUnit(pack, params.unit, locale()));
 	if (!pack || !unit) error(404, 'No such unit');
 	await loadProgress(pack.id);
-	const lessonId = pack.lessons.find((lesson) => lesson.units.includes(unit.id))?.id ?? '';
 	const course = await loadCourse(pack, locale());
-	const tasks = course.lessons.find((lesson) => lesson.id === lessonId)?.tasks ?? [];
+	const lesson = course.lessons.find((lesson) =>
+		lesson.units.some((candidate) => candidate.id === unit.id || candidate.recall?.id === unit.id)
+	);
+	const lessonId = lesson?.id ?? '';
+	const tasks = lesson?.tasks ?? [];
 	return { pack, unit, lessonId, tasks };
 };

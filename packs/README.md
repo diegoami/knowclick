@@ -50,6 +50,12 @@ penalizes the selected gap, never a fake progress item. It is not removed from
 the tray after a mistake. Authored choices are included in independent content
 checks; executable verification still checks the filled program, not decoys.
 
+The existing Rust course follows this policy on every board: ten gaps per main
+board, 16–18 distinct choices, and a four-state complete-arm challenge. Preserve
+facts that recur across variants with their existing item identities; use new
+IDs when an exercise introduces a new fact. Verify each filled program, including
+all branches and the continued usability of borrowed values.
+
 ### Guided, Recall and Apply
 
 Use the same progression in every course. Choose gaps from one learning

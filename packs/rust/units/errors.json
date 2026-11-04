@@ -7,9 +7,18 @@
 			"    let value = text.{{gap:parse}}::<u32>(){{gap:propagate}};",
 			"    {{gap:success}}(value)",
 			"}",
+			"fn optional_count(text: {{gap:optional}}<&str>) -> Result<Option<u32>, std::num::ParseIntError> {",
+			"    match text {",
+			"        {{gap:present}}(value) => Ok(Some(count(value)?)),",
+			"        {{gap:absent}} => Ok(None),",
+			"    }",
+			"}",
 			"fn main() {",
 			"    assert_eq!(count(\"27\").unwrap(), 27);",
 			"    assert!(count(\"many\").{{gap:failed}}());",
+			"    assert_eq!(optional_count(None).unwrap(), None);",
+			"    assert_eq!(optional_count(Some(\"3\")).unwrap(), Some(3));",
+			"    assert!(optional_count(Some(\"bad\")).is_err());",
 			"}"
 		]
 	},
@@ -48,12 +57,31 @@
 			"id": "failed",
 			"item": "rust:errors:failed",
 			"text": "is_err"
+		},
+		{
+			"id": "optional",
+			"item": "rust:errors:optional",
+			"text": "Option"
+		},
+		{
+			"id": "present",
+			"item": "rust:errors:present",
+			"text": "Some"
+		},
+		{
+			"id": "absent",
+			"item": "rust:errors:absent",
+			"text": "None"
 		}
 	],
 	"sources": [
 		{
 			"title": "Recoverable errors with Result",
 			"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+		},
+		{
+			"title": "Option and its advantages",
+			"url": "https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values"
 		}
 	],
 	"verify": {
@@ -62,5 +90,5 @@
 		"expect": "^verified$"
 	},
 	"dealAll": true,
-	"distractors": ["Option", "Err", "Some", "None", "unwrap", "expect", "i32", "is_ok"]
+	"distractors": ["Err", "unwrap", "expect", "i32", "is_ok", "String", "usize", "unwrap_or"]
 }

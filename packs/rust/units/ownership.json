@@ -1,27 +1,74 @@
 {
 	"id": "ownership",
 	"layout": {
-		"type": "lines",
-		"size": 3
+		"type": "code",
+		"code": [
+			"fn byte_count(value: &{{gap:slice}}) -> {{gap:lengthType}} {",
+			"    value.{{gap:length}}()",
+			"}",
+			"fn main() {",
+			"    let {{gap:mutable}} label = {{gap:owned}}::from(\"cloud\");",
+			"    {{gap:assertion}}(byte_count({{gap:borrow}}label), 5);",
+			"    let view: {{gap:sharedType}} = &label;",
+			"    assert_eq!(view, \"cloud\");",
+			"    {",
+			"        let editable: {{gap:mutableType}} = &mut label;",
+			"        editable.{{gap:append}}('!');",
+			"    }",
+			"    assert_eq!(label, \"cloud!\");",
+			"}"
+		]
 	},
 	"cells": [
 		{
 			"id": "owned",
 			"item": "rust:ownership:owned",
-			"text": "String",
-			"line": "let label = ___::from(\"cloud\"); assert_eq!(label.len(), 5);"
+			"text": "String"
 		},
 		{
 			"id": "borrow",
 			"item": "rust:ownership:borrow",
-			"text": "&",
-			"line": "let label = String::from(\"cloud\"); let borrowed: &str = ___label; assert_eq!(borrowed.len(), 5); assert_eq!(label.len(), 5);"
+			"text": "&"
 		},
 		{
 			"id": "slice",
 			"item": "rust:ownership:slice",
-			"text": "str",
-			"line": "let label = String::from(\"cloud\"); let borrowed: &___ = &label; assert_eq!(borrowed.len(), 5);"
+			"text": "str"
+		},
+		{
+			"id": "lengthType",
+			"item": "rust:ownership:lengthType",
+			"text": "usize"
+		},
+		{
+			"id": "length",
+			"item": "rust:ownership:length",
+			"text": "len"
+		},
+		{
+			"id": "mutable",
+			"item": "rust:ownership:mutable",
+			"text": "mut"
+		},
+		{
+			"id": "assertion",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "sharedType",
+			"item": "rust:ownership:sharedType",
+			"text": "&str"
+		},
+		{
+			"id": "mutableType",
+			"item": "rust:ownership:mutableType",
+			"text": "&mut String"
+		},
+		{
+			"id": "append",
+			"item": "rust:ownership:append",
+			"text": "push"
 		}
 	],
 	"sources": [
@@ -32,12 +79,21 @@
 		{
 			"title": "Ownership",
 			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		},
+		{
+			"title": "String slices",
+			"url": "https://doc.rust-lang.org/book/ch04-03-slices.html"
 		}
 	],
 	"verify": {
 		"run": "node scripts/verify-local-code.mjs rust",
-		"stdin": "fn main() {\n{line}\n}",
+		"stdin": "{code}",
 		"expect": "^verified$"
 	},
-	"distractors": ["&mut", "str!", "char", "Vec", "Box", "clone"]
+	"distractors": ["isize", "capacity", "append", "char", "Vec", "Box", "Rc", "&mut str"],
+	"dealAll": true
 }

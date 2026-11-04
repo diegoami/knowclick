@@ -1,6 +1,6 @@
 {
 	"title": "Propagate a parsing error",
-	"summary": "Parse an unsigned number, propagate a failure and wrap a successful value. No panic is needed for invalid input.",
+	"summary": "Keep missing input distinct from invalid input: propagate parsing errors and represent successful absence without inventing a zero.",
 	"cells": {
 		"return": {
 			"clue": "Return type combining a successful value and a recoverable error"
@@ -22,6 +22,15 @@
 		},
 		"failed": {
 			"clue": "Method that reports whether the result contains a failure"
+		},
+		"optional": {
+			"clue": "Enum representing a value that may be present or absent"
+		},
+		"present": {
+			"clue": "Pattern variant wrapping a present input value"
+		},
+		"absent": {
+			"clue": "Pattern variant representing missing input"
 		}
 	}
 }

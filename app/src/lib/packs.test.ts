@@ -162,11 +162,19 @@ describe.each(packIds)('pack %s', (packId) => {
 		}
 	);
 
-	it.each(manifest.explanations)('explained in %s, no grid or line cell lacks a clue', (name) => {
-		for (const unit of units) {
-			const local = localizeUnit(unit, layers[name].units[unit.id], layers[name].course);
-			if (local.layout.type !== 'grid' && local.layout.type !== 'lines') continue;
-			expect(local.cells.filter((cell) => !cell.clue).map((cell) => cell.id)).toEqual([]);
+	it.each(manifest.explanations)(
+		'explained in %s, no grid, line or code cell lacks a clue',
+		(name) => {
+			for (const unit of units) {
+				const local = localizeUnit(unit, layers[name].units[unit.id], layers[name].course);
+				if (
+					local.layout.type !== 'grid' &&
+					local.layout.type !== 'lines' &&
+					local.layout.type !== 'code'
+				)
+					continue;
+				expect(local.cells.filter((cell) => !cell.clue).map((cell) => cell.id)).toEqual([]);
+			}
 		}
-	});
+	);
 });

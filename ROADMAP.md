@@ -70,3 +70,14 @@ enum board has 10 gaps and 16 distinct choices. Small Rust/Bicep code boards are
 expanded, and authored wrong options also support the existing command/manifest
 boards. This corrects the broader interpretation in #17. Content checks for
 new or changed choices and clues still require genuine independent reviewers.
+
+## Rust exercise coverage (owner approved 2026-11-04)
+
+[Proposal #21](https://github.com/diegoami/knowclick/issues/21) completes the same
+more-gaps/more-choices treatment across the existing Rust course. Ownership,
+Enums, Errors and Iterators each have ten meaningful gaps and 16–18 distinct
+candidate answers. The full-arm recall variant covers four states with its own
+wrong-arm choices. Ownership practises shared borrowing followed by exclusive
+mutation, errors distinguish absent input from invalid input, and iteration
+checks that the borrowed collection remains usable. This updates all existing
+Rust exercises; it does not claim an exhaustive language curriculum.

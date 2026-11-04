@@ -178,3 +178,19 @@ They stay visible until the round ends and are indistinguishable in appearance
 from real choices. Choosing one penalizes the target gap and cannot create a
 fake progress card. Filled-program checks remain separate from independent
 review of newly authored gaps, clues and distractors.
+
+## Every existing Rust board gets substantial practice (2026-11-04, #21)
+
+The owner asked to apply the clarified gap/choice approach to all Rust exercises.
+Each main board now has ten gaps; no unrelated tokens are hidden just to inflate
+that count. Ownership becomes a complete borrowing/mutation program; errors add
+Option handling alongside Result; iterators also test the entry function and
+continued use of the original collection. The existing enum board retains its
+10-gap correction, while its larger-arm variant extends exhaustive matching to
+four states. All completed examples compile and execute assertions locally.
+Existing fact IDs are preserved; new facts get new IDs.
+
+All Rust boards can now be code boards, so the pack regression checks standalone
+clues on code as well as grid/line cells. This also avoids a vacuous assertion
+when a pack has no grid/line board. Independent content checks remain separate
+and outstanding; no automated execution is presented as independent review.

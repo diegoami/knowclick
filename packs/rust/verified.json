@@ -4,7 +4,7 @@
 	"entries": [
 		{
 			"key": "verify/enums-match",
-			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"enum Job { Waiting, Ready }\\nfn label(job: Job) -> &'static str {\\n    match job {\\n        Job::Waiting => \\\"waiting\\\",\\n        Job::Ready => \\\"ready\\\",\\n    }\\n}\\nfn main() {\\n    assert_eq!(label(Job::Waiting), \\\"waiting\\\");\\n    assert_eq!(label(Job::Ready), \\\"ready\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"enum Job { Waiting, Running, Ready, Failed }\\nfn label(job: Job) -> &'static str {\\n    match job {\\n        Job::Waiting => \\\"waiting\\\",\\n        Job::Running => \\\"running\\\",\\n        Job::Ready => \\\"ready\\\",\\n        Job::Failed => \\\"failed\\\",\\n    }\\n}\\nfn main() {\\n    assert_eq!(label(Job::Waiting), \\\"waiting\\\");\\n    assert_eq!(label(Job::Running), \\\"running\\\");\\n    assert_eq!(label(Job::Ready), \\\"ready\\\");\\n    assert_eq!(label(Job::Failed), \\\"failed\\\");\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true
 		},
 		{
@@ -14,7 +14,7 @@
 		},
 		{
 			"key": "verify/errors",
-			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn count(text: &str) -> Result<u32, std::num::ParseIntError> {\\n    let value = text.parse::<u32>()?;\\n    Ok(value)\\n}\\nfn main() {\\n    assert_eq!(count(\\\"27\\\").unwrap(), 27);\\n    assert!(count(\\\"many\\\").is_err());\\n}\",\"expect\":\"^verified$\"}",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn count(text: &str) -> Result<u32, std::num::ParseIntError> {\\n    let value = text.parse::<u32>()?;\\n    Ok(value)\\n}\\nfn optional_count(text: Option<&str>) -> Result<Option<u32>, std::num::ParseIntError> {\\n    match text {\\n        Some(value) => Ok(Some(count(value)?)),\\n        None => Ok(None),\\n    }\\n}\\nfn main() {\\n    assert_eq!(count(\\\"27\\\").unwrap(), 27);\\n    assert!(count(\\\"many\\\").is_err());\\n    assert_eq!(optional_count(None).unwrap(), None);\\n    assert_eq!(optional_count(Some(\\\"3\\\")).unwrap(), Some(3));\\n    assert!(optional_count(Some(\\\"bad\\\")).is_err());\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true
 		},
 		{
@@ -23,18 +23,8 @@
 			"ok": true
 		},
 		{
-			"key": "verify/ownership/owned",
-			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\nlet label = String::from(\\\"cloud\\\"); assert_eq!(label.len(), 5);\\n}\",\"expect\":\"^verified$\"}",
-			"ok": true
-		},
-		{
-			"key": "verify/ownership/borrow",
-			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\nlet label = String::from(\\\"cloud\\\"); let borrowed: &str = &label; assert_eq!(borrowed.len(), 5); assert_eq!(label.len(), 5);\\n}\",\"expect\":\"^verified$\"}",
-			"ok": true
-		},
-		{
-			"key": "verify/ownership/slice",
-			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\nlet label = String::from(\\\"cloud\\\"); let borrowed: &str = &label; assert_eq!(borrowed.len(), 5);\\n}\",\"expect\":\"^verified$\"}",
+			"key": "verify/ownership",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn byte_count(value: &str) -> usize {\\n    value.len()\\n}\\nfn main() {\\n    let mut label = String::from(\\\"cloud\\\");\\n    assert_eq!(byte_count(&label), 5);\\n    let view: &str = &label;\\n    assert_eq!(view, \\\"cloud\\\");\\n    {\\n        let editable: &mut String = &mut label;\\n        editable.push('!');\\n    }\\n    assert_eq!(label, \\\"cloud!\\\");\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true
 		}
 	]
