@@ -1,0 +1,47 @@
+{
+	"id": "enums",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:declare}} Job { Waiting, Ready }",
+			"fn label(job: Job) -> &'static str {",
+			"    {{gap:select}} job {",
+			"        Job::Waiting => \"waiting\",",
+			"        Job::{{gap:finished}} => \"ready\",",
+			"    }",
+			"}",
+			"fn main() {",
+			"    assert_eq!(label(Job::Waiting), \"waiting\");",
+			"    assert_eq!(label(Job::Ready), \"ready\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "declare",
+			"item": "rust:enums:declare",
+			"text": "enum"
+		},
+		{
+			"id": "select",
+			"item": "rust:enums:select",
+			"text": "match"
+		},
+		{
+			"id": "finished",
+			"item": "rust:enums:finished",
+			"text": "Ready"
+		}
+	],
+	"sources": [
+		{
+			"title": "Enums and pattern matching",
+			"url": "https://doc.rust-lang.org/book/ch06-00-enums.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	}
+}

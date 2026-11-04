@@ -26,6 +26,26 @@ AZ-900, typed answers on every board, and coverage weights as ranges.
 
 A later milestone gets its scope settled in its own proposal.
 
+## Current course priorities (owner approved 2026-11-04)
+
+Azure and Rust take priority over the later milestones above. The approved
+increments are [Azure developer foundations #14](https://github.com/diegoami/knowclick/issues/14)
+and [Rust foundations #15](https://github.com/diegoami/knowclick/issues/15).
+
+- Azure: three additional lessons on managed identity and authorization, Bicep,
+  and Functions/messaging, with three local labs. Existing AZ-900 content and
+  progress identities are preserved. This is not full AI-200 coverage.
+- Rust: four lessons and four compiler-verified boards, with local labs covering
+  moves/borrows, structured state, fallible parsing and a tested text-summary CLI.
+- Next recommendation: TypeScript, especially narrowing, discriminated unions,
+  generics, async error handling and tests. The app's strict TypeScript, Svelte
+  and Vitest stack provides immediate practice. No TypeScript pack is added yet.
+
+These course increments are authored but **not release-ready**: two independent
+content checks are still required for the new and changed targets. Existing
+check records are retained, and stale checks remain failing until independently
+renewed. Release numbering and publication are separate from these increments.
+
 **Claude certifications** (asked for on 2026-11-02). Anthropic launched the Claude
 Certified Architect, Foundations in March 2026, and third-party guides list four
 credentials by July (Associate, Developer, Architect Foundations, Architect Professional),

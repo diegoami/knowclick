@@ -1,0 +1,15 @@
+{
+	"title": "A reusable deployment description",
+	"summary": "Complete a local deployment description: one existing resource group location becomes a named output. Compile only; this deploys nothing.",
+	"cells": {
+		"input": {
+			"clue": "Declaration keyword for a caller-supplied deployment value"
+		},
+		"value": {
+			"clue": "Name of the input referenced by the output expression"
+		},
+		"result": {
+			"clue": "Declaration keyword for a value returned by a deployment"
+		}
+	}
+}

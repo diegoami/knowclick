@@ -1,0 +1,36 @@
+{
+	"ranAgainst": "local-only, rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+	"ranOn": "2026-11-04",
+	"entries": [
+		{
+			"key": "verify/enums",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"enum Job { Waiting, Ready }\\nfn label(job: Job) -> &'static str {\\n    match job {\\n        Job::Waiting => \\\"waiting\\\",\\n        Job::Ready => \\\"ready\\\",\\n    }\\n}\\nfn main() {\\n    assert_eq!(label(Job::Waiting), \\\"waiting\\\");\\n    assert_eq!(label(Job::Ready), \\\"ready\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/errors",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn count(text: &str) -> Result<u32, std::num::ParseIntError> {\\n    let value = text.parse::<u32>()?;\\n    Ok(value)\\n}\\nfn main() {\\n    assert_eq!(count(\\\"27\\\").unwrap(), 27);\\n    assert!(count(\\\"many\\\").is_err());\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/iterators",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let values = vec![1_i32, 2, 3, 4];\\n    let doubled: Vec<i32> = values.iter()\\n        .filter(|value| **value % 2 == 0)\\n        .map(|value| *value * 2)\\n        .collect();\\n    assert_eq!(doubled, vec![4, 8]);\\n    assert_eq!(values.len(), 4);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/ownership/owned",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\nlet label = String::from(\\\"cloud\\\"); assert_eq!(label.len(), 5);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/ownership/borrow",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\nlet label = String::from(\\\"cloud\\\"); let borrowed: &str = &label; assert_eq!(borrowed.len(), 5); assert_eq!(label.len(), 5);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/ownership/slice",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\nlet label = String::from(\\\"cloud\\\"); let borrowed: &str = &label; assert_eq!(borrowed.len(), 5);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		}
+	]
+}

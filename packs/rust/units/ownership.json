@@ -1,0 +1,42 @@
+{
+	"id": "ownership",
+	"layout": {
+		"type": "lines",
+		"size": 3
+	},
+	"cells": [
+		{
+			"id": "owned",
+			"item": "rust:ownership:owned",
+			"text": "String",
+			"line": "let label = ___::from(\"cloud\"); assert_eq!(label.len(), 5);"
+		},
+		{
+			"id": "borrow",
+			"item": "rust:ownership:borrow",
+			"text": "&",
+			"line": "let label = String::from(\"cloud\"); let borrowed: &str = ___label; assert_eq!(borrowed.len(), 5); assert_eq!(label.len(), 5);"
+		},
+		{
+			"id": "slice",
+			"item": "rust:ownership:slice",
+			"text": "str",
+			"line": "let label = String::from(\"cloud\"); let borrowed: &___ = &label; assert_eq!(borrowed.len(), 5);"
+		}
+	],
+	"sources": [
+		{
+			"title": "References and borrowing",
+			"url": "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html"
+		},
+		{
+			"title": "Ownership",
+			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "fn main() {\n{line}\n}",
+		"expect": "^verified$"
+	}
+}

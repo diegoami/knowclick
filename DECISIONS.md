@@ -124,3 +124,22 @@ need, "your own cloud account", and an agent never runs them.
 reaching Azure. The flag must start a line of the help, so a flag that is only mentioned,
 or is a prefix of another, doesn't pass. The pack's guard refuses to run while `az` is
 logged in, so a verify run can't touch a subscription.
+
+## Azure and Rust first; local developer practice (2026-11-04, #14, #15)
+
+The owner approved Azure developer foundations and a first Rust pack ahead of
+other planned subjects. Azure's additional lessons are practical foundations,
+not a claim of complete AI-200 coverage. New Azure labs are local: a least-privilege
+design, Bicep compilation and a repeat-safe Python handler. They supplement the
+existing learner-run cloud projects without requiring an account.
+
+Rust uses edition 2024 with rustc 1.99.1 and the standard library. The existing
+pack format supports complete code verification through stdin, so the engine
+needs no extension. A small command-line helper compiles in temporary directories
+and cleans them afterwards. Lab solutions include expected compiler failures,
+unit tests and real CLI I/O. TypeScript is recommended next because it is the
+app's own language, but it is not part of this increment.
+
+Author execution and content review are separate evidence. No independent check
+is invented or signed by the author under a second name. Missing independent
+checks intentionally keep the content gate red and the work unmergeable.

@@ -64,6 +64,15 @@ written once. Only English exists in v0.1.0.
 
 ## Packs
 
+The Rust pack adds language learning through the existing format; no screen or
+engine changes are needed. Azure developer foundations extend its existing
+manifest. Original local task prompts and reference solutions live in
+`docs/courses/`. `scripts/verify-local-code.mjs` compiles Rust/Bicep board code in
+a disposable temporary directory; Rust programs run their assertions and the
+Bicep output is checked as a template. It never deploys or downloads dependencies.
+Verification requires `rustc` and `bicep` on PATH. The Azure CLI guard and existing
+CLI verification entries are preserved.
+
 Everything is read through `PackSource` in `packs.ts`: today the local `packs/` folder,
 later downloads behind the same interface. Check records, the verify record and coverage
 stay out of what the app bundles.

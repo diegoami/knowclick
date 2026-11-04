@@ -1,0 +1,48 @@
+{
+	"id": "developer-integration",
+	"layout": {
+		"type": "grid",
+		"size": 5
+	},
+	"cells": [
+		{
+			"id": "http",
+			"item": "azure:developer-integration:http",
+			"text": "HTTP trigger"
+		},
+		{
+			"id": "commands",
+			"item": "azure:developer-integration:commands",
+			"text": "Service Bus"
+		},
+		{
+			"id": "notifications",
+			"item": "azure:developer-integration:notifications",
+			"text": "Event Grid"
+		},
+		{
+			"id": "telemetry",
+			"item": "azure:developer-integration:telemetry",
+			"text": "Event Hubs"
+		},
+		{
+			"id": "repeat",
+			"item": "azure:developer-integration:repeat",
+			"text": "idempotency"
+		}
+	],
+	"sources": [
+		{
+			"title": "Compare messaging services",
+			"url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/compare-messaging-services"
+		},
+		{
+			"title": "Design for identical input",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent"
+		},
+		{
+			"title": "HTTP trigger",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger"
+		}
+	]
+}

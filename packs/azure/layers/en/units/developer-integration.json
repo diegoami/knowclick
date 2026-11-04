@@ -1,0 +1,21 @@
+{
+	"title": "Functions and messaging",
+	"summary": "Choose a service by workload and make handlers safe to repeat; retries alone do not make processing safe.",
+	"cells": {
+		"http": {
+			"clue": "The binding that starts a Function when a web request arrives"
+		},
+		"commands": {
+			"clue": "The enterprise broker for business commands that need queues, dead lettering and transactions"
+		},
+		"notifications": {
+			"clue": "The event-routing service for reacting to notifications such as a newly created blob"
+		},
+		"telemetry": {
+			"clue": "The partitioned ingestion service for high-volume telemetry streams"
+		},
+		"repeat": {
+			"clue": "The property that processing the same operation again does not repeat its intended side effect"
+		}
+	}
+}

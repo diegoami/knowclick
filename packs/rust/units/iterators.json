@@ -1,0 +1,54 @@
+{
+	"id": "iterators",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let values = vec![1_i32, 2, 3, 4];",
+			"    let doubled: Vec<i32> = values.{{gap:borrow}}()",
+			"        .{{gap:retain}}(|value| **value % 2 == 0)",
+			"        .{{gap:convert}}(|value| *value * 2)",
+			"        .{{gap:finish}}();",
+			"    assert_eq!(doubled, vec![4, 8]);",
+			"    assert_eq!(values.len(), 4);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "borrow",
+			"item": "rust:iterators:borrow",
+			"text": "iter"
+		},
+		{
+			"id": "retain",
+			"item": "rust:iterators:retain",
+			"text": "filter"
+		},
+		{
+			"id": "convert",
+			"item": "rust:iterators:convert",
+			"text": "map"
+		},
+		{
+			"id": "finish",
+			"item": "rust:iterators:finish",
+			"text": "collect"
+		}
+	],
+	"sources": [
+		{
+			"title": "Iterators",
+			"url": "https://doc.rust-lang.org/book/ch13-02-iterators.html"
+		},
+		{
+			"title": "Command line project",
+			"url": "https://doc.rust-lang.org/book/ch12-00-an-io-project.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	}
+}

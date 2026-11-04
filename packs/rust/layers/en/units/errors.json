@@ -1,0 +1,15 @@
+{
+	"title": "Propagate a parsing error",
+	"summary": "Parse an unsigned number, propagate a failure and wrap a successful value. No panic is needed for invalid input.",
+	"cells": {
+		"return": {
+			"clue": "Return type combining a successful value and a recoverable error"
+		},
+		"propagate": {
+			"clue": "Operator that returns early with the parsing error in this function"
+		},
+		"success": {
+			"clue": "Variant wrapping the successful value"
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"move-or-borrow": {
+		"title": "Values and ownership lab",
+		"brief": "Compare moving and borrowing a String, reproduce E0382, and repair the program."
+	},
+	"job-transition": {
+		"title": "Structs, enums and matching lab",
+		"brief": "Implement and test an exhaustive state transition for a job with a structured identifier."
+	},
+	"parse-count": {
+		"title": "Option, Result and recoverable errors lab",
+		"brief": "Implement fallible parsing with Result and optional input with Option; test missing and malformed input."
+	},
+	"text-summary": {
+		"title": "Collections and iterators lab",
+		"brief": "Build a CLI that counts nonempty lines and words; test empty input and whitespace."
+	}
+}

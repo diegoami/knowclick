@@ -1,6 +1,6 @@
 {
-	"ranAgainst": "logged-out, 2.91.0",
-	"ranOn": "2026-11-01",
+	"ranAgainst": "logged-out, 2.91.0; Bicep 0.48.1 (local compile only; previous CLI records retained)",
+	"ranOn": "2026-11-04",
 	"entries": [
 		{
 			"key": "verify/azure-cli/location",
@@ -50,6 +50,11 @@
 		{
 			"key": "verify/azure-cli/yes",
 			"seen": "{\"run\":\"az group delete --help\",\"expect\":\"^\\\\s+--yes(\\\\s|$)\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/developer-bicep",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs bicep\",\"stdin\":\"param location string = resourceGroup().location\\noutput selectedLocation string = location\",\"expect\":\"^compiled$\"}",
 			"ok": true
 		}
 	]

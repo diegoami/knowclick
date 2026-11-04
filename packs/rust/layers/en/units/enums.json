@@ -1,0 +1,15 @@
+{
+	"title": "Model a state and match every variant",
+	"summary": "An enum models alternatives; a struct groups named fields. This board practises exhaustive matching.",
+	"cells": {
+		"declare": {
+			"clue": "Keyword declaring a type whose value is one of several variants"
+		},
+		"select": {
+			"clue": "Expression keyword selecting an arm from the current variant"
+		},
+		"finished": {
+			"clue": "Variant returned after the job has finished"
+		}
+	}
+}

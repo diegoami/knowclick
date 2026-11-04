@@ -1,0 +1,23 @@
+{
+	"title": "Rust foundations",
+	"summary": "For programmers new to Rust: study the official Book, recall the syntax, then practise locally with the standard library. Four lessons lead to a tested text-summary CLI.",
+	"sections": {
+		"foundations": {
+			"title": "From ownership to a tested CLI"
+		}
+	},
+	"lessons": {
+		"ownership": {
+			"title": "Values and ownership"
+		},
+		"enums": {
+			"title": "Structs, enums and matching"
+		},
+		"errors": {
+			"title": "Option, Result and recoverable errors"
+		},
+		"iterators": {
+			"title": "Collections and iterators"
+		}
+	}
+}

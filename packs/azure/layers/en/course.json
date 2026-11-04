@@ -1,6 +1,6 @@
 {
 	"title": "Microsoft Azure",
-	"summary": "For AZ-900 first: the concepts, services and tools of Azure. Six guided projects are done in your own Azure account, which you clean up afterwards so they cost nothing or close to it.",
+	"summary": "For AZ-900 first: the concepts, services and tools of Azure. Six guided projects are done in your own Azure account, which you clean up afterwards so they cost nothing or close to it. Developer foundations add local practice in identity, infrastructure as code and resilient message processing; they do not claim complete AI-200 coverage.",
 	"sections": {
 		"concepts": {
 			"title": "Describe cloud concepts"
@@ -10,6 +10,9 @@
 		},
 		"management": {
 			"title": "Describe Azure management and governance"
+		},
+		"developer": {
+			"title": "Developer foundations (beyond AZ-900)"
 		}
 	},
 	"lessons": {
@@ -27,6 +30,15 @@
 		},
 		"cli": {
 			"title": "The Azure CLI"
+		},
+		"developer-identity": {
+			"title": "Identity and least privilege"
+		},
+		"developer-bicep": {
+			"title": "Infrastructure as code"
+		},
+		"developer-integration": {
+			"title": "Resilient application integration"
 		}
 	},
 	"concepts": {

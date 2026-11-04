@@ -22,5 +22,17 @@
 	"cloud-shell-cli": {
 		"title": "Manage resources from Cloud Shell",
 		"brief": "Create, list, tag and query resources with az commands in Cloud Shell, formatting and filtering the output."
+	},
+	"identity-design": {
+		"title": "Identity and least privilege lab",
+		"brief": "Design a narrow identity grant for a blob reader without saving credentials."
+	},
+	"compile-bicep": {
+		"title": "Infrastructure as code lab",
+		"brief": "Compile a parameterized deployment description locally without creating cloud resources."
+	},
+	"repeat-safe-handler": {
+		"title": "Resilient application integration lab",
+		"brief": "Write and test a Python handler that ignores repeated operation IDs."
 	}
 }
