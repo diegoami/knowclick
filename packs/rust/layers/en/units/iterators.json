@@ -13,6 +13,18 @@
 		},
 		"finish": {
 			"clue": "Consuming method building the destination vector from iterator items"
+		},
+		"vector": {
+			"clue": "Macro constructing a growable sequence from the listed values"
+		},
+		"number": {
+			"clue": "Signed integer type with a width of 32 bits"
+		},
+		"collection": {
+			"clue": "Owned growable sequence type used for the collected values"
+		},
+		"assertion": {
+			"clue": "Macro checking equality of the transformed and expected sequences"
 		}
 	}
 }

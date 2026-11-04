@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { handAfterUse, knownCount, refillHand } from './difficulty';
+import { handAfterUse, knownCount, refillHand, shuffleChoices } from './difficulty';
 
 describe('knownCount', () => {
 	it('counts level 3 and above', () => {
@@ -35,5 +35,14 @@ describe('refillHand', () => {
 
 	it('never exceeds the size', () => {
 		expect(refillHand(['a', 'b', 'c'], ['a', 'b', 'c'], 2)).toEqual(['a', 'b']);
+	});
+});
+
+describe('shuffling choices', () => {
+	it('preserves every option without mutating the original pool', () => {
+		const choices = ['right', 'wrong', 'another'];
+		const shuffled = shuffleChoices(choices, () => 0);
+		expect(shuffled).toEqual(['wrong', 'another', 'right']);
+		expect(choices).toEqual(['right', 'wrong', 'another']);
 	});
 });

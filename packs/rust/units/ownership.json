@@ -38,5 +38,6 @@
 		"run": "node scripts/verify-local-code.mjs rust",
 		"stdin": "fn main() {\n{line}\n}",
 		"expect": "^verified$"
-	}
+	},
+	"distractors": ["&mut", "str!", "char", "Vec", "Box", "clone"]
 }

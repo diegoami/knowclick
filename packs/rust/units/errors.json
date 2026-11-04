@@ -3,13 +3,13 @@
 	"layout": {
 		"type": "code",
 		"code": [
-			"fn count(text: &str) -> {{gap:return}}<u32, std::num::ParseIntError> {",
-			"    let value = text.parse::<u32>(){{gap:propagate}};",
+			"fn count(text: &str) -> {{gap:return}}<{{gap:number}}, std::num::{{gap:error}}> {",
+			"    let value = text.{{gap:parse}}::<u32>(){{gap:propagate}};",
 			"    {{gap:success}}(value)",
 			"}",
 			"fn main() {",
 			"    assert_eq!(count(\"27\").unwrap(), 27);",
-			"    assert!(count(\"many\").is_err());",
+			"    assert!(count(\"many\").{{gap:failed}}());",
 			"}"
 		]
 	},
@@ -28,6 +28,26 @@
 			"id": "success",
 			"item": "rust:errors:success",
 			"text": "Ok"
+		},
+		{
+			"id": "number",
+			"item": "rust:errors:number",
+			"text": "u32"
+		},
+		{
+			"id": "error",
+			"item": "rust:errors:error",
+			"text": "ParseIntError"
+		},
+		{
+			"id": "parse",
+			"item": "rust:errors:parse",
+			"text": "parse"
+		},
+		{
+			"id": "failed",
+			"item": "rust:errors:failed",
+			"text": "is_err"
 		}
 	],
 	"sources": [
@@ -40,5 +60,7 @@
 		"run": "node scripts/verify-local-code.mjs rust",
 		"stdin": "{code}",
 		"expect": "^verified$"
-	}
+	},
+	"dealAll": true,
+	"distractors": ["Option", "Err", "Some", "None", "unwrap", "expect", "i32", "is_ok"]
 }

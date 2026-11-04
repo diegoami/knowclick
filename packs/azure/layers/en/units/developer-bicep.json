@@ -10,6 +10,15 @@
 		},
 		"result": {
 			"clue": "Declaration keyword for a value returned by a deployment"
+		},
+		"inputType": {
+			"clue": "Parameter type for a location name expressed as text"
+		},
+		"scope": {
+			"clue": "Function returning the current deployment group’s metadata"
+		},
+		"outputType": {
+			"clue": "Output type for the returned location name"
 		}
 	}
 }

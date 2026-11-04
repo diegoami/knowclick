@@ -120,5 +120,14 @@
 			"item": "field:deployment:emptyDir",
 			"text": "emptyDir"
 		}
+	],
+	"distractors": [
+		"batch/v1",
+		"nodePort",
+		"env",
+		"livenessProbe",
+		"limits",
+		"hostPath",
+		"volumeClaimTemplates"
 	]
 }

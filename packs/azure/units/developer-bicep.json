@@ -3,8 +3,8 @@
 	"layout": {
 		"type": "code",
 		"code": [
-			"{{gap:input}} location string = resourceGroup().location",
-			"{{gap:result}} selectedLocation string = {{gap:value}}"
+			"{{gap:input}} location {{gap:inputType}} = {{gap:scope}}().location",
+			"{{gap:result}} selectedLocation {{gap:outputType}} = {{gap:value}}"
 		]
 	},
 	"cells": [
@@ -22,6 +22,21 @@
 			"id": "result",
 			"item": "azure:developer-bicep:result",
 			"text": "output"
+		},
+		{
+			"id": "inputType",
+			"item": "azure:developer-bicep:inputType",
+			"text": "string"
+		},
+		{
+			"id": "scope",
+			"item": "azure:developer-bicep:scope",
+			"text": "resourceGroup"
+		},
+		{
+			"id": "outputType",
+			"item": "azure:developer-bicep:outputType",
+			"text": "string"
 		}
 	],
 	"sources": [
@@ -42,5 +57,7 @@
 		"run": "node scripts/verify-local-code.mjs bicep",
 		"stdin": "{code}",
 		"expect": "^compiled$"
-	}
+	},
+	"dealAll": true,
+	"distractors": ["var", "resource", "module", "int", "bool", "subscription", "tenant"]
 }

@@ -138,6 +138,8 @@ export interface Unit {
 	/** The answers only mean something against each other: the tray always offers all
 	 * of them, however well the unit is known. */
 	dealAll?: boolean;
+	/** Plausible choices that are not correct for any cell in this unit. */
+	distractors?: string[];
 	/** The answers are names, where case is not the answer: a typed answer is compared
 	 * without case. Never for flags, fields or code, where case is the answer. */
 	caseInsensitive?: boolean;
@@ -243,6 +245,8 @@ export interface LocalUnit {
 	cells: LocalCell[];
 	sources: Source[];
 	dealAll?: boolean;
+	/** Plausible choices that are not correct for any cell in this unit. */
+	distractors?: string[];
 	caseInsensitive?: boolean;
 	/** Compare code as tokens so whitespace between tokens is not significant. */
 	answerFormat?: 'code';
@@ -318,6 +322,7 @@ export function localizeUnit(
 		layout,
 		sources: unit.sources,
 		dealAll: unit.dealAll,
+		distractors: unit.distractors,
 		caseInsensitive: unit.caseInsensitive,
 		answerFormat: unit.answerFormat,
 		cells: unit.cells.map((cell) => ({
@@ -734,6 +739,29 @@ export function validatePack(
 			issues.push({ where, problem: 'unknown answerFormat' });
 		if (unit.answerFormat === 'code' && unit.caseInsensitive)
 			issues.push({ where, problem: 'code answers must preserve case' });
+		const normalized = (text: unknown) => {
+			if (typeof text !== 'string') return '';
+			const spaced = text.trim().replace(/\s+/g, ' ');
+			return unit.caseInsensitive ? spaced.toLowerCase() : spaced;
+		};
+		const answers = new Set(unit.cells.map((cell) => normalized(cell.text)));
+		const distractors = new Set<string>();
+		if (unit.distractors !== undefined && !Array.isArray(unit.distractors))
+			issues.push({ where, problem: 'distractors must be an array' });
+		for (const choice of Array.isArray(unit.distractors) ? unit.distractors : []) {
+			if (typeof choice !== 'string' || !choice.trim() || choice !== choice.trim()) {
+				issues.push({
+					where,
+					problem: 'distractor must be nonempty text without surrounding space'
+				});
+				continue;
+			}
+			const key = normalized(choice);
+			if (answers.has(key))
+				issues.push({ where, problem: 'distractor duplicates a correct answer' });
+			if (distractors.has(key)) issues.push({ where, problem: 'duplicate distractor' });
+			distractors.add(key);
+		}
 		validateLayout(unit, pack, issues);
 		validateUnitVerify(unit, pack, issues);
 
@@ -868,6 +896,8 @@ export function checkTargets(
 		targets.push({ key: `core/lesson/${lesson.id}`, seen: seenOf(lesson.study) });
 	}
 	for (const unit of units) {
+		if (unit.distractors)
+			targets.push({ key: `core/${unit.id}/distractors`, seen: seenOf(unit.distractors) });
 		if (unit.answerFormat)
 			targets.push({ key: `core/${unit.id}/answerFormat`, seen: seenOf(unit.answerFormat) });
 		if (unit.recallUnit)

@@ -111,3 +111,13 @@ loaders and imports while removing server-rendering options incompatible with
 hash routing. The Pages-only Vite configuration uses the repository base path
 and `index.html` entry. Authored routes and the normal build remain unchanged.
 The workflow publishes only `app/build/`; content and progress remain local-first.
+
+## Authored extra answer choices
+
+`Unit.distractors` supplies plausible wrong choices; localization preserves them
+and content-check targets bind their exact values. The pack validator rejects
+empty, duplicated and actually correct choices. `QuizView` merges them into the
+existing tray and shuffles once per round. They do not enter the quiz session or
+progress store as items. A wrong extra choice is evaluated against its selected
+gap via the existing typed-answer logic. Real answer slips retain their existing
+matching, grouped counts and refill policy. Extra options remain to the end.
