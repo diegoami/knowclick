@@ -23,7 +23,7 @@ import tasksText from '../../../packs/kubernetes/layers/en/tasks.json';
 import courseText from '../../../packs/kubernetes/layers/en/course.json';
 import pack from '../../../packs/kubernetes/pack.json';
 import { useLocale } from './locale.svelte';
-import { forgetRound, rememberRound } from './quizRound';
+import { forgetRound, rememberRound, roundSignature } from './quizRound';
 import {
 	dueCells,
 	dueTasks,
@@ -126,7 +126,12 @@ describe('QuizView', () => {
 		const all = { ...unit, dealAll: true };
 		forgetRound(packManifest.id, all.id);
 		const session = createQuizSession(all.cells.map((cell) => ({ id: cell.id, text: cell.text })));
-		rememberRound(packManifest.id, all.id, { session, hand: ['pods.short'], size: 1 });
+		rememberRound(packManifest.id, all.id, {
+			session,
+			hand: ['pods.short'],
+			size: 1,
+			signature: roundSignature(all)
+		});
 		render(QuizView, { pack: packManifest, unit: all });
 		expect(dealt()).toBe(all.cells.length);
 	});
@@ -406,19 +411,19 @@ describe('typing', () => {
 		expect(cards.some((c: { skill: string }) => c.skill === 'produce')).toBe(false);
 	});
 
-	it('keeps restored rounds assisted after navigating away', async () => {
+	it('keeps restored rounds and clean recall after navigating away', async () => {
 		const view = await startTyping();
 		await typeIn('po');
 		await view.unmount();
 		render(TypeQuizView, { pack: packManifest, unit });
 		await typeIn('v1');
-		expect(document.querySelector('.assisted')?.textContent).toContain('Assisted');
+		expect(document.querySelector('.assisted')).toBeNull();
 		expect(
 			levelOf(
 				packManifest.id,
 				unit.cells.find((c) => c.id === 'pods.api')!
 			)
-		).toBe(0);
+		).toBe(1);
 	});
 
 	it('hides surrounding code and line scaffolds in Recall', async () => {

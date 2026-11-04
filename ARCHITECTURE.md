@@ -60,7 +60,11 @@ a cell shows; three screens fill that in through a snippet:
 the id of the cell they were dealt for. Every drop goes through `attemptMatch`, which
 compares **text, not ids**, so a `v1` slip fills any `v1` cell. A wrong drop reveals the
 slip's own cell and lowers its level; there is one attempt per slip per round. A round in
-progress lives in `quizRound.ts`, in memory only.
+progress lives in `quizRound.ts`, in validated browser storage with a memory fallback.
+Placed answers, the choice order, typed drafts and completed rounds survive
+navigation and reloads. A new round starts only on the explicit restart action
+or when the exercise facts/structure no longer match its saved signature.
+Learned cards are separate and are never cleared by restarting.
 
 **Progress.** Board answers and task grades both go through `rate` from `packages/srs` and
 are saved at once by `progressRepository.ts`, keyed by pack, item and skill: a dragged

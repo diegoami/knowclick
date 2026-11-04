@@ -25,7 +25,7 @@
 	import CellNote from './CellNote.svelte';
 	import { t } from './locale.svelte';
 	import { recordAnswer, unitKnown } from './progress.svelte';
-	import { forgetRound, rememberRound, roundInProgress } from './quizRound';
+	import { forgetRound, rememberRound, roundInProgress, roundSignature } from './quizRound';
 
 	interface Props {
 		pack: PackManifest;
@@ -42,20 +42,19 @@
 	// A typed round is remembered apart from a dragged one.
 	const roundId = untrack(() => `${unit.id}#type`);
 	const order = $derived(boardOrder(unit));
+	const signature = untrack(() => roundSignature(unit));
+	const savedPackId = untrack(() => pack.id);
+	const saved = untrack(() => (only ? undefined : roundInProgress(pack.id, roundId, signature)));
 
 	function newSession(): QuizSession {
 		const asked = boardOrder(unit).filter((cell) => !only || only.has(cell.item));
 		return createQuizSession(asked.map((cell) => ({ id: cell.id, text: cell.text })));
 	}
 
-	let session = $state.raw<QuizSession>(
-		untrack(() => (only ? undefined : roundInProgress(pack.id, roundId)?.session) ?? newSession())
-	);
-	let askedId = $state<string | undefined>(untrack(() => pendingIds(session)[0]));
-	let assisted = $state(
-		untrack(() => (only ? false : (roundInProgress(pack.id, roundId)?.assisted ?? false)))
-	);
-	let typed = $state('');
+	let session = $state.raw<QuizSession>(untrack(() => saved?.session ?? newSession()));
+	let askedId = $state<string | undefined>(untrack(() => saved?.askedId ?? pendingIds(session)[0]));
+	let assisted = $state(untrack(() => saved?.assisted ?? false));
+	let typed = $state(untrack(() => saved?.draft ?? ''));
 	const displayUnit = $derived<LocalUnit>(
 		unit.layout.type === 'code' || unit.layout.type === 'lines'
 			? {
@@ -120,10 +119,7 @@
 		}
 		typed = '';
 		askedId = nextOpen(askedId);
-		if (!only) {
-			if (isSessionComplete(session)) forgetRound(pack.id, roundId);
-			else rememberRound(pack.id, roundId, { session, hand: [], size: 0, assisted });
-		}
+		saveRound();
 		await tick();
 		input?.focus();
 	}
@@ -135,27 +131,43 @@
 	}
 
 	// The input is the whole point of this view, so it starts with the focus.
-	onMount(() => input?.focus());
+	function saveRound(draft = typed) {
+		if (!only)
+			rememberRound(savedPackId, roundId, {
+				session,
+				hand: [],
+				size: 0,
+				assisted,
+				signature,
+				askedId,
+				draft
+			});
+	}
+	onMount(() => {
+		saveRound();
+		input?.focus();
+	});
 	onDestroy(() => {
 		clearTimeout(wrongTimer);
-		if (!only && !isSessionComplete(session))
-			rememberRound(pack.id, roundId, { session, hand: [], size: 0, assisted: true });
+		saveRound();
 	});
 
 	function reveal() {
 		if (!asked) return;
 		assisted = true;
 		lastMiss = { cell: asked, lead: t('practice.revealed') };
-		if (!only) rememberRound(pack.id, roundId, { session, hand: [], size: 0, assisted });
+		saveRound();
 	}
 
 	function playAgain() {
+		if (!only) forgetRound(savedPackId, roundId);
 		session = newSession();
 		askedId = pendingIds(session)[0];
 		typed = '';
 		assisted = false;
 		lastMiss = undefined;
 		wrongCell = undefined;
+		saveRound();
 	}
 
 	function cellClass(cell: LocalCell): string {
@@ -166,22 +178,23 @@
 		return cell.id === askedId ? 'empty target' : 'empty pickable';
 	}
 
-	const isShown = () => complete;
+	const isShown = (cell: LocalCell) => statusById.get(cell.id) !== 'pending';
 </script>
 
 <Board
 	unit={displayUnit}
-	spoken={(cell) => (isShown() ? cell.text : t('cell.open'))}
+	spoken={(cell) => (isShown(cell) ? cell.text : t('cell.open'))}
 	classOf={cellClass}
 	onpick={(cell) => {
 		if (statusById.get(cell.id) === 'pending') {
 			askedId = cell.id;
+			saveRound();
 			input?.focus();
 		}
 	}}
 >
 	{#snippet face(cell)}
-		<CellFace {cell} showAnswer={isShown()} inline={false} />
+		<CellFace {cell} showAnswer={isShown(cell)} inline={false} />
 	{/snippet}
 </Board>
 
@@ -223,6 +236,7 @@
 				id="typed-answer"
 				bind:this={input}
 				bind:value={typed}
+				oninput={(event) => saveRound(event.currentTarget.value)}
 				autocomplete="off"
 				autocapitalize="off"
 				spellcheck="false"

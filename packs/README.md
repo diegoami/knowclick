@@ -63,9 +63,9 @@ objective rather than removing random tokens or merely adding more holes.
 
 - **Guided:** small authored gaps with choices. The surrounding structure is
   support; answers earn recognition progress only.
-- **Recall:** no choices. Surrounding code and line scaffolds are hidden, and
-  completed answers stay hidden until the round ends, so another cell cannot
-  simply be copied. Every code cell should have a localized clue naming the
+- **Recall:** no choices. Surrounding code and line scaffolds are hidden.
+  Placed answers stay visible when leaving and returning to the quiz.
+  Every code cell should have a localized clue naming the
   objective. State enough requirements to determine the reference answer.
 - **Apply:** the lesson's authored practical tasks. Include requirements, local
   checks and a solution the learner opens after trying. Results are explicitly
@@ -85,10 +85,12 @@ changes while preserving literals, case and token boundaries. This checks
 reference-form recall, not arbitrary program equivalence. Open-ended
 implementations belong in Apply and are checked with the stated compiler/tests.
 
-Hints, revealed answers and resumed rounds earn assisted-practice cards, separate
+Hints and explicitly revealed answers earn assisted-practice cards, separate
 from unassisted recall. An unassisted mistake still resets the recall item;
 subsequent answers in that round are assisted. Restart begins a fresh attempt.
-Recommendations require three clean successes on every item at a level and never
+Navigating away and returning is not itself assistance. Saved rounds, including
+completed rounds, remain until the learner explicitly restarts; restarting does
+not erase earned progress. Recommendations require three clean successes on every item at a level and never
 lock choices. Existing recognition, recall and practice cards keep their IDs.
 
 `pack.json` lists the lessons in teaching order, under `sections`. A lesson has, in this
