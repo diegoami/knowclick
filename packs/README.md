@@ -207,6 +207,7 @@ uses Bicep 0.48.1. Put `rustc` and `bicep` on PATH, then run from the repository
 
 ```bash
 node scripts/verify.mjs rust
+node scripts/verify-rust-labs.mjs
 node --test scripts/verify-local-code.test.mjs
 ```
 
@@ -214,7 +215,12 @@ The helper compiles in fresh temporary directories, executes Rust assertions,
 checks the emitted Bicep template, and removes its temporary files. No login or
 deployment is performed. `node scripts/verify.mjs azure --stale` still requires
 the Azure CLI and its logged-out guard; it also requires Bicep for the new board.
-Original local task prompts and solutions are in `docs/courses/`.
+Original local task prompts and solutions are in `docs/courses/`. The Rust
+depth increment has four Guided exercises per existing chapter, each with an
+authored larger Recall variant, and two labs per chapter. The lab verifier
+requires rustc 1.99.1, compiles the documentation’s reference blocks in temporary
+directories, runs tests and checks annotated compiler failures and CLI output.
+`verify-rust` JSON comments specify `error` or `stdin`/`stdout` expectations.
 
 The new Azure and Rust content still needs two independent content checks.
 Runnable verification does not replace them; stale or missing checks must keep

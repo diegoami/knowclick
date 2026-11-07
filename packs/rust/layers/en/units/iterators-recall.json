@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Borrowed collection processing",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"filter": {
+			"clue": "Given values.iter() over Vec<i32>, write the method-chain fragment using filter with parameter value and predicate **value % 2 == 0 to keep even numbers. Include the leading dot."
+		},
+		"double": {
+			"clue": "After filtering values.iter() over Vec<i32>, write the method-chain fragment using map with parameter value to produce *value * 2. Include the leading dot."
+		}
+	}
+}

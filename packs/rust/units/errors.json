@@ -90,5 +90,6 @@
 		"expect": "^verified$"
 	},
 	"dealAll": true,
-	"distractors": ["Err", "unwrap", "expect", "i32", "is_ok", "String", "usize", "unwrap_or"]
+	"distractors": ["Err", "unwrap", "expect", "i32", "is_ok", "String", "usize", "unwrap_or"],
+	"recallUnit": "errors-recall"
 }

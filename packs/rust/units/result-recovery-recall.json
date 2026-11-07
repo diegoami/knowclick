@@ -1,0 +1,60 @@
+{
+	"id": "result-recovery-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn parsed(text: &str) -> Result<u32, String> {",
+			"    text.parse::<u32>().map_err(|error| format!(\"count '{text}': {error}\"))",
+			"}",
+			"fn main() {",
+			"    let good = parsed(\"12\");",
+			"    assert!(good.is_ok());",
+			"    assert_eq!({{gap:mapping}}, 24);",
+			"    let bad = parsed(\"bad\");",
+			"    assert!(bad.as_ref().is_err());",
+			"    assert!(bad.as_ref().err().unwrap().contains(\"count 'bad'\"));",
+			"    let mut calls = 0;",
+			"    let fallback = {{gap:recover}};",
+			"    assert_eq!(fallback, 5);",
+			"    let kept = parsed(\"0\").unwrap_or_else(|_| { calls += 1; 5 });",
+			"    assert_eq!(kept, 0);",
+			"    assert_eq!(calls, 1);",
+			"    let missing: Option<u32> = None;",
+			"    assert_eq!(missing.unwrap_or(9), 9);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "mapping",
+			"item": "rust:result-recovery-recall:mapping",
+			"text": "good.map(|value| value * 2).unwrap()"
+		},
+		{
+			"id": "recover",
+			"item": "rust:result-recovery-recall:recover",
+			"text": "bad.unwrap_or_else(|_| { calls += 1; 5 })"
+		}
+	],
+	"sources": [
+		{
+			"title": "Recoverable errors",
+			"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		},
+		{
+			"title": "Result API",
+			"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

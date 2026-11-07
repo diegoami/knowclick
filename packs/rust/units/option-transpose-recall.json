@@ -1,0 +1,56 @@
+{
+	"id": "option-transpose-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"use std::num::ParseIntError;",
+			"fn optional(text: Option<&str>) -> Result<Option<u32>, ParseIntError> {",
+			"    {{gap:transpose}}",
+			"}",
+			"fn main() {",
+			"    assert_eq!(optional(None).unwrap(), None);",
+			"    assert_eq!(optional(Some(\"0\")).unwrap(), Some(0));",
+			"    assert_eq!(optional(Some(\"8\")).unwrap(), Some(8));",
+			"    assert!(optional(Some(\"bad\")).is_err());",
+			"    assert!(optional(Some(\"-1\")).is_err());",
+			"    let nested = Some(Some(3));",
+			"    assert_eq!({{gap:flatten}}, Some(3));",
+			"    let empty: Option<Option<u32>> = Some(None);",
+			"    assert_eq!(empty.flatten(), None);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "transpose",
+			"item": "rust:option-transpose-recall:transpose",
+			"text": "text.map(|value| value.parse::<u32>()).transpose()"
+		},
+		{
+			"id": "flatten",
+			"item": "rust:option-transpose-recall:flatten",
+			"text": "nested.flatten()"
+		}
+	],
+	"sources": [
+		{
+			"title": "Recoverable errors",
+			"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		},
+		{
+			"title": "Result API",
+			"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

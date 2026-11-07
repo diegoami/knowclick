@@ -1,0 +1,99 @@
+{
+	"id": "iterator-short-circuit",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let values = [2, 4, 7, 8];",
+			"    let total = values.{{gap:borrow}}().{{gap:copy}}().{{gap:reduce}}(0, |acc, value| acc + value);",
+			"    assert_eq!(total, 21);",
+			"    let mut visited = 0;",
+			"    let has_odd = values.iter().{{gap:observe}}(|_| visited += 1).{{gap:exists}}(|value| value % 2 != 0);",
+			"    assert!(has_odd);",
+			"    assert_eq!(visited, 3);",
+			"    assert!(!values.iter().{{gap:every}}(|value| value % 2 == 0));",
+			"    assert_eq!(values.iter().copied().{{gap:first}}(|value| *value > 4), Some(7));",
+			"    let empty: [i32; 0] = [];",
+			"    assert!(empty.iter().all(|value| *value > 0));",
+			"    assert!(!empty.iter().any(|value| *value > 0));",
+			"    let mut cursor = values.iter();",
+			"    assert_eq!(cursor.{{gap:advance}}(), Some({{gap:reference}}2));",
+			"    {{gap:equal}}(cursor.count(), 3);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "borrow",
+			"item": "rust:iterators:borrow",
+			"text": "iter"
+		},
+		{
+			"id": "copy",
+			"item": "rust:iterator-short-circuit:copy",
+			"text": "copied"
+		},
+		{
+			"id": "reduce",
+			"item": "rust:iterator-short-circuit:reduce",
+			"text": "fold"
+		},
+		{
+			"id": "observe",
+			"item": "rust:iterator-short-circuit:observe",
+			"text": "inspect"
+		},
+		{
+			"id": "exists",
+			"item": "rust:iterator-short-circuit:exists",
+			"text": "any"
+		},
+		{
+			"id": "every",
+			"item": "rust:iterator-short-circuit:every",
+			"text": "all"
+		},
+		{
+			"id": "first",
+			"item": "rust:iterator-short-circuit:first",
+			"text": "find"
+		},
+		{
+			"id": "advance",
+			"item": "rust:iterator-short-circuit:advance",
+			"text": "next"
+		},
+		{
+			"id": "reference",
+			"item": "rust:ownership:borrow",
+			"text": "&"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Iterators",
+			"url": "https://doc.rust-lang.org/book/ch13-02-iterators.html"
+		},
+		{
+			"title": "Iterator API",
+			"url": "https://doc.rust-lang.org/std/iter/trait.Iterator.html"
+		},
+		{
+			"title": "Slice API",
+			"url": "https://doc.rust-lang.org/std/primitive.slice.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["into_iter", "cloned", "sum", "filter", "map", "last", "nth", "collect"],
+	"recallUnit": "iterator-short-circuit-recall"
+}

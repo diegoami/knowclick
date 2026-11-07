@@ -3,7 +3,7 @@
 	"category": "language",
 	"licence": "CC-BY-SA-4.0",
 	"formatVersion": 1,
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"holdsFor": [
 		{
 			"name": "rustc",
@@ -14,7 +14,7 @@
 			"version": "2024"
 		}
 	],
-	"checkedOn": "2026-11-04",
+	"checkedOn": "2026-11-07",
 	"explanations": ["en"],
 	"keywords": ["rust", "rustc", "cargo"],
 	"sections": ["foundations"],
@@ -22,8 +22,8 @@
 		{
 			"id": "ownership",
 			"section": "foundations",
-			"units": ["ownership"],
-			"tasks": ["move-or-borrow"],
+			"units": ["ownership", "ownership-transfer", "ownership-mutation", "ownership-slices"],
+			"tasks": ["move-or-borrow", "borrowed-prefix"],
 			"study": [
 				{
 					"kind": "docs",
@@ -34,40 +34,70 @@
 					"kind": "docs",
 					"title": "Ownership",
 					"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+				},
+				{
+					"kind": "docs",
+					"title": "String slices",
+					"url": "https://doc.rust-lang.org/book/ch04-03-slices.html"
 				}
 			]
 		},
 		{
 			"id": "enums",
 			"section": "foundations",
-			"units": ["enums"],
-			"tasks": ["job-transition"],
+			"units": ["enums", "struct-methods", "enum-payloads", "option-branches"],
+			"tasks": ["job-transition", "event-reducer"],
 			"study": [
 				{
 					"kind": "docs",
 					"title": "Enums and pattern matching",
 					"url": "https://doc.rust-lang.org/book/ch06-00-enums.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Structs",
+					"url": "https://doc.rust-lang.org/book/ch05-01-defining-structs.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Methods",
+					"url": "https://doc.rust-lang.org/book/ch05-03-method-syntax.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Concise conditional matching",
+					"url": "https://doc.rust-lang.org/book/ch06-03-if-let.html"
 				}
 			]
 		},
 		{
 			"id": "errors",
 			"section": "foundations",
-			"units": ["errors"],
-			"tasks": ["parse-count"],
+			"units": ["errors", "error-conversion", "option-transpose", "result-recovery"],
+			"tasks": ["parse-count", "parse-pair"],
 			"study": [
 				{
 					"kind": "docs",
 					"title": "Recoverable errors with Result",
 					"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Option API",
+					"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Result API",
+					"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
 				}
 			]
 		},
 		{
 			"id": "iterators",
 			"section": "foundations",
-			"units": ["iterators"],
-			"tasks": ["text-summary"],
+			"units": ["iterators", "iterator-ownership", "iterator-pipelines", "iterator-short-circuit"],
+			"tasks": ["text-summary", "indexed-values"],
 			"study": [
 				{
 					"kind": "docs",
@@ -78,6 +108,11 @@
 					"kind": "docs",
 					"title": "Command line project",
 					"url": "https://doc.rust-lang.org/book/ch12-00-an-io-project.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Iterator API",
+					"url": "https://doc.rust-lang.org/std/iter/trait.Iterator.html"
 				}
 			]
 		}

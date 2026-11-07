@@ -1,6 +1,6 @@
 {
 	"title": "Rust foundations",
-	"summary": "For programmers new to Rust: study the official Book, fill substantial code gaps from a larger pool of candidate answers, then practise locally. Four lessons lead from ownership to a tested text-summary CLI.",
+	"summary": "For programmers new to Rust: study the official Book, practise four distinct exercises per chapter in Guided and Recall, then solve two local labs. The first four chapters cover ownership, structured state, fallible parsing and collection pipelines. Further chapters are planned.",
 	"sections": {
 		"foundations": {
 			"title": "From ownership to a tested CLI"

@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Borrowing and mutation",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"call": {
+			"clue": "Given label: String and fn byte_count(&str) -> usize, write a call passing a shared borrow of label."
+		},
+		"append": {
+			"clue": "Given editable: &mut String, write the method-call expression appending the single character !."
+		}
+	}
+}

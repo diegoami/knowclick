@@ -1,0 +1,103 @@
+{
+	"id": "enum-payloads",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:definition}} Reading { Idle, Count(u32), Named { name: String, value: u32 } }",
+			"fn amount(reading: {{gap:reference}}) -> u32 {",
+			"    {{gap:branch}} reading {",
+			"        Reading::{{gap:idle}} => 0,",
+			"        Reading::{{gap:tuple}}(value) => {{gap:dereference}}value,",
+			"        Reading::{{gap:record}} { value, {{gap:rest}} } => *value,",
+			"    }",
+			"}",
+			"fn main() {",
+			"    let reading = Reading::Named { name: String::from(\"hits\"), value: 7 };",
+			"    assert_eq!(amount(&reading), 7);",
+			"    {{gap:conditional}} Reading::Named { name, .. } = &reading {",
+			"        assert_eq!(name, \"hits\");",
+			"    }",
+			"    assert_eq!(amount(&Reading::Count(3)), 3);",
+			"    {{gap:equal}}(amount(&Reading::Idle), 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "definition",
+			"item": "rust:enum-payloads:definition",
+			"text": "enum"
+		},
+		{
+			"id": "reference",
+			"item": "rust:enum-payloads:reference",
+			"text": "&Reading"
+		},
+		{
+			"id": "branch",
+			"item": "rust:enum-payloads:branch",
+			"text": "match"
+		},
+		{
+			"id": "idle",
+			"item": "rust:enum-payloads:idle",
+			"text": "Idle"
+		},
+		{
+			"id": "tuple",
+			"item": "rust:enum-payloads:tuple",
+			"text": "Count"
+		},
+		{
+			"id": "dereference",
+			"item": "rust:enum-payloads:dereference",
+			"text": "*"
+		},
+		{
+			"id": "record",
+			"item": "rust:enum-payloads:record",
+			"text": "Named"
+		},
+		{
+			"id": "rest",
+			"item": "rust:enum-payloads:rest",
+			"text": ".."
+		},
+		{
+			"id": "conditional",
+			"item": "rust:enum-payloads:conditional",
+			"text": "if let"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Structs",
+			"url": "https://doc.rust-lang.org/book/ch05-01-defining-structs.html"
+		},
+		{
+			"title": "Methods",
+			"url": "https://doc.rust-lang.org/book/ch05-03-method-syntax.html"
+		},
+		{
+			"title": "Matching",
+			"url": "https://doc.rust-lang.org/book/ch06-02-match.html"
+		},
+		{
+			"title": "Concise conditional matching",
+			"url": "https://doc.rust-lang.org/book/ch06-03-if-let.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["struct", "if", "while", "&mut Reading", "ref", "_", "Some", "None"],
+	"recallUnit": "enum-payloads-recall"
+}

@@ -1,0 +1,57 @@
+{
+	"id": "error-conversion-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"use std::num::ParseIntError;",
+			"#[derive(Debug, PartialEq)]",
+			"enum ConfigError { Missing, Invalid, Zero }",
+			"fn positive(input: Option<&str>) -> Result<u32, ConfigError> {",
+			"    let text = {{gap:required}};",
+			"    let value = {{gap:convert}};",
+			"    if value == 0 { return Err(ConfigError::Zero); }",
+			"    Ok(value)",
+			"}",
+			"fn main() {",
+			"    assert_eq!(positive(Some(\"7\")), Ok(7));",
+			"    assert_eq!(positive(None), Err(ConfigError::Missing));",
+			"    assert_eq!(positive(Some(\"bad\")), Err(ConfigError::Invalid));",
+			"    assert_eq!(positive(Some(\"-1\")), Err(ConfigError::Invalid));",
+			"    assert_eq!(positive(Some(\"0\")), Err(ConfigError::Zero));",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "required",
+			"item": "rust:error-conversion-recall:required",
+			"text": "input.ok_or(ConfigError::Missing)?"
+		},
+		{
+			"id": "convert",
+			"item": "rust:error-conversion-recall:convert",
+			"text": "text.parse::<u32>().map_err(|_: ParseIntError| ConfigError::Invalid)?"
+		}
+	],
+	"sources": [
+		{
+			"title": "Recoverable errors",
+			"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		},
+		{
+			"title": "Result API",
+			"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

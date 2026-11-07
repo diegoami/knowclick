@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Mutate through an exclusive borrow",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"mutate": {
+			"clue": "Given name: String with a mutable binding and fn add_tag(&mut String, &str), write the call borrowing name exclusively and passing the tag literal \"ok\"."
+		},
+		"inspect": {
+			"clue": "Given name: String and fn byte_count(&str) -> usize, write the call passing a shared borrow of name."
+		}
+	}
+}

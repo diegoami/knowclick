@@ -1,0 +1,54 @@
+{
+	"id": "errors-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn count(text: &str) -> Result<u32, std::num::ParseIntError> {",
+			"    let value = {{gap:parse}};",
+			"    Ok(value)",
+			"}",
+			"fn optional_count(text: Option<&str>) -> Result<Option<u32>, std::num::ParseIntError> {",
+			"    match text {",
+			"        Some(value) => Ok(Some(count(value)?)),",
+			"        {{gap:absent}},",
+			"    }",
+			"}",
+			"fn main() {",
+			"    assert_eq!(count(\"27\").unwrap(), 27);",
+			"    assert!(count(\"many\").is_err());",
+			"    assert_eq!(optional_count(None).unwrap(), None);",
+			"    assert_eq!(optional_count(Some(\"3\")).unwrap(), Some(3));",
+			"    assert!(optional_count(Some(\"bad\")).is_err());",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "parse",
+			"item": "rust:errors-recall:parse",
+			"text": "text.parse::<u32>()?"
+		},
+		{
+			"id": "absent",
+			"item": "rust:errors-recall:absent",
+			"text": "None => Ok(None)"
+		}
+	],
+	"sources": [
+		{
+			"title": "Recoverable errors with Result",
+			"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+		},
+		{
+			"title": "Option and its advantages",
+			"url": "https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

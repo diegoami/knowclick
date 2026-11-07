@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Match variants carrying different payloads",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"countArm": {
+			"clue": "Matching reading: &Reading for enum Reading { Idle, Count(u32), Named { name: String, value: u32 } }, write the full Count arm binding value and returning the dereferenced integer. Omit the comma."
+		},
+		"namedArm": {
+			"clue": "Matching reading: &Reading, write the full Named arm binding only value, ignoring the other field with rest syntax, and returning the dereferenced u32. Omit the comma."
+		}
+	}
+}

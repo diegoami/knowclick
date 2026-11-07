@@ -1,0 +1,33 @@
+{
+	"title": "Borrow checked UTF-8 slices",
+	"summary": "Use checked byte ranges, observe the difference between bytes and characters, and inspect non-owning array slices.",
+	"cells": {
+		"owned": {
+			"clue": "Owned UTF-8 text type used to construct text"
+		},
+		"view": {
+			"clue": "Borrowed UTF-8 slice type for the valid prefix"
+		},
+		"checked": {
+			"clue": "Method returning an optional slice rather than panicking for an invalid byte range"
+		},
+		"valid": {
+			"clue": "Method extracting the slice from the known-valid Some result in this assertion program"
+		},
+		"invalid": {
+			"clue": "Method testing that a range cutting through a UTF-8 character was rejected"
+		},
+		"byteLen": {
+			"clue": "String method reporting the number of bytes, not Unicode scalar values"
+		},
+		"characters": {
+			"clue": "Method iterating Unicode scalar values in text"
+		},
+		"arraySlice": {
+			"clue": "Shared slice reference type for a contiguous view of signed 32-bit integers"
+		},
+		"equal": {
+			"clue": "Macro checking the two middle array elements"
+		}
+	}
+}

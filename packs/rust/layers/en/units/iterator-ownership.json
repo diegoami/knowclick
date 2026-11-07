@@ -1,0 +1,36 @@
+{
+	"title": "Choose borrowed, mutable or consuming iteration",
+	"summary": "Inspect a collection, update its elements in place and finally move each owned string into a new collection.",
+	"cells": {
+		"binding": {
+			"clue": "Modifier allowing mutable iteration over names"
+		},
+		"sizesType": {
+			"clue": "Owned collection type holding the byte lengths"
+		},
+		"borrowed": {
+			"clue": "Collection method yielding shared references and retaining ownership of names"
+		},
+		"transform": {
+			"clue": "Iterator adapter producing one length per borrowed name"
+		},
+		"gather": {
+			"clue": "Consumer gathering the lengths into the annotated vector"
+		},
+		"mutable": {
+			"clue": "Collection method yielding exclusive references to each owned name"
+		},
+		"append": {
+			"clue": "String method appending the single ! character during mutation"
+		},
+		"ownedType": {
+			"clue": "Destination vector type owning the moved strings"
+		},
+		"consuming": {
+			"clue": "Collection method transferring each owned element out of names"
+		},
+		"equal": {
+			"clue": "Macro checking both moved and decorated strings"
+		}
+	}
+}

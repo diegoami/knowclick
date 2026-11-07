@@ -1,0 +1,62 @@
+{
+	"id": "enum-payloads-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"enum Reading { Idle, Count(u32), Named { name: String, value: u32 } }",
+			"fn amount(reading: &Reading) -> u32 {",
+			"    match reading {",
+			"        Reading::Idle => 0,",
+			"        {{gap:countArm}},",
+			"        {{gap:namedArm}},",
+			"    }",
+			"}",
+			"fn main() {",
+			"    let reading = Reading::Named { name: String::from(\"hits\"), value: 7 };",
+			"    assert_eq!(amount(&reading), 7);",
+			"    if let Reading::Named { name, .. } = &reading {",
+			"        assert_eq!(name, \"hits\");",
+			"    }",
+			"    assert_eq!(amount(&Reading::Count(3)), 3);",
+			"    assert_eq!(amount(&Reading::Idle), 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "countArm",
+			"item": "rust:enum-payloads-recall:countArm",
+			"text": "Reading::Count(value) => *value"
+		},
+		{
+			"id": "namedArm",
+			"item": "rust:enum-payloads-recall:namedArm",
+			"text": "Reading::Named { value, .. } => *value"
+		}
+	],
+	"sources": [
+		{
+			"title": "Structs",
+			"url": "https://doc.rust-lang.org/book/ch05-01-defining-structs.html"
+		},
+		{
+			"title": "Methods",
+			"url": "https://doc.rust-lang.org/book/ch05-03-method-syntax.html"
+		},
+		{
+			"title": "Matching",
+			"url": "https://doc.rust-lang.org/book/ch06-02-match.html"
+		},
+		{
+			"title": "Concise conditional matching",
+			"url": "https://doc.rust-lang.org/book/ch06-03-if-let.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

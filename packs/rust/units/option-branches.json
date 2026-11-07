@@ -1,0 +1,117 @@
+{
+	"id": "option-branches",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn doubled(input: {{gap:optional}}) -> u32 {",
+			"    {{gap:conditional}} {{gap:present}}(value) = input {",
+			"        value * 2",
+			"    } {{gap:otherwise}} {",
+			"        0",
+			"    }",
+			"}",
+			"fn width(input: Option<&str>) -> usize {",
+			"    {{gap:binding}} Some(text) = input {{gap:fallback}} { {{gap:early}} 0; };",
+			"    text.{{gap:length}}()",
+			"}",
+			"fn main() {",
+			"    assert_eq!(doubled(Some(5)), 10);",
+			"    assert_eq!(doubled({{gap:absent}}), 0);",
+			"    assert_eq!(width(Some(\"abc\")), 3);",
+			"    assert_eq!(width(Some(\"\")), 0);",
+			"    {{gap:equal}}(width(None), 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "optional",
+			"item": "rust:option-branches:optional",
+			"text": "Option<u32>"
+		},
+		{
+			"id": "conditional",
+			"item": "rust:option-branches:conditional",
+			"text": "if let"
+		},
+		{
+			"id": "present",
+			"item": "rust:errors:present",
+			"text": "Some"
+		},
+		{
+			"id": "otherwise",
+			"item": "rust:option-branches:otherwise",
+			"text": "else"
+		},
+		{
+			"id": "binding",
+			"item": "rust:option-branches:binding",
+			"text": "let"
+		},
+		{
+			"id": "fallback",
+			"item": "rust:option-branches:fallback",
+			"text": "else"
+		},
+		{
+			"id": "early",
+			"item": "rust:option-branches:early",
+			"text": "return"
+		},
+		{
+			"id": "length",
+			"item": "rust:ownership:length",
+			"text": "len"
+		},
+		{
+			"id": "absent",
+			"item": "rust:errors:absent",
+			"text": "None"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Structs",
+			"url": "https://doc.rust-lang.org/book/ch05-01-defining-structs.html"
+		},
+		{
+			"title": "Methods",
+			"url": "https://doc.rust-lang.org/book/ch05-03-method-syntax.html"
+		},
+		{
+			"title": "Matching",
+			"url": "https://doc.rust-lang.org/book/ch06-02-match.html"
+		},
+		{
+			"title": "Concise conditional matching",
+			"url": "https://doc.rust-lang.org/book/ch06-03-if-let.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"Result<u32, ()>",
+		"Ok",
+		"Err",
+		"match",
+		"break",
+		"continue",
+		"unwrap",
+		"capacity"
+	],
+	"recallUnit": "option-branches-recall"
+}

@@ -35,7 +35,7 @@ and [Rust foundations #15](https://github.com/diegoami/knowclick/issues/15).
 - Azure: three additional lessons on managed identity and authorization, Bicep,
   and Functions/messaging, with three local labs. Existing AZ-900 content and
   progress identities are preserved. This is not full AI-200 coverage.
-- Rust: four lessons and four compiler-verified boards, with local labs covering
+- Rust: the original four lessons and four compiler-verified boards, with local labs covering
   moves/borrows, structured state, fallible parsing and a tested text-summary CLI.
 - Next recommendation: TypeScript, especially narrowing, discriminated unions,
   generics, async error handling and tests. The app's strict TypeScript, Svelte
@@ -88,3 +88,27 @@ Rust exercises; it does not claim an exhaustive language curriculum.
 choice order and completed rounds when leaving/returning, including reloads.
 Typed drafts persist, navigation is not assistance, and only an explicit restart
 replaces the current round. Earned progress remains separate and intact.
+
+## Rust expansion and engineering courses (owner approved 2026-11-07)
+
+[Proposal #25](https://github.com/diegoami/knowclick/issues/25) expands Rust to
+16 chapters, each with four distinct exercises (Guided and larger Recall forms)
+and two local Apply tasks. It supersedes the four-lesson breadth of #15/#21;
+existing progress IDs and learning-flow decisions remain in force.
+
+The first increment deepens the existing four chapters: 16 Guided boards,
+16 Recall boards and eight labs in total. It adds ownership transfer and UTF-8
+slicing, receiver ownership and payload matching, error conversion and optional
+parsing, and iterator ownership, composition and short-circuiting. The original
+lab links now target main. Compiler verification and lab execution are separate
+from the still-required independent content checks. The other 12 chapters
+remain to be authored; this increment does not complete the 16-chapter plan.
+
+The owner also approved eight-chapter proposals for
+[Claude Engineering #26](https://github.com/diegoami/knowclick/issues/26),
+[LangChain #27](https://github.com/diegoami/knowclick/issues/27),
+[RAG Engineering #28](https://github.com/diegoami/knowclick/issues/28) and
+[MLOps #29](https://github.com/diegoami/knowclick/issues/29), following Rust in
+that order. Each targets four exercises and two tasks per chapter. Claude
+Engineering provisionally includes API engineering and Claude Code; the exact
+emphasis awaits the owner's clarification. These packs are not authored yet.

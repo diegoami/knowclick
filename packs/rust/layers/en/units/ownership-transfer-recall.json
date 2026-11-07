@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Move ownership into and out of a function",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"copy": {
+			"clue": "Given original: String, write the expression calling its Clone method to create independent owned text."
+		},
+		"move": {
+			"clue": "Given fn decorate(String) -> String and original: String, write the call transferring original into decorate."
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"title": "Translate parse errors into a domain error",
+	"summary": "Keep missing fields, malformed numbers and invalid ranges separate. Map a library error into an enum and propagate it without panicking.",
+	"cells": {
+		"errorEnum": {
+			"clue": "Keyword defining the three distinct ConfigError cases"
+		},
+		"resultType": {
+			"clue": "Return type carrying a valid u32 or one ConfigError"
+		},
+		"required": {
+			"clue": "Option method turning absence into the supplied Missing error"
+		},
+		"propagateMissing": {
+			"clue": "Operator returning early with a missing-input error"
+		},
+		"convert": {
+			"clue": "Result method transforming only the error payload"
+		},
+		"propagateInvalid": {
+			"clue": "Operator propagating the converted parse error"
+		},
+		"failure": {
+			"clue": "Result variant wrapping the explicit zero-value error"
+		},
+		"success": {
+			"clue": "Result variant wrapping the validated positive integer"
+		},
+		"equal": {
+			"clue": "Macro checking that zero is a domain error rather than a successful count"
+		}
+	}
+}

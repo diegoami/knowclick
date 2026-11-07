@@ -1,0 +1,57 @@
+{
+	"id": "ownership-transfer-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn decorate(mut text: String) -> String {",
+			"    text.push_str(\"!\");",
+			"    text",
+			"}",
+			"fn main() {",
+			"    let count: u32 = 4;",
+			"    let copied = count;",
+			"    assert_eq!(count + copied, 8);",
+			"    let original = String::from(\"red\");",
+			"    let mut independent = {{gap:copy}};",
+			"    independent.push('?');",
+			"    let moved = {{gap:move}};",
+			"    assert_eq!(moved, \"red!\");",
+			"    assert_eq!(independent, \"red?\");",
+			"    assert_eq!(moved.len(), 4);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "copy",
+			"item": "rust:ownership-transfer-recall:copy",
+			"text": "original.clone()"
+		},
+		{
+			"id": "move",
+			"item": "rust:ownership-transfer-recall:move",
+			"text": "decorate(original)"
+		}
+	],
+	"sources": [
+		{
+			"title": "Ownership",
+			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		},
+		{
+			"title": "References and borrowing",
+			"url": "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

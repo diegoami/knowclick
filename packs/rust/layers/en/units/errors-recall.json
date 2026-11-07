@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Optional parsing",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"parse": {
+			"clue": "Inside a function returning Result<u32, ParseIntError>, given text: &str, write the expression parsing an unsigned 32-bit integer using a turbofish and propagating a parse error with ?."
+		},
+		"absent": {
+			"clue": "Matching Option<&str> inside a function returning Result<Option<u32>, ParseIntError>, write the complete missing-input arm returning successful absence. Omit the comma."
+		}
+	}
+}

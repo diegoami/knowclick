@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Borrow checked UTF-8 slices",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"prefix": {
+			"clue": "Given text: String containing \"éclair\", write the reference expression using get and unwrap to borrow the first Unicode scalar via byte range 0..2."
+		},
+		"middle": {
+			"clue": "Given numbers = [10, 20, 30, 40], write a shared slice expression using a half-open range to borrow the middle two elements."
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Filter and combine iterator pipelines",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"parse": {
+			"clue": "Given tokens: [&str; 4], write a borrowed iteration pipeline using filter_map with parameter text to retain only successful parse::<u32>() values through Result::ok. Do not collect yet."
+		},
+		"index": {
+			"clue": "Given numbers: Vec<u32>, write a pipeline using iter, copied, enumerate and collect in that order. The destination is annotated Vec<(usize, u32)>."
+		}
+	}
+}

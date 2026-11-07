@@ -1,0 +1,36 @@
+{
+	"title": "Transpose optional parsing results",
+	"summary": "Move between optional input and fallible output without conflating missing, invalid and zero values.",
+	"cells": {
+		"inputType": {
+			"clue": "Input type allowing either a borrowed string slice or no input"
+		},
+		"outputType": {
+			"clue": "Return type allowing successful absence, successful u32 or integer parsing failure"
+		},
+		"mapping": {
+			"clue": "Option method applying parsing only when text is present"
+		},
+		"integer": {
+			"clue": "Unsigned 32-bit target type rejecting negative inputs"
+		},
+		"transpose": {
+			"clue": "Method converting Option<Result<T, E>> into Result<Option<T>, E>"
+		},
+		"extract": {
+			"clue": "Method extracting the successful result in the known-valid absence assertion"
+		},
+		"failure": {
+			"clue": "Method testing whether optional parsing failed"
+		},
+		"flatten": {
+			"clue": "Method removing one level from a nested Option"
+		},
+		"equal": {
+			"clue": "Macro checking the flattened present-but-empty optional value"
+		},
+		"none": {
+			"clue": "Option variant representing absence after removing one nesting layer"
+		}
+	}
+}

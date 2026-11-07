@@ -1,0 +1,59 @@
+{
+	"id": "ownership-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn byte_count(value: &str) -> usize {",
+			"    value.len()",
+			"}",
+			"fn main() {",
+			"    let mut label = String::from(\"cloud\");",
+			"    assert_eq!({{gap:call}}, 5);",
+			"    let view: &str = &label;",
+			"    assert_eq!(view, \"cloud\");",
+			"    {",
+			"        let editable: &mut String = &mut label;",
+			"        {{gap:append}};",
+			"    }",
+			"    assert_eq!(label, \"cloud!\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "call",
+			"item": "rust:ownership-recall:call",
+			"text": "byte_count(&label)"
+		},
+		{
+			"id": "append",
+			"item": "rust:ownership-recall:append",
+			"text": "editable.push('!')"
+		}
+	],
+	"sources": [
+		{
+			"title": "References and borrowing",
+			"url": "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html"
+		},
+		{
+			"title": "Ownership",
+			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		},
+		{
+			"title": "String slices",
+			"url": "https://doc.rust-lang.org/book/ch04-03-slices.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

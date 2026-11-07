@@ -1,0 +1,33 @@
+{
+	"title": "Recover lazily and retain diagnostic context",
+	"summary": "Attach context to parse failures, recover only on errors and transform only successful values.",
+	"cells": {
+		"resultType": {
+			"clue": "Return type preserving valid counts and owned diagnostic text"
+		},
+		"context": {
+			"clue": "Result method converting a parse error to contextual owned text"
+		},
+		"succeeded": {
+			"clue": "Method testing whether good is a successful result"
+		},
+		"mapping": {
+			"clue": "Result method doubling only the successful numeric payload"
+		},
+		"failed": {
+			"clue": "Method testing for a failure through a borrowed Result"
+		},
+		"diagnostic": {
+			"clue": "Result method converting the borrowed failure payload to an Option"
+		},
+		"recover": {
+			"clue": "Result method invoking the fallback closure only on failure"
+		},
+		"equal": {
+			"clue": "Macro checking that only one recovery closure ran"
+		},
+		"absent": {
+			"clue": "Value representing the absent optional number"
+		}
+	}
+}

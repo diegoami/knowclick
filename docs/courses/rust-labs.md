@@ -19,6 +19,8 @@ string remains usable after the function returns.
 
 Save this as `move.rs`; `rustc --edition=2024 move.rs` must fail with E0382:
 
+<!-- verify-rust: {"error":"E0382"} -->
+
 ```rust
 fn consume(value: String) { assert_eq!(value, "cloud"); }
 fn main() {
@@ -128,6 +130,8 @@ do not allocate a vector just to count its length.
 
 <details>
 <summary>Reference solution</summary>
+
+<!-- verify-rust: {"stdin":"one two\n\nthree\tfour","stdout":"2 lines, 4 words\n"} -->
 
 ```rust
 use std::io::{self, Read};

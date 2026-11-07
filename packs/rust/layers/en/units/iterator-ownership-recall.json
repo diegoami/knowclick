@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Choose borrowed, mutable or consuming iteration",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"borrow": {
+			"clue": "Given names: Vec<String>, write a pipeline using iter, map with closure parameter name and its len method, then collect. The destination is already annotated Vec<usize>."
+		},
+		"move": {
+			"clue": "Given names: Vec<String>, write an into_iter pipeline collecting the owned strings into a destination already annotated Vec<String>."
+		}
+	}
+}

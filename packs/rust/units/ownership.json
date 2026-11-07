@@ -95,5 +95,6 @@
 		"expect": "^verified$"
 	},
 	"distractors": ["isize", "capacity", "append", "char", "Vec", "Box", "Rc", "&mut str"],
-	"dealAll": true
+	"dealAll": true,
+	"recallUnit": "ownership-recall"
 }

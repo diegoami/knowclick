@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Consume lazily and short-circuit predicates",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"fold": {
+			"clue": "Given values: [i32; 4], write a borrowed iter/copied/fold pipeline summing from zero with closure parameters acc and value and body acc + value."
+		},
+		"find": {
+			"clue": "Given values: [i32; 4], write an iter/copied/find pipeline returning the first number greater than 4. Name the predicate parameter value and dereference it in the comparison."
+		}
+	}
+}

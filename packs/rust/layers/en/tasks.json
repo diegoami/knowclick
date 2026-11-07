@@ -14,5 +14,21 @@
 	"text-summary": {
 		"title": "Collections and iterators lab",
 		"brief": "Build a CLI that counts nonempty lines and words; test empty input and whitespace."
+	},
+	"borrowed-prefix": {
+		"title": "A borrowed prefix API",
+		"brief": "Return a borrowed prefix without allocation, then grow the owner after the view’s last use."
+	},
+	"event-reducer": {
+		"title": "A typed event reducer",
+		"brief": "Apply payload-carrying enum events to state and test every variant without cloning the payload."
+	},
+	"parse-pair": {
+		"title": "A typed key/value parser",
+		"brief": "Distinguish malformed shape, invalid numbers and zero in a fallible two-number parser."
+	},
+	"indexed-values": {
+		"title": "Keep input positions while parsing",
+		"brief": "Retain original line numbers for valid values, filter invalid input and test empty collections."
 	}
 }

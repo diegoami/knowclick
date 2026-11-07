@@ -178,7 +178,7 @@ from real choices. Choosing one penalizes the target gap and cannot create a
 fake progress card. Filled-program checks remain separate from independent
 review of newly authored gaps, clues and distractors.
 
-## Every existing Rust board gets substantial practice (2026-11-04, #21)
+## Every existing Rust board gets substantial practice (2026-11-04, #21; expanded by #25)
 
 The owner asked to apply the clarified gap/choice approach to all Rust exercises.
 Each main board now has ten gaps; no unrelated tokens are hidden just to inflate
@@ -211,3 +211,26 @@ storage falls back to memory. Review queues do not overwrite ordinary quizzes.
 Placed recall answers remain visible. Navigation alone no longer turns a round
 into assisted practice; explicit hints/reveals retain their existing assistance
 tracking. This supersedes the corresponding visibility/resumption policy in #17.
+
+## Rust depth before breadth; engineering courses next (2026-11-07, #25–#29)
+
+The owner approved 16 Rust chapters with four distinct exercise objectives and
+two practical tasks per chapter. First deepen the existing four chapters rather
+than count additional missing tokens as new exercises. Guided and Recall are
+forms of one exercise: new Recall variants ask for complete expressions with
+standalone clues specifying reference syntax. Apply accepts other valid
+implementations through requirements and local checks. Existing unit, task and
+item IDs are retained; larger-expression recall receives separate IDs.
+
+The initial four-chapter scope in #15/#21 is superseded by #25's 16-chapter
+course target. The first increment contains 16 Guided/Recall pairs and eight
+labs, not the complete expansion. Compile every board and run assertions;
+compile lab solutions from their documentation, including negative diagnostics,
+unit tests and CLI I/O. These are author verification, never independent content
+approval. Missing independent checks keep release readiness blocked.
+
+Claude Engineering, LangChain, RAG Engineering and MLOps follow in that order,
+with separate subject packs. Prefer deterministic local Python examples and
+fixtures where providers would otherwise require paid calls. Fixture tests must
+not claim live API compatibility or measured model answer quality. Versions and
+specific references are pinned before authoring. New packs remain planned.

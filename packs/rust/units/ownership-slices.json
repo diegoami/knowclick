@@ -1,0 +1,107 @@
+{
+	"id": "ownership-slices",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let text = {{gap:owned}}::from(\"éclair\");",
+			"    let prefix: {{gap:view}} = text.{{gap:checked}}(0..2).{{gap:valid}}();",
+			"    assert_eq!(prefix, \"é\");",
+			"    assert!(text.get(0..1).{{gap:invalid}}());",
+			"    assert_eq!(text.{{gap:byteLen}}(), 7);",
+			"    assert_eq!(text.{{gap:characters}}().count(), 6);",
+			"    let numbers = [10, 20, 30, 40];",
+			"    let middle: {{gap:arraySlice}} = &numbers[1..3];",
+			"    {{gap:equal}}(middle, &[20, 30]);",
+			"    assert_eq!(numbers[0], 10);",
+			"    assert_eq!(text, \"éclair\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "owned",
+			"item": "rust:ownership:owned",
+			"text": "String"
+		},
+		{
+			"id": "view",
+			"item": "rust:ownership:sharedType",
+			"text": "&str"
+		},
+		{
+			"id": "checked",
+			"item": "rust:ownership-slices:checked",
+			"text": "get"
+		},
+		{
+			"id": "valid",
+			"item": "rust:ownership-slices:valid",
+			"text": "unwrap"
+		},
+		{
+			"id": "invalid",
+			"item": "rust:ownership-slices:invalid",
+			"text": "is_none"
+		},
+		{
+			"id": "byteLen",
+			"item": "rust:ownership:length",
+			"text": "len"
+		},
+		{
+			"id": "characters",
+			"item": "rust:ownership-slices:characters",
+			"text": "chars"
+		},
+		{
+			"id": "arraySlice",
+			"item": "rust:ownership-slices:arraySlice",
+			"text": "&[i32]"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Ownership",
+			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		},
+		{
+			"title": "References and borrowing",
+			"url": "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		},
+		{
+			"title": "String slices",
+			"url": "https://doc.rust-lang.org/book/ch04-03-slices.html"
+		},
+		{
+			"title": "Slice API",
+			"url": "https://doc.rust-lang.org/std/primitive.slice.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"&String",
+		"&mut str",
+		"bytes",
+		"capacity",
+		"is_some",
+		"as_bytes",
+		"&[u32]",
+		"Vec<i32>"
+	],
+	"recallUnit": "ownership-slices-recall"
+}
