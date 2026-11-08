@@ -23,7 +23,7 @@
 		<a
 			class="back"
 			href={resolve('/lesson/[pack]/[lesson]', { pack: data.pack.id, lesson: data.lessonId })}
-			>← {t('lesson.back')}</a
+			>← {t('unit.back')}</a
 		>
 		<h1>{data.unit.title}</h1>
 		<nav>

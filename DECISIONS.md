@@ -239,3 +239,21 @@ with separate subject packs. Prefer deterministic local Python examples and
 fixtures where providers would otherwise require paid calls. Fixture tests must
 not claim live API compatibility or measured model answer quality. Versions and
 specific references are pinned before authoring. New packs remain planned.
+
+## Select a course before its chapters (2026-11-08, owner correction)
+
+The owner clarified the intended navigation while testing the expanded course:
+the landing page selects a course and every course has its own landing page.
+Treat this as a correction within the approved course-expansion work. Home
+therefore shows compact course cards, not all chapters from every pack.
+Selected-course progress, chapter lists, source/version details and review stay
+at `/course/[pack]`. Loading a chooser does not require reading every board or
+loading unrelated progress. Lesson and review back links return to the selected
+course, while an exercise returns to its parent lesson. Existing saved rounds
+and progress IDs are unaffected.
+
+The owner also requested deeper Kubernetes and Azure practice. Concrete
+12-chapter expansions are proposed separately as #31 and #32, each with four
+exercise pairs and at least two practical tasks per chapter. Their content
+scope awaits agreement; the navigation correction does not imply those packs
+have already been expanded.

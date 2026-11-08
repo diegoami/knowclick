@@ -118,3 +118,20 @@ The owner also approved eight-chapter proposals for
 that order. Each targets four exercises and two tasks per chapter. Claude
 Engineering provisionally includes API engineering and Claude Code; the exact
 emphasis awaits the owner's clarification. These packs are not authored yet.
+
+## Course navigation and deeper cloud practice (owner correction 2026-11-08)
+
+Draft PR #30 includes the requested course chooser at home and dedicated
+`/course/[pack]` landing pages. Home lists courses with compact size summaries;
+only the chosen course shows its chapters, progress, versions and review.
+Lessons and Review return to that course. The eight-chapter Rust work and all
+existing direct exercise URLs and saved progress are retained.
+
+The owner also identified thin Azure/Kubernetes practice. Proposed expansions
+[Kubernetes #31](https://github.com/diegoami/knowclick/issues/31) and
+[Azure #32](https://github.com/diegoami/knowclick/issues/32) each target twelve
+chapters with four Guided/Recall pairs and at least two practical tasks per
+chapter. These concrete scopes await agreement; neither content expansion has
+been authored yet. The current packs remain three Kubernetes chapters/three
+main exercises/six tasks and eight Azure chapters/twelve main exercises/nine
+tasks. New content still requires source checks and actual local verification.

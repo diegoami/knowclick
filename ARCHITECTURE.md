@@ -8,18 +8,25 @@ origin commit (591043e).
 
 ## Layout
 
-| Path                   | What it is                                                                                                                 |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `packs/<id>/`          | Authored content: manifest, units, tasks, layers, coverage, checks and the verify record. See `packs/README.md`            |
-| `locales/`             | Interface text, one file per language, outside the engine                                                                  |
-| `packages/pack-format` | The pack types, the validator, localizing a unit, code-board parsing, content checks, coverage and verify jobs. Pure       |
-| `packages/quiz-engine` | What a drop means: a round's cells, their status, the score. Pure, unchanged from Langclick                                |
-| `packages/srs`         | The scheduler, unchanged from Langclick and Geoclick: an earned level and a due date per card. Pure                        |
-| `app/src/lib`          | The screens and their state                                                                                                |
-| `app/src/routes`       | Home, `/lesson/[pack]/[lesson]`, `/review/[pack]`, and `/unit/[pack]/[unit]` with `overview` and `quiz`                    |
-| `scripts/`             | Gates, version sync, `pack-check.mjs` (checker records), `verify.mjs` (runs answers in a sandbox), `coverage.mjs` (report) |
+| Path                   | What it is                                                                                                                          |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `packs/<id>/`          | Authored content: manifest, units, tasks, layers, coverage, checks and the verify record. See `packs/README.md`                     |
+| `locales/`             | Interface text, one file per language, outside the engine                                                                           |
+| `packages/pack-format` | The pack types, the validator, localizing a unit, code-board parsing, content checks, coverage and verify jobs. Pure                |
+| `packages/quiz-engine` | What a drop means: a round's cells, their status, the score. Pure, unchanged from Langclick                                         |
+| `packages/srs`         | The scheduler, unchanged from Langclick and Geoclick: an earned level and a due date per card. Pure                                 |
+| `app/src/lib`          | The screens and their state                                                                                                         |
+| `app/src/routes`       | Course chooser, `/course/[pack]`, `/lesson/[pack]/[lesson]`, `/review/[pack]`, and `/unit/[pack]/[unit]` with `overview` and `quiz` |
+| `scripts/`             | Gates, version sync, `pack-check.mjs` (checker records), `verify.mjs` (runs answers in a sandbox), `coverage.mjs` (report)          |
 
 ## How a learner moves through it
+
+Home is a course chooser: one card per pack with chapter, exercise and task
+counts. It reads manifests and localized course text, without loading every
+board or every pack's progress. `/course/[pack]` loads the selected course and
+its progress and shows only its sections, chapters, sources/version information
+and due-review action. Lessons and Review return to their course; unit screens
+return to their lesson. Existing deep links and progress keys are retained.
 
 Study, recall, practise, then repetition. A lesson page links to what to study and lets
 you mark it studied, which locks nothing. Its boards come next, then its tasks, done by

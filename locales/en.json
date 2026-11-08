@@ -87,5 +87,10 @@
 	"practice.restart": "Restart unassisted",
 	"practice.review.intro": "Review the due items for the selected level. Apply reviews practical tasks only.",
 	"practice.assisted.complete": "Assisted round: {right} of {total} answers matched. This does not count as unassisted recall.",
-	"quiz.extraChoices": "Some choices do not fit any gap."
+	"quiz.extraChoices": "Some choices do not fit any gap.",
+	"home.chooseCourse": "Choose a course to see its chapters and continue learning.",
+	"home.courseStats": "{chapters} chapters · {exercises} exercises · {tasks} practical tasks",
+	"home.openCourse": "Open course",
+	"course.back": "Courses",
+	"unit.back": "Lesson"
 }

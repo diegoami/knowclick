@@ -1,13 +1,19 @@
 import { locale } from '$lib/locale.svelte';
-import { listPacks, loadCourse } from '$lib/packs';
-import { loadProgress } from '$lib/progress.svelte';
+import { listPacks, loadCourseText } from '$lib/packs';
 
 export async function load() {
-	const packs = await Promise.all(
+	const courses = await Promise.all(
 		listPacks().map(async (pack) => {
-			await loadProgress(pack.id);
-			return { pack, course: await loadCourse(pack, locale()) };
+			const text = await loadCourseText(pack, locale());
+			return {
+				id: pack.id,
+				category: pack.category,
+				title: text.title ?? pack.id,
+				chapters: pack.lessons.length,
+				exercises: pack.lessons.reduce((sum, lesson) => sum + lesson.units.length, 0),
+				tasks: pack.lessons.reduce((sum, lesson) => sum + (lesson.tasks?.length ?? 0), 0)
+			};
 		})
 	);
-	return { packs };
+	return { courses };
 }
