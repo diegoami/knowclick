@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Require the operations a generic algorithm uses",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"where": {
+			"clue": "Write the where clause requiring the generic type T to implement total ordering followed by implicit copying, in that order. Use the standard trait names and omit the function body."
+		},
+		"select": {
+			"clue": "Given left and right of type &T where T implements Ord + Copy, write an if expression returning a copied T: dereference left for ties or when larger, otherwise dereference right. Use >=."
+		}
+	}
+}

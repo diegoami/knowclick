@@ -1,0 +1,67 @@
+{
+	"id": "trait-bounds-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn larger<T>(left: &T, right: &T) -> T",
+			"{{gap:where}}",
+			"{",
+			"    {{gap:select}}",
+			"}",
+			"fn duplicate<T: Clone>(value: &T) -> T { value.clone() }",
+			"fn main() {",
+			"    assert_eq!(larger(&4_i32, &9), 9);",
+			"    assert_eq!(larger(&9_i32, &4), 9);",
+			"    assert_eq!(larger(&4_i32, &4), 4);",
+			"    assert_eq!(larger(&-7_i32, &-2), -2);",
+			"    assert_eq!(larger(&'a', &'z'), 'z');",
+			"    let original = String::from(\"kept\");",
+			"    let mut copied = duplicate(&original);",
+			"    copied.push('!');",
+			"    assert_eq!(copied, \"kept!\");",
+			"    assert_eq!(original, \"kept\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "where",
+			"item": "rust:trait-bounds-recall:where",
+			"text": "where T: Ord + Copy"
+		},
+		{
+			"id": "select",
+			"item": "rust:trait-bounds-recall:select",
+			"text": "if left >= right { *left } else { *right }"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		},
+		{
+			"title": "Ord API",
+			"url": "https://doc.rust-lang.org/std/cmp/trait.Ord.html"
+		},
+		{
+			"title": "Copy API",
+			"url": "https://doc.rust-lang.org/std/marker/trait.Copy.html"
+		},
+		{
+			"title": "Clone API",
+			"url": "https://doc.rust-lang.org/std/clone/trait.Clone.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

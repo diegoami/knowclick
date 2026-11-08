@@ -1,0 +1,36 @@
+{
+	"title": "Branch on optional values without panics",
+	"summary": "Use concise conditional matching and an early return for missing input. Test both present and absent paths, including an empty string.",
+	"cells": {
+		"optional": {
+			"clue": "Type representing either one unsigned 32-bit integer or its absence"
+		},
+		"conditional": {
+			"clue": "Construct matching the present variant without an exhaustive match expression"
+		},
+		"present": {
+			"clue": "Option variant wrapping a present numeric value"
+		},
+		"otherwise": {
+			"clue": "Keyword introducing the fallback when the if-let pattern does not match"
+		},
+		"binding": {
+			"clue": "Keyword beginning a refutable local binding with a diverging fallback"
+		},
+		"fallback": {
+			"clue": "Keyword introducing the diverging branch of let-else"
+		},
+		"early": {
+			"clue": "Keyword leaving width immediately for missing input"
+		},
+		"length": {
+			"clue": "Method counting the bytes of the present string slice"
+		},
+		"absent": {
+			"clue": "Option variant representing missing numeric input"
+		},
+		"equal": {
+			"clue": "Macro checking width for absent input"
+		}
+	}
+}

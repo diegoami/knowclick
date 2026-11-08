@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Translate parse errors into a domain error",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"required": {
+			"clue": "Inside a function returning Result<u32, ConfigError>, given input: Option<&str>, write the expression converting absence with ok_or to ConfigError::Missing and immediately propagating failure."
+		},
+		"convert": {
+			"clue": "Given text: &str and imported ParseIntError, write an expression parsing a u32, mapping any parse failure through an explicitly typed ignored closure parameter to ConfigError::Invalid, and propagating failure with ?. Use the turbofish type argument."
+		}
+	}
+}

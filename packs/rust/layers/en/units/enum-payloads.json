@@ -1,0 +1,36 @@
+{
+	"title": "Match variants carrying different payloads",
+	"summary": "Destructure tuple and record variants, borrow an enum to keep it usable and cover an idle variant explicitly.",
+	"cells": {
+		"definition": {
+			"clue": "Keyword defining a type with distinct variants"
+		},
+		"reference": {
+			"clue": "Shared reference type allowing amount to inspect reading without consuming its String"
+		},
+		"branch": {
+			"clue": "Exhaustive branching keyword for enum variants"
+		},
+		"idle": {
+			"clue": "Reading variant carrying no payload, mapped to zero"
+		},
+		"tuple": {
+			"clue": "Reading tuple variant carrying one numeric value"
+		},
+		"dereference": {
+			"clue": "Operator reading the u32 through its shared reference in the Count arm"
+		},
+		"record": {
+			"clue": "Reading variant with named name and value fields"
+		},
+		"rest": {
+			"clue": "Pattern syntax ignoring the remaining named fields"
+		},
+		"conditional": {
+			"clue": "Conditional pattern construct inspecting only the Named case"
+		},
+		"equal": {
+			"clue": "Macro checking the idle reading’s amount"
+		}
+	}
+}

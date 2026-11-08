@@ -1,0 +1,36 @@
+{
+	"title": "Consume lazily and short-circuit predicates",
+	"summary": "Distinguish finding one value from testing any or all values. Observe early termination using an inspected-item counter.",
+	"cells": {
+		"borrow": {
+			"clue": "Method creating a shared iterator over values"
+		},
+		"copy": {
+			"clue": "Adapter using the Copy trait to produce i32 values out of shared references"
+		},
+		"reduce": {
+			"clue": "Consumer accumulating from an explicit initial zero"
+		},
+		"observe": {
+			"clue": "Adapter observing each yielded item without changing it"
+		},
+		"exists": {
+			"clue": "Consumer stopping as soon as the predicate accepts one item"
+		},
+		"every": {
+			"clue": "Consumer stopping as soon as the predicate rejects one item"
+		},
+		"first": {
+			"clue": "Consumer returning the first item satisfying the predicate"
+		},
+		"advance": {
+			"clue": "Iterator method yielding one optional item and advancing the cursor"
+		},
+		"reference": {
+			"clue": "Operator borrowing the expected first integer for comparison with a shared iterator item"
+		},
+		"equal": {
+			"clue": "Macro checking how many items remain after advancing once"
+		}
+	}
+}

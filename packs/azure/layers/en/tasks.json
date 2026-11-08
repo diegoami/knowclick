@@ -34,5 +34,13 @@
 	"repeat-safe-handler": {
 		"title": "Resilient application integration lab",
 		"brief": "Write and test a Python handler that ignores repeated operation IDs."
+	},
+	"service-responsibility-design": {
+		"title": "Design a service and responsibility handoff",
+		"brief": "Choose service models for three original workloads and explain which security responsibilities remain with the customer."
+	},
+	"scaling-policy-model": {
+		"title": "Check a local scaling-policy model",
+		"brief": "Work through a bounded scaling-rule worksheet, with an optional Python coding extension; no cloud service is called."
 	}
 }

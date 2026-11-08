@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Transform and retain elements in place",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"retain": {
+			"clue": "Given values: Vec<i32> with a mutable binding, write a complete retain statement keeping strictly positive integers. Name the predicate parameter value and dereference it. Include the semicolon."
+		},
+		"mutate": {
+			"clue": "Given mutable values: Vec<i32>, write a for loop over iter_mut using binding value and multiply each dereferenced integer by 2 with *=."
+		}
+	}
+}

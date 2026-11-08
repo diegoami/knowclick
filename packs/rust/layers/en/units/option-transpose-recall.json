@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Transpose optional parsing results",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"transpose": {
+			"clue": "Given text: Option<&str>, write the expression mapping present text with a closure named value to parse::<u32>(), then transposing into Result<Option<u32>, ParseIntError>."
+		},
+		"flatten": {
+			"clue": "Given nested: Option<Option<u32>>, write the standard method call removing exactly one layer of optionality."
+		}
+	}
+}

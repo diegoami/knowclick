@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Choose method receiver ownership",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"append": {
+			"clue": "Inside impl Label, given &mut self and suffix: &str, write the expression appending the entire suffix with the standard string-slice append method."
+		},
+		"take": {
+			"clue": "Inside impl Label for struct Label { text: String }, write the complete consuming method named into_text returning the field directly, without cloning."
+		}
+	}
+}

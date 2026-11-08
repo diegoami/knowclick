@@ -1,0 +1,33 @@
+{
+	"title": "Measure and combine UTF-8 text",
+	"summary": "Compare bytes with Unicode scalar values, borrow a valid prefix, append text without consuming the suffix and construct formatted output.",
+	"cells": {
+		"binding": {
+			"clue": "Modifier allowing text to be extended in place"
+		},
+		"owned": {
+			"clue": "Owned, growable UTF-8 text type"
+		},
+		"append": {
+			"clue": "Method appending a borrowed string slice to text"
+		},
+		"borrowed": {
+			"clue": "String method exposing suffix as a shared UTF-8 slice"
+		},
+		"bytes": {
+			"clue": "String method returning the number of bytes in its encoding"
+		},
+		"characters": {
+			"clue": "Method iterating Unicode scalar values rather than bytes or grapheme clusters"
+		},
+		"checked": {
+			"clue": "Method returning an optional UTF-8 substring for a byte range"
+		},
+		"formatting": {
+			"clue": "Macro constructing owned formatted text while borrowing the interpolated string"
+		},
+		"equal": {
+			"clue": "Macro comparing the decorated text with the expected bracketed result"
+		}
+	}
+}

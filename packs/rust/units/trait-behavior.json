@@ -1,0 +1,89 @@
+{
+	"id": "trait-behavior",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:contract}} Named { fn name({{gap:shared}}) -> &str; }",
+			"struct User { name: String }",
+			"struct Team { name: String }",
+			"{{gap:implementation}} Named {{gap:forType}} User { fn name(&self) -> &str { &self.name } }",
+			"impl Named for Team { fn name(&self) -> &str { &self.name } }",
+			"fn greeting<T: {{gap:bound}}>(value: {{gap:borrowed}}) -> {{gap:owned}} {",
+			"    {{gap:formatting}}(\"hello {}\", value.name())",
+			"}",
+			"fn main() {",
+			"    let user = User { name: String::from(\"Mira\") };",
+			"    let team = Team { name: String::from(\"Tools\") };",
+			"    {{gap:equal}}(greeting(&user), \"hello Mira\");",
+			"    assert_eq!(greeting(&team), \"hello Tools\");",
+			"    assert_eq!(user.name, \"Mira\");",
+			"    assert_eq!(team.name, \"Tools\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "contract",
+			"item": "rust:trait-behavior:contract",
+			"text": "trait"
+		},
+		{
+			"id": "shared",
+			"item": "rust:trait-behavior:shared",
+			"text": "&self"
+		},
+		{
+			"id": "implementation",
+			"item": "rust:trait-behavior:implementation",
+			"text": "impl"
+		},
+		{
+			"id": "forType",
+			"item": "rust:trait-behavior:forType",
+			"text": "for"
+		},
+		{
+			"id": "bound",
+			"item": "rust:trait-behavior:bound",
+			"text": "Named"
+		},
+		{
+			"id": "borrowed",
+			"item": "rust:trait-behavior:borrowed",
+			"text": "&T"
+		},
+		{
+			"id": "owned",
+			"item": "rust:ownership:owned",
+			"text": "String"
+		},
+		{
+			"id": "formatting",
+			"item": "rust:trait-behavior:formatting",
+			"text": "format!"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["struct", "enum", "&mut self", "self", "T", "&str", "println!", "where"],
+	"recallUnit": "trait-behavior-recall"
+}

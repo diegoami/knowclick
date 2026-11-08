@@ -1,0 +1,217 @@
+{
+	"id": "shared-responsibility-recall",
+	"caseInsensitive": true,
+	"dealAll": true,
+	"layout": {
+		"type": "grid",
+		"size": 40
+	},
+	"sources": [
+		{
+			"title": "Shared responsibility matrix",
+			"url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility"
+		}
+	],
+	"cells": [
+		{
+			"id": "data.onprem",
+			"item": "azure:shared-responsibility:data:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "data.iaas",
+			"item": "azure:shared-responsibility:data:iaas",
+			"text": "Customer"
+		},
+		{
+			"id": "data.paas",
+			"item": "azure:shared-responsibility:data:paas",
+			"text": "Customer"
+		},
+		{
+			"id": "data.saas",
+			"item": "azure:shared-responsibility:data:saas",
+			"text": "Customer"
+		},
+		{
+			"id": "configurations.onprem",
+			"item": "azure:shared-responsibility:configurations:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "configurations.iaas",
+			"item": "azure:shared-responsibility:configurations:iaas",
+			"text": "Customer"
+		},
+		{
+			"id": "configurations.paas",
+			"item": "azure:shared-responsibility:configurations:paas",
+			"text": "Customer"
+		},
+		{
+			"id": "configurations.saas",
+			"item": "azure:shared-responsibility:configurations:saas",
+			"text": "Customer"
+		},
+		{
+			"id": "identities.onprem",
+			"item": "azure:shared-responsibility:identities:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "identities.iaas",
+			"item": "azure:shared-responsibility:identities:iaas",
+			"text": "Customer"
+		},
+		{
+			"id": "identities.paas",
+			"item": "azure:shared-responsibility:identities:paas",
+			"text": "Customer"
+		},
+		{
+			"id": "identities.saas",
+			"item": "azure:shared-responsibility:identities:saas",
+			"text": "Customer"
+		},
+		{
+			"id": "devices.onprem",
+			"item": "azure:shared-responsibility:devices:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "devices.iaas",
+			"item": "azure:shared-responsibility:devices:iaas",
+			"text": "Customer"
+		},
+		{
+			"id": "devices.paas",
+			"item": "azure:shared-responsibility:devices:paas",
+			"text": "Customer"
+		},
+		{
+			"id": "devices.saas",
+			"item": "azure:shared-responsibility:devices:saas",
+			"text": "Shared"
+		},
+		{
+			"id": "applications.onprem",
+			"item": "azure:shared-responsibility:applications:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "applications.iaas",
+			"item": "azure:shared-responsibility:applications:iaas",
+			"text": "Customer"
+		},
+		{
+			"id": "applications.paas",
+			"item": "azure:shared-responsibility:applications:paas",
+			"text": "Shared"
+		},
+		{
+			"id": "applications.saas",
+			"item": "azure:shared-responsibility:applications:saas",
+			"text": "Shared"
+		},
+		{
+			"id": "network-controls.onprem",
+			"item": "azure:shared-responsibility:network-controls:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "network-controls.iaas",
+			"item": "azure:shared-responsibility:network-controls:iaas",
+			"text": "Customer"
+		},
+		{
+			"id": "network-controls.paas",
+			"item": "azure:shared-responsibility:network-controls:paas",
+			"text": "Shared"
+		},
+		{
+			"id": "network-controls.saas",
+			"item": "azure:shared-responsibility:network-controls:saas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "os.onprem",
+			"item": "azure:shared-responsibility:os:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "os.iaas",
+			"item": "azure:shared-responsibility:os:iaas",
+			"text": "Customer"
+		},
+		{
+			"id": "os.paas",
+			"item": "azure:shared-responsibility:os:paas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "os.saas",
+			"item": "azure:shared-responsibility:os:saas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "hosts.onprem",
+			"item": "azure:shared-responsibility:hosts:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "hosts.iaas",
+			"item": "azure:shared-responsibility:hosts:iaas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "hosts.paas",
+			"item": "azure:shared-responsibility:hosts:paas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "hosts.saas",
+			"item": "azure:shared-responsibility:hosts:saas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "network.onprem",
+			"item": "azure:shared-responsibility:network:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "network.iaas",
+			"item": "azure:shared-responsibility:network:iaas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "network.paas",
+			"item": "azure:shared-responsibility:network:paas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "network.saas",
+			"item": "azure:shared-responsibility:network:saas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "datacenter.onprem",
+			"item": "azure:shared-responsibility:datacenter:onprem",
+			"text": "Customer"
+		},
+		{
+			"id": "datacenter.iaas",
+			"item": "azure:shared-responsibility:datacenter:iaas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "datacenter.paas",
+			"item": "azure:shared-responsibility:datacenter:paas",
+			"text": "Microsoft"
+		},
+		{
+			"id": "datacenter.saas",
+			"item": "azure:shared-responsibility:datacenter:saas",
+			"text": "Microsoft"
+		}
+	]
+}

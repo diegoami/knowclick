@@ -1,0 +1,60 @@
+{
+	"id": "module-privacy-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"mod store {",
+			"    pub struct Counter { value: u32 }",
+			"    impl Counter {",
+			"        pub fn new() -> Self { Self { value: 0 } }",
+			"        {{gap:getter}}",
+			"        {{gap:increment}}",
+			"    }",
+			"}",
+			"fn main() {",
+			"    let mut counter = store::Counter::new();",
+			"    assert_eq!(counter.value(), 0);",
+			"    counter.increment();",
+			"    counter.increment();",
+			"    assert_eq!(counter.value(), 2);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "getter",
+			"item": "rust:module-privacy-recall:getter",
+			"text": "pub fn value(&self) -> u32 { self.value }"
+		},
+		{
+			"id": "increment",
+			"item": "rust:module-privacy-recall:increment",
+			"text": "pub fn increment(&mut self) { self.value += 1; }"
+		}
+	],
+	"sources": [
+		{
+			"title": "Modules and privacy",
+			"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+		},
+		{
+			"title": "Paths",
+			"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+		},
+		{
+			"title": "Imports and re-exports",
+			"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+		},
+		{
+			"title": "Method receivers",
+			"url": "https://doc.rust-lang.org/book/ch05-03-method-syntax.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

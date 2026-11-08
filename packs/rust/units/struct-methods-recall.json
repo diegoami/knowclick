@@ -1,0 +1,59 @@
+{
+	"id": "struct-methods-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"struct Label { text: String }",
+			"impl Label {",
+			"    fn new(text: String) -> Self { Self { text } }",
+			"    fn text(&self) -> &str { &self.text }",
+			"    fn append(&mut self, suffix: &str) { {{gap:append}}; }",
+			"    {{gap:take}}",
+			"}",
+			"fn main() {",
+			"    let mut label = Label::new(String::from(\"note\"));",
+			"    assert_eq!(label.text(), \"note\");",
+			"    label.append(\"!\");",
+			"    let owned = label.into_text();",
+			"    assert_eq!(owned, \"note!\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "append",
+			"item": "rust:struct-methods-recall:append",
+			"text": "self.text.push_str(suffix)"
+		},
+		{
+			"id": "take",
+			"item": "rust:struct-methods-recall:take",
+			"text": "fn into_text(self) -> String { self.text }"
+		}
+	],
+	"sources": [
+		{
+			"title": "Structs",
+			"url": "https://doc.rust-lang.org/book/ch05-01-defining-structs.html"
+		},
+		{
+			"title": "Methods",
+			"url": "https://doc.rust-lang.org/book/ch05-03-method-syntax.html"
+		},
+		{
+			"title": "Matching",
+			"url": "https://doc.rust-lang.org/book/ch06-02-match.html"
+		},
+		{
+			"title": "Concise conditional matching",
+			"url": "https://doc.rust-lang.org/book/ch06-03-if-let.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

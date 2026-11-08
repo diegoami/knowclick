@@ -1,0 +1,52 @@
+{
+	"id": "module-paths-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"const BASE: u32 = 10;",
+			"mod math {",
+			"    pub fn bump(value: u32) -> u32 { value + 1 }",
+			"    pub mod batches {",
+			"        pub fn total() -> u32 { {{gap:relative}} }",
+			"    }",
+			"}",
+			"fn main() {",
+			"    assert_eq!({{gap:absolute}}, 11);",
+			"    assert_eq!(math::bump(0), 1);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "relative",
+			"item": "rust:module-paths-recall:relative",
+			"text": "super::bump(crate::BASE)"
+		},
+		{
+			"id": "absolute",
+			"item": "rust:module-paths-recall:absolute",
+			"text": "crate::math::batches::total()"
+		}
+	],
+	"sources": [
+		{
+			"title": "Modules and privacy",
+			"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+		},
+		{
+			"title": "Paths",
+			"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+		},
+		{
+			"title": "Imports and re-exports",
+			"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

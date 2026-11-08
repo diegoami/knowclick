@@ -1,0 +1,57 @@
+{
+	"id": "module-reexports-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"mod api {",
+			"    mod internal {",
+			"        pub struct Ticket { pub id: u32 }",
+			"        impl Ticket {",
+			"            pub fn new(id: u32) -> Self { Self { id } }",
+			"        }",
+			"    }",
+			"    {{gap:facade}}",
+			"    pub fn issue(id: u32) -> Ticket { {{gap:construct}} }",
+			"}",
+			"use crate::api::Ticket;",
+			"fn main() {",
+			"    let ticket: Ticket = api::issue(7);",
+			"    assert_eq!(ticket.id, 7);",
+			"    assert_eq!(Ticket::new(0).id, 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "facade",
+			"item": "rust:module-reexports-recall:facade",
+			"text": "pub use self::internal::Ticket;"
+		},
+		{
+			"id": "construct",
+			"item": "rust:module-reexports-recall:construct",
+			"text": "Ticket::new(id)"
+		}
+	],
+	"sources": [
+		{
+			"title": "Modules and privacy",
+			"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+		},
+		{
+			"title": "Paths",
+			"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+		},
+		{
+			"title": "Imports and re-exports",
+			"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

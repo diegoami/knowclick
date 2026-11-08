@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Branch on optional values without panics",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"double": {
+			"clue": "Given input: Option<u32>, write an if-let expression binding the present payload as value and returning value * 2, otherwise the integer 0."
+		},
+		"early": {
+			"clue": "Inside fn width(input: Option<&str>) -> usize, write the complete let-else statement binding text and returning 0 for absence. Include the terminating semicolon."
+		}
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"id": "iterator-pipelines-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let tokens = [\"1\", \"bad\", \"2\", \"3\"];",
+			"    let numbers: Vec<u32> = tokens.iter()",
+			"        .filter_map(|text| text.parse::<u32>().ok())",
+			"        .take(2).collect();",
+			"    assert_eq!(numbers, vec![1, 2]);",
+			"    assert_eq!(tokens[1], \"bad\");",
+			"    let pairs: Vec<(usize, u32)> = {{gap:index}};",
+			"    assert_eq!(pairs, vec![(0, 1), (1, 2)]);",
+			"    let tagged: Vec<(&str, u32)> = [\"first\", \"second\"].into_iter().zip(numbers).collect();",
+			"    assert_eq!(tagged, vec![(\"first\", 1), (\"second\", 2)]);",
+			"    assert_eq!({{gap:parse}}.take(0).count(), 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "parse",
+			"item": "rust:iterator-pipelines-recall:parse",
+			"text": "tokens.iter().filter_map(|text| text.parse::<u32>().ok())"
+		},
+		{
+			"id": "index",
+			"item": "rust:iterator-pipelines-recall:index",
+			"text": "numbers.iter().copied().enumerate().collect()"
+		}
+	],
+	"sources": [
+		{
+			"title": "Iterators",
+			"url": "https://doc.rust-lang.org/book/ch13-02-iterators.html"
+		},
+		{
+			"title": "Iterator API",
+			"url": "https://doc.rust-lang.org/std/iter/trait.Iterator.html"
+		},
+		{
+			"title": "Slice API",
+			"url": "https://doc.rust-lang.org/std/primitive.slice.html"
+		},
+		{
+			"title": "Result API",
+			"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

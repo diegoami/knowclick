@@ -1,0 +1,30 @@
+{
+	"title": "Return values from blocks and functions",
+	"summary": "Use a function’s tail expression, an explicit early return and a local block value. Keep integer units and reference results explicit.",
+	"cells": {
+		"definition": {
+			"clue": "Keyword introducing a function definition"
+		},
+		"unsigned": {
+			"clue": "Unsigned 32-bit parameter type for a nonnegative minute count"
+		},
+		"arrow": {
+			"clue": "Syntax separating a function’s parameter list from its return type"
+		},
+		"condition": {
+			"clue": "Keyword introducing a branch when value exceeds limit"
+		},
+		"early": {
+			"clue": "Keyword exiting capped immediately with limit"
+		},
+		"fraction": {
+			"clue": "64-bit floating-point type used for fractional division"
+		},
+		"unit": {
+			"clue": "Unit type representing the absence of a meaningful value"
+		},
+		"equal": {
+			"clue": "Macro comparing seconds to the expected converted duration"
+		}
+	}
+}

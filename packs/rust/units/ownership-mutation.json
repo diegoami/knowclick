@@ -1,0 +1,97 @@
+{
+	"id": "ownership-mutation",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn add_tag(text: {{gap:exclusive}}, tag: {{gap:slice}}) {",
+			"    text.{{gap:separator}}(':');",
+			"    text.{{gap:append}}(tag);",
+			"}",
+			"fn byte_count(text: &str) -> {{gap:countType}} { text.{{gap:count}}() }",
+			"fn main() {",
+			"    let {{gap:binding}} name = String::from(\"log\");",
+			"    add_tag({{gap:argument}} name, \"ok\");",
+			"    assert_eq!(name, \"log:ok\");",
+			"    assert_eq!(byte_count({{gap:shared}}name), 6);",
+			"    name.clear();",
+			"    assert!(name.is_empty());",
+			"    add_tag(&mut name, \"\");",
+			"    {{gap:assertion}}(name, \":\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "exclusive",
+			"item": "rust:ownership:mutableType",
+			"text": "&mut String"
+		},
+		{
+			"id": "slice",
+			"item": "rust:ownership:sharedType",
+			"text": "&str"
+		},
+		{
+			"id": "separator",
+			"item": "rust:ownership:append",
+			"text": "push"
+		},
+		{
+			"id": "append",
+			"item": "rust:ownership-mutation:append",
+			"text": "push_str"
+		},
+		{
+			"id": "countType",
+			"item": "rust:ownership:lengthType",
+			"text": "usize"
+		},
+		{
+			"id": "count",
+			"item": "rust:ownership:length",
+			"text": "len"
+		},
+		{
+			"id": "binding",
+			"item": "rust:ownership:mutable",
+			"text": "mut"
+		},
+		{
+			"id": "argument",
+			"item": "rust:ownership-mutation:argument",
+			"text": "&mut"
+		},
+		{
+			"id": "shared",
+			"item": "rust:ownership:borrow",
+			"text": "&"
+		},
+		{
+			"id": "assertion",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Ownership",
+			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		},
+		{
+			"title": "References and borrowing",
+			"url": "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["&String", "&mut str", "String", "append", "capacity", "insert", "ref", "u32"],
+	"recallUnit": "ownership-mutation-recall"
+}

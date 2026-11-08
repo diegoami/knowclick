@@ -6,7 +6,7 @@
 		"where": "terminal",
 		"source": {
 			"title": "Values and ownership lab",
-			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#move-or-borrow"
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-labs.md#move-or-borrow"
 		}
 	},
 	{
@@ -16,7 +16,7 @@
 		"where": "terminal",
 		"source": {
 			"title": "Structs, enums and matching lab",
-			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#job-transition"
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-labs.md#job-transition"
 		}
 	},
 	{
@@ -26,7 +26,7 @@
 		"where": "terminal",
 		"source": {
 			"title": "Option, Result and recoverable errors lab",
-			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#parse-count"
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-labs.md#parse-count"
 		}
 	},
 	{
@@ -36,7 +36,127 @@
 		"where": "terminal",
 		"source": {
 			"title": "Collections and iterators lab",
-			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/rust-labs.md#text-summary"
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-labs.md#text-summary"
+		}
+	},
+	{
+		"id": "borrowed-prefix",
+		"item": "task:borrowed-prefix",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "A borrowed prefix API",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-depth-labs.md#borrowed-prefix"
+		}
+	},
+	{
+		"id": "event-reducer",
+		"item": "task:event-reducer",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "A typed event reducer",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-depth-labs.md#event-reducer"
+		}
+	},
+	{
+		"id": "parse-pair",
+		"item": "task:parse-pair",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "A typed key/value parser",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-depth-labs.md#parse-pair"
+		}
+	},
+	{
+		"id": "indexed-values",
+		"item": "task:indexed-values",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Keep input positions while parsing",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-depth-labs.md#indexed-values"
+		}
+	},
+	{
+		"id": "cargo-counter",
+		"item": "task:cargo-counter",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Create and check a Cargo binary",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#cargo-counter"
+		}
+	},
+	{
+		"id": "bounded-total",
+		"item": "task:bounded-total",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Sum selected values through control flow",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#bounded-total"
+		}
+	},
+	{
+		"id": "private-meter",
+		"item": "task:private-meter",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Protect a bounded meter behind methods",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#private-meter"
+		}
+	},
+	{
+		"id": "facade-paths",
+		"item": "task:facade-paths",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Build a stable module facade",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#facade-paths"
+		}
+	},
+	{
+		"id": "word-tally",
+		"item": "task:word-tally",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Count words with an owned-key map",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#word-tally"
+		}
+	},
+	{
+		"id": "clean-readings",
+		"item": "task:clean-readings",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Clean a vector in place",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#clean-readings"
+		}
+	},
+	{
+		"id": "generic-clamp",
+		"item": "task:generic-clamp",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Constrain a generic interval operation",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#generic-clamp"
+		}
+	},
+	{
+		"id": "named-report",
+		"item": "task:named-report",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Report through a trait contract",
+			"url": "https://github.com/diegoami/knowclick/blob/main/docs/courses/rust-core-labs.md#named-report"
 		}
 	}
 ]

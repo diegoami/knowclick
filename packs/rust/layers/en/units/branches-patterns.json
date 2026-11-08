@@ -1,0 +1,33 @@
+{
+	"title": "Select values with exhaustive branches",
+	"summary": "Use if expressions for ordered categories and match patterns for inclusive ranges, alternatives and a fallback.",
+	"cells": {
+		"signed": {
+			"clue": "Signed 32-bit parameter type supporting a negative input"
+		},
+		"conditional": {
+			"clue": "Keyword starting a conditional expression testing value < 0"
+		},
+		"alternative": {
+			"clue": "Keywords testing value == 0 after the first condition failed"
+		},
+		"fallback": {
+			"clue": "Keyword introducing the final unconditional branch of the conditional expression"
+		},
+		"exhaustive": {
+			"clue": "Keyword selecting a branch from patterns covering every u32 input"
+		},
+		"either": {
+			"clue": "Pattern operator accepting either the literal 1 or literal 2"
+		},
+		"inclusive": {
+			"clue": "Range-pattern syntax including both bounds 3 and 5"
+		},
+		"wildcard": {
+			"clue": "Pattern matching every otherwise-unhandled value"
+		},
+		"equal": {
+			"clue": "Macro checking the category of negative input"
+		}
+	}
+}

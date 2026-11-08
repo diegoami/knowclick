@@ -1,0 +1,36 @@
+{
+	"title": "Mutate through an exclusive borrow",
+	"summary": "Grow a string through a mutable reference, then borrow it for inspection and reuse the owner after each call.",
+	"cells": {
+		"exclusive": {
+			"clue": "Parameter reference type allowing add_tag to grow the caller’s String"
+		},
+		"slice": {
+			"clue": "Borrowed UTF-8 slice type for tag; the function does not own the tag"
+		},
+		"separator": {
+			"clue": "String method appending a single separator character"
+		},
+		"append": {
+			"clue": "String method appending the whole tag slice"
+		},
+		"countType": {
+			"clue": "Pointer-sized unsigned integer returned by the byte length method"
+		},
+		"count": {
+			"clue": "Method returning the byte length of text"
+		},
+		"binding": {
+			"clue": "Binding modifier allowing name to be borrowed exclusively"
+		},
+		"argument": {
+			"clue": "Operator and modifier creating an exclusive borrow of name at the first add_tag call"
+		},
+		"shared": {
+			"clue": "Operator creating a shared borrow of name for byte_count"
+		},
+		"assertion": {
+			"clue": "Macro checking the final string after appending an empty tag"
+		}
+	}
+}

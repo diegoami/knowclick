@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Recover lazily and retain diagnostic context",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"mapping": {
+			"clue": "Given good: Result<u32, String> known to be Ok, write an expression using map with parameter value to double it, then unwrap the success."
+		},
+		"recover": {
+			"clue": "Given bad: Result<u32, String> and mutable calls: i32, write an unwrap_or_else expression ignoring the error, incrementing calls by 1 and returning fallback 5 in a block closure."
+		}
+	}
+}

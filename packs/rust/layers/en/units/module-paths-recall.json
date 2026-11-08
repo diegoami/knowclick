@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Navigate a module tree",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"relative": {
+			"clue": "Inside crate::math::batches, write the expression calling bump in the parent math module with BASE from the crate root. Use super for bump and crate for BASE."
+		},
+		"absolute": {
+			"clue": "Write an absolute call to total in the batches module nested under math in the current crate. Start the path at the crate root."
+		}
+	}
+}

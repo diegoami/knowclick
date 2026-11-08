@@ -1,0 +1,33 @@
+{
+	"title": "Move ownership into and out of a function",
+	"summary": "Distinguish copied integers, a moved String and a returned owner. Make a deep copy only when two independently mutable strings are required.",
+	"cells": {
+		"parameter": {
+			"clue": "Owned UTF-8 text parameter type transferred into decorate"
+		},
+		"returned": {
+			"clue": "Owned UTF-8 text return type transferred back out of decorate"
+		},
+		"suffix": {
+			"clue": "Method appending the string slice \"!\" to an owned string"
+		},
+		"integer": {
+			"clue": "Unsigned 32-bit integer type; assignment copies its value"
+		},
+		"duplicate": {
+			"clue": "Method making an independent owned duplicate of original before it is moved"
+		},
+		"character": {
+			"clue": "Method appending the single character ?"
+		},
+		"construct": {
+			"clue": "Associated conversion function constructing owned UTF-8 text using a string literal"
+		},
+		"check": {
+			"clue": "Macro checking that moved equals the expected decorated text"
+		},
+		"bytes": {
+			"clue": "Method counting UTF-8 bytes in moved"
+		}
+	}
+}

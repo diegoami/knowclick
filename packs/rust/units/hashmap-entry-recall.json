@@ -1,0 +1,64 @@
+{
+	"id": "hashmap-entry-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"use std::collections::HashMap;",
+			"fn main() {",
+			"    let mut counts: HashMap<&str, u32> = HashMap::new();",
+			"    for word in \"red blue red\".split_whitespace() {",
+			"        let count = {{gap:entry}};",
+			"        {{gap:increment}}",
+			"    }",
+			"    assert_eq!(counts.get(\"red\"), Some(&2));",
+			"    assert_eq!(counts.get(\"blue\"), Some(&1));",
+			"    assert_eq!(counts.get(\"green\"), None);",
+			"    assert_eq!(counts.len(), 2);",
+			"    assert_eq!(counts.remove(\"blue\"), Some(1));",
+			"    assert!(!counts.contains_key(\"blue\"));",
+			"    assert_eq!(counts.get(\"red\"), Some(&2));",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "entry",
+			"item": "rust:hashmap-entry-recall:entry",
+			"text": "counts.entry(word).or_insert(0)"
+		},
+		{
+			"id": "increment",
+			"item": "rust:hashmap-entry-recall:increment",
+			"text": "*count += 1;"
+		}
+	],
+	"sources": [
+		{
+			"title": "Vectors",
+			"url": "https://doc.rust-lang.org/book/ch08-01-vectors.html"
+		},
+		{
+			"title": "Strings",
+			"url": "https://doc.rust-lang.org/book/ch08-02-strings.html"
+		},
+		{
+			"title": "Hash maps",
+			"url": "https://doc.rust-lang.org/book/ch08-03-hash-maps.html"
+		},
+		{
+			"title": "HashMap API",
+			"url": "https://doc.rust-lang.org/std/collections/struct.HashMap.html"
+		},
+		{
+			"title": "Entry API",
+			"url": "https://doc.rust-lang.org/std/collections/hash_map/enum.Entry.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

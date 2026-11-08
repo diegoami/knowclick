@@ -1,0 +1,30 @@
+{
+	"title": "Recall service-model decisions",
+	"summary": "Reconstruct each choice from its operational requirements, without an answer tray. These are original teaching scenarios, not exam questions.",
+	"cells": {
+		"kernel-control": {
+			"clue": "A required guest-kernel change and customer-managed patching rule out a provider-controlled runtime. Which service-model abbreviation preserves that operating-system authority?"
+		},
+		"managed-web-runtime": {
+			"clue": "A team must deploy its own web code but does not want guest-OS operations. The service supplies and maintains the supported runtime. Which service-model abbreviation fits?"
+		},
+		"finished-mail": {
+			"clue": "The company wants ready-to-use mail, with vendor application updates and customer user onboarding, rather than an application-development environment. Which service-model abbreviation fits?"
+		},
+		"os-maintenance": {
+			"clue": "The team explicitly retains guest-OS installation and maintenance as part of its migration plan. Which service-model abbreviation matches that responsibility?"
+		},
+		"managed-database": {
+			"clue": "A team designs its own database schema but delegates database-platform and guest-OS operations to a managed service. Which service-model abbreviation fits?"
+		},
+		"finished-expenses": {
+			"clue": "Staff need a finished expense product, with the vendor maintaining the application and customers managing their data and access. Which service-model abbreviation fits?"
+		},
+		"legacy-os": {
+			"clue": "A legacy migration cannot surrender guest-OS administration because required system changes remain the customer’s job. Which service-model abbreviation fits?"
+		},
+		"app-development": {
+			"clue": "The requirement is to build and deploy custom application logic on a managed development platform, with OS and runtime upkeep delegated to the host. Which service-model abbreviation fits?"
+		}
+	}
+}

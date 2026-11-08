@@ -1,0 +1,36 @@
+{
+	"title": "Transform and retain elements in place",
+	"summary": "Sort, deduplicate, filter and edit vector elements without requiring a replacement collection.",
+	"cells": {
+		"binding": {
+			"clue": "Modifier allowing repeated in-place vector transformations"
+		},
+		"sort": {
+			"clue": "Slice method putting values into ascending order before duplicate removal"
+		},
+		"deduplicate": {
+			"clue": "Method removing consecutive repeated values from the sorted vector"
+		},
+		"retain": {
+			"clue": "Vector method keeping only entries accepted by a predicate"
+		},
+		"iterate": {
+			"clue": "Keyword visiting each exclusive reference yielded by the iterator"
+		},
+		"membership": {
+			"clue": "Keyword introducing the loop iterable"
+		},
+		"exclusive": {
+			"clue": "Method yielding exclusive references to the vector’s elements"
+		},
+		"dereference": {
+			"clue": "Operator accessing the integer behind an exclusive reference for multiplication assignment"
+		},
+		"equal": {
+			"clue": "Macro checking the sorted, deduplicated, positive and doubled values"
+		},
+		"truncate": {
+			"clue": "Method shortening the vector to at most the requested length"
+		}
+	}
+}

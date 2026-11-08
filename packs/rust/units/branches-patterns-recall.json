@@ -1,0 +1,76 @@
+{
+	"id": "branches-patterns-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn band(value: i32) -> &'static str {",
+			"    if value < 0 { \"negative\" }",
+			"    else if value == 0 { \"zero\" }",
+			"    else { \"positive\" }",
+			"}",
+			"fn category(code: u32) -> &'static str {",
+			"    match code {",
+			"        {{gap:either}},",
+			"        {{gap:range}},",
+			"        _ => \"other\",",
+			"    }",
+			"}",
+			"fn main() {",
+			"    assert_eq!(band(-1), \"negative\");",
+			"    assert_eq!(band(0), \"zero\");",
+			"    assert_eq!(band(1), \"positive\");",
+			"    assert_eq!(category(1), \"small\");",
+			"    assert_eq!(category(2), \"small\");",
+			"    assert_eq!(category(3), \"middle\");",
+			"    assert_eq!(category(5), \"middle\");",
+			"    assert_eq!(category(0), \"other\");",
+			"    assert_eq!(category(6), \"other\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "range",
+			"item": "rust:branches-patterns-recall:range",
+			"text": "3..=5 => \"middle\""
+		},
+		{
+			"id": "either",
+			"item": "rust:branches-patterns-recall:either",
+			"text": "1 | 2 => \"small\""
+		}
+	],
+	"sources": [
+		{
+			"title": "Hello, Cargo!",
+			"url": "https://doc.rust-lang.org/book/ch01-03-hello-cargo.html"
+		},
+		{
+			"title": "Variables and mutability",
+			"url": "https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html"
+		},
+		{
+			"title": "Data types",
+			"url": "https://doc.rust-lang.org/book/ch03-02-data-types.html"
+		},
+		{
+			"title": "Functions",
+			"url": "https://doc.rust-lang.org/book/ch03-03-how-functions-work.html"
+		},
+		{
+			"title": "Control flow",
+			"url": "https://doc.rust-lang.org/book/ch03-05-control-flow.html"
+		},
+		{
+			"title": "Patterns",
+			"url": "https://doc.rust-lang.org/book/ch19-03-pattern-syntax.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

@@ -1,0 +1,109 @@
+{
+	"id": "hashmap-entry",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:import}} std::collections::{{gap:mapType}};",
+			"fn main() {",
+			"    let {{gap:binding}} counts: HashMap<&str, u32> = HashMap::new();",
+			"    for word in \"red blue red\".{{gap:tokens}}() {",
+			"        let count = counts.{{gap:entry}}(word).{{gap:default}}(0);",
+			"        {{gap:dereference}}count += 1;",
+			"    }",
+			"    {{gap:equal}}(counts.{{gap:lookup}}(\"red\"), Some(&2));",
+			"    assert_eq!(counts.get(\"blue\"), Some(&1));",
+			"    assert_eq!(counts.get(\"green\"), None);",
+			"    assert_eq!(counts.len(), 2);",
+			"    assert_eq!(counts.remove(\"blue\"), Some(1));",
+			"    assert!(!counts.contains_key(\"blue\"));",
+			"    assert_eq!(counts.get(\"red\"), Some(&2));",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "import",
+			"item": "rust:hashmap-entry:import",
+			"text": "use"
+		},
+		{
+			"id": "mapType",
+			"item": "rust:hashmap-entry:mapType",
+			"text": "HashMap"
+		},
+		{
+			"id": "binding",
+			"item": "rust:ownership:mutable",
+			"text": "mut"
+		},
+		{
+			"id": "tokens",
+			"item": "rust:hashmap-entry:tokens",
+			"text": "split_whitespace"
+		},
+		{
+			"id": "entry",
+			"item": "rust:hashmap-entry:entry",
+			"text": "entry"
+		},
+		{
+			"id": "default",
+			"item": "rust:hashmap-entry:default",
+			"text": "or_insert"
+		},
+		{
+			"id": "dereference",
+			"item": "rust:hashmap-entry:dereference",
+			"text": "*"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "lookup",
+			"item": "rust:hashmap-entry:lookup",
+			"text": "get"
+		}
+	],
+	"sources": [
+		{
+			"title": "Vectors",
+			"url": "https://doc.rust-lang.org/book/ch08-01-vectors.html"
+		},
+		{
+			"title": "Strings",
+			"url": "https://doc.rust-lang.org/book/ch08-02-strings.html"
+		},
+		{
+			"title": "Hash maps",
+			"url": "https://doc.rust-lang.org/book/ch08-03-hash-maps.html"
+		},
+		{
+			"title": "HashMap API",
+			"url": "https://doc.rust-lang.org/std/collections/struct.HashMap.html"
+		},
+		{
+			"title": "Entry API",
+			"url": "https://doc.rust-lang.org/std/collections/hash_map/enum.Entry.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"BTreeMap",
+		"Vec",
+		"insert",
+		"unwrap_or",
+		"or_default",
+		"get_mut",
+		"keys",
+		"values"
+	],
+	"recallUnit": "hashmap-entry-recall"
+}

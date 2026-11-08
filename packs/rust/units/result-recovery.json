@@ -1,0 +1,105 @@
+{
+	"id": "result-recovery",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn parsed(text: &str) -> {{gap:resultType}} {",
+			"    text.parse::<u32>().{{gap:context}}(|error| format!(\"count '{text}': {error}\"))",
+			"}",
+			"fn main() {",
+			"    let good = parsed(\"12\");",
+			"    assert!(good.{{gap:succeeded}}());",
+			"    assert_eq!(good.{{gap:mapping}}(|value| value * 2).unwrap(), 24);",
+			"    let bad = parsed(\"bad\");",
+			"    assert!(bad.as_ref().{{gap:failed}}());",
+			"    assert!(bad.as_ref().{{gap:diagnostic}}().unwrap().contains(\"count 'bad'\"));",
+			"    let mut calls = 0;",
+			"    let fallback = bad.{{gap:recover}}(|_| { calls += 1; 5 });",
+			"    assert_eq!(fallback, 5);",
+			"    let kept = parsed(\"0\").unwrap_or_else(|_| { calls += 1; 5 });",
+			"    assert_eq!(kept, 0);",
+			"    {{gap:equal}}(calls, 1);",
+			"    let missing: Option<u32> = {{gap:absent}};",
+			"    assert_eq!(missing.unwrap_or(9), 9);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "resultType",
+			"item": "rust:result-recovery:resultType",
+			"text": "Result<u32, String>"
+		},
+		{
+			"id": "context",
+			"item": "rust:result-recovery:context",
+			"text": "map_err"
+		},
+		{
+			"id": "succeeded",
+			"item": "rust:result-recovery:succeeded",
+			"text": "is_ok"
+		},
+		{
+			"id": "mapping",
+			"item": "rust:result-recovery:mapping",
+			"text": "map"
+		},
+		{
+			"id": "failed",
+			"item": "rust:errors:failed",
+			"text": "is_err"
+		},
+		{
+			"id": "diagnostic",
+			"item": "rust:result-recovery:diagnostic",
+			"text": "err"
+		},
+		{
+			"id": "recover",
+			"item": "rust:result-recovery:recover",
+			"text": "unwrap_or_else"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "absent",
+			"item": "rust:errors:absent",
+			"text": "None"
+		}
+	],
+	"sources": [
+		{
+			"title": "Recoverable errors",
+			"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		},
+		{
+			"title": "Result API",
+			"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"Option<u32>",
+		"ok_or",
+		"and_then",
+		"is_some",
+		"is_none",
+		"ok",
+		"unwrap_or",
+		"Some"
+	],
+	"recallUnit": "result-recovery-recall"
+}

@@ -1,0 +1,93 @@
+{
+	"id": "ownership-transfer",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn decorate(mut text: {{gap:parameter}}) -> {{gap:returned}} {",
+			"    text.{{gap:suffix}}(\"!\");",
+			"    text",
+			"}",
+			"fn main() {",
+			"    let count: {{gap:integer}} = 4;",
+			"    let copied = count;",
+			"    assert_eq!(count + copied, 8);",
+			"    let original = String::{{gap:construct}}(\"red\");",
+			"    let mut independent = original.{{gap:duplicate}}();",
+			"    independent.{{gap:character}}('?');",
+			"    let moved = decorate(original);",
+			"    {{gap:check}}(moved, \"red!\");",
+			"    assert_eq!(independent, \"red?\");",
+			"    assert_eq!(moved.{{gap:bytes}}(), 4);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "parameter",
+			"item": "rust:ownership:owned",
+			"text": "String"
+		},
+		{
+			"id": "returned",
+			"item": "rust:ownership-transfer:returned",
+			"text": "String"
+		},
+		{
+			"id": "suffix",
+			"item": "rust:ownership-transfer:suffix",
+			"text": "push_str"
+		},
+		{
+			"id": "integer",
+			"item": "rust:errors:number",
+			"text": "u32"
+		},
+		{
+			"id": "duplicate",
+			"item": "rust:ownership-transfer:duplicate",
+			"text": "clone"
+		},
+		{
+			"id": "character",
+			"item": "rust:ownership:append",
+			"text": "push"
+		},
+		{
+			"id": "construct",
+			"item": "rust:ownership-transfer:construct",
+			"text": "from"
+		},
+		{
+			"id": "check",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "bytes",
+			"item": "rust:ownership:length",
+			"text": "len"
+		}
+	],
+	"sources": [
+		{
+			"title": "Ownership",
+			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		},
+		{
+			"title": "References and borrowing",
+			"url": "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["&str", "&String", "Copy", "copy", "append", "capacity", "i32", "chars"],
+	"recallUnit": "ownership-transfer-recall"
+}

@@ -1,0 +1,58 @@
+{
+	"id": "iterator-short-circuit-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let values = [2, 4, 7, 8];",
+			"    let total = {{gap:fold}};",
+			"    assert_eq!(total, 21);",
+			"    let mut visited = 0;",
+			"    let has_odd = values.iter().inspect(|_| visited += 1).any(|value| value % 2 != 0);",
+			"    assert!(has_odd);",
+			"    assert_eq!(visited, 3);",
+			"    assert!(!values.iter().all(|value| value % 2 == 0));",
+			"    assert_eq!({{gap:find}}, Some(7));",
+			"    let empty: [i32; 0] = [];",
+			"    assert!(empty.iter().all(|value| *value > 0));",
+			"    assert!(!empty.iter().any(|value| *value > 0));",
+			"    let mut cursor = values.iter();",
+			"    assert_eq!(cursor.next(), Some(&2));",
+			"    assert_eq!(cursor.count(), 3);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "fold",
+			"item": "rust:iterator-short-circuit-recall:fold",
+			"text": "values.iter().copied().fold(0, |acc, value| acc + value)"
+		},
+		{
+			"id": "find",
+			"item": "rust:iterator-short-circuit-recall:find",
+			"text": "values.iter().copied().find(|value| *value > 4)"
+		}
+	],
+	"sources": [
+		{
+			"title": "Iterators",
+			"url": "https://doc.rust-lang.org/book/ch13-02-iterators.html"
+		},
+		{
+			"title": "Iterator API",
+			"url": "https://doc.rust-lang.org/std/iter/trait.Iterator.html"
+		},
+		{
+			"title": "Slice API",
+			"url": "https://doc.rust-lang.org/std/primitive.slice.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

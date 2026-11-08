@@ -1,0 +1,36 @@
+{
+	"title": "Choose method receiver ownership",
+	"summary": "Construct a record, inspect it by shared borrow, edit it by exclusive borrow and finally consume it to return an owned field.",
+	"cells": {
+		"record": {
+			"clue": "Keyword defining the named-field record Label"
+		},
+		"implementation": {
+			"clue": "Keyword introducing methods for Label"
+		},
+		"selfType": {
+			"clue": "Type spelling referring to Label inside its implementation"
+		},
+		"shared": {
+			"clue": "Receiver that inspects Label without consuming or mutating it"
+		},
+		"view": {
+			"clue": "Borrowed UTF-8 slice return type for text"
+		},
+		"exclusive": {
+			"clue": "Receiver that permits changing the Label in place"
+		},
+		"append": {
+			"clue": "Method appending suffix to the owned field"
+		},
+		"consume": {
+			"clue": "Receiver that transfers ownership of Label into into_text"
+		},
+		"binding": {
+			"clue": "Modifier permitting label.append to borrow label exclusively"
+		},
+		"equal": {
+			"clue": "Macro comparing the consumed field with the expected owned text"
+		}
+	}
+}

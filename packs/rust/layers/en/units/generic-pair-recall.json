@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Parameterize a record and its methods",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"consume": {
+			"clue": "Inside impl<T> Pair<T> for struct Pair<T> { left: T, right: T }, write the complete consuming method into_tuple returning left then right directly in a tuple."
+		},
+		"constructor": {
+			"clue": "Inside impl<T> Pair<T> with fields left: T and right: T, write the complete associated function new taking those two parameters, returning Self and using field-init shorthand in left/right order."
+		}
+	}
+}

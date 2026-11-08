@@ -1,0 +1,33 @@
+{
+	"title": "Iterate ranges and return a loop result",
+	"summary": "Skip selected values, count down with while, and stop an explicit loop by returning a value from break.",
+	"cells": {
+		"binding": {
+			"clue": "Modifier allowing total to change on each retained iteration"
+		},
+		"iterate": {
+			"clue": "Keyword iterating values drawn from a range"
+		},
+		"membership": {
+			"clue": "Keyword between the loop binding and its iterable"
+		},
+		"inclusive": {
+			"clue": "Range syntax visiting both the starting integer 1 and ending integer 5"
+		},
+		"skip": {
+			"clue": "Keyword skipping the rest of the current iteration for even values"
+		},
+		"conditional": {
+			"clue": "Keyword repeating the countdown only as long as remaining > 0"
+		},
+		"repeat": {
+			"clue": "Keyword creating a repetition that ends only by explicit control flow"
+		},
+		"exit": {
+			"clue": "Keyword leaving the innermost loop with the numeric result n * 2"
+		},
+		"equal": {
+			"clue": "Macro checking the value produced by the explicit loop"
+		}
+	}
+}

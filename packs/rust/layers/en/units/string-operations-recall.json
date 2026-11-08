@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Measure and combine UTF-8 text",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"append": {
+			"clue": "Given mutable text: String and suffix: String, write a complete statement appending suffix to text using push_str and an explicit as_str call. Include the semicolon."
+		},
+		"format": {
+			"clue": "Given text: String, write a format macro expression producing owned text with the current text enclosed in square brackets. Use named capture {text}, without a separate format argument."
+		}
+	}
+}

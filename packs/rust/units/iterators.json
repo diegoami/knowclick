@@ -91,5 +91,6 @@
 		"String",
 		"HashMap",
 		"assert!"
-	]
+	],
+	"recallUnit": "iterators-recall"
 }

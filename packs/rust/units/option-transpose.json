@@ -1,0 +1,106 @@
+{
+	"id": "option-transpose",
+	"layout": {
+		"type": "code",
+		"code": [
+			"use std::num::ParseIntError;",
+			"fn optional(text: {{gap:inputType}}) -> {{gap:outputType}} {",
+			"    text.{{gap:mapping}}(|value| value.parse::<{{gap:integer}}>()).{{gap:transpose}}()",
+			"}",
+			"fn main() {",
+			"    assert_eq!(optional(None).{{gap:extract}}(), None);",
+			"    assert_eq!(optional(Some(\"0\")).unwrap(), Some(0));",
+			"    assert_eq!(optional(Some(\"8\")).unwrap(), Some(8));",
+			"    assert!(optional(Some(\"bad\")).{{gap:failure}}());",
+			"    assert!(optional(Some(\"-1\")).is_err());",
+			"    let nested = Some(Some(3));",
+			"    assert_eq!(nested.{{gap:flatten}}(), Some(3));",
+			"    let empty: Option<Option<u32>> = Some(None);",
+			"    {{gap:equal}}(empty.flatten(), {{gap:none}});",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "inputType",
+			"item": "rust:option-transpose:inputType",
+			"text": "Option<&str>"
+		},
+		{
+			"id": "outputType",
+			"item": "rust:option-transpose:outputType",
+			"text": "Result<Option<u32>, ParseIntError>"
+		},
+		{
+			"id": "mapping",
+			"item": "rust:option-transpose:mapping",
+			"text": "map"
+		},
+		{
+			"id": "integer",
+			"item": "rust:errors:number",
+			"text": "u32"
+		},
+		{
+			"id": "transpose",
+			"item": "rust:option-transpose:transpose",
+			"text": "transpose"
+		},
+		{
+			"id": "extract",
+			"item": "rust:option-transpose:extract",
+			"text": "unwrap"
+		},
+		{
+			"id": "failure",
+			"item": "rust:errors:failed",
+			"text": "is_err"
+		},
+		{
+			"id": "flatten",
+			"item": "rust:option-transpose:flatten",
+			"text": "flatten"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "none",
+			"item": "rust:errors:absent",
+			"text": "None"
+		}
+	],
+	"sources": [
+		{
+			"title": "Recoverable errors",
+			"url": "https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		},
+		{
+			"title": "Result API",
+			"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"and_then",
+		"filter",
+		"collect",
+		"ok_or",
+		"is_ok",
+		"Some",
+		"Err",
+		"Result<u32, ParseIntError>"
+	],
+	"recallUnit": "option-transpose-recall"
+}

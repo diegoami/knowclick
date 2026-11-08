@@ -1,0 +1,33 @@
+{
+	"title": "Reuse default methods and override selectively",
+	"summary": "Provide a trait default implemented through a required method, then customize one implementation while retaining the default for another.",
+	"cells": {
+		"contract": {
+			"clue": "Keyword defining a behavior contract that includes a default method"
+		},
+		"shared": {
+			"clue": "Receiver borrowing the implementer for its required label method"
+		},
+		"owned": {
+			"clue": "Owned UTF-8 return type for the default caption"
+		},
+		"formatting": {
+			"clue": "Macro constructing the default caption around the required label result"
+		},
+		"implementation": {
+			"clue": "Keyword providing the Caption implementation for Plain"
+		},
+		"forType": {
+			"clue": "Keyword attaching the Caption trait implementation to Plain"
+		},
+		"uppercase": {
+			"clue": "String-slice method returning an owned uppercase version for the override"
+		},
+		"bound": {
+			"clue": "Trait bound guaranteeing that render can call the caption method"
+		},
+		"equal": {
+			"clue": "Macro checking the default caption inherited by Plain"
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Publish a stable module facade",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"facade": {
+			"clue": "Inside module api containing private mod internal with public struct Ticket, write a public re-export of Ticket using a self-relative path. Include the semicolon."
+		},
+		"construct": {
+			"clue": "Given imported type Ticket with associated constructor fn new(id: u32) -> Self, write the expression constructing a ticket with the existing variable id."
+		}
+	}
+}

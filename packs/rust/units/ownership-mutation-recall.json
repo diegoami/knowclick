@@ -1,0 +1,56 @@
+{
+	"id": "ownership-mutation-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn add_tag(text: &mut String, tag: &str) {",
+			"    text.push(':');",
+			"    text.push_str(tag);",
+			"}",
+			"fn byte_count(text: &str) -> usize { text.len() }",
+			"fn main() {",
+			"    let mut name = String::from(\"log\");",
+			"    {{gap:mutate}};",
+			"    assert_eq!(name, \"log:ok\");",
+			"    assert_eq!({{gap:inspect}}, 6);",
+			"    name.clear();",
+			"    assert!(name.is_empty());",
+			"    add_tag(&mut name, \"\");",
+			"    assert_eq!(name, \":\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "mutate",
+			"item": "rust:ownership-mutation-recall:mutate",
+			"text": "add_tag(&mut name, \"ok\")"
+		},
+		{
+			"id": "inspect",
+			"item": "rust:ownership-mutation-recall:inspect",
+			"text": "byte_count(&name)"
+		}
+	],
+	"sources": [
+		{
+			"title": "Ownership",
+			"url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html"
+		},
+		{
+			"title": "References and borrowing",
+			"url": "https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

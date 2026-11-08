@@ -3,7 +3,7 @@
 	"category": "certification",
 	"licence": "CC-BY-SA-4.0",
 	"formatVersion": 1,
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"holdsFor": [
 		{
 			"name": "AZ-900 skills measured",
@@ -16,9 +16,13 @@
 		{
 			"name": "Bicep",
 			"version": "0.48.1"
+		},
+		{
+			"name": "Python",
+			"version": "3.14.4"
 		}
 	],
-	"checkedOn": "2026-11-04",
+	"checkedOn": "2026-11-08",
 	"explanations": ["en"],
 	"keywords": ["azure", "az-900", "ai-200", "entra"],
 	"sections": ["concepts", "architecture", "management", "developer"],
@@ -26,7 +30,12 @@
 		{
 			"id": "cloud",
 			"section": "concepts",
-			"units": ["cloud-concepts", "shared-responsibility"],
+			"units": [
+				"cloud-concepts",
+				"shared-responsibility",
+				"service-model-decisions",
+				"scaling-decisions"
+			],
 			"study": [
 				{
 					"kind": "course",
@@ -37,8 +46,34 @@
 					"kind": "reference",
 					"title": "Study guide for Exam AZ-900",
 					"url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+				},
+				{
+					"kind": "docs",
+					"title": "Infrastructure as a service",
+					"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/2-describe-infrastructure-service"
+				},
+				{
+					"kind": "docs",
+					"title": "Platform as a service",
+					"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/3-describe-platform-service"
+				},
+				{
+					"kind": "docs",
+					"title": "Software as a service",
+					"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/4-describe-software-service"
+				},
+				{
+					"kind": "docs",
+					"title": "Autoscaling guidance",
+					"url": "https://learn.microsoft.com/en-us/azure/architecture/best-practices/auto-scaling"
+				},
+				{
+					"kind": "docs",
+					"title": "Azure Monitor autoscale settings",
+					"url": "https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-understanding-settings"
 				}
-			]
+			],
+			"tasks": ["service-responsibility-design", "scaling-policy-model"]
 		},
 		{
 			"id": "architecture",

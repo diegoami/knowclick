@@ -1,0 +1,30 @@
+{
+	"title": "Bind values and choose concrete types",
+	"summary": "Distinguish mutability from shadowing, and use tuples, arrays and explicitly typed numeric values.",
+	"cells": {
+		"unsigned": {
+			"clue": "Unsigned 32-bit integer type for the constant LIMIT"
+		},
+		"mutable": {
+			"clue": "Modifier allowing assignment to count after its declaration"
+		},
+		"shadow": {
+			"clue": "Keyword introducing a new binding named spaces with a different type"
+		},
+		"signed": {
+			"clue": "Signed 32-bit integer type for the negative tuple element"
+		},
+		"boolean": {
+			"clue": "Type of a true-or-false tuple element"
+		},
+		"character": {
+			"clue": "Type representing one Unicode scalar value"
+		},
+		"array": {
+			"clue": "Array type holding exactly three unsigned 32-bit integers"
+		},
+		"equal": {
+			"clue": "Macro comparing the incremented count to 3"
+		}
+	}
+}

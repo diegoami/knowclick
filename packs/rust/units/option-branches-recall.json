@@ -1,0 +1,63 @@
+{
+	"id": "option-branches-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn doubled(input: Option<u32>) -> u32 {",
+			"    {{gap:double}}",
+			"}",
+			"fn width(input: Option<&str>) -> usize {",
+			"    {{gap:early}}",
+			"    text.len()",
+			"}",
+			"fn main() {",
+			"    assert_eq!(doubled(Some(5)), 10);",
+			"    assert_eq!(doubled(None), 0);",
+			"    assert_eq!(width(Some(\"abc\")), 3);",
+			"    assert_eq!(width(Some(\"\")), 0);",
+			"    assert_eq!(width(None), 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "double",
+			"item": "rust:option-branches-recall:double",
+			"text": "if let Some(value) = input { value * 2 } else { 0 }"
+		},
+		{
+			"id": "early",
+			"item": "rust:option-branches-recall:early",
+			"text": "let Some(text) = input else { return 0; };"
+		}
+	],
+	"sources": [
+		{
+			"title": "Structs",
+			"url": "https://doc.rust-lang.org/book/ch05-01-defining-structs.html"
+		},
+		{
+			"title": "Methods",
+			"url": "https://doc.rust-lang.org/book/ch05-03-method-syntax.html"
+		},
+		{
+			"title": "Matching",
+			"url": "https://doc.rust-lang.org/book/ch06-02-match.html"
+		},
+		{
+			"title": "Concise conditional matching",
+			"url": "https://doc.rust-lang.org/book/ch06-03-if-let.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

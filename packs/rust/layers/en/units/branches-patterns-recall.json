@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Select values with exhaustive branches",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"range": {
+			"clue": "In a match on code: u32, write the complete arm mapping the inclusive range from 3 through 5 to the string literal \"middle\". Omit the comma."
+		},
+		"either": {
+			"clue": "In a match on code: u32, write the complete arm mapping either literal 1 or literal 2 to \"small\", using an or-pattern in ascending order. Omit the comma."
+		}
+	}
+}

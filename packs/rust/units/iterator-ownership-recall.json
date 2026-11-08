@@ -1,0 +1,52 @@
+{
+	"id": "iterator-ownership-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let mut names = vec![String::from(\"a\"), String::from(\"bb\")];",
+			"    let sizes: Vec<usize> = {{gap:borrow}};",
+			"    assert_eq!(sizes, vec![1, 2]);",
+			"    assert_eq!(names.len(), 2);",
+			"    for name in names.iter_mut() { name.push('!'); }",
+			"    assert_eq!(names[0], \"a!\");",
+			"    let owned: Vec<String> = {{gap:move}};",
+			"    assert_eq!(owned, vec![String::from(\"a!\"), String::from(\"bb!\")]);",
+			"    assert_eq!(Vec::<String>::new().into_iter().count(), 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "borrow",
+			"item": "rust:iterator-ownership-recall:borrow",
+			"text": "names.iter().map(|name| name.len()).collect()"
+		},
+		{
+			"id": "move",
+			"item": "rust:iterator-ownership-recall:move",
+			"text": "names.into_iter().collect()"
+		}
+	],
+	"sources": [
+		{
+			"title": "Iterators",
+			"url": "https://doc.rust-lang.org/book/ch13-02-iterators.html"
+		},
+		{
+			"title": "Iterator API",
+			"url": "https://doc.rust-lang.org/std/iter/trait.Iterator.html"
+		},
+		{
+			"title": "Slice API",
+			"url": "https://doc.rust-lang.org/std/primitive.slice.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

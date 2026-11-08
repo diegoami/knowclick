@@ -1,0 +1,36 @@
+{
+	"title": "Filter and combine iterator pipelines",
+	"summary": "Discard failed parses, limit results, then combine iterators into labelled pairs. Verify that borrowing leaves input usable.",
+	"cells": {
+		"collection": {
+			"clue": "Owned vector type collecting successfully parsed unsigned integers"
+		},
+		"borrow": {
+			"clue": "Array method yielding borrowed tokens"
+		},
+		"parse": {
+			"clue": "Adapter retaining only Some values produced by the parsing closure"
+		},
+		"success": {
+			"clue": "Result method discarding failures and wrapping successful payloads in Option"
+		},
+		"limit": {
+			"clue": "Adapter yielding at most the first requested number of parsed values"
+		},
+		"gather": {
+			"clue": "Consumer gathering the remaining iterator values"
+		},
+		"copy": {
+			"clue": "Adapter using the Copy trait to produce u32 values out of shared references"
+		},
+		"indices": {
+			"clue": "Adapter adding zero-based indices to iterator items"
+		},
+		"combine": {
+			"clue": "Adapter pairing items from the two iterators until either ends"
+		},
+		"equal": {
+			"clue": "Macro checking the labelled numeric pairs"
+		}
+	}
+}

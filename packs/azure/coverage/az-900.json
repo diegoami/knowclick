@@ -15,20 +15,37 @@
 				{
 					"id": "cloud-computing",
 					"title": "Describe cloud computing",
-					"units": ["cloud-concepts", "shared-responsibility"],
-					"tasks": []
+					"units": [
+						"cloud-concepts",
+						"cloud-concepts-recall",
+						"shared-responsibility",
+						"shared-responsibility-recall"
+					],
+					"tasks": ["service-responsibility-design"]
 				},
 				{
 					"id": "benefits",
 					"title": "Describe the benefits of using cloud services",
-					"units": ["cloud-concepts"],
-					"tasks": []
+					"units": [
+						"cloud-concepts",
+						"cloud-concepts-recall",
+						"scaling-decisions",
+						"scaling-decisions-recall"
+					],
+					"tasks": ["scaling-policy-model"]
 				},
 				{
 					"id": "service-types",
 					"title": "Describe cloud service types",
-					"units": ["cloud-concepts", "shared-responsibility"],
-					"tasks": []
+					"units": [
+						"cloud-concepts",
+						"cloud-concepts-recall",
+						"shared-responsibility",
+						"shared-responsibility-recall",
+						"service-model-decisions",
+						"service-model-decisions-recall"
+					],
+					"tasks": ["service-responsibility-design"]
 				}
 			]
 		},

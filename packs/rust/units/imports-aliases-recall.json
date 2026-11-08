@@ -1,0 +1,58 @@
+{
+	"id": "imports-aliases-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"mod raw { pub fn value() -> u32 { 2 } }",
+			"mod clean { pub fn value() -> u32 { 3 } }",
+			"mod adjust {",
+			"    pub fn scale(value: u32) -> u32 { value * 10 }",
+			"    pub fn local() -> u32 {",
+			"        {{gap:local}}",
+			"        scale(4)",
+			"    }",
+			"}",
+			"{{gap:alias}}",
+			"use crate::adjust::scale;",
+			"fn main() {",
+			"    assert_eq!(raw_value(), 2);",
+			"    assert_eq!(clean_value(), 3);",
+			"    assert_eq!(scale(raw_value()), 20);",
+			"    assert_eq!(adjust::local(), 40);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "alias",
+			"item": "rust:imports-aliases-recall:alias",
+			"text": "use crate::{raw::value as raw_value, clean::value as clean_value};"
+		},
+		{
+			"id": "local",
+			"item": "rust:imports-aliases-recall:local",
+			"text": "use self::scale;"
+		}
+	],
+	"sources": [
+		{
+			"title": "Modules and privacy",
+			"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+		},
+		{
+			"title": "Paths",
+			"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+		},
+		{
+			"title": "Imports and re-exports",
+			"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

@@ -1,0 +1,126 @@
+{
+	"title": "Recall responsibility without the matrix",
+	"summary": "Recall every original matrix entry from a standalone control-and-service prompt. Shared means responsibilities are divided; it never removes the customer’s own obligations.",
+	"cells": {
+		"data.onprem": {
+			"clue": "Under On-premises, who is responsible for customer information stored by the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"data.iaas": {
+			"clue": "Under IaaS, who is responsible for customer information stored by the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"data.paas": {
+			"clue": "Under PaaS, who is responsible for customer information stored by the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"data.saas": {
+			"clue": "Under SaaS, who is responsible for customer information stored by the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"configurations.onprem": {
+			"clue": "Under On-premises, who is responsible for the customer’s selected settings and configuration according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"configurations.iaas": {
+			"clue": "Under IaaS, who is responsible for the customer’s selected settings and configuration according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"configurations.paas": {
+			"clue": "Under PaaS, who is responsible for the customer’s selected settings and configuration according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"configurations.saas": {
+			"clue": "Under SaaS, who is responsible for the customer’s selected settings and configuration according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"identities.onprem": {
+			"clue": "Under On-premises, who is responsible for the customer’s user identities and accounts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"identities.iaas": {
+			"clue": "Under IaaS, who is responsible for the customer’s user identities and accounts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"identities.paas": {
+			"clue": "Under PaaS, who is responsible for the customer’s user identities and accounts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"identities.saas": {
+			"clue": "Under SaaS, who is responsible for the customer’s user identities and accounts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"devices.onprem": {
+			"clue": "Under On-premises, who is responsible for client devices used to access the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"devices.iaas": {
+			"clue": "Under IaaS, who is responsible for client devices used to access the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"devices.paas": {
+			"clue": "Under PaaS, who is responsible for client devices used to access the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"devices.saas": {
+			"clue": "Under SaaS, who is responsible for client devices used to access the workload according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"applications.onprem": {
+			"clue": "Under On-premises, who is responsible for the application layer, including the split between the service and customer-controlled parts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"applications.iaas": {
+			"clue": "Under IaaS, who is responsible for the application layer, including the split between the service and customer-controlled parts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"applications.paas": {
+			"clue": "Under PaaS, who is responsible for the application layer, including the split between the service and customer-controlled parts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"applications.saas": {
+			"clue": "Under SaaS, who is responsible for the application layer, including the split between the service and customer-controlled parts according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network-controls.onprem": {
+			"clue": "Under On-premises, who is responsible for network security controls, rather than physical network equipment according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network-controls.iaas": {
+			"clue": "Under IaaS, who is responsible for network security controls, rather than physical network equipment according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network-controls.paas": {
+			"clue": "Under PaaS, who is responsible for network security controls, rather than physical network equipment according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network-controls.saas": {
+			"clue": "Under SaaS, who is responsible for network security controls, rather than physical network equipment according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"os.onprem": {
+			"clue": "Under On-premises, who is responsible for the workload’s operating system according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"os.iaas": {
+			"clue": "Under IaaS, who is responsible for the workload’s operating system according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"os.paas": {
+			"clue": "Under PaaS, who is responsible for the workload’s operating system according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"os.saas": {
+			"clue": "Under SaaS, who is responsible for the workload’s operating system according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"hosts.onprem": {
+			"clue": "Under On-premises, who is responsible for physical machines in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"hosts.iaas": {
+			"clue": "Under IaaS, who is responsible for physical machines in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"hosts.paas": {
+			"clue": "Under PaaS, who is responsible for physical machines in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"hosts.saas": {
+			"clue": "Under SaaS, who is responsible for physical machines in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network.onprem": {
+			"clue": "Under On-premises, who is responsible for physical networking equipment in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network.iaas": {
+			"clue": "Under IaaS, who is responsible for physical networking equipment in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network.paas": {
+			"clue": "Under PaaS, who is responsible for physical networking equipment in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"network.saas": {
+			"clue": "Under SaaS, who is responsible for physical networking equipment in the hosting infrastructure according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"datacenter.onprem": {
+			"clue": "Under On-premises, who is responsible for the physical datacenter and its facilities according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"datacenter.iaas": {
+			"clue": "Under IaaS, who is responsible for the physical datacenter and its facilities according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"datacenter.paas": {
+			"clue": "Under PaaS, who is responsible for the physical datacenter and its facilities according to the published responsibility matrix? Give the matrix’s responsibility label."
+		},
+		"datacenter.saas": {
+			"clue": "Under SaaS, who is responsible for the physical datacenter and its facilities according to the published responsibility matrix? Give the matrix’s responsibility label."
+		}
+	}
+}

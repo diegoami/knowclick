@@ -1,0 +1,97 @@
+{
+	"id": "values-types",
+	"layout": {
+		"type": "code",
+		"code": [
+			"const LIMIT: {{gap:unsigned}} = 10;",
+			"fn main() {",
+			"    let {{gap:mutable}} count = 2_u32;",
+			"    count += 1;",
+			"    let spaces = \"   \";",
+			"    {{gap:shadow}} spaces = spaces.len();",
+			"    let sample: ({{gap:signed}}, {{gap:boolean}}, {{gap:character}}) = (-2, true, 'é');",
+			"    let readings: {{gap:array}} = [4, 5, 6];",
+			"    let (offset, enabled, marker) = sample;",
+			"    {{gap:equal}}(count, 3);",
+			"    assert_eq!(spaces, 3);",
+			"    assert_eq!(offset, -2);",
+			"    assert!(enabled);",
+			"    assert_eq!(marker, 'é');",
+			"    assert_eq!(readings[1], 5);",
+			"    assert!(count < LIMIT);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "unsigned",
+			"item": "rust:errors:number",
+			"text": "u32"
+		},
+		{
+			"id": "mutable",
+			"item": "rust:ownership:mutable",
+			"text": "mut"
+		},
+		{
+			"id": "shadow",
+			"item": "rust:values-types:shadow",
+			"text": "let"
+		},
+		{
+			"id": "signed",
+			"item": "rust:iterators:number",
+			"text": "i32"
+		},
+		{
+			"id": "boolean",
+			"item": "rust:values-types:boolean",
+			"text": "bool"
+		},
+		{
+			"id": "character",
+			"item": "rust:values-types:character",
+			"text": "char"
+		},
+		{
+			"id": "array",
+			"item": "rust:values-types:array",
+			"text": "[u32; 3]"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Hello, Cargo!",
+			"url": "https://doc.rust-lang.org/book/ch01-03-hello-cargo.html"
+		},
+		{
+			"title": "Variables and mutability",
+			"url": "https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html"
+		},
+		{
+			"title": "Data types",
+			"url": "https://doc.rust-lang.org/book/ch03-02-data-types.html"
+		},
+		{
+			"title": "Functions",
+			"url": "https://doc.rust-lang.org/book/ch03-03-how-functions-work.html"
+		},
+		{
+			"title": "Control flow",
+			"url": "https://doc.rust-lang.org/book/ch03-05-control-flow.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["i64", "u64", "str", "String", "[u32; 2]", "Vec<u32>", "static", "&str"],
+	"recallUnit": "values-types-recall"
+}

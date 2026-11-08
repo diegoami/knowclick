@@ -1,0 +1,33 @@
+{
+	"title": "Read and grow a vector safely",
+	"summary": "Use optional indexed access, copy a scalar out of a borrowed entry, and preserve the vector for later mutation.",
+	"cells": {
+		"binding": {
+			"clue": "Modifier allowing the vector to grow and shrink"
+		},
+		"vectorType": {
+			"clue": "Growable owned sequence type containing unsigned 32-bit integers"
+		},
+		"construct": {
+			"clue": "Macro constructing a vector from the two listed values"
+		},
+		"checked": {
+			"clue": "Method providing optional indexed access instead of panicking out of bounds"
+		},
+		"missing": {
+			"clue": "Option method checking that index 9 is absent"
+		},
+		"copy": {
+			"clue": "Option adapter using Copy to turn Option<&u32> into Option<u32>"
+		},
+		"append": {
+			"clue": "Vector method appending a value at its end"
+		},
+		"equal": {
+			"clue": "Macro checking the independently retained first integer"
+		},
+		"length": {
+			"clue": "Method returning the number of current vector elements"
+		}
+	}
+}

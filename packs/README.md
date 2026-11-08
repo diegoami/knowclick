@@ -50,8 +50,10 @@ penalizes the selected gap, never a fake progress item. It is not removed from
 the tray after a mistake. Authored choices are included in independent content
 checks; executable verification still checks the filled program, not decoys.
 
-The existing Rust course follows this policy on every board: ten gaps per main
-board, 16–18 distinct choices, and a four-state complete-arm challenge. Preserve
+Rust's original four main boards each have ten gaps and 16–18 distinct choices.
+The expanded course adds main boards with eight to ten objective-driven gaps
+and plausible extra choices; all main exercises have larger Recall variants.
+The original four-state complete-arm challenge is retained. Preserve
 facts that recur across variants with their existing item identities; use new
 IDs when an exercise introduces a new fact. Verify each filled program, including
 all branches and the continued usability of borrowed values.
@@ -207,6 +209,7 @@ uses Bicep 0.48.1. Put `rustc` and `bicep` on PATH, then run from the repository
 
 ```bash
 node scripts/verify.mjs rust
+node scripts/verify-rust-labs.mjs
 node --test scripts/verify-local-code.test.mjs
 ```
 
@@ -214,7 +217,29 @@ The helper compiles in fresh temporary directories, executes Rust assertions,
 checks the emitted Bicep template, and removes its temporary files. No login or
 deployment is performed. `node scripts/verify.mjs azure --stale` still requires
 the Azure CLI and its logged-out guard; it also requires Bicep for the new board.
-Original local task prompts and solutions are in `docs/courses/`.
+Original local task prompts and solutions are in `docs/courses/`. The Rust
+course has eight chapters with four Guided exercises per chapter, each with an
+authored larger Recall variant, and two labs per chapter. The lab verifier
+requires rustc 1.99.1, compiles the documentation’s reference blocks in temporary
+directories, runs tests and checks annotated compiler failures and CLI output.
+`verify-rust` JSON comments specify `error` or `stdin`/`stdout` expectations.
+A `"cargo": "bin"` annotation additionally runs Cargo init, check, build, test
+and run offline in the temporary directory; the annotated snippet becomes
+src/main.rs. The machine needs Cargo and the matching rustc 1.99.1 toolchain.
+No external crates or account credentials are needed.
+
+Azure's cloud-foundations chapter also has source-checked conceptual grids and
+scenario Recall variants retaining every original fact. Its local labs are in
+`docs/courses/azure-cloud-labs.md`: one has a manual responsibility rubric, and
+one offers a Python standard-library policy fixture with seven tests. Copy the
+optional Python reference into `scaling_policy.py` and run
+`python3 scaling_policy.py`. The fixture checks the exercise contract, not live
+Azure behavior. Conceptual grids are not executable facts; do not manufacture
+compiler/API verification records for them. Existing CLI/Bicep executable
+records remain separate from conceptual source approval. When a task source
+pins a commit, advance that URL revision when changing its requirements or
+solution so independent checks see the new source; editing the local document
+alone does not update the learner’s pinned reference.
 
 The new Azure and Rust content still needs two independent content checks.
 Runnable verification does not replace them; stale or missing checks must keep
