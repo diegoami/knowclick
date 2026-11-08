@@ -305,5 +305,6 @@
 			"row": "datacenter",
 			"col": "saas"
 		}
-	]
+	],
+	"recallUnit": "shared-responsibility-recall"
 }

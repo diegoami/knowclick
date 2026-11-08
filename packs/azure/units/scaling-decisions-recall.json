@@ -1,0 +1,61 @@
+{
+	"id": "scaling-decisions-recall",
+	"caseInsensitive": true,
+	"dealAll": true,
+	"layout": {
+		"type": "grid",
+		"size": 8
+	},
+	"sources": [
+		{
+			"title": "Autoscaling guidance",
+			"url": "https://learn.microsoft.com/en-us/azure/architecture/best-practices/auto-scaling"
+		},
+		{
+			"title": "Azure Monitor autoscale settings",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-understanding-settings"
+		}
+	],
+	"cells": [
+		{
+			"id": "up",
+			"item": "azure:scaling-decision:up",
+			"text": "scale up"
+		},
+		{
+			"id": "down",
+			"item": "azure:scaling-decision:down",
+			"text": "scale down"
+		},
+		{
+			"id": "out",
+			"item": "azure:scaling-decision:out",
+			"text": "scale out"
+		},
+		{
+			"id": "in",
+			"item": "azure:scaling-decision:in",
+			"text": "scale in"
+		},
+		{
+			"id": "automatic",
+			"item": "azure:scaling-decision:automatic",
+			"text": "autoscaling"
+		},
+		{
+			"id": "cooldown",
+			"item": "azure:scaling-decision:cooldown",
+			"text": "cooldown"
+		},
+		{
+			"id": "minimum",
+			"item": "azure:scaling-decision:minimum",
+			"text": "minimum instance count"
+		},
+		{
+			"id": "maximum",
+			"item": "azure:scaling-decision:maximum",
+			"text": "maximum instance count"
+		}
+	]
+}

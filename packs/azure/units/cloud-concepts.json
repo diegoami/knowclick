@@ -7,8 +7,40 @@
 	},
 	"sources": [
 		{
-			"title": "Introduction to Cloud Infrastructure: Describe cloud concepts (Microsoft Learn)",
-			"url": "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/"
+			"title": "Cloud deployment models",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/5-define-cloud-models"
+		},
+		{
+			"title": "Consumption-based spending",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/6-describe-consumption-based-model"
+		},
+		{
+			"title": "Availability and scalability",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-benefits-use-cloud-services/2-high-availability-scalability-cloud"
+		},
+		{
+			"title": "Reliability and predictability",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-benefits-use-cloud-services/3-reliability-predictability-cloud"
+		},
+		{
+			"title": "Functions overview",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview"
+		},
+		{
+			"title": "Functions hosting options",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
+		},
+		{
+			"title": "Infrastructure as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/2-describe-infrastructure-service"
+		},
+		{
+			"title": "Platform as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/3-describe-platform-service"
+		},
+		{
+			"title": "Software as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/4-describe-software-service"
 		}
 	],
 	"cells": [
@@ -87,5 +119,6 @@
 			"item": "azure:vertical-scaling",
 			"text": "vertical scaling"
 		}
-	]
+	],
+	"recallUnit": "cloud-concepts-recall"
 }

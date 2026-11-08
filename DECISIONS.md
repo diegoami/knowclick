@@ -287,3 +287,25 @@ The OpenAI pack proposal #33 records that source dependency while public
 learning material can be scoped separately. Detailed exam objectives, versions
 and source access are prerequisites for honest coverage claims, not inferred
 from the existence of a training course or a credential name.
+
+## Cloud foundations need applied decisions, not invented choices (2026-11-08, #32)
+
+Deepen the existing Azure cloud chapter before adding chapter cards. Preserve
+all original concept and matrix IDs, and keep all 55 facts available in Recall.
+Scenario prompts make the selected control and service model explicit when the
+matrix is hidden. Service-model scenarios use the three legitimate categories;
+responsibility questions use the real matrix labels. Do not pad these exercises
+with unrelated choices just to enlarge the tray. Scaling practice can offer
+plausible distinct controls because direction, axis, stabilization and capacity
+bounds have different meanings.
+
+Serverless describes delegated server management, not one universal billing
+plan. A consumption model does not mean that idle application code releases
+all billable resources. Updated source-backed clues remove these broader
+claims while retaining permanent answer identities. New task links pin the
+committed lab source so they work during owner testing and bind a fixed
+reference. Later lab changes must advance the task URL revision too. Scaling stabilization is
+per rule, not a global pause. The local lab's bounded single-rule fixture has
+its own explicit contract; its tests do not verify the Azure Monitor algorithm,
+performance or real service operation. Conceptual keys still need two genuine
+independent content checks before release readiness.

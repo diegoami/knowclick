@@ -228,6 +228,19 @@ and run offline in the temporary directory; the annotated snippet becomes
 src/main.rs. The machine needs Cargo and the matching rustc 1.99.1 toolchain.
 No external crates or account credentials are needed.
 
+Azure's cloud-foundations chapter also has source-checked conceptual grids and
+scenario Recall variants retaining every original fact. Its local labs are in
+`docs/courses/azure-cloud-labs.md`: one has a manual responsibility rubric, and
+one offers a Python standard-library policy fixture with seven tests. Copy the
+optional Python reference into `scaling_policy.py` and run
+`python3 scaling_policy.py`. The fixture checks the exercise contract, not live
+Azure behavior. Conceptual grids are not executable facts; do not manufacture
+compiler/API verification records for them. Existing CLI/Bicep executable
+records remain separate from conceptual source approval. When a task source
+pins a commit, advance that URL revision when changing its requirements or
+solution so independent checks see the new source; editing the local document
+alone does not update the learner’s pinned reference.
+
 The new Azure and Rust content still needs two independent content checks.
 Runnable verification does not replace them; stale or missing checks must keep
 the content gate failing. To prepare a check record, an independent checker uses

@@ -1,0 +1,30 @@
+{
+	"title": "Recall scaling decisions and limits",
+	"summary": "Apply the same scaling facts to longer operational prompts without choices. Per-rule stabilization is not a global freeze, and a capacity limit does not prove useful application performance.",
+	"cells": {
+		"up": {
+			"clue": "A single-process workload needs more RAM and cannot divide this work among extra machines. Name the direction that increases the existing instance’s capacity."
+		},
+		"down": {
+			"clue": "The same machine now needs less CPU and memory, and the operator reduces its size without removing an instance. Name this scaling direction."
+		},
+		"out": {
+			"clue": "A service keeps its per-worker size but adds workers to distribute a sustained backlog. Name this scaling direction."
+		},
+		"in": {
+			"clue": "Demand has fallen, remaining workers can handle it, and departing workers finish their requests before removal. Name the direction that reduces the instance count."
+		},
+		"automatic": {
+			"clue": "A controller observes load and applies configured rules to add or remove capacity as needed. Name this automated resource-adjustment process."
+		},
+		"cooldown": {
+			"clue": "A rule has acted and its stabilization interval prevents that rule from acting again immediately; another rule is evaluated independently. Name the setting for that interval. Use the single-word duration-setting term."
+		},
+		"minimum": {
+			"clue": "A request to remove more replicas would cross the profile’s lower capacity boundary. Name the setting defining that boundary, rather than the fallback used when metrics fail. Use a label ending in instance count."
+		},
+		"maximum": {
+			"clue": "A requested expansion exceeds the configured profile’s permitted upper capacity. Name the setting that bounds how many instances it may allocate. Use a label ending in instance count."
+		}
+	}
+}

@@ -88,5 +88,25 @@
 			"title": "Resilient application integration lab",
 			"url": "https://github.com/diegoami/knowclick/blob/courses/azure-rust/docs/courses/azure-labs.md#repeat-safe-handler"
 		}
+	},
+	{
+		"id": "service-responsibility-design",
+		"item": "task:service-responsibility-design",
+		"minutes": 30,
+		"where": "terminal",
+		"source": {
+			"title": "Design a service and responsibility handoff",
+			"url": "https://github.com/diegoami/knowclick/blob/1cd7b1f9645812968211466f58cedb3a2dbda9b7/docs/courses/azure-cloud-labs.md#service-responsibility-design"
+		}
+	},
+	{
+		"id": "scaling-policy-model",
+		"item": "task:scaling-policy-model",
+		"minutes": 35,
+		"where": "terminal",
+		"source": {
+			"title": "Check a local scaling-policy model",
+			"url": "https://github.com/diegoami/knowclick/blob/1cd7b1f9645812968211466f58cedb3a2dbda9b7/docs/courses/azure-cloud-labs.md#scaling-policy-model"
+		}
 	}
 ]

@@ -15,7 +15,7 @@
 	"lesson.studied": "Studied",
 	"lesson.exercises": "Exercises",
 	"lesson.practise": "Practise by hand",
-	"lesson.practiseIntro": "Each task is done outside Knowclick, on your own practice cluster. Open it, start the clock, do it without the solution, then say how it went. That decides when it comes back.",
+	"lesson.practiseIntro": "Each task is done outside Knowclick in the environment it specifies. Open it, start the clock, try it before revealing the solution, then record how it went so it can return for practice.",
 	"lesson.concepts": "Concepts",
 	"study.docs": "Docs",
 	"study.video": "Video",

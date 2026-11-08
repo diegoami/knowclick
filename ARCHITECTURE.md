@@ -109,6 +109,14 @@ fixture is maintained.
 Verification requires `rustc` and `bicep` on PATH. The Azure CLI guard and existing
 CLI verification entries are preserved.
 
+The Azure cloud chapter keeps its original concept grid and responsibility
+table, with scenario-based Recall grids covering the same 55 permanent facts.
+Two additional Guided/Recall pairs cover service-model decisions and scaling
+controls. `docs/courses/azure-cloud-labs.md` contains the local design rubric
+and optional Python policy fixture; it does not call a cloud API or model all
+Azure Monitor behavior. Conceptual answer keys are checked against their linked
+sources; executing the fixture does not independently approve those facts.
+
 Everything is read through `PackSource` in `packs.ts`: today the local `packs/` folder,
 later downloads behind the same interface. Check records, the verify record and coverage
 stay out of what the app bundles.

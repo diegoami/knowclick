@@ -1,0 +1,65 @@
+{
+	"id": "service-model-decisions-recall",
+	"caseInsensitive": true,
+	"dealAll": true,
+	"layout": {
+		"type": "grid",
+		"size": 8
+	},
+	"sources": [
+		{
+			"title": "Infrastructure as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/2-describe-infrastructure-service"
+		},
+		{
+			"title": "Platform as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/3-describe-platform-service"
+		},
+		{
+			"title": "Software as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/4-describe-software-service"
+		}
+	],
+	"cells": [
+		{
+			"id": "kernel-control",
+			"item": "azure:service-decision:kernel-control",
+			"text": "IaaS"
+		},
+		{
+			"id": "managed-web-runtime",
+			"item": "azure:service-decision:managed-web-runtime",
+			"text": "PaaS"
+		},
+		{
+			"id": "finished-mail",
+			"item": "azure:service-decision:finished-mail",
+			"text": "SaaS"
+		},
+		{
+			"id": "os-maintenance",
+			"item": "azure:service-decision:os-maintenance",
+			"text": "IaaS"
+		},
+		{
+			"id": "managed-database",
+			"item": "azure:service-decision:managed-database",
+			"text": "PaaS"
+		},
+		{
+			"id": "finished-expenses",
+			"item": "azure:service-decision:finished-expenses",
+			"text": "SaaS"
+		},
+		{
+			"id": "legacy-os",
+			"item": "azure:service-decision:legacy-os",
+			"text": "IaaS"
+		},
+		{
+			"id": "app-development",
+			"item": "azure:service-decision:app-development",
+			"text": "PaaS"
+		}
+	]
+}

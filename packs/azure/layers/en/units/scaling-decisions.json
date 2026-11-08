@@ -1,0 +1,30 @@
+{
+	"title": "Choose scaling actions and policy controls",
+	"summary": "Distinguish size changes, instance-count changes and the settings that bound automatic adjustments. Actual timing, limits and billing depend on the service and hosting plan.",
+	"cells": {
+		"up": {
+			"clue": "A single instance needs a larger CPU/memory allocation. Name the increasing-size direction, not the scaling axis."
+		},
+		"down": {
+			"clue": "One instance is resized to a smaller CPU/memory allocation after measurement shows spare capacity. Name the decreasing-size direction."
+		},
+		"out": {
+			"clue": "A stateless tier grows from three same-sized workers to five. Name the increasing-count direction."
+		},
+		"in": {
+			"clue": "After safely draining work, a pool removes redundant same-sized workers. Name the decreasing-count direction."
+		},
+		"automatic": {
+			"clue": "Rules or schedules allocate and release capacity as demand changes, without an operator initiating each adjustment. Name this automated process."
+		},
+		"cooldown": {
+			"clue": "In Azure Monitor, a rule must wait after a scale action before that same rule can become eligible again. Name the per-rule stabilization setting. Use the single-word duration-setting term."
+		},
+		"minimum": {
+			"clue": "A profile’s lower permitted capacity boundary keeps baseline replicas available. Name this boundary setting, not its metric-failure fallback. Use a label ending in instance count."
+		},
+		"maximum": {
+			"clue": "A profile’s upper permitted capacity boundary stops unbounded replica growth. Name this boundary setting. Use a label ending in instance count."
+		}
+	}
+}

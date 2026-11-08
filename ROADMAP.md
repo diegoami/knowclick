@@ -163,10 +163,20 @@ task accounting with reasons, so credential-specific labs are not falsely
 mapped to another exam. CKA is required scope, superseding the
 previous suggestion to defer administration.
 
-Neither content expansion is authored yet. The current packs remain three
-Kubernetes chapters/three main exercises/six tasks and eight Azure
-chapters/twelve main exercises/nine tasks. New content requires source checks
-and actual verification. Application checks use the guarded local kind cluster;
+The first Azure increment is authored in draft PR #30: the existing cloud
+chapter now has four Guided/Recall pairs and two local tasks. The original
+15 concept facts and 40 responsibility-matrix facts retain their IDs and all
+remain represented in Recall. New exercises apply service-model requirements
+and scaling actions/controls; the labs cover responsibility handoffs and a
+local scaling-policy fixture. Cloud source links and AZ-900 mappings are
+updated. Broad billing clues are corrected without changing answer identities.
+
+Azure currently has eight chapters, fourteen main exercises and eleven tasks;
+its remaining eleven target-depth chapters are still to be authored/expanded.
+Kubernetes still has three chapters, three main exercises and six tasks; its
+CKAD/CKA expansion is not authored. New content requires independent source
+checks and actual verification. The optional Python fixture passes its local
+contract tests and makes no claim of live Azure behavior. Application checks use the guarded local kind cluster;
 kubeadm/host-level administration needs a separately guarded disposable
 multi-node environment, since passing in kind cannot verify those procedures.
 The official [CKA curriculum](https://github.com/cncf/curriculum/blob/main/cka/README.md)

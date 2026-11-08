@@ -1,0 +1,124 @@
+{
+	"id": "cloud-concepts-recall",
+	"caseInsensitive": true,
+	"dealAll": true,
+	"layout": {
+		"type": "grid",
+		"size": 15
+	},
+	"sources": [
+		{
+			"title": "Cloud deployment models",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/5-define-cloud-models"
+		},
+		{
+			"title": "Consumption-based spending",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/6-describe-consumption-based-model"
+		},
+		{
+			"title": "Availability and scalability",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-benefits-use-cloud-services/2-high-availability-scalability-cloud"
+		},
+		{
+			"title": "Reliability and predictability",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-benefits-use-cloud-services/3-reliability-predictability-cloud"
+		},
+		{
+			"title": "Functions overview",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview"
+		},
+		{
+			"title": "Functions hosting options",
+			"url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
+		},
+		{
+			"title": "Infrastructure as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/2-describe-infrastructure-service"
+		},
+		{
+			"title": "Platform as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/3-describe-platform-service"
+		},
+		{
+			"title": "Software as a service",
+			"url": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/4-describe-software-service"
+		}
+	],
+	"cells": [
+		{
+			"id": "iaas",
+			"item": "azure:iaas",
+			"text": "IaaS"
+		},
+		{
+			"id": "paas",
+			"item": "azure:paas",
+			"text": "PaaS"
+		},
+		{
+			"id": "saas",
+			"item": "azure:saas",
+			"text": "SaaS"
+		},
+		{
+			"id": "public-cloud",
+			"item": "azure:public-cloud",
+			"text": "public cloud"
+		},
+		{
+			"id": "private-cloud",
+			"item": "azure:private-cloud",
+			"text": "private cloud"
+		},
+		{
+			"id": "hybrid-cloud",
+			"item": "azure:hybrid-cloud",
+			"text": "hybrid cloud"
+		},
+		{
+			"id": "consumption-based",
+			"item": "azure:consumption-based",
+			"text": "consumption-based model"
+		},
+		{
+			"id": "serverless",
+			"item": "azure:serverless",
+			"text": "serverless"
+		},
+		{
+			"id": "capex",
+			"item": "azure:capex",
+			"text": "capital expenditure"
+		},
+		{
+			"id": "opex",
+			"item": "azure:opex",
+			"text": "operational expenditure"
+		},
+		{
+			"id": "high-availability",
+			"item": "azure:high-availability",
+			"text": "high availability"
+		},
+		{
+			"id": "reliability",
+			"item": "azure:reliability",
+			"text": "reliability"
+		},
+		{
+			"id": "predictability",
+			"item": "azure:predictability",
+			"text": "predictability"
+		},
+		{
+			"id": "horizontal-scaling",
+			"item": "azure:horizontal-scaling",
+			"text": "horizontal scaling"
+		},
+		{
+			"id": "vertical-scaling",
+			"item": "azure:vertical-scaling",
+			"text": "vertical scaling"
+		}
+	]
+}

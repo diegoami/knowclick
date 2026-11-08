@@ -1,0 +1,30 @@
+{
+	"title": "Choose a service model from constraints",
+	"summary": "Classify eight original workload requirements. The three real service-model choices are intentional; unrelated labels are not added as artificial wrong options.",
+	"cells": {
+		"kernel-control": {
+			"clue": "The workload must install a custom guest-kernel extension and the team will maintain that operating system. Choose the service-model abbreviation."
+		},
+		"managed-web-runtime": {
+			"clue": "The team supplies a web app’s source; the host maintains its supported runtime and operating system. Choose the service-model abbreviation."
+		},
+		"finished-mail": {
+			"clue": "Employees use a complete vendor-operated mail application and only configure their accounts. Choose the service-model abbreviation."
+		},
+		"os-maintenance": {
+			"clue": "A migration keeps customer authority to install and schedule guest-OS updates on rented machines. Choose the service-model abbreviation."
+		},
+		"managed-database": {
+			"clue": "Developers create schemas and queries on a managed database while its provider operates the underlying platform. Choose the service-model abbreviation."
+		},
+		"finished-expenses": {
+			"clue": "Finance configures an existing vendor-maintained expense application; it does not deploy the application’s code. Choose the service-model abbreviation."
+		},
+		"legacy-os": {
+			"clue": "An unchanged legacy workload must keep control over its guest OS and system-level configuration after moving to rented compute. Choose the service-model abbreviation."
+		},
+		"app-development": {
+			"clue": "Developers build a custom application on a provider-maintained application platform rather than maintaining its servers. Choose the service-model abbreviation."
+		}
+	}
+}

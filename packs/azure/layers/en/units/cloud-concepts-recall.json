@@ -1,0 +1,51 @@
+{
+	"title": "Recall cloud concepts from requirements",
+	"summary": "Infer the cloud concept from requirements, without choices. Existing facts keep their original progress identities; all fifteen concepts remain covered.",
+	"cells": {
+		"iaas": {
+			"clue": "A workload needs customer-controlled operating-system patches and kernel settings on rented compute. Which service-model abbreviation fits?"
+		},
+		"paas": {
+			"clue": "A team deploys its own source code to a supported runtime while the provider operates the guest operating system. Which service-model abbreviation fits?"
+		},
+		"saas": {
+			"clue": "A department adopts a complete vendor-maintained business application and configures its users rather than deploying application source. Which service-model abbreviation fits?"
+		},
+		"public-cloud": {
+			"clue": "A provider offers its cloud services for general purchase by unrelated organizations. Name the deployment model."
+		},
+		"private-cloud": {
+			"clue": "An offsite cloud environment is dedicated to one organization, even though a third party hosts it. Name the deployment model."
+		},
+		"hybrid-cloud": {
+			"clue": "A company connects its dedicated cloud environment to generally available provider services and operates them together. Name the combined deployment model."
+		},
+		"consumption-based": {
+			"clue": "A team rents capacity and pays according to resource usage instead of buying a fixed server estate. Name the pricing model, including the word model."
+		},
+		"serverless": {
+			"clue": "An event handler runs on a platform that provisions and maintains its servers; the team supplies code, not server administration. Name this execution model, without assuming a particular billing plan."
+		},
+		"capex": {
+			"clue": "A company pays up front to purchase physical servers it will own. Name the expenditure category in full."
+		},
+		"opex": {
+			"clue": "A company accounts for ongoing service consumption over time rather than acquiring physical infrastructure. Name the expenditure category in full."
+		},
+		"high-availability": {
+			"clue": "The design objective is to keep a service available when disruptions occur. Name the cloud benefit concerned with uptime."
+		},
+		"reliability": {
+			"clue": "After a failure, a distributed system recovers and continues working. Name the cloud benefit concerned with recovery."
+		},
+		"predictability": {
+			"clue": "A team forecasts expected performance and service spending from usage evidence. Name the cloud benefit concerned with knowing these outcomes in advance."
+		},
+		"horizontal-scaling": {
+			"clue": "A web tier changes its number of same-sized instances. Name the scaling axis rather than the increase/decrease direction."
+		},
+		"vertical-scaling": {
+			"clue": "An existing machine changes CPU and memory capacity while the instance count stays fixed. Name the scaling axis rather than the increase/decrease direction."
+		}
+	}
+}
