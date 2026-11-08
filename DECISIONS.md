@@ -252,8 +252,38 @@ loading unrelated progress. Lesson and review back links return to the selected
 course, while an exercise returns to its parent lesson. Existing saved rounds
 and progress IDs are unaffected.
 
-The owner also requested deeper Kubernetes and Azure practice. Concrete
-12-chapter expansions are proposed separately as #31 and #32, each with four
-exercise pairs and at least two practical tasks per chapter. Their content
-scope awaits agreement; the navigation correction does not imply those packs
-have already been expanded.
+The owner also requested deeper Kubernetes and Azure practice. Azure's
+12-chapter expansion #32 is approved on 2026-11-08, with four exercise pairs and
+at least two practical tasks per chapter. Kubernetes #31 must cover both CKAD
+and CKA; its working plan is expanded to twenty chapters with the same depth.
+The navigation correction does not imply those packs have already been
+expanded. CKA administration is required scope rather than a later optional
+increment. Keep one Kubernetes subject pack with separate exam coverage maps
+and shared progress for common facts. The coverage format must explicitly
+account for tasks outside a particular credential with a reason: the current
+validator assumes every task maps to each curriculum. Retain strict rejection
+of unaccounted tasks and reject overlapping/unknown exclusions; never assign
+administration labs to an unrelated exam competency to satisfy a gate. This is
+a subject-neutral rule for any multi-credential pack. Verify application behavior in the guarded
+kind cluster; verify host/bootstrap/upgrade/recovery work in a separately
+guarded disposable multi-node environment, or leave that verification incomplete.
+
+## Credential tracks use verified provider definitions (2026-11-08, #26, #33)
+
+The owner requested Claude and OpenAI certification preparation. Extend the
+Claude engineering subject pack with credential tracks rather than duplicate
+facts and progress in a second pack. Anthropic's official program confirms four
+role-based credentials; Developer and Architect Foundations are the initial
+engineering priorities. Public high-level descriptions do not establish a full
+exam blueprint. Obtain permitted objectives before writing credential-specific
+coverage; never use actual exam or course-assessment questions.
+
+OpenAI Certified and Academy completion pathways must remain clearly labelled.
+Current official guidance describes restricted Certified access and separately
+states that public Academy badges/pathway completion certificates are not
+certifications. Do not invent a developer exam, turn an Academy pathway into a
+certification claim, or imply that Knowclick grants either provider's credential.
+The OpenAI pack proposal #33 records that source dependency while public
+learning material can be scoped separately. Detailed exam objectives, versions
+and source access are prerequisites for honest coverage claims, not inferred
+from the existence of a training course or a credential name.

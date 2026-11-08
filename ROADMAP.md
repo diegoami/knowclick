@@ -2,7 +2,7 @@
 
 Technical knowledge by memory and by practice, in the order the owner wants to learn it:
 Kubernetes (CKAD, CKA), cloud certifications (Azure first: AZ-900, then AI-200; then AWS and
-Google Cloud), Claude certifications,
+Google Cloud), Claude and OpenAI certification preparation,
 languages (Rust, PowerShell, advanced Python), libraries (Neo4j, Kafka, LangChain), and
 whatever else needs exercising. Audience size is not a goal.
 
@@ -20,15 +20,16 @@ AZ-900, typed answers on every board, and coverage weights as ranges.
 | v0.1.0    | Kubernetes (CKAD): a table, a manifest and a lines board, six hands-on tasks, Review, verification                                                             |
 | v0.2.0    | Azure (AZ-900), typed answers, coverage weight ranges ([proposal #3](https://github.com/diegoami/knowclick/issues/3))                                          |
 | v0.3.0    | AI-200, AZ-204's successor, in the Azure pack, with Python, AKS and Bicep verification                                                                         |
-| v0.4.0    | CKA coverage in the Kubernetes pack                                                                                                                            |
+| v0.4.0    | CKAD + CKA coverage in the Kubernetes pack ([scope #31](https://github.com/diegoami/knowclick/issues/31))                                                      |
 | v0.5.0    | Claude certifications, as a `claude` pack; scope in its own proposal (see below)                                                                               |
 | Later     | Downloads; languages (Rust, PowerShell, Python); AWS and Google Cloud explained against Azure; libraries (Neo4j, Kafka, LangChain); Windows and Android builds |
 
 A later milestone gets its scope settled in its own proposal.
 
-## Current course priorities (owner approved 2026-11-04)
+## Course priorities (initial approvals 2026-11-04; expanded 2026-11-08)
 
-Azure and Rust take priority over the later milestones above. The approved
+Azure and Rust were the initial priorities. The 2026-11-08 scope below also
+requires CKA and Claude/OpenAI credential preparation. The original approved
 increments are [Azure developer foundations #14](https://github.com/diegoami/knowclick/issues/14)
 and [Rust foundations #15](https://github.com/diegoami/knowclick/issues/15).
 
@@ -46,12 +47,29 @@ content checks are still required for the new and changed targets. Existing
 check records are retained, and stale checks remain failing until independently
 renewed. Release numbering and publication are separate from these increments.
 
-**Claude certifications** (asked for on 2026-11-02). Anthropic launched the Claude
-Certified Architect, Foundations in March 2026, and third-party guides list four
-credentials by July (Associate, Developer, Architect Foundations, Architect Professional),
-taken through Pearson VUE. Some sources say registration needs an organization in the
-Claude Partner Network. None of this is confirmed against Anthropic's own pages yet; the
-proposal does that first, with the exam guides, before any content is written.
+**Claude certification preparation** (expanded request 2026-11-08).
+Anthropic's [official program announcement](https://claude.com/resources/articles/four-role-based-claude-certifications)
+confirms Associate: Foundations, Developer: Foundations, Architect: Foundations
+and Architect: Professional. [Proposal #26](https://github.com/diegoami/knowclick/issues/26)
+now includes those tracks within the same Claude subject pack as the approved
+engineering course, with Developer and Architect Foundations first. Its
+[Academy FAQ](https://academy.claude.com/help/faq) distinguishes completion
+badges from the partner certification exams. Detailed exam objectives still
+need a permitted published guide; the public role descriptions do not establish
+full curriculum coverage. Earlier unconfirmed third-party claims are superseded
+by these official sources.
+
+**OpenAI credential preparation** (requested 2026-11-08).
+[Proposal #33](https://github.com/diegoami/knowclick/issues/33) records the
+[OpenAI Certified program](https://help.openai.com/en/articles/20001151-openai-certified-app)
+and separately labelled public Academy practice. Certified access is currently
+invite-only for eligible Enterprise/Edu workspaces. The
+[current Academy guidance](https://help.openai.com/en/articles/20001270-openai-academy-courses)
+explicitly distinguishes completion badges/pathway certificates from
+certifications. Public developer API/Codex learning paths must not be presented
+as an invented developer certification. Exact Certified credential objectives
+and the owner's preferred emphasis still need confirmation; no OpenAI content
+or certification coverage is authored yet.
 
 ## Cross-course practice levels (owner approved 2026-11-04)
 
@@ -127,11 +145,31 @@ only the chosen course shows its chapters, progress, versions and review.
 Lessons and Review return to that course. The eight-chapter Rust work and all
 existing direct exercise URLs and saved progress are retained.
 
-The owner also identified thin Azure/Kubernetes practice. Proposed expansions
-[Kubernetes #31](https://github.com/diegoami/knowclick/issues/31) and
-[Azure #32](https://github.com/diegoami/knowclick/issues/32) each target twelve
-chapters with four Guided/Recall pairs and at least two practical tasks per
-chapter. These concrete scopes await agreement; neither content expansion has
-been authored yet. The current packs remain three Kubernetes chapters/three
-main exercises/six tasks and eight Azure chapters/twelve main exercises/nine
-tasks. New content still requires source checks and actual local verification.
+The owner approved [Azure #32](https://github.com/diegoami/knowclick/issues/32)
+on 2026-11-08: twelve chapters, four Guided/Recall pairs and at least two
+practical tasks per chapter. No further scope approval is needed to implement
+those increments.
+
+[Kubernetes #31](https://github.com/diegoami/knowclick/issues/31) must cover both
+CKAD and CKA, per the owner's correction on 2026-11-08. Its working plan is now
+twenty chapters, four exercise pairs and at least two labs per chapter. Twelve
+shared/application chapters are supplemented by eight administration chapters
+covering node infrastructure, kubeadm, high availability/recovery, upgrades,
+scheduling, scaling, extensions and cluster troubleshooting. The existing CKAD
+coverage map is retained and a separate CKA map is required; shared facts keep
+shared progress in one subject pack. The current validator requires every task
+to map to each curriculum; #31 therefore includes generic explicit out-of-scope
+task accounting with reasons, so credential-specific labs are not falsely
+mapped to another exam. CKA is required scope, superseding the
+previous suggestion to defer administration.
+
+Neither content expansion is authored yet. The current packs remain three
+Kubernetes chapters/three main exercises/six tasks and eight Azure
+chapters/twelve main exercises/nine tasks. New content requires source checks
+and actual verification. Application checks use the guarded local kind cluster;
+kubeadm/host-level administration needs a separately guarded disposable
+multi-node environment, since passing in kind cannot verify those procedures.
+The official [CKA curriculum](https://github.com/cncf/curriculum/blob/main/cka/README.md)
+and [published competencies](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/)
+guide the new coverage mapping. Certification-track details for Claude and
+OpenAI are recorded above and in #26/#33; no credential is earned in Knowclick.
