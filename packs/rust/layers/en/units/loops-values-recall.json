@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Iterate ranges and return a loop result",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"skip": {
+			"clue": "Inside a for loop binding value: i32, write an if statement using remainder and equality to skip even values with continue."
+		},
+		"exit": {
+			"clue": "Inside a loop expression with mutable n: i32, write an if statement that exits with n * 2 when n equals 4. Use break with a value."
+		}
+	}
+}

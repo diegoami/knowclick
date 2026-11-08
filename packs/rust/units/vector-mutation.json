@@ -1,0 +1,105 @@
+{
+	"id": "vector-mutation",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let {{gap:binding}} values = vec![3_i32, -1, 3, 2, 2];",
+			"    values.{{gap:sort}}();",
+			"    values.{{gap:deduplicate}}();",
+			"    values.{{gap:retain}}(|value| *value > 0);",
+			"    {{gap:iterate}} value {{gap:membership}} values.{{gap:exclusive}}() { {{gap:dereference}}value *= 2; }",
+			"    {{gap:equal}}(values, vec![4, 6]);",
+			"    values.{{gap:truncate}}(1);",
+			"    assert_eq!(values, vec![4]);",
+			"    let mut empty: Vec<i32> = Vec::new();",
+			"    empty.sort();",
+			"    empty.dedup();",
+			"    empty.retain(|value| *value > 0);",
+			"    assert!(empty.is_empty());",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "binding",
+			"item": "rust:ownership:mutable",
+			"text": "mut"
+		},
+		{
+			"id": "sort",
+			"item": "rust:vector-mutation:sort",
+			"text": "sort"
+		},
+		{
+			"id": "deduplicate",
+			"item": "rust:vector-mutation:deduplicate",
+			"text": "dedup"
+		},
+		{
+			"id": "retain",
+			"item": "rust:vector-mutation:retain",
+			"text": "retain"
+		},
+		{
+			"id": "iterate",
+			"item": "rust:vector-mutation:iterate",
+			"text": "for"
+		},
+		{
+			"id": "membership",
+			"item": "rust:vector-mutation:membership",
+			"text": "in"
+		},
+		{
+			"id": "exclusive",
+			"item": "rust:vector-mutation:exclusive",
+			"text": "iter_mut"
+		},
+		{
+			"id": "dereference",
+			"item": "rust:vector-mutation:dereference",
+			"text": "*"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "truncate",
+			"item": "rust:vector-mutation:truncate",
+			"text": "truncate"
+		}
+	],
+	"sources": [
+		{
+			"title": "Vectors",
+			"url": "https://doc.rust-lang.org/book/ch08-01-vectors.html"
+		},
+		{
+			"title": "Strings",
+			"url": "https://doc.rust-lang.org/book/ch08-02-strings.html"
+		},
+		{
+			"title": "Hash maps",
+			"url": "https://doc.rust-lang.org/book/ch08-03-hash-maps.html"
+		},
+		{
+			"title": "Vec API",
+			"url": "https://doc.rust-lang.org/std/vec/struct.Vec.html"
+		},
+		{
+			"title": "Slice API",
+			"url": "https://doc.rust-lang.org/std/primitive.slice.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["iter", "into_iter", "drain", "resize", "clear", "dedup_by_key", "filter", "map"],
+	"recallUnit": "vector-mutation-recall"
+}

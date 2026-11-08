@@ -3,7 +3,7 @@
 	"category": "language",
 	"licence": "CC-BY-SA-4.0",
 	"formatVersion": 1,
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"holdsFor": [
 		{
 			"name": "rustc",
@@ -14,11 +14,44 @@
 			"version": "2024"
 		}
 	],
-	"checkedOn": "2026-11-07",
+	"checkedOn": "2026-11-08",
 	"explanations": ["en"],
 	"keywords": ["rust", "rustc", "cargo"],
 	"sections": ["foundations"],
 	"lessons": [
+		{
+			"id": "basics",
+			"section": "foundations",
+			"units": ["values-types", "functions-expressions", "branches-patterns", "loops-values"],
+			"tasks": ["cargo-counter", "bounded-total"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Hello, Cargo!",
+					"url": "https://doc.rust-lang.org/book/ch01-03-hello-cargo.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Variables and mutability",
+					"url": "https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Data types",
+					"url": "https://doc.rust-lang.org/book/ch03-02-data-types.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Functions",
+					"url": "https://doc.rust-lang.org/book/ch03-03-how-functions-work.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Control flow",
+					"url": "https://doc.rust-lang.org/book/ch03-05-control-flow.html"
+				}
+			]
+		},
 		{
 			"id": "ownership",
 			"section": "foundations",
@@ -71,6 +104,52 @@
 			]
 		},
 		{
+			"id": "modules",
+			"section": "foundations",
+			"units": ["module-paths", "module-privacy", "imports-aliases", "module-reexports"],
+			"tasks": ["private-meter", "facade-paths"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Modules and privacy",
+					"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Paths",
+					"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Imports and re-exports",
+					"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+				}
+			]
+		},
+		{
+			"id": "collections",
+			"section": "foundations",
+			"units": ["vector-access", "vector-mutation", "string-operations", "hashmap-entry"],
+			"tasks": ["word-tally", "clean-readings"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Vectors",
+					"url": "https://doc.rust-lang.org/book/ch08-01-vectors.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Strings",
+					"url": "https://doc.rust-lang.org/book/ch08-02-strings.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Hash maps",
+					"url": "https://doc.rust-lang.org/book/ch08-03-hash-maps.html"
+				}
+			]
+		},
+		{
 			"id": "errors",
 			"section": "foundations",
 			"units": ["errors", "error-conversion", "option-transpose", "result-recovery"],
@@ -90,6 +169,24 @@
 					"kind": "docs",
 					"title": "Result API",
 					"url": "https://doc.rust-lang.org/std/result/enum.Result.html"
+				}
+			]
+		},
+		{
+			"id": "generics",
+			"section": "foundations",
+			"units": ["generic-pair", "trait-behavior", "trait-bounds", "trait-defaults"],
+			"tasks": ["generic-clamp", "named-report"],
+			"study": [
+				{
+					"kind": "docs",
+					"title": "Generic data types",
+					"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+				},
+				{
+					"kind": "docs",
+					"title": "Traits and bounds",
+					"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
 				}
 			]
 		},

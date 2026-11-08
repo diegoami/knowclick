@@ -1,0 +1,30 @@
+{
+	"title": "Publish a stable module facade",
+	"summary": "Re-export a public type from a private implementation module, then use the facade without exposing the internal module path.",
+	"cells": {
+		"module": {
+			"clue": "Keyword declaring the private implementation module internal"
+		},
+		"visible": {
+			"clue": "Visibility keyword making Ticket eligible for a public re-export"
+		},
+		"function": {
+			"clue": "Keyword defining the constructor function new"
+		},
+		"selfType": {
+			"clue": "Type spelling referring to Ticket inside its implementation"
+		},
+		"reexport": {
+			"clue": "Keywords making an imported item part of the api module’s public facade"
+		},
+		"current": {
+			"clue": "Path prefix locating internal relative to the api module"
+		},
+		"import": {
+			"clue": "Keyword bringing the facade’s Ticket type into the crate-root scope"
+		},
+		"equal": {
+			"clue": "Macro checking a ticket issued through the facade"
+		}
+	}
+}

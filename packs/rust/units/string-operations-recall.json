@@ -1,0 +1,64 @@
+{
+	"id": "string-operations-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let mut text = String::from(\"é\");",
+			"    let suffix = String::from(\"clair\");",
+			"    {{gap:append}}",
+			"    assert_eq!(suffix, \"clair\");",
+			"    assert_eq!(text.len(), 7);",
+			"    assert_eq!(text.chars().count(), 6);",
+			"    assert_eq!(text.get(0..2), Some(\"é\"));",
+			"    assert_eq!(text.get(0..1), None);",
+			"    let decorated = {{gap:format}};",
+			"    assert_eq!(decorated, \"[éclair]\");",
+			"    assert_eq!(text, \"éclair\");",
+			"    text.push('!');",
+			"    assert_eq!(text, \"éclair!\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "append",
+			"item": "rust:string-operations-recall:append",
+			"text": "text.push_str(suffix.as_str());"
+		},
+		{
+			"id": "format",
+			"item": "rust:string-operations-recall:format",
+			"text": "format!(\"[{text}]\")"
+		}
+	],
+	"sources": [
+		{
+			"title": "Vectors",
+			"url": "https://doc.rust-lang.org/book/ch08-01-vectors.html"
+		},
+		{
+			"title": "Strings",
+			"url": "https://doc.rust-lang.org/book/ch08-02-strings.html"
+		},
+		{
+			"title": "Hash maps",
+			"url": "https://doc.rust-lang.org/book/ch08-03-hash-maps.html"
+		},
+		{
+			"title": "String API",
+			"url": "https://doc.rust-lang.org/std/string/struct.String.html"
+		},
+		{
+			"title": "str API",
+			"url": "https://doc.rust-lang.org/std/primitive.str.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

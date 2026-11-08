@@ -1,0 +1,33 @@
+{
+	"title": "Require the operations a generic algorithm uses",
+	"summary": "Combine ordering and copying bounds in a where clause. Return a copied maximum and verify equality and negative-number cases.",
+	"cells": {
+		"constraints": {
+			"clue": "Keyword beginning the separate generic-bound clause"
+		},
+		"ordering": {
+			"clue": "Trait requiring a total ordering for the larger function’s type parameter"
+		},
+		"combine": {
+			"clue": "Syntax combining multiple required traits on one type parameter"
+		},
+		"copying": {
+			"clue": "Trait allowing implicit duplication of a generic value"
+		},
+		"condition": {
+			"clue": "Keyword selecting left when left is at least right"
+		},
+		"fallback": {
+			"clue": "Keyword selecting right when the comparison is false"
+		},
+		"borrowed": {
+			"clue": "Shared reference parameter type allowing a Clone implementation to duplicate a caller-owned value"
+		},
+		"clone": {
+			"clue": "Trait method creating an independent value of T from its shared borrow"
+		},
+		"equal": {
+			"clue": "Macro checking that the larger value is selected"
+		}
+	}
+}

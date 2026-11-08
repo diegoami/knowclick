@@ -1,0 +1,81 @@
+{
+	"id": "generic-pair",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:record}} Pair<T> { left: T, right: T }",
+			"{{gap:implementation}}<T> Pair<{{gap:parameter}}> {",
+			"    fn new(left: T, right: T) -> {{gap:selfType}} { Self { left, right } }",
+			"    fn into_tuple({{gap:receiver}}) -> {{gap:tuple}} { (self.left, self.right) }",
+			"}",
+			"fn main() {",
+			"    let numbers = Pair{{gap:separator}}new(1_u32, 2_u32);",
+			"    {{gap:equal}}(numbers.into_tuple(), (1, 2));",
+			"    let words = Pair::new(String::from(\"first\"), String::from(\"last\"));",
+			"    assert_eq!(words.into_tuple(), (String::from(\"first\"), String::from(\"last\")));",
+			"    let flags = Pair::new(true, false);",
+			"    assert_eq!(flags.into_tuple(), (true, false));",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "record",
+			"item": "rust:generic-pair:record",
+			"text": "struct"
+		},
+		{
+			"id": "implementation",
+			"item": "rust:generic-pair:implementation",
+			"text": "impl"
+		},
+		{
+			"id": "parameter",
+			"item": "rust:generic-pair:parameter",
+			"text": "T"
+		},
+		{
+			"id": "selfType",
+			"item": "rust:generic-pair:selfType",
+			"text": "Self"
+		},
+		{
+			"id": "receiver",
+			"item": "rust:generic-pair:receiver",
+			"text": "self"
+		},
+		{
+			"id": "tuple",
+			"item": "rust:generic-pair:tuple",
+			"text": "(T, T)"
+		},
+		{
+			"id": "separator",
+			"item": "rust:generic-pair:separator",
+			"text": "::"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["enum", "trait", "&self", "&mut self", "(T, u32)", "Vec<T>", "Self<T>", "where"],
+	"recallUnit": "generic-pair-recall"
+}

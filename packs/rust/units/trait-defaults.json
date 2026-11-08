@@ -1,0 +1,104 @@
+{
+	"id": "trait-defaults",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:contract}} Caption {",
+			"    fn label({{gap:shared}}) -> &str;",
+			"    fn caption(&self) -> {{gap:owned}} { {{gap:formatting}}(\"[{}]\", self.label()) }",
+			"}",
+			"struct Plain;",
+			"struct Loud;",
+			"{{gap:implementation}} Caption {{gap:forType}} Plain { fn label(&self) -> &str { \"plain\" } }",
+			"impl Caption for Loud {",
+			"    fn label(&self) -> &str { \"loud\" }",
+			"    fn caption(&self) -> String { self.label().{{gap:uppercase}}() }",
+			"}",
+			"fn render<T: {{gap:bound}}>(value: &T) -> String { value.caption() }",
+			"fn main() {",
+			"    {{gap:equal}}(render(&Plain), \"[plain]\");",
+			"    assert_eq!(render(&Loud), \"LOUD\");",
+			"    assert_eq!(Plain.label(), \"plain\");",
+			"    assert_eq!(Loud.label(), \"loud\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "contract",
+			"item": "rust:trait-defaults:contract",
+			"text": "trait"
+		},
+		{
+			"id": "shared",
+			"item": "rust:trait-defaults:shared",
+			"text": "&self"
+		},
+		{
+			"id": "owned",
+			"item": "rust:ownership:owned",
+			"text": "String"
+		},
+		{
+			"id": "formatting",
+			"item": "rust:trait-defaults:formatting",
+			"text": "format!"
+		},
+		{
+			"id": "implementation",
+			"item": "rust:trait-defaults:implementation",
+			"text": "impl"
+		},
+		{
+			"id": "forType",
+			"item": "rust:trait-defaults:forType",
+			"text": "for"
+		},
+		{
+			"id": "uppercase",
+			"item": "rust:trait-defaults:uppercase",
+			"text": "to_uppercase"
+		},
+		{
+			"id": "bound",
+			"item": "rust:trait-defaults:bound",
+			"text": "Caption"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		},
+		{
+			"title": "str API",
+			"url": "https://doc.rust-lang.org/std/primitive.str.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"struct",
+		"enum",
+		"self",
+		"&mut self",
+		"&str",
+		"println!",
+		"to_lowercase",
+		"where"
+	],
+	"recallUnit": "trait-defaults-recall"
+}

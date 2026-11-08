@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Return values from blocks and functions",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"function": {
+			"clue": "Write the complete function minutes_to_seconds taking minutes: u32 and returning u32. Use the tail expression minutes * 60, with no return keyword or trailing semicolon in the body."
+		},
+		"guard": {
+			"clue": "Inside fn capped(value: u32, limit: u32) -> u32, write an if statement that returns limit early only when value exceeds limit. Use the > operator and an explicit return."
+		}
+	}
+}

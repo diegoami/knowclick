@@ -1,0 +1,30 @@
+{
+	"title": "Import paths and resolve name collisions",
+	"summary": "Bring two identically named functions into scope under distinct aliases, then import a nested helper by its module path.",
+	"cells": {
+		"localImport": {
+			"clue": "Keyword bringing a function into the local function’s scope"
+		},
+		"current": {
+			"clue": "Path prefix resolving scale relative to the current adjust module"
+		},
+		"import": {
+			"clue": "Keyword introducing the grouped function imports at the crate root"
+		},
+		"root": {
+			"clue": "Path prefix anchoring grouped imports at the root of the current program regardless of module nesting"
+		},
+		"firstAlias": {
+			"clue": "Keyword renaming raw::value to raw_value inside the import"
+		},
+		"secondAlias": {
+			"clue": "Keyword renaming clean::value to clean_value inside the import"
+		},
+		"separator": {
+			"clue": "Path separator selecting scale from the adjust module"
+		},
+		"equal": {
+			"clue": "Macro comparing the raw function’s result with 2"
+		}
+	}
+}

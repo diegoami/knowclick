@@ -1,0 +1,65 @@
+{
+	"id": "functions-expressions-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:function}}",
+			"fn capped(value: u32, limit: u32) -> u32 {",
+			"    {{gap:guard}}",
+			"    value",
+			"}",
+			"fn main() {",
+			"    let seconds = { let minutes = 3; minutes_to_seconds(minutes) };",
+			"    let ratio: f64 = 5.0 / 2.0;",
+			"    let idle: () = ();",
+			"    assert_eq!(seconds, 180);",
+			"    assert_eq!(capped(9, 4), 4);",
+			"    assert_eq!(capped(4, 4), 4);",
+			"    assert_eq!(capped(0, 4), 0);",
+			"    assert_eq!(ratio, 2.5);",
+			"    assert_eq!(idle, ());",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "function",
+			"item": "rust:functions-expressions-recall:function",
+			"text": "fn minutes_to_seconds(minutes: u32) -> u32 { minutes * 60 }"
+		},
+		{
+			"id": "guard",
+			"item": "rust:functions-expressions-recall:guard",
+			"text": "if value > limit { return limit; }"
+		}
+	],
+	"sources": [
+		{
+			"title": "Hello, Cargo!",
+			"url": "https://doc.rust-lang.org/book/ch01-03-hello-cargo.html"
+		},
+		{
+			"title": "Variables and mutability",
+			"url": "https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html"
+		},
+		{
+			"title": "Data types",
+			"url": "https://doc.rust-lang.org/book/ch03-02-data-types.html"
+		},
+		{
+			"title": "Functions",
+			"url": "https://doc.rust-lang.org/book/ch03-03-how-functions-work.html"
+		},
+		{
+			"title": "Control flow",
+			"url": "https://doc.rust-lang.org/book/ch03-05-control-flow.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

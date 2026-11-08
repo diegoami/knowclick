@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Implement a shared behavior contract",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"implementation": {
+			"clue": "Given trait Named { fn name(&self) -> &str; } and struct User { name: String }, write the complete trait implementation returning a shared borrow of the name field."
+		},
+		"greeting": {
+			"clue": "Inside fn greeting<T: Named>(value: &T) -> String, write the format expression producing hello followed by one space and value.name(), using one positional {} placeholder."
+		}
+	}
+}

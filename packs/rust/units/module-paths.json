@@ -1,0 +1,88 @@
+{
+	"id": "module-paths",
+	"layout": {
+		"type": "code",
+		"code": [
+			"const BASE: u32 = 10;",
+			"{{gap:module}} math {",
+			"    {{gap:export}} fn bump(value: {{gap:unsigned}}) -> u32 { value + 1 }",
+			"    pub {{gap:nested}} batches {",
+			"        pub fn total() -> u32 { {{gap:parent}}::bump({{gap:root}}::BASE) }",
+			"    }",
+			"}",
+			"{{gap:function}} main() {",
+			"    {{gap:equal}}(crate::math::batches::total(), 11);",
+			"    assert_eq!(math{{gap:separator}}bump(0), 1);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "module",
+			"item": "rust:module-paths:module",
+			"text": "mod"
+		},
+		{
+			"id": "export",
+			"item": "rust:module-paths:export",
+			"text": "pub"
+		},
+		{
+			"id": "unsigned",
+			"item": "rust:errors:number",
+			"text": "u32"
+		},
+		{
+			"id": "nested",
+			"item": "rust:module-paths:nested",
+			"text": "mod"
+		},
+		{
+			"id": "parent",
+			"item": "rust:module-paths:parent",
+			"text": "super"
+		},
+		{
+			"id": "root",
+			"item": "rust:module-paths:root",
+			"text": "crate"
+		},
+		{
+			"id": "function",
+			"item": "rust:iterators:function",
+			"text": "fn"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "separator",
+			"item": "rust:module-paths:separator",
+			"text": "::"
+		}
+	],
+	"sources": [
+		{
+			"title": "Modules and privacy",
+			"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+		},
+		{
+			"title": "Paths",
+			"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+		},
+		{
+			"title": "Imports and re-exports",
+			"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["self", "use", "as", "struct", "enum", "trait", "->", "i32"],
+	"recallUnit": "module-paths-recall"
+}

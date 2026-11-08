@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Bind values and choose concrete types",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"shadow": {
+			"clue": "Given an existing spaces: &str, write a complete let statement shadowing spaces with its byte length. Keep the name spaces and include the semicolon."
+		},
+		"array": {
+			"clue": "Write a complete let statement defining readings as the explicitly typed three-element u32 array containing 4, 5 and 6, in that order. Include the semicolon."
+		}
+	}
+}

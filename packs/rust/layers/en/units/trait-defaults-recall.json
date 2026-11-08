@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Reuse default methods and override selectively",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"default": {
+			"clue": "Inside trait Caption with required fn label(&self) -> &str, write the complete default caption method returning String via format! with the positional pattern \"[{}]\" and self.label() as its argument."
+		},
+		"override": {
+			"clue": "Inside impl Caption for Loud, write the complete overriding caption method returning the owned uppercase version of self.label() using to_uppercase."
+		}
+	}
+}

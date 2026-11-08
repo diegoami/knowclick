@@ -1,7 +1,17 @@
 {
 	"ranAgainst": "local-only, rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-	"ranOn": "2026-11-07",
+	"ranOn": "2026-11-08",
 	"entries": [
+		{
+			"key": "verify/branches-patterns-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn band(value: i32) -> &'static str {\\n    if value < 0 { \\\"negative\\\" }\\n    else if value == 0 { \\\"zero\\\" }\\n    else { \\\"positive\\\" }\\n}\\nfn category(code: u32) -> &'static str {\\n    match code {\\n        1 | 2 => \\\"small\\\",\\n        3..=5 => \\\"middle\\\",\\n        _ => \\\"other\\\",\\n    }\\n}\\nfn main() {\\n    assert_eq!(band(-1), \\\"negative\\\");\\n    assert_eq!(band(0), \\\"zero\\\");\\n    assert_eq!(band(1), \\\"positive\\\");\\n    assert_eq!(category(1), \\\"small\\\");\\n    assert_eq!(category(2), \\\"small\\\");\\n    assert_eq!(category(3), \\\"middle\\\");\\n    assert_eq!(category(5), \\\"middle\\\");\\n    assert_eq!(category(0), \\\"other\\\");\\n    assert_eq!(category(6), \\\"other\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/branches-patterns",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn band(value: i32) -> &'static str {\\n    if value < 0 { \\\"negative\\\" }\\n    else if value == 0 { \\\"zero\\\" }\\n    else { \\\"positive\\\" }\\n}\\nfn category(code: u32) -> &'static str {\\n    match code {\\n        1 | 2 => \\\"small\\\",\\n        3..=5 => \\\"middle\\\",\\n        _ => \\\"other\\\",\\n    }\\n}\\nfn main() {\\n    assert_eq!(band(-1), \\\"negative\\\");\\n    assert_eq!(band(0), \\\"zero\\\");\\n    assert_eq!(band(1), \\\"positive\\\");\\n    assert_eq!(category(1), \\\"small\\\");\\n    assert_eq!(category(2), \\\"small\\\");\\n    assert_eq!(category(3), \\\"middle\\\");\\n    assert_eq!(category(5), \\\"middle\\\");\\n    assert_eq!(category(0), \\\"other\\\");\\n    assert_eq!(category(6), \\\"other\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
 		{
 			"key": "verify/enum-payloads-recall",
 			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"enum Reading { Idle, Count(u32), Named { name: String, value: u32 } }\\nfn amount(reading: &Reading) -> u32 {\\n    match reading {\\n        Reading::Idle => 0,\\n        Reading::Count(value) => *value,\\n        Reading::Named { value, .. } => *value,\\n    }\\n}\\nfn main() {\\n    let reading = Reading::Named { name: String::from(\\\"hits\\\"), value: 7 };\\n    assert_eq!(amount(&reading), 7);\\n    if let Reading::Named { name, .. } = &reading {\\n        assert_eq!(name, \\\"hits\\\");\\n    }\\n    assert_eq!(amount(&Reading::Count(3)), 3);\\n    assert_eq!(amount(&Reading::Idle), 0);\\n}\",\"expect\":\"^verified$\"}",
@@ -43,6 +53,46 @@
 			"ok": true
 		},
 		{
+			"key": "verify/functions-expressions-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn minutes_to_seconds(minutes: u32) -> u32 { minutes * 60 }\\nfn capped(value: u32, limit: u32) -> u32 {\\n    if value > limit { return limit; }\\n    value\\n}\\nfn main() {\\n    let seconds = { let minutes = 3; minutes_to_seconds(minutes) };\\n    let ratio: f64 = 5.0 / 2.0;\\n    let idle: () = ();\\n    assert_eq!(seconds, 180);\\n    assert_eq!(capped(9, 4), 4);\\n    assert_eq!(capped(4, 4), 4);\\n    assert_eq!(capped(0, 4), 0);\\n    assert_eq!(ratio, 2.5);\\n    assert_eq!(idle, ());\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/functions-expressions",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn minutes_to_seconds(minutes: u32) -> u32 {\\n    minutes * 60\\n}\\nfn capped(value: u32, limit: u32) -> u32 {\\n    if value > limit { return limit; }\\n    value\\n}\\nfn main() {\\n    let seconds = { let minutes = 3; minutes_to_seconds(minutes) };\\n    let ratio: f64 = 5.0 / 2.0;\\n    let idle: () = ();\\n    assert_eq!(seconds, 180);\\n    assert_eq!(capped(9, 4), 4);\\n    assert_eq!(capped(4, 4), 4);\\n    assert_eq!(capped(0, 4), 0);\\n    assert_eq!(ratio, 2.5);\\n    assert_eq!(idle, ());\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/generic-pair-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"struct Pair<T> { left: T, right: T }\\nimpl<T> Pair<T> {\\n    fn new(left: T, right: T) -> Self { Self { left, right } }\\n    fn into_tuple(self) -> (T, T) { (self.left, self.right) }\\n}\\nfn main() {\\n    let numbers = Pair::new(1_u32, 2_u32);\\n    assert_eq!(numbers.into_tuple(), (1, 2));\\n    let words = Pair::new(String::from(\\\"first\\\"), String::from(\\\"last\\\"));\\n    assert_eq!(words.into_tuple(), (String::from(\\\"first\\\"), String::from(\\\"last\\\")));\\n    let flags = Pair::new(true, false);\\n    assert_eq!(flags.into_tuple(), (true, false));\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/generic-pair",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"struct Pair<T> { left: T, right: T }\\nimpl<T> Pair<T> {\\n    fn new(left: T, right: T) -> Self { Self { left, right } }\\n    fn into_tuple(self) -> (T, T) { (self.left, self.right) }\\n}\\nfn main() {\\n    let numbers = Pair::new(1_u32, 2_u32);\\n    assert_eq!(numbers.into_tuple(), (1, 2));\\n    let words = Pair::new(String::from(\\\"first\\\"), String::from(\\\"last\\\"));\\n    assert_eq!(words.into_tuple(), (String::from(\\\"first\\\"), String::from(\\\"last\\\")));\\n    let flags = Pair::new(true, false);\\n    assert_eq!(flags.into_tuple(), (true, false));\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/hashmap-entry-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"use std::collections::HashMap;\\nfn main() {\\n    let mut counts: HashMap<&str, u32> = HashMap::new();\\n    for word in \\\"red blue red\\\".split_whitespace() {\\n        let count = counts.entry(word).or_insert(0);\\n        *count += 1;\\n    }\\n    assert_eq!(counts.get(\\\"red\\\"), Some(&2));\\n    assert_eq!(counts.get(\\\"blue\\\"), Some(&1));\\n    assert_eq!(counts.get(\\\"green\\\"), None);\\n    assert_eq!(counts.len(), 2);\\n    assert_eq!(counts.remove(\\\"blue\\\"), Some(1));\\n    assert!(!counts.contains_key(\\\"blue\\\"));\\n    assert_eq!(counts.get(\\\"red\\\"), Some(&2));\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/hashmap-entry",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"use std::collections::HashMap;\\nfn main() {\\n    let mut counts: HashMap<&str, u32> = HashMap::new();\\n    for word in \\\"red blue red\\\".split_whitespace() {\\n        let count = counts.entry(word).or_insert(0);\\n        *count += 1;\\n    }\\n    assert_eq!(counts.get(\\\"red\\\"), Some(&2));\\n    assert_eq!(counts.get(\\\"blue\\\"), Some(&1));\\n    assert_eq!(counts.get(\\\"green\\\"), None);\\n    assert_eq!(counts.len(), 2);\\n    assert_eq!(counts.remove(\\\"blue\\\"), Some(1));\\n    assert!(!counts.contains_key(\\\"blue\\\"));\\n    assert_eq!(counts.get(\\\"red\\\"), Some(&2));\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imports-aliases-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"mod raw { pub fn value() -> u32 { 2 } }\\nmod clean { pub fn value() -> u32 { 3 } }\\nmod adjust {\\n    pub fn scale(value: u32) -> u32 { value * 10 }\\n    pub fn local() -> u32 {\\n        use self::scale;\\n        scale(4)\\n    }\\n}\\nuse crate::{raw::value as raw_value, clean::value as clean_value};\\nuse crate::adjust::scale;\\nfn main() {\\n    assert_eq!(raw_value(), 2);\\n    assert_eq!(clean_value(), 3);\\n    assert_eq!(scale(raw_value()), 20);\\n    assert_eq!(adjust::local(), 40);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/imports-aliases",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"mod raw { pub fn value() -> u32 { 2 } }\\nmod clean { pub fn value() -> u32 { 3 } }\\nmod adjust {\\n    pub fn scale(value: u32) -> u32 { value * 10 }\\n    pub fn local() -> u32 {\\n        use self::scale;\\n        scale(4)\\n    }\\n}\\nuse crate::{raw::value as raw_value, clean::value as clean_value};\\nuse crate::adjust::scale;\\nfn main() {\\n    assert_eq!(raw_value(), 2);\\n    assert_eq!(clean_value(), 3);\\n    assert_eq!(scale(raw_value()), 20);\\n    assert_eq!(adjust::local(), 40);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
 			"key": "verify/iterator-ownership-recall",
 			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut names = vec![String::from(\\\"a\\\"), String::from(\\\"bb\\\")];\\n    let sizes: Vec<usize> = names.iter().map(|name| name.len()).collect();\\n    assert_eq!(sizes, vec![1, 2]);\\n    assert_eq!(names.len(), 2);\\n    for name in names.iter_mut() { name.push('!'); }\\n    assert_eq!(names[0], \\\"a!\\\");\\n    let owned: Vec<String> = names.into_iter().collect();\\n    assert_eq!(owned, vec![String::from(\\\"a!\\\"), String::from(\\\"bb!\\\")]);\\n    assert_eq!(Vec::<String>::new().into_iter().count(), 0);\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true
@@ -80,6 +130,46 @@
 		{
 			"key": "verify/iterators",
 			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let values = vec![1_i32, 2, 3, 4];\\n    let doubled: Vec<i32> = values.iter()\\n        .filter(|value| **value % 2 == 0)\\n        .map(|value| *value * 2)\\n        .collect();\\n    assert_eq!(doubled, vec![4, 8]);\\n    assert_eq!(values.len(), 4);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/loops-values-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut total = 0;\\n    for value in 1..=5 {\\n        if value % 2 == 0 { continue; }\\n        total += value;\\n    }\\n    assert_eq!(total, 9);\\n    let mut remaining = 3;\\n    while remaining > 0 { remaining -= 1; }\\n    assert_eq!(remaining, 0);\\n    let mut n = 0;\\n    let answer = loop {\\n        n += 1;\\n        if n == 4 { break n * 2; }\\n    };\\n    assert_eq!(answer, 8);\\n    assert_eq!(n, 4);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/loops-values",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut total = 0;\\n    for value in 1..=5 {\\n        if value % 2 == 0 { continue; }\\n        total += value;\\n    }\\n    assert_eq!(total, 9);\\n    let mut remaining = 3;\\n    while remaining > 0 { remaining -= 1; }\\n    assert_eq!(remaining, 0);\\n    let mut n = 0;\\n    let answer = loop {\\n        n += 1;\\n        if n == 4 { break n * 2; }\\n    };\\n    assert_eq!(answer, 8);\\n    assert_eq!(n, 4);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/module-paths-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"const BASE: u32 = 10;\\nmod math {\\n    pub fn bump(value: u32) -> u32 { value + 1 }\\n    pub mod batches {\\n        pub fn total() -> u32 { super::bump(crate::BASE) }\\n    }\\n}\\nfn main() {\\n    assert_eq!(crate::math::batches::total(), 11);\\n    assert_eq!(math::bump(0), 1);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/module-paths",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"const BASE: u32 = 10;\\nmod math {\\n    pub fn bump(value: u32) -> u32 { value + 1 }\\n    pub mod batches {\\n        pub fn total() -> u32 { super::bump(crate::BASE) }\\n    }\\n}\\nfn main() {\\n    assert_eq!(crate::math::batches::total(), 11);\\n    assert_eq!(math::bump(0), 1);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/module-privacy-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"mod store {\\n    pub struct Counter { value: u32 }\\n    impl Counter {\\n        pub fn new() -> Self { Self { value: 0 } }\\n        pub fn value(&self) -> u32 { self.value }\\n        pub fn increment(&mut self) { self.value += 1; }\\n    }\\n}\\nfn main() {\\n    let mut counter = store::Counter::new();\\n    assert_eq!(counter.value(), 0);\\n    counter.increment();\\n    counter.increment();\\n    assert_eq!(counter.value(), 2);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/module-privacy",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"mod store {\\n    pub struct Counter { value: u32 }\\n    impl Counter {\\n        pub fn new() -> Self { Self { value: 0 } }\\n        pub fn value(&self) -> u32 { self.value }\\n        pub fn increment(&mut self) { self.value += 1; }\\n    }\\n}\\nfn main() {\\n    let mut counter = store::Counter::new();\\n    assert_eq!(counter.value(), 0);\\n    counter.increment();\\n    counter.increment();\\n    assert_eq!(counter.value(), 2);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/module-reexports-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"mod api {\\n    mod internal {\\n        pub struct Ticket { pub id: u32 }\\n        impl Ticket {\\n            pub fn new(id: u32) -> Self { Self { id } }\\n        }\\n    }\\n    pub use self::internal::Ticket;\\n    pub fn issue(id: u32) -> Ticket { Ticket::new(id) }\\n}\\nuse crate::api::Ticket;\\nfn main() {\\n    let ticket: Ticket = api::issue(7);\\n    assert_eq!(ticket.id, 7);\\n    assert_eq!(Ticket::new(0).id, 0);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/module-reexports",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"mod api {\\n    mod internal {\\n        pub struct Ticket { pub id: u32 }\\n        impl Ticket {\\n            pub fn new(id: u32) -> Self { Self { id } }\\n        }\\n    }\\n    pub use self::internal::Ticket;\\n    pub fn issue(id: u32) -> Ticket { Ticket::new(id) }\\n}\\nuse crate::api::Ticket;\\nfn main() {\\n    let ticket: Ticket = api::issue(7);\\n    assert_eq!(ticket.id, 7);\\n    assert_eq!(Ticket::new(0).id, 0);\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true
 		},
 		{
@@ -153,6 +243,16 @@
 			"ok": true
 		},
 		{
+			"key": "verify/string-operations-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut text = String::from(\\\"é\\\");\\n    let suffix = String::from(\\\"clair\\\");\\n    text.push_str(suffix.as_str());\\n    assert_eq!(suffix, \\\"clair\\\");\\n    assert_eq!(text.len(), 7);\\n    assert_eq!(text.chars().count(), 6);\\n    assert_eq!(text.get(0..2), Some(\\\"é\\\"));\\n    assert_eq!(text.get(0..1), None);\\n    let decorated = format!(\\\"[{text}]\\\");\\n    assert_eq!(decorated, \\\"[éclair]\\\");\\n    assert_eq!(text, \\\"éclair\\\");\\n    text.push('!');\\n    assert_eq!(text, \\\"éclair!\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/string-operations",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut text = String::from(\\\"é\\\");\\n    let suffix = String::from(\\\"clair\\\");\\n    text.push_str(suffix.as_str());\\n    assert_eq!(suffix, \\\"clair\\\");\\n    assert_eq!(text.len(), 7);\\n    assert_eq!(text.chars().count(), 6);\\n    assert_eq!(text.get(0..2), Some(\\\"é\\\"));\\n    assert_eq!(text.get(0..1), None);\\n    let decorated = format!(\\\"[{text}]\\\");\\n    assert_eq!(decorated, \\\"[éclair]\\\");\\n    assert_eq!(text, \\\"éclair\\\");\\n    text.push('!');\\n    assert_eq!(text, \\\"éclair!\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
 			"key": "verify/struct-methods-recall",
 			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"struct Label { text: String }\\nimpl Label {\\n    fn new(text: String) -> Self { Self { text } }\\n    fn text(&self) -> &str { &self.text }\\n    fn append(&mut self, suffix: &str) { self.text.push_str(suffix); }\\n    fn into_text(self) -> String { self.text }\\n}\\nfn main() {\\n    let mut label = Label::new(String::from(\\\"note\\\"));\\n    assert_eq!(label.text(), \\\"note\\\");\\n    label.append(\\\"!\\\");\\n    let owned = label.into_text();\\n    assert_eq!(owned, \\\"note!\\\");\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true
@@ -160,6 +260,66 @@
 		{
 			"key": "verify/struct-methods",
 			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"struct Label { text: String }\\nimpl Label {\\n    fn new(text: String) -> Self { Self { text } }\\n    fn text(&self) -> &str { &self.text }\\n    fn append(&mut self, suffix: &str) { self.text.push_str(suffix); }\\n    fn into_text(self) -> String { self.text }\\n}\\nfn main() {\\n    let mut label = Label::new(String::from(\\\"note\\\"));\\n    assert_eq!(label.text(), \\\"note\\\");\\n    label.append(\\\"!\\\");\\n    let owned = label.into_text();\\n    assert_eq!(owned, \\\"note!\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/trait-behavior-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"trait Named { fn name(&self) -> &str; }\\nstruct User { name: String }\\nstruct Team { name: String }\\nimpl Named for User { fn name(&self) -> &str { &self.name } }\\nimpl Named for Team { fn name(&self) -> &str { &self.name } }\\nfn greeting<T: Named>(value: &T) -> String {\\n    format!(\\\"hello {}\\\", value.name())\\n}\\nfn main() {\\n    let user = User { name: String::from(\\\"Mira\\\") };\\n    let team = Team { name: String::from(\\\"Tools\\\") };\\n    assert_eq!(greeting(&user), \\\"hello Mira\\\");\\n    assert_eq!(greeting(&team), \\\"hello Tools\\\");\\n    assert_eq!(user.name, \\\"Mira\\\");\\n    assert_eq!(team.name, \\\"Tools\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/trait-behavior",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"trait Named { fn name(&self) -> &str; }\\nstruct User { name: String }\\nstruct Team { name: String }\\nimpl Named for User { fn name(&self) -> &str { &self.name } }\\nimpl Named for Team { fn name(&self) -> &str { &self.name } }\\nfn greeting<T: Named>(value: &T) -> String {\\n    format!(\\\"hello {}\\\", value.name())\\n}\\nfn main() {\\n    let user = User { name: String::from(\\\"Mira\\\") };\\n    let team = Team { name: String::from(\\\"Tools\\\") };\\n    assert_eq!(greeting(&user), \\\"hello Mira\\\");\\n    assert_eq!(greeting(&team), \\\"hello Tools\\\");\\n    assert_eq!(user.name, \\\"Mira\\\");\\n    assert_eq!(team.name, \\\"Tools\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/trait-bounds-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn larger<T>(left: &T, right: &T) -> T\\nwhere T: Ord + Copy\\n{\\n    if left >= right { *left } else { *right }\\n}\\nfn duplicate<T: Clone>(value: &T) -> T { value.clone() }\\nfn main() {\\n    assert_eq!(larger(&4_i32, &9), 9);\\n    assert_eq!(larger(&9_i32, &4), 9);\\n    assert_eq!(larger(&4_i32, &4), 4);\\n    assert_eq!(larger(&-7_i32, &-2), -2);\\n    assert_eq!(larger(&'a', &'z'), 'z');\\n    let original = String::from(\\\"kept\\\");\\n    let mut copied = duplicate(&original);\\n    copied.push('!');\\n    assert_eq!(copied, \\\"kept!\\\");\\n    assert_eq!(original, \\\"kept\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/trait-bounds",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn larger<T>(left: &T, right: &T) -> T\\nwhere T: Ord + Copy\\n{\\n    if left >= right { *left } else { *right }\\n}\\nfn duplicate<T: Clone>(value: &T) -> T { value.clone() }\\nfn main() {\\n    assert_eq!(larger(&4_i32, &9), 9);\\n    assert_eq!(larger(&9_i32, &4), 9);\\n    assert_eq!(larger(&4_i32, &4), 4);\\n    assert_eq!(larger(&-7_i32, &-2), -2);\\n    assert_eq!(larger(&'a', &'z'), 'z');\\n    let original = String::from(\\\"kept\\\");\\n    let mut copied = duplicate(&original);\\n    copied.push('!');\\n    assert_eq!(copied, \\\"kept!\\\");\\n    assert_eq!(original, \\\"kept\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/trait-defaults-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"trait Caption {\\n    fn label(&self) -> &str;\\n    fn caption(&self) -> String { format!(\\\"[{}]\\\", self.label()) }\\n}\\nstruct Plain;\\nstruct Loud;\\nimpl Caption for Plain { fn label(&self) -> &str { \\\"plain\\\" } }\\nimpl Caption for Loud {\\n    fn label(&self) -> &str { \\\"loud\\\" }\\n    fn caption(&self) -> String { self.label().to_uppercase() }\\n}\\nfn render<T: Caption>(value: &T) -> String { value.caption() }\\nfn main() {\\n    assert_eq!(render(&Plain), \\\"[plain]\\\");\\n    assert_eq!(render(&Loud), \\\"LOUD\\\");\\n    assert_eq!(Plain.label(), \\\"plain\\\");\\n    assert_eq!(Loud.label(), \\\"loud\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/trait-defaults",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"trait Caption {\\n    fn label(&self) -> &str;\\n    fn caption(&self) -> String { format!(\\\"[{}]\\\", self.label()) }\\n}\\nstruct Plain;\\nstruct Loud;\\nimpl Caption for Plain { fn label(&self) -> &str { \\\"plain\\\" } }\\nimpl Caption for Loud {\\n    fn label(&self) -> &str { \\\"loud\\\" }\\n    fn caption(&self) -> String { self.label().to_uppercase() }\\n}\\nfn render<T: Caption>(value: &T) -> String { value.caption() }\\nfn main() {\\n    assert_eq!(render(&Plain), \\\"[plain]\\\");\\n    assert_eq!(render(&Loud), \\\"LOUD\\\");\\n    assert_eq!(Plain.label(), \\\"plain\\\");\\n    assert_eq!(Loud.label(), \\\"loud\\\");\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/values-types-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"const LIMIT: u32 = 10;\\nfn main() {\\n    let mut count = 2_u32;\\n    count += 1;\\n    let spaces = \\\"   \\\";\\n    let spaces = spaces.len();\\n    let sample: (i32, bool, char) = (-2, true, 'é');\\n    let readings: [u32; 3] = [4, 5, 6];\\n    let (offset, enabled, marker) = sample;\\n    assert_eq!(count, 3);\\n    assert_eq!(spaces, 3);\\n    assert_eq!(offset, -2);\\n    assert!(enabled);\\n    assert_eq!(marker, 'é');\\n    assert_eq!(readings[1], 5);\\n    assert!(count < LIMIT);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/values-types",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"const LIMIT: u32 = 10;\\nfn main() {\\n    let mut count = 2_u32;\\n    count += 1;\\n    let spaces = \\\"   \\\";\\n    let spaces = spaces.len();\\n    let sample: (i32, bool, char) = (-2, true, 'é');\\n    let readings: [u32; 3] = [4, 5, 6];\\n    let (offset, enabled, marker) = sample;\\n    assert_eq!(count, 3);\\n    assert_eq!(spaces, 3);\\n    assert_eq!(offset, -2);\\n    assert!(enabled);\\n    assert_eq!(marker, 'é');\\n    assert_eq!(readings[1], 5);\\n    assert!(count < LIMIT);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/vector-access-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut values: Vec<u32> = vec![10, 20];\\n    assert_eq!(values.get(1), Some(&20));\\n    assert!(values.get(9).is_none());\\n    let first = values.get(0).copied().unwrap_or(0);\\n    values.push(30);\\n    assert_eq!(first, 10);\\n    assert_eq!(values.len(), 3);\\n    assert_eq!(values.pop(), Some(30));\\n    assert_eq!(values.pop(), Some(20));\\n    assert_eq!(values.pop(), Some(10));\\n    assert_eq!(values.pop(), None);\\n    let empty: Vec<u32> = Vec::new();\\n    assert_eq!(empty.get(0).copied().unwrap_or(0), 0);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/vector-access",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut values: Vec<u32> = vec![10, 20];\\n    assert_eq!(values.get(1), Some(&20));\\n    assert!(values.get(9).is_none());\\n    let first = values.get(0).copied().unwrap_or(0);\\n    values.push(30);\\n    assert_eq!(first, 10);\\n    assert_eq!(values.len(), 3);\\n    assert_eq!(values.pop(), Some(30));\\n    assert_eq!(values.pop(), Some(20));\\n    assert_eq!(values.pop(), Some(10));\\n    assert_eq!(values.pop(), None);\\n    let empty: Vec<u32> = Vec::new();\\n    assert_eq!(empty.get(0).copied().unwrap_or(0), 0);\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/vector-mutation-recall",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut values = vec![3_i32, -1, 3, 2, 2];\\n    values.sort();\\n    values.dedup();\\n    values.retain(|value| *value > 0);\\n    for value in values.iter_mut() { *value *= 2; }\\n    assert_eq!(values, vec![4, 6]);\\n    values.truncate(1);\\n    assert_eq!(values, vec![4]);\\n    let mut empty: Vec<i32> = Vec::new();\\n    empty.sort();\\n    empty.dedup();\\n    empty.retain(|value| *value > 0);\\n    assert!(empty.is_empty());\\n}\",\"expect\":\"^verified$\"}",
+			"ok": true
+		},
+		{
+			"key": "verify/vector-mutation",
+			"seen": "{\"run\":\"node scripts/verify-local-code.mjs rust\",\"stdin\":\"fn main() {\\n    let mut values = vec![3_i32, -1, 3, 2, 2];\\n    values.sort();\\n    values.dedup();\\n    values.retain(|value| *value > 0);\\n    for value in values.iter_mut() { *value *= 2; }\\n    assert_eq!(values, vec![4, 6]);\\n    values.truncate(1);\\n    assert_eq!(values, vec![4]);\\n    let mut empty: Vec<i32> = Vec::new();\\n    empty.sort();\\n    empty.dedup();\\n    empty.retain(|value| *value > 0);\\n    assert!(empty.is_empty());\\n}\",\"expect\":\"^verified$\"}",
 			"ok": true
 		}
 	]

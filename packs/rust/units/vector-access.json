@@ -1,0 +1,109 @@
+{
+	"id": "vector-access",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn main() {",
+			"    let {{gap:binding}} values: {{gap:vectorType}} = {{gap:construct}}[10, 20];",
+			"    assert_eq!(values.{{gap:checked}}(1), Some(&20));",
+			"    assert!(values.get(9).{{gap:missing}}());",
+			"    let first = values.get(0).{{gap:copy}}().unwrap_or(0);",
+			"    values.{{gap:append}}(30);",
+			"    {{gap:equal}}(first, 10);",
+			"    assert_eq!(values.{{gap:length}}(), 3);",
+			"    assert_eq!(values.pop(), Some(30));",
+			"    assert_eq!(values.pop(), Some(20));",
+			"    assert_eq!(values.pop(), Some(10));",
+			"    assert_eq!(values.pop(), None);",
+			"    let empty: Vec<u32> = Vec::new();",
+			"    assert_eq!(empty.get(0).copied().unwrap_or(0), 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "binding",
+			"item": "rust:ownership:mutable",
+			"text": "mut"
+		},
+		{
+			"id": "vectorType",
+			"item": "rust:vector-access:vectorType",
+			"text": "Vec<u32>"
+		},
+		{
+			"id": "construct",
+			"item": "rust:iterators:vector",
+			"text": "vec!"
+		},
+		{
+			"id": "checked",
+			"item": "rust:vector-access:checked",
+			"text": "get"
+		},
+		{
+			"id": "missing",
+			"item": "rust:vector-access:missing",
+			"text": "is_none"
+		},
+		{
+			"id": "copy",
+			"item": "rust:vector-access:copy",
+			"text": "copied"
+		},
+		{
+			"id": "append",
+			"item": "rust:vector-access:append",
+			"text": "push"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		},
+		{
+			"id": "length",
+			"item": "rust:ownership:length",
+			"text": "len"
+		}
+	],
+	"sources": [
+		{
+			"title": "Vectors",
+			"url": "https://doc.rust-lang.org/book/ch08-01-vectors.html"
+		},
+		{
+			"title": "Strings",
+			"url": "https://doc.rust-lang.org/book/ch08-02-strings.html"
+		},
+		{
+			"title": "Hash maps",
+			"url": "https://doc.rust-lang.org/book/ch08-03-hash-maps.html"
+		},
+		{
+			"title": "Vec API",
+			"url": "https://doc.rust-lang.org/std/vec/struct.Vec.html"
+		},
+		{
+			"title": "Option API",
+			"url": "https://doc.rust-lang.org/std/option/enum.Option.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"Vec<&u32>",
+		"[u32; 2]",
+		"iter",
+		"insert",
+		"capacity",
+		"is_some",
+		"cloned",
+		"String"
+	],
+	"recallUnit": "vector-access-recall"
+}

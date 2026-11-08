@@ -1,0 +1,97 @@
+{
+	"id": "module-reexports",
+	"layout": {
+		"type": "code",
+		"code": [
+			"mod api {",
+			"    {{gap:module}} internal {",
+			"        {{gap:visible}} struct Ticket { pub id: u32 }",
+			"        impl Ticket {",
+			"            pub {{gap:function}} new(id: u32) -> {{gap:selfType}} { Self { id } }",
+			"        }",
+			"    }",
+			"    {{gap:reexport}} {{gap:current}}::internal::Ticket;",
+			"    pub fn issue(id: u32) -> Ticket { Ticket::new(id) }",
+			"}",
+			"{{gap:import}} crate::api::Ticket;",
+			"fn main() {",
+			"    let ticket: Ticket = api::issue(7);",
+			"    {{gap:equal}}(ticket.id, 7);",
+			"    assert_eq!(Ticket::new(0).id, 0);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "module",
+			"item": "rust:module-reexports:module",
+			"text": "mod"
+		},
+		{
+			"id": "visible",
+			"item": "rust:module-reexports:visible",
+			"text": "pub"
+		},
+		{
+			"id": "function",
+			"item": "rust:iterators:function",
+			"text": "fn"
+		},
+		{
+			"id": "selfType",
+			"item": "rust:module-reexports:selfType",
+			"text": "Self"
+		},
+		{
+			"id": "reexport",
+			"item": "rust:module-reexports:reexport",
+			"text": "pub use"
+		},
+		{
+			"id": "current",
+			"item": "rust:module-reexports:current",
+			"text": "self"
+		},
+		{
+			"id": "import",
+			"item": "rust:module-reexports:import",
+			"text": "use"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Modules and privacy",
+			"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+		},
+		{
+			"title": "Paths",
+			"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+		},
+		{
+			"title": "Imports and re-exports",
+			"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": [
+		"super",
+		"crate",
+		"pub(crate) use",
+		"pub(super) use",
+		"pub mod",
+		"enum",
+		"trait",
+		"as"
+	],
+	"recallUnit": "module-reexports-recall"
+}

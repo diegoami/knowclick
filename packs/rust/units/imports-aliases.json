@@ -1,0 +1,89 @@
+{
+	"id": "imports-aliases",
+	"layout": {
+		"type": "code",
+		"code": [
+			"mod raw { pub fn value() -> u32 { 2 } }",
+			"mod clean { pub fn value() -> u32 { 3 } }",
+			"mod adjust {",
+			"    pub fn scale(value: u32) -> u32 { value * 10 }",
+			"    pub fn local() -> u32 {",
+			"        {{gap:localImport}} {{gap:current}}::scale;",
+			"        scale(4)",
+			"    }",
+			"}",
+			"{{gap:import}} {{gap:root}}::{raw::value {{gap:firstAlias}} raw_value, clean::value {{gap:secondAlias}} clean_value};",
+			"use crate::adjust{{gap:separator}}scale;",
+			"fn main() {",
+			"    {{gap:equal}}(raw_value(), 2);",
+			"    assert_eq!(clean_value(), 3);",
+			"    assert_eq!(scale(raw_value()), 20);",
+			"    assert_eq!(adjust::local(), 40);",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "localImport",
+			"item": "rust:imports-aliases:localImport",
+			"text": "use"
+		},
+		{
+			"id": "current",
+			"item": "rust:imports-aliases:current",
+			"text": "self"
+		},
+		{
+			"id": "import",
+			"item": "rust:imports-aliases:import",
+			"text": "use"
+		},
+		{
+			"id": "root",
+			"item": "rust:imports-aliases:root",
+			"text": "crate"
+		},
+		{
+			"id": "firstAlias",
+			"item": "rust:imports-aliases:firstAlias",
+			"text": "as"
+		},
+		{
+			"id": "secondAlias",
+			"item": "rust:imports-aliases:secondAlias",
+			"text": "as"
+		},
+		{
+			"id": "separator",
+			"item": "rust:imports-aliases:separator",
+			"text": "::"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Modules and privacy",
+			"url": "https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"
+		},
+		{
+			"title": "Paths",
+			"url": "https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"
+		},
+		{
+			"title": "Imports and re-exports",
+			"url": "https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["super", "mod", "pub", "let", "from", "in", "=>", "->"],
+	"recallUnit": "imports-aliases-recall"
+}

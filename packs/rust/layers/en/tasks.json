@@ -30,5 +30,37 @@
 	"indexed-values": {
 		"title": "Keep input positions while parsing",
 		"brief": "Retain original line numbers for valid values, filter invalid input and test empty collections."
+	},
+	"cargo-counter": {
+		"title": "Create and check a Cargo binary",
+		"brief": "Create a dependency-free Cargo project, implement a bounded counter step and run check, build, tests and the executable."
+	},
+	"bounded-total": {
+		"title": "Sum selected values through control flow",
+		"brief": "Compute a widened total of odd integers with inclusive ranges; test empty and boundary cases."
+	},
+	"private-meter": {
+		"title": "Protect a bounded meter behind methods",
+		"brief": "Keep fields private, expose a bounded update API and reproduce a private-field compiler error."
+	},
+	"facade-paths": {
+		"title": "Build a stable module facade",
+		"brief": "Re-export a type from a private implementation module and combine root-relative and parent-relative paths."
+	},
+	"word-tally": {
+		"title": "Count words with an owned-key map",
+		"brief": "Normalize case, count repeated Unicode words and query owned String keys using borrowed slices."
+	},
+	"clean-readings": {
+		"title": "Clean a vector in place",
+		"brief": "Sort and deduplicate nonnegative readings while keeping ownership of the original vector."
+	},
+	"generic-clamp": {
+		"title": "Constrain a generic interval operation",
+		"brief": "Compare borrowed values through Ord, copy a bounded result and reject reversed intervals."
+	},
+	"named-report": {
+		"title": "Report through a trait contract",
+		"brief": "Implement shared naming behavior, inherit or override a default method and render a generic slice."
 	}
 }

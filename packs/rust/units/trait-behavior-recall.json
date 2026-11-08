@@ -1,0 +1,53 @@
+{
+	"id": "trait-behavior-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"trait Named { fn name(&self) -> &str; }",
+			"struct User { name: String }",
+			"struct Team { name: String }",
+			"{{gap:implementation}}",
+			"impl Named for Team { fn name(&self) -> &str { &self.name } }",
+			"fn greeting<T: Named>(value: &T) -> String {",
+			"    {{gap:greeting}}",
+			"}",
+			"fn main() {",
+			"    let user = User { name: String::from(\"Mira\") };",
+			"    let team = Team { name: String::from(\"Tools\") };",
+			"    assert_eq!(greeting(&user), \"hello Mira\");",
+			"    assert_eq!(greeting(&team), \"hello Tools\");",
+			"    assert_eq!(user.name, \"Mira\");",
+			"    assert_eq!(team.name, \"Tools\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "implementation",
+			"item": "rust:trait-behavior-recall:implementation",
+			"text": "impl Named for User { fn name(&self) -> &str { &self.name } }"
+		},
+		{
+			"id": "greeting",
+			"item": "rust:trait-behavior-recall:greeting",
+			"text": "format!(\"hello {}\", value.name())"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

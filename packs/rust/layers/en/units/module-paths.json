@@ -1,0 +1,33 @@
+{
+	"title": "Navigate a module tree",
+	"summary": "Use crate-root and parent-relative paths while making nested items accessible to callers.",
+	"cells": {
+		"module": {
+			"clue": "Keyword declaring the math module"
+		},
+		"export": {
+			"clue": "Visibility keyword allowing a caller outside math to call bump"
+		},
+		"unsigned": {
+			"clue": "Unsigned 32-bit type of the bump parameter"
+		},
+		"nested": {
+			"clue": "Keyword declaring the nested batches module"
+		},
+		"parent": {
+			"clue": "Path prefix reaching the enclosing math module from batches"
+		},
+		"root": {
+			"clue": "Path prefix reaching the root-level BASE constant regardless of module nesting"
+		},
+		"function": {
+			"clue": "Keyword defining the executable entry function"
+		},
+		"equal": {
+			"clue": "Macro checking the nested module’s computed result"
+		},
+		"separator": {
+			"clue": "Separator between module and function names in a path"
+		}
+	}
+}

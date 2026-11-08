@@ -1,0 +1,30 @@
+{
+	"title": "Parameterize a record and its methods",
+	"summary": "Use a type parameter for both fields, return moved values without cloning and instantiate the same definition for unrelated concrete types.",
+	"cells": {
+		"record": {
+			"clue": "Keyword defining the two-field generic record"
+		},
+		"implementation": {
+			"clue": "Keyword introducing methods parameterized by T"
+		},
+		"parameter": {
+			"clue": "Type parameter already declared for the implementation and reused as the record’s sole type argument"
+		},
+		"selfType": {
+			"clue": "Type spelling for the current Pair<T> within its implementation"
+		},
+		"receiver": {
+			"clue": "Receiver consuming the pair so both fields can move into the tuple"
+		},
+		"tuple": {
+			"clue": "Tuple return type containing both generic fields in order"
+		},
+		"separator": {
+			"clue": "Path separator between Pair and its associated new function"
+		},
+		"equal": {
+			"clue": "Macro checking the tuple returned by the u32 instantiation"
+		}
+	}
+}

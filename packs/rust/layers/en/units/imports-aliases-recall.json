@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Import paths and resolve name collisions",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"alias": {
+			"clue": "At the crate root with modules raw and clean each exporting fn value() -> u32, write one grouped use statement importing raw::value as raw_value then clean::value as clean_value. Start at crate and include the semicolon."
+		},
+		"local": {
+			"clue": "Inside the adjust module, write a use statement importing its own scale function with an explicit current-module path prefix. Include the semicolon."
+		}
+	}
+}

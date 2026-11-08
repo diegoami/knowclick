@@ -1,0 +1,50 @@
+{
+	"id": "generic-pair-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"struct Pair<T> { left: T, right: T }",
+			"impl<T> Pair<T> {",
+			"    {{gap:constructor}}",
+			"    {{gap:consume}}",
+			"}",
+			"fn main() {",
+			"    let numbers = Pair::new(1_u32, 2_u32);",
+			"    assert_eq!(numbers.into_tuple(), (1, 2));",
+			"    let words = Pair::new(String::from(\"first\"), String::from(\"last\"));",
+			"    assert_eq!(words.into_tuple(), (String::from(\"first\"), String::from(\"last\")));",
+			"    let flags = Pair::new(true, false);",
+			"    assert_eq!(flags.into_tuple(), (true, false));",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "consume",
+			"item": "rust:generic-pair-recall:consume",
+			"text": "fn into_tuple(self) -> (T, T) { (self.left, self.right) }"
+		},
+		{
+			"id": "constructor",
+			"item": "rust:generic-pair-recall:constructor",
+			"text": "fn new(left: T, right: T) -> Self { Self { left, right } }"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

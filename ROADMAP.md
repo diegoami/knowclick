@@ -96,13 +96,19 @@ replaces the current round. Earned progress remains separate and intact.
 and two local Apply tasks. It supersedes the four-lesson breadth of #15/#21;
 existing progress IDs and learning-flow decisions remain in force.
 
-The first increment deepens the existing four chapters: 16 Guided boards,
-16 Recall boards and eight labs in total. It adds ownership transfer and UTF-8
-slicing, receiver ownership and payload matching, error conversion and optional
-parsing, and iterator ownership, composition and short-circuiting. The original
-lab links now target main. Compiler verification and lab execution are separate
-from the still-required independent content checks. The other 12 chapters
-remain to be authored; this increment does not complete the 16-chapter plan.
+[Draft PR #30](https://github.com/diegoami/knowclick/pull/30) now contains eight
+chapters: Cargo/values/control flow, ownership, structs/enums, modules and
+visibility, strings/vectors/hash maps, fallible parsing, generics/traits and
+iterator pipelines. Each has four Guided/Recall exercise pairs and two Apply
+labs: 32 Guided boards, 32 Recall boards and 16 tasks in total. Existing board,
+lesson and task identities are preserved. Lab links target main when merged.
+
+All board reference programs and lab solutions are checked locally against
+Rust 1.99.1 / edition 2024, including expected ownership/privacy diagnostics and
+the Cargo check/build/test/run workflow. Execution remains separate from the
+still-required independent content checks. Eight planned chapters remain:
+lifetimes, testing, files/CLI, smart pointers, concurrency, async, advanced
+traits/macros and the capstone. This is not yet the complete 16-chapter course.
 
 The owner also approved eight-chapter proposals for
 [Claude Engineering #26](https://github.com/diegoami/knowclick/issues/26),

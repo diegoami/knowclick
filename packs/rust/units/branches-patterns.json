@@ -1,0 +1,112 @@
+{
+	"id": "branches-patterns",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn band(value: {{gap:signed}}) -> &'static str {",
+			"    {{gap:conditional}} value < 0 { \"negative\" }",
+			"    {{gap:alternative}} value == 0 { \"zero\" }",
+			"    {{gap:fallback}} { \"positive\" }",
+			"}",
+			"fn category(code: u32) -> &'static str {",
+			"    {{gap:exhaustive}} code {",
+			"        1 {{gap:either}} 2 => \"small\",",
+			"        3{{gap:inclusive}}5 => \"middle\",",
+			"        {{gap:wildcard}} => \"other\",",
+			"    }",
+			"}",
+			"fn main() {",
+			"    {{gap:equal}}(band(-1), \"negative\");",
+			"    assert_eq!(band(0), \"zero\");",
+			"    assert_eq!(band(1), \"positive\");",
+			"    assert_eq!(category(1), \"small\");",
+			"    assert_eq!(category(2), \"small\");",
+			"    assert_eq!(category(3), \"middle\");",
+			"    assert_eq!(category(5), \"middle\");",
+			"    assert_eq!(category(0), \"other\");",
+			"    assert_eq!(category(6), \"other\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "signed",
+			"item": "rust:iterators:number",
+			"text": "i32"
+		},
+		{
+			"id": "conditional",
+			"item": "rust:branches-patterns:conditional",
+			"text": "if"
+		},
+		{
+			"id": "alternative",
+			"item": "rust:branches-patterns:alternative",
+			"text": "else if"
+		},
+		{
+			"id": "fallback",
+			"item": "rust:branches-patterns:fallback",
+			"text": "else"
+		},
+		{
+			"id": "exhaustive",
+			"item": "rust:branches-patterns:exhaustive",
+			"text": "match"
+		},
+		{
+			"id": "either",
+			"item": "rust:branches-patterns:either",
+			"text": "|"
+		},
+		{
+			"id": "inclusive",
+			"item": "rust:branches-patterns:inclusive",
+			"text": "..="
+		},
+		{
+			"id": "wildcard",
+			"item": "rust:branches-patterns:wildcard",
+			"text": "_"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Hello, Cargo!",
+			"url": "https://doc.rust-lang.org/book/ch01-03-hello-cargo.html"
+		},
+		{
+			"title": "Variables and mutability",
+			"url": "https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html"
+		},
+		{
+			"title": "Data types",
+			"url": "https://doc.rust-lang.org/book/ch03-02-data-types.html"
+		},
+		{
+			"title": "Functions",
+			"url": "https://doc.rust-lang.org/book/ch03-03-how-functions-work.html"
+		},
+		{
+			"title": "Control flow",
+			"url": "https://doc.rust-lang.org/book/ch03-05-control-flow.html"
+		},
+		{
+			"title": "Patterns",
+			"url": "https://doc.rust-lang.org/book/ch19-03-pattern-syntax.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["while", "if let", "let", "..", "||", "&&", "=>", "return"],
+	"recallUnit": "branches-patterns-recall"
+}

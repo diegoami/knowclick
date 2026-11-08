@@ -87,13 +87,17 @@ manifest. Original local task prompts and reference solutions live in
 `docs/courses/`. `scripts/verify-local-code.mjs` compiles Rust/Bicep board code in
 a disposable temporary directory; Rust programs run their assertions and the
 Bicep output is checked as a template. It never deploys or downloads dependencies.
-The Rust depth increment uses four main units per lesson, each referencing its
-own larger Recall unit. Existing main-unit and item identities are retained.
+The Rust course has eight chapters with four main units per lesson, each
+referencing its own larger Recall unit. Existing main-unit and item identities are retained.
 `docs/courses/rust-depth-labs.md` adds the second local task for each chapter.
-`scripts/verify-rust-labs.mjs` compiles reference blocks directly from both Rust
-lab documents, runs their tests, checks the expected E0382 diagnostic and
-exercises CLI stdin/stdout. Small `verify-rust` JSON comments annotate those
-expected failures and I/O cases; no copied solution fixture is maintained.
+`docs/courses/rust-core-labs.md` supplies labs for values/control flow, modules,
+collections and generics. `scripts/verify-rust-labs.mjs` compiles reference
+blocks directly from all three Rust lab documents, runs their tests, checks
+expected E0382/E0616 diagnostics and exercises CLI stdin/stdout. Small
+`verify-rust` JSON comments annotate expected failures and I/O cases. A
+`"cargo": "bin"` annotation additionally creates a temporary dependency-free
+Cargo project and runs check, build, test and run offline. No copied solution
+fixture is maintained.
 
 Verification requires `rustc` and `bicep` on PATH. The Azure CLI guard and existing
 CLI verification entries are preserved.

@@ -212,7 +212,7 @@ Placed recall answers remain visible. Navigation alone no longer turns a round
 into assisted practice; explicit hints/reveals retain their existing assistance
 tracking. This supersedes the corresponding visibility/resumption policy in #17.
 
-## Rust depth before breadth; engineering courses next (2026-11-07, #25–#29)
+## Rust depth and breadth; engineering courses next (2026-11-07, expanded 2026-11-08, #25–#29)
 
 The owner approved 16 Rust chapters with four distinct exercise objectives and
 two practical tasks per chapter. First deepen the existing four chapters rather
@@ -223,11 +223,16 @@ implementations through requirements and local checks. Existing unit, task and
 item IDs are retained; larger-expression recall receives separate IDs.
 
 The initial four-chapter scope in #15/#21 is superseded by #25's 16-chapter
-course target. The first increment contains 16 Guided/Recall pairs and eight
-labs, not the complete expansion. Compile every board and run assertions;
+course target. Draft PR #30 now covers eight chapters with 32 Guided/Recall
+pairs and 16 labs. New chapters fill the prerequisite gaps in values/control
+flow, modules, collections and generics; their order follows the Rust Book's
+progression while preserving existing lesson IDs. Eight advanced and practical
+chapters remain to complete the approved scope. Compile every board and run assertions;
 compile lab solutions from their documentation, including negative diagnostics,
-unit tests and CLI I/O. These are author verification, never independent content
-approval. Missing independent checks keep release readiness blocked.
+unit tests and CLI I/O. Cargo command practice is verified with a real temporary
+project using the installed toolchain and no external dependencies, rather than
+assuming that successful rustc compilation proves the Cargo workflow. These are
+author verification, never independent content approval. Missing independent checks keep release readiness blocked.
 
 Claude Engineering, LangChain, RAG Engineering and MLOps follow in that order,
 with separate subject packs. Prefer deterministic local Python examples and

@@ -1,0 +1,103 @@
+{
+	"id": "trait-bounds",
+	"layout": {
+		"type": "code",
+		"code": [
+			"fn larger<T>(left: &T, right: &T) -> T",
+			"{{gap:constraints}} T: {{gap:ordering}} {{gap:combine}} {{gap:copying}}",
+			"{",
+			"    {{gap:condition}} left >= right { *left } {{gap:fallback}} { *right }",
+			"}",
+			"fn duplicate<T: Clone>(value: {{gap:borrowed}}) -> T { value.{{gap:clone}}() }",
+			"fn main() {",
+			"    {{gap:equal}}(larger(&4_i32, &9), 9);",
+			"    assert_eq!(larger(&9_i32, &4), 9);",
+			"    assert_eq!(larger(&4_i32, &4), 4);",
+			"    assert_eq!(larger(&-7_i32, &-2), -2);",
+			"    assert_eq!(larger(&'a', &'z'), 'z');",
+			"    let original = String::from(\"kept\");",
+			"    let mut copied = duplicate(&original);",
+			"    copied.push('!');",
+			"    assert_eq!(copied, \"kept!\");",
+			"    assert_eq!(original, \"kept\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "constraints",
+			"item": "rust:trait-bounds:constraints",
+			"text": "where"
+		},
+		{
+			"id": "ordering",
+			"item": "rust:trait-bounds:ordering",
+			"text": "Ord"
+		},
+		{
+			"id": "combine",
+			"item": "rust:trait-bounds:combine",
+			"text": "+"
+		},
+		{
+			"id": "copying",
+			"item": "rust:trait-bounds:copying",
+			"text": "Copy"
+		},
+		{
+			"id": "condition",
+			"item": "rust:trait-bounds:condition",
+			"text": "if"
+		},
+		{
+			"id": "fallback",
+			"item": "rust:trait-bounds:fallback",
+			"text": "else"
+		},
+		{
+			"id": "borrowed",
+			"item": "rust:trait-bounds:borrowed",
+			"text": "&T"
+		},
+		{
+			"id": "clone",
+			"item": "rust:trait-bounds:clone",
+			"text": "clone"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		},
+		{
+			"title": "Ord API",
+			"url": "https://doc.rust-lang.org/std/cmp/trait.Ord.html"
+		},
+		{
+			"title": "Copy API",
+			"url": "https://doc.rust-lang.org/std/marker/trait.Copy.html"
+		},
+		{
+			"title": "Clone API",
+			"url": "https://doc.rust-lang.org/std/clone/trait.Clone.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["PartialEq", "Eq", "PartialOrd", "Default", "Debug", "&mut T", "impl", "trait"],
+	"recallUnit": "trait-bounds-recall"
+}

@@ -1,9 +1,9 @@
 {
 	"title": "Rust foundations",
-	"summary": "For programmers new to Rust: study the official Book, practise four distinct exercises per chapter in Guided and Recall, then solve two local labs. The first four chapters cover ownership, structured state, fallible parsing and collection pipelines. Further chapters are planned.",
+	"summary": "Study the official Rust Book, practise four distinct exercises per chapter in Guided and Recall, then solve two local labs. Eight chapters cover values and control flow, ownership, structured state, modules, collections, fallible parsing, generic behavior and iterator pipelines. Further chapters are planned.",
 	"sections": {
 		"foundations": {
-			"title": "From ownership to a tested CLI"
+			"title": "Language core: from values to generic code"
 		}
 	},
 	"lessons": {
@@ -17,7 +17,19 @@
 			"title": "Option, Result and recoverable errors"
 		},
 		"iterators": {
-			"title": "Collections and iterators"
+			"title": "Closures and iterator pipelines"
+		},
+		"basics": {
+			"title": "Cargo, values, functions and control flow"
+		},
+		"modules": {
+			"title": "Modules, visibility and public APIs"
+		},
+		"collections": {
+			"title": "Strings, vectors and hash maps"
+		},
+		"generics": {
+			"title": "Generics, traits and bounds"
 		}
 	}
 }

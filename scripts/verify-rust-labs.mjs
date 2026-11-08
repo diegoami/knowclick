@@ -14,7 +14,7 @@ if (version.status !== 0 || !version.stdout.startsWith('rustc 1.99.1 ')) {
 	throw new Error('Lab verification requires rustc 1.99.1 on PATH');
 }
 let passed = 0;
-for (const file of ['rust-labs.md', 'rust-depth-labs.md']) {
+for (const file of ['rust-labs.md', 'rust-depth-labs.md', 'rust-core-labs.md']) {
 	const markdown = readFileSync(path.join(root, 'docs/courses', file), 'utf8');
 	const blocks = [
 		...markdown.matchAll(/(?:<!-- verify-rust: (.*?) -->\s*)?```rust\n([\s\S]*?)\n```/g)
@@ -74,6 +74,42 @@ for (const file of ['rust-labs.md', 'rust-depth-labs.md']) {
 					const actual = execute(options.stdin);
 					if (actual !== options.stdout)
 						throw new Error(`${label}: unexpected CLI output ${JSON.stringify(actual)}`);
+				}
+			}
+			if (options.cargo) {
+				if (options.cargo !== 'bin' || options.error) {
+					throw new Error(`${label}: Cargo verification supports successful binary projects`);
+				}
+				const initialized = run('cargo', [
+					'init',
+					'--offline',
+					'--vcs',
+					'none',
+					'--edition',
+					'2024',
+					'--bin',
+					'--name',
+					'knowclick_lab',
+					'.'
+				]);
+				if (initialized.status !== 0) throw new Error(`${label}: ${initialized.stderr}`);
+				writeFileSync(path.join(dir, 'src', 'main.rs'), code);
+				for (const command of ['check', 'build', 'test', 'run']) {
+					const result = run('cargo', [command, '--offline', '--quiet'], options.stdin);
+					if (result.status !== 0)
+						throw new Error(`${label}: cargo ${command}: ${result.stdout}${result.stderr}`);
+					if (command === 'test' && !/test result: ok\. [1-9]\d* passed/.test(result.stdout)) {
+						throw new Error(`${label}: Cargo reported no passing tests`);
+					}
+					if (
+						command === 'run' &&
+						options.stdout !== undefined &&
+						result.stdout !== options.stdout
+					) {
+						throw new Error(
+							`${label}: unexpected Cargo executable output ${JSON.stringify(result.stdout)}`
+						);
+					}
 				}
 			}
 			console.log(`PASS  ${label}${options.error ? ` (expected ${options.error})` : ''}`);

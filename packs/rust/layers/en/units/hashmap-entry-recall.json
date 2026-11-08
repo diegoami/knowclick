@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Count keys with the entry API",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"entry": {
+			"clue": "Given mutable counts: HashMap<&str, u32> and word: &str, write an expression selecting the word entry and inserting 0 only if absent. Use entry followed by or_insert."
+		},
+		"increment": {
+			"clue": "Given count: &mut u32 from a map entry, write a complete statement adding 1 to the referenced value with +=. Include the semicolon."
+		}
+	}
+}

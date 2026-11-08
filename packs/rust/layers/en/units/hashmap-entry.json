@@ -1,0 +1,33 @@
+{
+	"title": "Count keys with the entry API",
+	"summary": "Accumulate repeated words without overwriting earlier counts, borrow lookup keys and avoid depending on hash iteration order.",
+	"cells": {
+		"import": {
+			"clue": "Keyword bringing the standard map type into scope"
+		},
+		"mapType": {
+			"clue": "Standard hash-based key/value collection type"
+		},
+		"binding": {
+			"clue": "Modifier allowing entry updates and key removal"
+		},
+		"tokens": {
+			"clue": "String-slice method yielding words separated by Unicode whitespace"
+		},
+		"entry": {
+			"clue": "Map method selecting an occupied or vacant position for a word key"
+		},
+		"default": {
+			"clue": "Entry method inserting zero only when the key is absent and yielding an exclusive value reference"
+		},
+		"dereference": {
+			"clue": "Operator accessing the u32 through the exclusive count reference"
+		},
+		"equal": {
+			"clue": "Macro checking the accumulated red count"
+		},
+		"lookup": {
+			"clue": "Map method returning an optional shared reference for a borrowed key"
+		}
+	}
+}

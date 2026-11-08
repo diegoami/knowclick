@@ -1,0 +1,30 @@
+{
+	"title": "Expose behavior while protecting fields",
+	"summary": "Keep a record’s state private to its module, and provide public construction, inspection and mutation methods.",
+	"cells": {
+		"visible": {
+			"clue": "Unrestricted visibility keyword on Counter, without limiting access to the current crate or parent module"
+		},
+		"record": {
+			"clue": "Keyword declaring the named-field Counter type"
+		},
+		"implementation": {
+			"clue": "Keyword introducing methods associated with Counter"
+		},
+		"selfType": {
+			"clue": "Type alias spelling for Counter within its implementation"
+		},
+		"shared": {
+			"clue": "Receiver permitting value inspection without consuming or mutating Counter"
+		},
+		"exclusive": {
+			"clue": "Receiver permitting the private field to be changed through a public method"
+		},
+		"binding": {
+			"clue": "Modifier allowing the counter binding to be borrowed exclusively"
+		},
+		"equal": {
+			"clue": "Macro checking the value after two public increments"
+		}
+	}
+}

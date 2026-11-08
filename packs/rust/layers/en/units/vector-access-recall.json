@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Read and grow a vector safely",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"access": {
+			"clue": "Given values: Vec<u32>, write a checked lookup of index 0 using get, copied and unwrap_or in that order, with a default of 0."
+		},
+		"append": {
+			"clue": "Given values: Vec<u32> with a mutable binding, write the complete statement appending integer 30 using the end-append method. Include the semicolon."
+		}
+	}
+}

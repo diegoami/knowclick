@@ -1,0 +1,59 @@
+{
+	"id": "trait-defaults-recall",
+	"layout": {
+		"type": "code",
+		"code": [
+			"trait Caption {",
+			"    fn label(&self) -> &str;",
+			"    {{gap:default}}",
+			"}",
+			"struct Plain;",
+			"struct Loud;",
+			"impl Caption for Plain { fn label(&self) -> &str { \"plain\" } }",
+			"impl Caption for Loud {",
+			"    fn label(&self) -> &str { \"loud\" }",
+			"    {{gap:override}}",
+			"}",
+			"fn render<T: Caption>(value: &T) -> String { value.caption() }",
+			"fn main() {",
+			"    assert_eq!(render(&Plain), \"[plain]\");",
+			"    assert_eq!(render(&Loud), \"LOUD\");",
+			"    assert_eq!(Plain.label(), \"plain\");",
+			"    assert_eq!(Loud.label(), \"loud\");",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "default",
+			"item": "rust:trait-defaults-recall:default",
+			"text": "fn caption(&self) -> String { format!(\"[{}]\", self.label()) }"
+		},
+		{
+			"id": "override",
+			"item": "rust:trait-defaults-recall:override",
+			"text": "fn caption(&self) -> String { self.label().to_uppercase() }"
+		}
+	],
+	"sources": [
+		{
+			"title": "Generic data types",
+			"url": "https://doc.rust-lang.org/book/ch10-01-syntax.html"
+		},
+		{
+			"title": "Traits and bounds",
+			"url": "https://doc.rust-lang.org/book/ch10-02-traits.html"
+		},
+		{
+			"title": "str API",
+			"url": "https://doc.rust-lang.org/std/primitive.str.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"answerFormat": "code",
+	"dealAll": true
+}

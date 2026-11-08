@@ -1,0 +1,12 @@
+{
+	"title": "Recall: Expose behavior while protecting fields",
+	"summary": "Reconstruct complete expressions using the specified reference form. Formatting may vary; alternative implementations belong in Apply. Each clue states its own context because surrounding code is hidden in Recall.",
+	"cells": {
+		"getter": {
+			"clue": "Inside impl Counter for struct Counter { value: u32 }, write a complete public method value that borrows self immutably and returns the private field directly as a tail expression."
+		},
+		"increment": {
+			"clue": "Inside impl Counter with a private value: u32 field, write a complete public method increment that exclusively borrows self and adds 1 to the field with +=."
+		}
+	}
+}

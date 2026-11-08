@@ -1,0 +1,98 @@
+{
+	"id": "functions-expressions",
+	"layout": {
+		"type": "code",
+		"code": [
+			"{{gap:definition}} minutes_to_seconds(minutes: {{gap:unsigned}}) {{gap:arrow}} u32 {",
+			"    minutes * 60",
+			"}",
+			"fn capped(value: u32, limit: u32) -> u32 {",
+			"    {{gap:condition}} value > limit { {{gap:early}} limit; }",
+			"    value",
+			"}",
+			"fn main() {",
+			"    let seconds = { let minutes = 3; minutes_to_seconds(minutes) };",
+			"    let ratio: {{gap:fraction}} = 5.0 / 2.0;",
+			"    let idle: {{gap:unit}} = ();",
+			"    {{gap:equal}}(seconds, 180);",
+			"    assert_eq!(capped(9, 4), 4);",
+			"    assert_eq!(capped(4, 4), 4);",
+			"    assert_eq!(capped(0, 4), 0);",
+			"    assert_eq!(ratio, 2.5);",
+			"    assert_eq!(idle, ());",
+			"}"
+		]
+	},
+	"cells": [
+		{
+			"id": "definition",
+			"item": "rust:iterators:function",
+			"text": "fn"
+		},
+		{
+			"id": "unsigned",
+			"item": "rust:errors:number",
+			"text": "u32"
+		},
+		{
+			"id": "arrow",
+			"item": "rust:functions-expressions:arrow",
+			"text": "->"
+		},
+		{
+			"id": "condition",
+			"item": "rust:functions-expressions:condition",
+			"text": "if"
+		},
+		{
+			"id": "early",
+			"item": "rust:functions-expressions:early",
+			"text": "return"
+		},
+		{
+			"id": "fraction",
+			"item": "rust:functions-expressions:fraction",
+			"text": "f64"
+		},
+		{
+			"id": "unit",
+			"item": "rust:functions-expressions:unit",
+			"text": "()"
+		},
+		{
+			"id": "equal",
+			"item": "rust:ownership:assertion",
+			"text": "assert_eq!"
+		}
+	],
+	"sources": [
+		{
+			"title": "Hello, Cargo!",
+			"url": "https://doc.rust-lang.org/book/ch01-03-hello-cargo.html"
+		},
+		{
+			"title": "Variables and mutability",
+			"url": "https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html"
+		},
+		{
+			"title": "Data types",
+			"url": "https://doc.rust-lang.org/book/ch03-02-data-types.html"
+		},
+		{
+			"title": "Functions",
+			"url": "https://doc.rust-lang.org/book/ch03-03-how-functions-work.html"
+		},
+		{
+			"title": "Control flow",
+			"url": "https://doc.rust-lang.org/book/ch03-05-control-flow.html"
+		}
+	],
+	"verify": {
+		"run": "node scripts/verify-local-code.mjs rust",
+		"stdin": "{code}",
+		"expect": "^verified$"
+	},
+	"dealAll": true,
+	"distractors": ["i32", "f32", "=>", "break", "continue", "loop", "u64", "bool"],
+	"recallUnit": "functions-expressions-recall"
+}

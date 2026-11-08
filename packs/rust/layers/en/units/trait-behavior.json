@@ -1,0 +1,33 @@
+{
+	"title": "Implement a shared behavior contract",
+	"summary": "Define a trait, implement it for two record types and call through a generic bound without consuming the caller’s value.",
+	"cells": {
+		"contract": {
+			"clue": "Keyword defining the Named behavior contract"
+		},
+		"shared": {
+			"clue": "Trait method receiver borrowing its implementer immutably"
+		},
+		"implementation": {
+			"clue": "Keyword starting the implementation of Named for User"
+		},
+		"forType": {
+			"clue": "Keyword connecting the implemented trait to the concrete User type"
+		},
+		"bound": {
+			"clue": "Trait bound requiring the name method specified in the contract"
+		},
+		"borrowed": {
+			"clue": "Shared reference parameter type preserving the caller’s ownership of a generic T"
+		},
+		"owned": {
+			"clue": "Owned UTF-8 return type of the formatted greeting"
+		},
+		"formatting": {
+			"clue": "Macro allocating formatted greeting text with one positional interpolation"
+		},
+		"equal": {
+			"clue": "Macro checking the greeting for the User implementation"
+		}
+	}
+}
